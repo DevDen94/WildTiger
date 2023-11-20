@@ -1,0 +1,11 @@
+Model Information:
+* title:	Shrubbery Bush
+* source:	https://sketchfab.com/3d-models/shrubbery-bush-221edc8638354046889e2a7e53279fee
+* author:	Lizard (https://sketchfab.com/Lizard-MotionFilms)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Shrubbery Bush" (https://sketchfab.com/3d-models/shrubbery-bush-221edc8638354046889e2a7e53279fee) by Lizard (https://sketchfab.com/Lizard-MotionFilms) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
