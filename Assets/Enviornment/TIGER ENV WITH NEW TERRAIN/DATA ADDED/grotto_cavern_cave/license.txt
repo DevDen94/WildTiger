@@ -1,0 +1,11 @@
+Model Information:
+* title:	Grotto Cavern Cave
+* source:	https://sketchfab.com/3d-models/grotto-cavern-cave-aa059550ba7543b9b5eb37d7fc19363d
+* author:	pixol3d (https://sketchfab.com/pixol3d)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Grotto Cavern Cave" (https://sketchfab.com/3d-models/grotto-cavern-cave-aa059550ba7543b9b5eb37d7fc19363d) by pixol3d (https://sketchfab.com/pixol3d) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
