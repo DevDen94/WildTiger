@@ -27,7 +27,7 @@ MonoBehaviour:
     UseConstant: 1
     ConstantValue: 0
     Variable: {fileID: 0}
-  Priority: 6
+  Priority: 7
   resetInputOnFailed: 0
   ResetLastState: 0
   General:
@@ -90,7 +90,7 @@ MonoBehaviour:
   MovementStrafe: 1
   IdleStrafe: 1
   m_debug: 1
-  Editor_Tabs1: 0
+  Editor_Tabs1: 1
   SpeedSets: []
   ID: {fileID: 11400000, guid: 2f7727669c8fcdf4999e66cb669e2608, type: 2}
   Automatic:
