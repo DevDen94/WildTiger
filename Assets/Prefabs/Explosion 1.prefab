@@ -14236,7 +14236,7 @@ GameObject:
   - component: {fileID: 2220019867512511239}
   - component: {fileID: 8341296844254460639}
   m_Layer: 0
-  m_Name: Explosion
+  m_Name: Explosion 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14268,7 +14268,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100010}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a5518a9bb18e37343b4c46d2c4600f06, type: 3}
   m_Name: 

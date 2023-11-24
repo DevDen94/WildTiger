@@ -11,6 +11,7 @@ TagManager:
   - Stair
   - WallRun
   - ground
+  - Explosion
   layers:
   - Default
   - TransparentFX

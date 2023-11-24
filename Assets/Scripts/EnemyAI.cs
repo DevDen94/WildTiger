@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
-
+using UnityEngine.UI;
 public class EnemyAI : MonoBehaviour
 {
     public Transform player;
@@ -10,10 +10,23 @@ public class EnemyAI : MonoBehaviour
     private Animator animator;
     private NavMeshAgent navMeshAgent;
 
+
+    public Image HealthSlider;
+    public float StartingHealth=1;
+
+    public float HalthDownSpeed;
+
+    public Animator PlayerAnimator;
+
+
+    public GameObject Camera,Healthbar;
+
     void Start()
     {
         animator = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
+        HealthSlider.fillAmount = StartingHealth;
+        PlayerAnimator = player.GetComponent<Animator>();
     }
 
     void Update()
@@ -30,6 +43,11 @@ public class EnemyAI : MonoBehaviour
             // Player is out of range, play idle or walking animation randomly
             PlayRandomAnimation();
         }
+
+
+
+        Healthbar.transform.LookAt(Camera.transform);
+
     }
 
     void ChasePlayer()
@@ -55,7 +73,7 @@ public class EnemyAI : MonoBehaviour
     {
         // Randomly choose between idle and walking animations
         bool playIdle = Random.value > 0.5f;
-        Debug.Log(playIdle);
+        //Debug.Log(playIdle);
         animator.SetBool("isRunning", false);
         animator.SetBool("isWalking", playIdle);
 
@@ -74,5 +92,85 @@ public class EnemyAI : MonoBehaviour
 
             navMeshAgent.speed = 1.5f; // Adjust walking speed
         }
+    }
+
+
+    public void stun()
+    {
+        animator.SetBool("stun", true);
+        GetComponent<NavMeshAgent>().isStopped = true;
+    }
+
+    public void Demage()
+    {
+
+        if (HealthSlider.fillAmount > 0) { 
+        StartingHealth = StartingHealth - HalthDownSpeed;
+        HealthSlider.fillAmount = StartingHealth;
+
+        if (HealthSlider.fillAmount <= 0)
+        {
+                animator.SetBool("death", true);
+        }
+
+        }
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        
+        if (other.gameObject.CompareTag("Explosion"))
+        {
+            stun();
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+
+        if (other.gameObject.CompareTag("Animal"))
+        {
+            Debug.Log("Stay");
+            if (IsAttackAnimationPlaying() || IsAttackAnimationPlaying1() || IsAttackAnimationPlaying2() || IsAttackAnimationPlaying3())
+            {
+                animator.SetBool("Demage", true);
+                Demage();
+            }
+        }
+
+       
+    }
+
+
+
+    bool IsAttackAnimationPlaying()
+    {
+        // Check if the "Attack" animation is playing
+        
+        return PlayerAnimator.GetCurrentAnimatorStateInfo(1).IsName("Attack Bite Left");
+        
+    }
+    bool IsAttackAnimationPlaying1()
+    {
+        // Check if the "Attack" animation is playing
+        //animator.SetBool("Demage", true);
+        return PlayerAnimator.GetCurrentAnimatorStateInfo(1).IsName("Attack Bite Right");
+       
+    }
+
+    bool IsAttackAnimationPlaying2()
+    {
+        // Check if the "Attack" animation is playing
+        //animator.SetBool("Demage", true);
+        return PlayerAnimator.GetCurrentAnimatorStateInfo(1).IsName("Attack Paw Right");
+        
+    }
+    bool IsAttackAnimationPlaying3()
+    {
+        // Check if the "Attack" animation is playing_
+        //animator.SetBool("Demage", true);
+        return PlayerAnimator.GetCurrentAnimatorStateInfo(1).IsName("Attack Paw Left");
+        
     }
 }
