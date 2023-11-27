@@ -12,6 +12,7 @@ TagManager:
   - WallRun
   - ground
   - Explosion
+  - NPC
   layers:
   - Default
   - TransparentFX

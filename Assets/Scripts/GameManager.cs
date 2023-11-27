@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance;
 
+    public string[] AnimalsNamesToKill;
+
+
     private void Awake()
     {
         Instance = this;

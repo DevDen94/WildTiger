@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class AnimalScript : MonoBehaviour
 {
     public float explosionRadius = 5f;
@@ -10,6 +10,11 @@ public class AnimalScript : MonoBehaviour
 
     public GameObject Enemy,StunButton;
     public LineRenderer lineRenderer;
+
+
+    public Slider PlayerHealth;
+
+    public float HealthDown;
 
     void Start()
     {
@@ -71,6 +76,23 @@ public class AnimalScript : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "NPC")
+        {
+            PlayerHealth.value = PlayerHealth.value - HealthDown;
+
+            if (PlayerHealth.value <= 0)
+            {
+                GameManager.Instance.LevelFail();
+            }
+
+
+        }
+    }
+
+
 
 
 }
