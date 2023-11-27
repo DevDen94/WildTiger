@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -20,6 +21,8 @@ public class EnemyAI : MonoBehaviour
 
 
     public GameObject Camera,Healthbar;
+    int KillAnimals;
+
 
     void Start()
     {
@@ -111,10 +114,26 @@ public class EnemyAI : MonoBehaviour
         if (HealthSlider.fillAmount <= 0)
         {
                 animator.SetBool("death", true);
+
+                KillAnimals++;
+                if (KillAnimals >= GameManager.Instance.TotalEnemyInLevel)
+                {
+                    GameManager.Instance.MoveMentController.SetActive(false);
+                    StartCoroutine(CompletePanel());
+                }
         }
 
         }
     }
+
+    IEnumerator CompletePanel()
+    {
+        yield return new WaitForSeconds(5f);
+        GameManager.Instance.LevelComplete();
+    }
+
+
+
 
 
     private void OnTriggerEnter(Collider other)
