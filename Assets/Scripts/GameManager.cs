@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public string[] AnimalsNamesToKill;
-
+    public int KillAnimals = 0;
 
     private void Awake()
     {
