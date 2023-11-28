@@ -42,7 +42,7 @@ public class EnemyAIAggresive : MonoBehaviour
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-
+        if (!isDeath) { 
         if (distanceToPlayer <= detectionRadius)
         {
             isChasing = true;
@@ -69,7 +69,9 @@ public class EnemyAIAggresive : MonoBehaviour
         {
             AttackPlayer();
         }
+
         HealthBAr.transform.LookAt(Camera.transform);
+        }
     }
     void ChasePlayer()
     {
@@ -109,9 +111,9 @@ public class EnemyAIAggresive : MonoBehaviour
 
 
     }
+   bool isDeath=false;
 
-
-    public void Demage()
+    public void Demage(string name)
     {
         if (EnemyHealth.fillAmount > 0)
         {
@@ -121,13 +123,22 @@ public class EnemyAIAggresive : MonoBehaviour
             if (EnemyHealth.fillAmount <= 0)
             {
                 animator.SetTrigger("Death");
-
+                isDeath = true;
                 GameManager.Instance.KillAnimals++;
-                if (GameManager.Instance.KillAnimals >= GameManager.Instance.TotalEnemyInLevel)
+                for(int i = 0; i < GameManager.Instance.AnimalsNamesToKill.Length; i++)
                 {
-                    GameManager.Instance.MoveMentController.SetActive(false);
-                    StartCoroutine(CompletePanel());
+                    if(name== GameManager.Instance.AnimalsNamesToKill[i])
+                    {
+                        GameManager.Instance.KillAnimals++;
+                        if (GameManager.Instance.KillAnimals >= GameManager.Instance.TotalEnemyInLevel)
+                        {
+                            
+                            GameManager.Instance.MoveMentController.SetActive(false);
+                            StartCoroutine(CompletePanel());
+                        }
+                    }
                 }
+
             }
 
         }
@@ -147,7 +158,7 @@ public class EnemyAIAggresive : MonoBehaviour
             if (IsAttackAnimationPlaying() || IsAttackAnimationPlaying1() || IsAttackAnimationPlaying2() || IsAttackAnimationPlaying3())
             {
                 //animator.SetBool("Demage", true);
-                Demage();
+                Demage(other.gameObject.name);
             }
         }
 
