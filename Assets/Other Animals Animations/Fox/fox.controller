@@ -102,7 +102,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: f315e8f0b4571cd41ae39ff298452062, type: 2}
+  m_Motion: {fileID: 7400000, guid: 02260815cccedbd419db4f97e9144654, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -114,7 +114,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: cougar
+  m_Name: fox
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: isRunning
@@ -219,7 +219,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 6c51b1f81727ba0419e3377f0b00e78c, type: 2}
+  m_Motion: {fileID: 7400000, guid: 37815dd3cf056aa4a9f741be2de238b8, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -247,7 +247,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400004, guid: 1bff7c5afd27dd84b81a646b80cc728e, type: 3}
+  m_Motion: {fileID: 7400006, guid: d9f6dec79fcf34641bc3012c16ac9d79, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -326,7 +326,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: a3e78e92c034138488accaac1f619a48, type: 3}
+  m_Motion: {fileID: 7400002, guid: 80afbe64022574847aeb6c286fcc739b, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
