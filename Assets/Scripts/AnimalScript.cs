@@ -8,7 +8,8 @@ public class AnimalScript : MonoBehaviour
     public LayerMask enemyLayer;
     public GameObject explosionPrefab; // Reference to your explosion prefab
 
-    public GameObject Enemy,StunButton;
+    public GameObject StunButton;
+    public GameObject[] Enemy;
     public LineRenderer lineRenderer;
 
 
@@ -38,24 +39,29 @@ public class AnimalScript : MonoBehaviour
     public void Stun()
     {
         // Detect enemies within the explosion radius
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRadius, enemyLayer);
-
+        //Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRadius, enemyLayer);
+        Debug.LogError("Click");
         // Trigger explosion for each enemy in range
-        foreach (Collider col in hitColliders)
+        foreach (GameObject enemy in Enemy)
         {
-            
+            Debug.LogError("ForEach");
+            float distance = Vector3.Distance(transform.position, enemy.transform.position);
+            Debug.LogError(enemy.name+" "+distance);
             //EnemyController enemy = col.GetComponent<EnemyController>();
-            if (Enemy != null)
+            if (distance <= explosionRadius)
             {
-
+                Debug.LogError("Distance");
                 lineRenderer.enabled = true;
                 lineRenderer.SetPosition(0, transform.position);
-                lineRenderer.SetPosition(1, col.transform.position);
+                lineRenderer.SetPosition(1, enemy.transform.position);
 
 
                 // Instantiate explosion prefab at the enemy's position
-                Instantiate(explosionPrefab, Enemy.transform.position, Quaternion.identity);
-                Enemy.GetComponent<EnemyAI>().stun();
+                
+
+
+                Instantiate(explosionPrefab, enemy.transform.position, Quaternion.identity);
+                enemy.GetComponent<EnemyAI>().stun();
                 Invoke(nameof(DisableLine), 1f);
             }
         }

@@ -115,13 +115,21 @@ public class EnemyAI : MonoBehaviour
         {
                 animator.SetBool("death", true);
 
-                KillAnimals++;
-                if (KillAnimals >= GameManager.Instance.TotalEnemyInLevel)
+                GameManager.Instance.KillAnimals++;
+                for (int i = 0; i < GameManager.Instance.AnimalsNamesToKill.Length; i++)
                 {
-                    GameManager.Instance.MoveMentController.SetActive(false);
-                    StartCoroutine(CompletePanel());
+                    if (name == GameManager.Instance.AnimalsNamesToKill[i])
+                    {
+                        GameManager.Instance.KillAnimals++;
+                        if (GameManager.Instance.KillAnimals >= GameManager.Instance.TotalEnemyInLevel)
+                        {
+
+                            GameManager.Instance.MoveMentController.SetActive(false);
+                            StartCoroutine(CompletePanel());
+                        }
+                    }
                 }
-        }
+            }
 
         }
     }
