@@ -104,7 +104,7 @@ public class EnemyAI : MonoBehaviour
         GetComponent<NavMeshAgent>().isStopped = true;
     }
 
-    public void Demage()
+    public void Demage(string animalName)
     {
 
         if (HealthSlider.fillAmount > 0) { 
@@ -138,6 +138,14 @@ public class EnemyAI : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);
         GameManager.Instance.LevelComplete();
+
+
+        if(PlayerPrefs.GetInt("LevelNumber")== PlayerPrefs.GetInt("LastUnlockedLevel"))
+        {
+            PlayerPrefs.SetInt("UnlockedLevels", PlayerPrefs.GetInt("UnlockedLevels") + 1);
+        }
+
+
     }
 
 
@@ -162,7 +170,7 @@ public class EnemyAI : MonoBehaviour
             if (IsAttackAnimationPlaying() || IsAttackAnimationPlaying1() || IsAttackAnimationPlaying2() || IsAttackAnimationPlaying3())
             {
                 animator.SetBool("Demage", true);
-                Demage();
+                Demage(other.gameObject.name);
             }
         }
 

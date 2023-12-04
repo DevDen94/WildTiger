@@ -15,15 +15,8 @@ public class LevelLoader : MonoBehaviour
 
     private void Start()
     {
-        if (!PlayerPrefs.HasKey("Level"))
-        {
-            PlayerPrefs.SetInt("Level", 0);
-            LoadLevel(PlayerPrefs.GetInt("Level"));
-        }
-        else
-        {
-            LoadLevel(PlayerPrefs.GetInt("Level"));
-        }
+        LoadLevel(PlayerPrefs.GetInt("LevelNumber")-1);
+        
     }
 
     public void LoadNextLevel()

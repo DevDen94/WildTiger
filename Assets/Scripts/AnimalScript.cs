@@ -16,7 +16,7 @@ public class AnimalScript : MonoBehaviour
     public Slider PlayerHealth;
 
     public float HealthDown;
-
+    public GameObject ClawIamge;
     void Start()
     {
         // Ensure the Line Renderer component is set up
@@ -85,19 +85,51 @@ public class AnimalScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "NPC")
-        {
-            PlayerHealth.value = PlayerHealth.value - HealthDown;
+        //if (other.gameObject.tag == "NPC")
+        //{
+        //    Debug.LogError(other.gameObject.name);
+        //    PlayerHealth.value = PlayerHealth.value - HealthDown;
+        //    ClawIamge.SetActive(true);
+        //    Invoke(nameof(DisableClawIamge),1f);
+        //    if (PlayerHealth.value <= 0)
+        //    {
+        //        GameManager.Instance.LevelFail();
+        //    }
 
-            if (PlayerHealth.value <= 0)
+
+        //}
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "NPC")
+        {
+            Debug.LogError(collision.gameObject.name);
+            
+
+            if (collision.gameObject.GetComponent<EnemyAIAggresive>().EnemyHealth.fillAmount > 0)
             {
-                GameManager.Instance.LevelFail();
+                PlayerHealth.value = PlayerHealth.value - HealthDown;
+                ClawIamge.SetActive(true);
+                Invoke(nameof(DisableClawIamge), 1f);
+                if (PlayerHealth.value <= 0)
+                {
+                    GameManager.Instance.LevelFail();
+                }
+
             }
+
+
 
 
         }
     }
 
+
+
+    public void DisableClawIamge()
+    {
+        ClawIamge.SetActive(false);
+    }
 
 
 
