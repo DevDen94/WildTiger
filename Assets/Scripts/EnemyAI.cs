@@ -114,8 +114,9 @@ public class EnemyAI : MonoBehaviour
         if (HealthSlider.fillAmount <= 0)
         {
                 animator.SetBool("death", true);
+                transform.GetChild(4).gameObject.SetActive(false);
                 GameManager.Instance.update_stats(this.gameObject.name);
-                GameManager.Instance.KillAnimals++;
+                //GameManager.Instance.KillAnimals++;
                 for (int i = 0; i < GameManager.Instance.AnimalsNamesToKill.Length; i++)
                 {
                     if (name == GameManager.Instance.AnimalsNamesToKill[i])
@@ -127,6 +128,7 @@ public class EnemyAI : MonoBehaviour
                             GameManager.Instance.MoveMentController.SetActive(false);
                             StartCoroutine(CompletePanel());
                         }
+                        return;
                     }
                 }
             }
@@ -151,7 +153,8 @@ public class EnemyAI : MonoBehaviour
     public void DisableHealthText()
     {
         TextUIHealth.SetActive(false);
-        TextUIHealth.GetComponent<DG.Tweening.DOTweenAnimation>().DOKill();
+        //TextUIHealth.GetComponent<DG.Tweening.DOTweenAnimation>().DORewind();
+
     }
 
 
@@ -167,8 +170,8 @@ public class EnemyAI : MonoBehaviour
         {
             if (HealthSlider.fillAmount > 0) { 
             TextUIHealth.SetActive(true);
-            TextUIHealth.GetComponent<TMPro.TextMeshPro>().text = (Random.Range(4, 25)).ToString();
-            TextUIHealth.GetComponent<DG.Tweening.DOTweenAnimation>().DOPlay();
+            TextUIHealth.GetComponent<TMPro.TextMeshPro>().text = (Random.Range(4, 10)).ToString();
+            TextUIHealth.GetComponent<DG.Tweening.DOTweenAnimation>().DORestart();
             Invoke(nameof(DisableHealthText), 1f);
             }
         }

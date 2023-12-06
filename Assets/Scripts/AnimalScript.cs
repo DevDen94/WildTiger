@@ -17,6 +17,9 @@ public class AnimalScript : MonoBehaviour
 
     public float HealthDown;
     public GameObject ClawIamge;
+
+    public GameObject TextUIHealth, camera,TextUIHealthParent;
+
     void Start()
     {
         // Ensure the Line Renderer component is set up
@@ -35,7 +38,10 @@ public class AnimalScript : MonoBehaviour
         lineRenderer.enabled = false;
     }
 
-
+    private void Update()
+    {
+        TextUIHealth.transform.LookAt(TextUIHealth.transform.position+camera.transform.rotation*Vector3.forward);
+    }
     public void Stun()
     {
         // Detect enemies within the explosion radius
@@ -55,12 +61,10 @@ public class AnimalScript : MonoBehaviour
                 lineRenderer.SetPosition(0, transform.position);
                 lineRenderer.SetPosition(1, enemy.transform.position);
 
+                enemy.transform.GetChild(4).gameObject.SetActive(true);
 
-                // Instantiate explosion prefab at the enemy's position
                 
-
-
-                Instantiate(explosionPrefab, enemy.transform.position, Quaternion.identity);
+                    Instantiate(explosionPrefab, enemy.transform.position, Quaternion.identity);
                 enemy.GetComponent<EnemyAI>().stun();
                 Invoke(nameof(DisableLine), 1f);
             }
@@ -108,12 +112,20 @@ public class AnimalScript : MonoBehaviour
 
             if (collision.gameObject.GetComponent<EnemyAIAggresive>().EnemyHealth.fillAmount > 0)
             {
+
                 PlayerHealth.value = PlayerHealth.value - HealthDown;
                 ClawIamge.SetActive(true);
                 Invoke(nameof(DisableClawIamge), 1f);
+                TextUIHealth.SetActive(true);
+                
+                TextUIHealth.GetComponent<TMPro.TextMeshPro>().text = (Random.Range(4, 10)).ToString();
+                //TextUIHealth.GetComponent<DG.Tweening.DOTweenAnimation>().DORestart();
+                Invoke(nameof(DisableHealthText), 1f);
+                
                 if (PlayerHealth.value <= 0)
                 {
                     GameManager.Instance.LevelFail();
+                    Invoke(nameof(DisableClawIamge), 0f);
                 }
 
             }
@@ -124,7 +136,12 @@ public class AnimalScript : MonoBehaviour
         }
     }
 
+    public void DisableHealthText()
+    {
+        TextUIHealth.SetActive(false);
+        //TextUIHealth.GetComponent<DG.Tweening.DOTweenAnimation>().DORewind();
 
+    }
 
     public void DisableClawIamge()
     {

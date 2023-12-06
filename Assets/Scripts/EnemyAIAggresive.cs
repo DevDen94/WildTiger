@@ -110,7 +110,7 @@ public class EnemyAIAggresive : MonoBehaviour
        
         // Rotate the enemy to face the player
         transform.LookAt(player.transform);
-
+        transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
         //navMeshAgent.isStopped = true;
 
 
@@ -165,10 +165,45 @@ public class EnemyAIAggresive : MonoBehaviour
                 //animator.SetBool("Demage", true);
                 Demage(other.gameObject.name);
             }
+            else
+            {
+                other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            }
         }
 
 
     }
+
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Animal"))
+        {
+            if (IsAttackAnimationPlaying() || IsAttackAnimationPlaying1() || IsAttackAnimationPlaying2() || IsAttackAnimationPlaying3())
+            {
+                if (EnemyHealth.fillAmount > 0)
+                {
+                    TextUIHealth.SetActive(true);
+                    TextUIHealth.GetComponent<TMPro.TextMeshPro>().text = (Random.Range(4, 10)).ToString();
+                    TextUIHealth.GetComponent<DG.Tweening.DOTweenAnimation>().DORestart();
+                    Invoke(nameof(DisableHealthText), 1f);
+                }
+            }
+        }
+        else
+        {
+            other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        }
+    }
+    public void DisableHealthText()
+    {
+        TextUIHealth.SetActive(false);
+        //TextUIHealth.GetComponent<DG.Tweening.DOTweenAnimation>().DOKill();
+        
+
+    }
+
     bool IsAttackAnimationPlaying()
     {
         // Check if the "Attack" animation is playing

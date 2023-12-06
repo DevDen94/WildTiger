@@ -20,6 +20,11 @@ public class GameManager : MonoBehaviour
     public GameObject[] AnimalList;
     stats selectedLevelData;
 
+    private void Start()
+    {
+       
+    }
+
     int abc;
     public void update_stats(string animal_name)
     {
@@ -28,9 +33,10 @@ public class GameManager : MonoBehaviour
         {
             if (selectedLevelData.Animals[i] == animal_name)
             {
-                
-                if(selectedLevelData.killCount[i]< selectedLevelData.TotalKillCount[i])
-                    AnimalList[i].gameObject.GetComponent<Text>().text = selectedLevelData.Animals[i] + "\t\t\t" + (selectedLevelData.killCount[i]+1).ToString() + "/" + selectedLevelData.TotalKillCount[i];
+                Debug.Log("Enter condition" + animal_name+i);
+                selectedLevelData.killCount[i] = selectedLevelData.killCount[i] + 1;
+                if (selectedLevelData.killCount[i]< selectedLevelData.TotalKillCount[i])
+                    AnimalList[i].gameObject.GetComponent<Text>().text = selectedLevelData.Animals[i] + "\t\t\t" + (selectedLevelData.killCount[i]).ToString() + "/" + selectedLevelData.TotalKillCount[i];
             }
         }
     }
@@ -42,6 +48,7 @@ public class GameManager : MonoBehaviour
         for(int i = 0; i < selectedLevelData.Animals.Length; i++)
         {
             AnimalList[i].SetActive(true);
+            selectedLevelData.killCount[i] = 0;
             AnimalList[i].gameObject.GetComponent<Text>().text = selectedLevelData.Animals[i] + "                   " + selectedLevelData.killCount[i] + "/" + selectedLevelData.TotalKillCount[i];
         }
 

@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d627e38aa81a544185a168eec86eae1, type: 3}
   m_Name: stats 1
   m_EditorClassIdentifier: 
-  Animals: []
+  Animals:
+  - Rabbit
+  - deer
+  TotalKillCount: 0100000002000000
+  killCount: 0000000000000000

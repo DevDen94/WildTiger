@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour
 {
@@ -15,13 +16,13 @@ public class LevelLoader : MonoBehaviour
 
     private void Start()
     {
-        LoadLevel(PlayerPrefs.GetInt("LevelNumber")-1);
+        LoadLevel(PlayerPrefs.GetInt("Level"));
         
     }
 
     public void LoadNextLevel()
     {
-
+        
         PlayerPrefs.SetInt("Level", PlayerPrefs.GetInt("Level")+1);
 
         if (PlayerPrefs.GetInt("Level") < Levels.Length)
@@ -33,6 +34,7 @@ public class LevelLoader : MonoBehaviour
             // All levels are complete, you can add logic for game completion
             Debug.Log("All levels completed!");
         }
+        SceneManager.LoadScene(1);
     }
 
 
