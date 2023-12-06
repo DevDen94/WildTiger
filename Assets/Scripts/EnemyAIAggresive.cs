@@ -107,10 +107,14 @@ public class EnemyAIAggresive : MonoBehaviour
     void AttackPlayer()
     {
         animator.SetBool("Attack", true);
-       
+        Vector3 directionToPlayer = player.position - transform.position;
+        Quaternion rotation = Quaternion.LookRotation(directionToPlayer, Vector3.up);
+        transform.rotation = rotation;
+        transform.Translate(Vector3.forward * 1 * Time.deltaTime);
+
         // Rotate the enemy to face the player
-        transform.LookAt(player.transform);
-        transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
+        //transform.LookAt(player.transform);
+        //transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
         //navMeshAgent.isStopped = true;
 
 
