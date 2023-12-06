@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
             {
                 
                 if(selectedLevelData.killCount[i]< selectedLevelData.TotalKillCount[i])
-                    AnimalList[i].gameObject.GetComponent<Text>().text = selectedLevelData.Animals[i] + "                   " + selectedLevelData.killCount[i]+1 + "/" + selectedLevelData.TotalKillCount[i];
+                    AnimalList[i].gameObject.GetComponent<Text>().text = selectedLevelData.Animals[i] + "\t\t\t" + (selectedLevelData.killCount[i]+1).ToString() + "/" + selectedLevelData.TotalKillCount[i];
             }
         }
     }

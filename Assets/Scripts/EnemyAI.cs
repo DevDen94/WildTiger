@@ -23,7 +23,7 @@ public class EnemyAI : MonoBehaviour
     public GameObject Camera,Healthbar;
     int KillAnimals;
 
-
+    public GameObject TextUIHealth;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -50,7 +50,7 @@ public class EnemyAI : MonoBehaviour
 
 
         Healthbar.transform.LookAt(Camera.transform);
-
+        
     }
 
     void ChasePlayer()
@@ -110,11 +110,11 @@ public class EnemyAI : MonoBehaviour
         if (HealthSlider.fillAmount > 0) { 
         StartingHealth = StartingHealth - HalthDownSpeed;
         HealthSlider.fillAmount = StartingHealth;
-
+        
         if (HealthSlider.fillAmount <= 0)
         {
                 animator.SetBool("death", true);
-
+                GameManager.Instance.update_stats(this.gameObject.name);
                 GameManager.Instance.KillAnimals++;
                 for (int i = 0; i < GameManager.Instance.AnimalsNamesToKill.Length; i++)
                 {
@@ -148,16 +148,29 @@ public class EnemyAI : MonoBehaviour
 
     }
 
-
+    public void DisableHealthText()
+    {
+        TextUIHealth.SetActive(false);
+        TextUIHealth.GetComponent<DG.Tweening.DOTweenAnimation>().DOKill();
+    }
 
 
 
     private void OnTriggerEnter(Collider other)
     {
-        
+
         if (other.gameObject.CompareTag("Explosion"))
         {
             stun();
+        }
+        if (IsAttackAnimationPlaying() || IsAttackAnimationPlaying1() || IsAttackAnimationPlaying2() || IsAttackAnimationPlaying3())
+        {
+            if (HealthSlider.fillAmount > 0) { 
+            TextUIHealth.SetActive(true);
+            TextUIHealth.GetComponent<TMPro.TextMeshPro>().text = (Random.Range(4, 25)).ToString();
+            TextUIHealth.GetComponent<DG.Tweening.DOTweenAnimation>().DOPlay();
+            Invoke(nameof(DisableHealthText), 1f);
+            }
         }
     }
 

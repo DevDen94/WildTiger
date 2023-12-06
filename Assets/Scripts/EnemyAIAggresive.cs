@@ -29,6 +29,10 @@ public class EnemyAIAggresive : MonoBehaviour
 
     public float walkingRadius = 5f;
     private Vector3 initialPosition;
+
+    public GameObject TextUIHealth;
+
+
     void Start()
     {
         //navMeshAgent = GetComponent<NavMeshAgent>();
@@ -123,6 +127,7 @@ public class EnemyAIAggresive : MonoBehaviour
             if (EnemyHealth.fillAmount <= 0)
             {
                 animator.SetTrigger("Death");
+                GameManager.Instance.update_stats(this.gameObject.name);
                 isDeath = true;
                 GameManager.Instance.KillAnimals++;
                 for(int i = 0; i < GameManager.Instance.AnimalsNamesToKill.Length; i++)
