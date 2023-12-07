@@ -170,7 +170,7 @@ public class EnemyAI : MonoBehaviour
         {
             if (HealthSlider.fillAmount > 0) { 
             TextUIHealth.SetActive(true);
-            TextUIHealth.GetComponent<TMPro.TextMeshPro>().text = (Random.Range(4, 10)).ToString();
+            TextUIHealth.GetComponent<TMPro.TextMeshPro>().text = (Random.Range(4, 25)).ToString();
             TextUIHealth.GetComponent<DG.Tweening.DOTweenAnimation>().DORestart();
             Invoke(nameof(DisableHealthText), 1f);
             }

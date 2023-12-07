@@ -88,7 +88,7 @@ public class MainMenu : MonoBehaviour
     public void LevelButtonClick(int LevelNumber)
     {
         LoadingPanel.SetActive(true);
-        PlayerPrefs.SetInt("LevelNumber", LevelNumber);
+        PlayerPrefs.SetInt("Level", LevelNumber);
         StartCoroutine(LoadingAfterLEvelSelectionComplete());
     }
     IEnumerator LoadingAfterLEvelSelectionComplete()

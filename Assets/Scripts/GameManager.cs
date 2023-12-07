@@ -34,9 +34,11 @@ public class GameManager : MonoBehaviour
             if (selectedLevelData.Animals[i] == animal_name)
             {
                 Debug.Log("Enter condition" + animal_name+i);
-                selectedLevelData.killCount[i] = selectedLevelData.killCount[i] + 1;
-                if (selectedLevelData.killCount[i]< selectedLevelData.TotalKillCount[i])
-                    AnimalList[i].gameObject.GetComponent<Text>().text = selectedLevelData.Animals[i] + "\t\t\t" + (selectedLevelData.killCount[i]).ToString() + "/" + selectedLevelData.TotalKillCount[i];
+                
+                if (selectedLevelData.killCount[i]< selectedLevelData.TotalKillCount[i]) { 
+                    selectedLevelData.killCount[i] = selectedLevelData.killCount[i] + 1;
+                    AnimalList[i].gameObject.GetComponent<Text>().text = selectedLevelData.Animals[i] + "\t\t\t" + selectedLevelData.killCount[i] + "/" + selectedLevelData.TotalKillCount[i];
+                }
             }
         }
     }
