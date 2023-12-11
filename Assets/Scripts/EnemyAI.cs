@@ -101,8 +101,18 @@ public class EnemyAI : MonoBehaviour
     public void stun()
     {
         animator.SetBool("stun", true);
-        GetComponent<NavMeshAgent>().isStopped = true;
+        GetComponent<NavMeshAgent>().isStopped = true;  
+        //Invoke(nameof(stunOff), 5f);
     }
+
+    public void stunOff()
+    {
+        animator.SetBool("stun", false);
+        GetComponent<NavMeshAgent>().isStopped = false;
+        transform.GetChild(4).gameObject.SetActive(false);
+    }
+
+
 
     public void Demage(string animalName)
     {
@@ -114,6 +124,7 @@ public class EnemyAI : MonoBehaviour
         if (HealthSlider.fillAmount <= 0)
         {
                 animator.SetBool("death", true);
+                GetComponent<NavMeshAgent>().isStopped = true;
                 transform.GetChild(4).gameObject.SetActive(false);
                 GameManager.Instance.update_stats(this.gameObject.name);
                 //GameManager.Instance.KillAnimals++;
@@ -142,7 +153,7 @@ public class EnemyAI : MonoBehaviour
         GameManager.Instance.LevelComplete();
 
 
-        if(PlayerPrefs.GetInt("LevelNumber")== PlayerPrefs.GetInt("LastUnlockedLevel"))
+        if(PlayerPrefs.GetInt("Level") == PlayerPrefs.GetInt("LastUnlockedLevel"))
         {
             PlayerPrefs.SetInt("UnlockedLevels", PlayerPrefs.GetInt("UnlockedLevels") + 1);
         }

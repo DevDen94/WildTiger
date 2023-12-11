@@ -19,6 +19,8 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
+
+       
         StartCoroutine(LoadingComplete());
 
         if (!PlayerPrefs.HasKey("UnlockedLevels"))
@@ -30,7 +32,7 @@ public class MainMenu : MonoBehaviour
         {
             UpdateLevels();
         }
-
+        GoogleAdMobController.instance.ShowSmallBannerAd();
     }
 
     IEnumerator LoadingComplete()
@@ -74,6 +76,7 @@ public class MainMenu : MonoBehaviour
             if (i < TotalUnlock)
             {
                 LevelButtons[i].transform.GetChild(1).gameObject.SetActive(false);
+                LevelButtons[i].GetComponent<Button>().enabled = true;
             }
             else
             {
@@ -119,4 +122,11 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(1);
 
     }
+
+    public void showInterstatialAD()
+    {
+        GoogleAdMobController.instance.ShowInterstitialAd();
+    }
+
+
 }

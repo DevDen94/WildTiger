@@ -487,6 +487,7 @@ IL2CPP_EXTERN_C RuntimeClass* Encoding_t65CDEF28CF20A7B8C92E85A4E808920C2465F095
 IL2CPP_EXTERN_C RuntimeClass* Enumerator_t49742A61974B06BB73678C5555C3E42E6C843772_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Enumerator_t600BA5FC7EA2F68C19679262670BEEA5DB0CC61D_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* ExclusiveReference_t411F04D4CC440EB7399290027E1BBABEF4C28837_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* GroupCollection_tFFA1789730DD9EA122FBE77DC03BFEDCC3F2945E_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* GroupU5BU5D_t9924453EAB39E5BC350475A536C5C7093F9A04A9_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Group_t26371E9136D6F43782C487B63C67C5FC4F472881_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* ICollection_1_t0E677CEC3662A83D9FB579D268AD5C28BBEB68EB_il2cpp_TypeInfo_var;
@@ -4444,6 +4445,8 @@ inline EqualityComparer_1_t5783DBC40BA5271BBE16890D8F7FC0DFA287D572* EqualityCom
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NotSupportedException__ctor_mE174750CF0247BBB47544FFD71D66BB89630945B (NotSupportedException_t1429765983D409BD2986508963C98D214E4EBF4A* __this, String_t* ___0_message, const RuntimeMethod* method) ;
 // System.Text.RegularExpressions.Group System.Text.RegularExpressions.GroupCollection/Enumerator::get_Current()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Group_t26371E9136D6F43782C487B63C67C5FC4F472881* Enumerator_get_Current_m6201905A1315214B04F5001307F52887F9161F43 (Enumerator_t49742A61974B06BB73678C5555C3E42E6C843772* __this, const RuntimeMethod* method) ;
+// System.Void System.Text.RegularExpressions.GroupCollection::.ctor(System.Text.RegularExpressions.Match,System.Collections.Hashtable)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GroupCollection__ctor_m70201F22BBECA6AE7E6132AB9629B24EA458A7D2 (GroupCollection_tFFA1789730DD9EA122FBE77DC03BFEDCC3F2945E* __this, Match_tFBEBCF225BD8EA17BCE6CE3FE5C1BD8E3074105F* ___0_match, Hashtable_tEFC3B6496E6747787D8BB761B51F2AE3A8CFFE2D* ___1_caps, const RuntimeMethod* method) ;
 // System.Text.RegularExpressions.Match System.Text.RegularExpressions.Regex::Run(System.Boolean,System.Int32,System.String,System.Int32,System.Int32,System.Int32)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Match_tFBEBCF225BD8EA17BCE6CE3FE5C1BD8E3074105F* Regex_Run_m4DCD2202C599273C00D6052A77BDD2F39E2F5BF8 (Regex_tE773142C2BE45C5D362B0F815AFF831707A51772* __this, bool ___0_quick, int32_t ___1_prevlen, String_t* ___2_input, int32_t ___3_beginning, int32_t ___4_length, int32_t ___5_startat, const RuntimeMethod* method) ;
 // System.Void System.Text.RegularExpressions.Match::.ctor(System.Text.RegularExpressions.Regex,System.Int32,System.String,System.Int32,System.Int32,System.Int32)
@@ -4531,14 +4534,18 @@ inline bool Dictionary_2_TryGetValue_m79B5FDA268EE81DEE7DA49305FB14DBBDABD5A31 (
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Regex_TryGetCacheValueSmall_mA62E6520886883BC787412F588CF79B7A02B9A28 (CachedCodeEntryKey_t8A54BDD6E52145D17DB1A2EB0CE0B4D4CB112F31 ___0_key, CachedCodeEntry_tE201C3AD65C234AD9ED7A78C95025824A7A9FF39** ___1_entry, const RuntimeMethod* method) ;
 // System.Boolean System.Text.RegularExpressions.Regex::TryGetCacheValue(System.Text.RegularExpressions.Regex/CachedCodeEntryKey,System.Text.RegularExpressions.Regex/CachedCodeEntry&)
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool Regex_TryGetCacheValue_mA2B41F91C84CB02DA59E18DB80B0A49CBC600A8B_inline (CachedCodeEntryKey_t8A54BDD6E52145D17DB1A2EB0CE0B4D4CB112F31 ___0_key, CachedCodeEntry_tE201C3AD65C234AD9ED7A78C95025824A7A9FF39** ___1_entry, const RuntimeMethod* method) ;
+// System.Boolean System.Text.RegularExpressions.Regex::IsMatch(System.String,System.String,System.Text.RegularExpressions.RegexOptions,System.TimeSpan)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Regex_IsMatch_mCC0157A5E20FC634B8812B494F48877D55602C4D (String_t* ___0_input, String_t* ___1_pattern, int32_t ___2_options, TimeSpan_t8195C5B013A2C532FEBDF0B64B6911982E750F5A ___3_matchTimeout, const RuntimeMethod* method) ;
+// System.Void System.Text.RegularExpressions.Regex::.ctor(System.String,System.Text.RegularExpressions.RegexOptions,System.TimeSpan,System.Boolean)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Regex__ctor_mA8EBF2F80CC00D741BFD2FFD7DC9DB26FBCEE2A4 (Regex_tE773142C2BE45C5D362B0F815AFF831707A51772* __this, String_t* ___0_pattern, int32_t ___1_options, TimeSpan_t8195C5B013A2C532FEBDF0B64B6911982E750F5A ___2_matchTimeout, bool ___3_addToCache, const RuntimeMethod* method) ;
+// System.Boolean System.Text.RegularExpressions.Regex::IsMatch(System.String)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Regex_IsMatch_m7E96E666FBE7259D7638A3A6A21BE824D2406F49 (Regex_tE773142C2BE45C5D362B0F815AFF831707A51772* __this, String_t* ___0_input, const RuntimeMethod* method) ;
 // System.Boolean System.Text.RegularExpressions.Regex::UseOptionR()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Regex_UseOptionR_mFAB8780E9F998BE60C4B1127D57DD627A3B5629C (Regex_tE773142C2BE45C5D362B0F815AFF831707A51772* __this, const RuntimeMethod* method) ;
 // System.Boolean System.Text.RegularExpressions.Regex::IsMatch(System.String,System.Int32)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Regex_IsMatch_mC358D80573E765ECC19F9F5882664E3B1FA0966E (Regex_tE773142C2BE45C5D362B0F815AFF831707A51772* __this, String_t* ___0_input, int32_t ___1_startat, const RuntimeMethod* method) ;
 // System.Text.RegularExpressions.Match System.Text.RegularExpressions.Regex::Match(System.String,System.String,System.Text.RegularExpressions.RegexOptions,System.TimeSpan)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Match_tFBEBCF225BD8EA17BCE6CE3FE5C1BD8E3074105F* Regex_Match_m92E101BFAC22024C837C2F159E5ED516CF6E568F (String_t* ___0_input, String_t* ___1_pattern, int32_t ___2_options, TimeSpan_t8195C5B013A2C532FEBDF0B64B6911982E750F5A ___3_matchTimeout, const RuntimeMethod* method) ;
-// System.Void System.Text.RegularExpressions.Regex::.ctor(System.String,System.Text.RegularExpressions.RegexOptions,System.TimeSpan,System.Boolean)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Regex__ctor_mA8EBF2F80CC00D741BFD2FFD7DC9DB26FBCEE2A4 (Regex_tE773142C2BE45C5D362B0F815AFF831707A51772* __this, String_t* ___0_pattern, int32_t ___1_options, TimeSpan_t8195C5B013A2C532FEBDF0B64B6911982E750F5A ___2_matchTimeout, bool ___3_addToCache, const RuntimeMethod* method) ;
 // System.Text.RegularExpressions.Match System.Text.RegularExpressions.Regex::Match(System.String)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Match_tFBEBCF225BD8EA17BCE6CE3FE5C1BD8E3074105F* Regex_Match_m58565ECF23ACCD2CA77D6F10A6A182B03CF0FF84 (Regex_tE773142C2BE45C5D362B0F815AFF831707A51772* __this, String_t* ___0_input, const RuntimeMethod* method) ;
 // System.Text.RegularExpressions.Match System.Text.RegularExpressions.Regex::Match(System.String,System.Int32)
@@ -16720,6 +16727,20 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Group__ctor_mEB6936CDFD191A4C92766CE3F33
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
+// System.Void System.Text.RegularExpressions.GroupCollection::.ctor(System.Text.RegularExpressions.Match,System.Collections.Hashtable)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GroupCollection__ctor_m70201F22BBECA6AE7E6132AB9629B24EA458A7D2 (GroupCollection_tFFA1789730DD9EA122FBE77DC03BFEDCC3F2945E* __this, Match_tFBEBCF225BD8EA17BCE6CE3FE5C1BD8E3074105F* ___0_match, Hashtable_tEFC3B6496E6747787D8BB761B51F2AE3A8CFFE2D* ___1_caps, const RuntimeMethod* method) 
+{
+	{
+		Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2(__this, NULL);
+		Match_tFBEBCF225BD8EA17BCE6CE3FE5C1BD8E3074105F* L_0 = ___0_match;
+		__this->____match_0 = L_0;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->____match_0), (void*)L_0);
+		Hashtable_tEFC3B6496E6747787D8BB761B51F2AE3A8CFFE2D* L_1 = ___1_caps;
+		__this->____captureMap_1 = L_1;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->____captureMap_1), (void*)L_1);
+		return;
+	}
+}
 // System.Boolean System.Text.RegularExpressions.GroupCollection::get_IsReadOnly()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool GroupCollection_get_IsReadOnly_mF1DE2BBB4E573C6EDE85B787281F90951AAB8C4A (GroupCollection_tFFA1789730DD9EA122FBE77DC03BFEDCC3F2945E* __this, const RuntimeMethod* method) 
 {
@@ -17643,6 +17664,36 @@ IL_0036:
 		return;
 	}
 }
+// System.Text.RegularExpressions.GroupCollection System.Text.RegularExpressions.Match::get_Groups()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GroupCollection_tFFA1789730DD9EA122FBE77DC03BFEDCC3F2945E* Match_get_Groups_mFFA743CDBD78BAD530F2C66FE216C9A5282DA09B (Match_tFBEBCF225BD8EA17BCE6CE3FE5C1BD8E3074105F* __this, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GroupCollection_tFFA1789730DD9EA122FBE77DC03BFEDCC3F2945E_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		GroupCollection_tFFA1789730DD9EA122FBE77DC03BFEDCC3F2945E* L_0 = __this->____groupcoll_8;
+		if (L_0)
+		{
+			goto IL_0015;
+		}
+	}
+	{
+		GroupCollection_tFFA1789730DD9EA122FBE77DC03BFEDCC3F2945E* L_1 = (GroupCollection_tFFA1789730DD9EA122FBE77DC03BFEDCC3F2945E*)il2cpp_codegen_object_new(GroupCollection_tFFA1789730DD9EA122FBE77DC03BFEDCC3F2945E_il2cpp_TypeInfo_var);
+		NullCheck(L_1);
+		GroupCollection__ctor_m70201F22BBECA6AE7E6132AB9629B24EA458A7D2(L_1, __this, (Hashtable_tEFC3B6496E6747787D8BB761B51F2AE3A8CFFE2D*)NULL, NULL);
+		__this->____groupcoll_8 = L_1;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->____groupcoll_8), (void*)L_1);
+	}
+
+IL_0015:
+	{
+		GroupCollection_tFFA1789730DD9EA122FBE77DC03BFEDCC3F2945E* L_2 = __this->____groupcoll_8;
+		return L_2;
+	}
+}
 // System.Text.RegularExpressions.Match System.Text.RegularExpressions.Match::NextMatch()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Match_tFBEBCF225BD8EA17BCE6CE3FE5C1BD8E3074105F* Match_NextMatch_m4B7BA2B21E09FA0937806F41DDE3EE0F052C4052 (Match_tFBEBCF225BD8EA17BCE6CE3FE5C1BD8E3074105F* __this, const RuntimeMethod* method) 
 {
@@ -17737,7 +17788,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR ReadOnlySpan_1_t59614EA6E51A945A32B02AB17FBCB
 		Int32U5BU5D_t19C97395396A72ECAF310612F0760F165060314C* L_0 = __this->____matchcount_15;
 		NullCheck(L_0);
 		ReadOnlySpan_1_t59614EA6E51A945A32B02AB17FBCBDF9A5C419C1 L_1;
-		L_1 = VirtualFuncInvoker1< ReadOnlySpan_1_t59614EA6E51A945A32B02AB17FBCBDF9A5C419C1, int32_t >::Invoke(5 /* System.ReadOnlySpan`1<System.Char> System.Text.RegularExpressions.Match::GroupToStringImpl(System.Int32) */, __this, ((int32_t)il2cpp_codegen_subtract(((int32_t)(((RuntimeArray*)L_0)->max_length)), 1)));
+		L_1 = VirtualFuncInvoker1< ReadOnlySpan_1_t59614EA6E51A945A32B02AB17FBCBDF9A5C419C1, int32_t >::Invoke(6 /* System.ReadOnlySpan`1<System.Char> System.Text.RegularExpressions.Match::GroupToStringImpl(System.Int32) */, __this, ((int32_t)il2cpp_codegen_subtract(((int32_t)(((RuntimeArray*)L_0)->max_length)), 1)));
 		return L_1;
 	}
 }
@@ -17953,7 +18004,7 @@ IL_002f:
 		NullCheck(L_38);
 		int32_t L_40 = ((int32_t)il2cpp_codegen_add(L_39, 1));
 		int32_t L_41 = (L_38)->GetAt(static_cast<il2cpp_array_size_t>(L_40));
-		VirtualActionInvoker3< int32_t, int32_t, int32_t >::Invoke(6 /* System.Void System.Text.RegularExpressions.Match::AddMatch(System.Int32,System.Int32,System.Int32) */, __this, L_27, L_34, L_41);
+		VirtualActionInvoker3< int32_t, int32_t, int32_t >::Invoke(7 /* System.Void System.Text.RegularExpressions.Match::AddMatch(System.Int32,System.Int32,System.Int32) */, __this, L_27, L_34, L_41);
 		return;
 	}
 
@@ -17962,7 +18013,7 @@ IL_0062:
 		int32_t L_42 = ___0_cap;
 		int32_t L_43 = V_0;
 		int32_t L_44 = V_0;
-		VirtualActionInvoker3< int32_t, int32_t, int32_t >::Invoke(6 /* System.Void System.Text.RegularExpressions.Match::AddMatch(System.Int32,System.Int32,System.Int32) */, __this, L_42, ((int32_t)il2cpp_codegen_subtract(((int32_t)-3), L_43)), ((int32_t)il2cpp_codegen_subtract(((int32_t)-4), L_44)));
+		VirtualActionInvoker3< int32_t, int32_t, int32_t >::Invoke(7 /* System.Void System.Text.RegularExpressions.Match::AddMatch(System.Int32,System.Int32,System.Int32) */, __this, L_42, ((int32_t)il2cpp_codegen_subtract(((int32_t)-3), L_43)), ((int32_t)il2cpp_codegen_subtract(((int32_t)-4), L_44)));
 		return;
 	}
 }
@@ -18361,6 +18412,37 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MatchSparse__ctor_m7CEA8A7F538C706527778
 		__this->____caps_18 = L_6;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->____caps_18), (void*)L_6);
 		return;
+	}
+}
+// System.Text.RegularExpressions.GroupCollection System.Text.RegularExpressions.MatchSparse::get_Groups()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GroupCollection_tFFA1789730DD9EA122FBE77DC03BFEDCC3F2945E* MatchSparse_get_Groups_m02FA0AF82798ECC113234C2ED840DD630A3CCB45 (MatchSparse_t06FDC774ECCE8FFA0534A17E5990A8407658E906* __this, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GroupCollection_tFFA1789730DD9EA122FBE77DC03BFEDCC3F2945E_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		GroupCollection_tFFA1789730DD9EA122FBE77DC03BFEDCC3F2945E* L_0 = ((Match_tFBEBCF225BD8EA17BCE6CE3FE5C1BD8E3074105F*)__this)->____groupcoll_8;
+		if (L_0)
+		{
+			goto IL_001a;
+		}
+	}
+	{
+		Hashtable_tEFC3B6496E6747787D8BB761B51F2AE3A8CFFE2D* L_1 = __this->____caps_18;
+		GroupCollection_tFFA1789730DD9EA122FBE77DC03BFEDCC3F2945E* L_2 = (GroupCollection_tFFA1789730DD9EA122FBE77DC03BFEDCC3F2945E*)il2cpp_codegen_object_new(GroupCollection_tFFA1789730DD9EA122FBE77DC03BFEDCC3F2945E_il2cpp_TypeInfo_var);
+		NullCheck(L_2);
+		GroupCollection__ctor_m70201F22BBECA6AE7E6132AB9629B24EA458A7D2(L_2, __this, L_1, NULL);
+		((Match_tFBEBCF225BD8EA17BCE6CE3FE5C1BD8E3074105F*)__this)->____groupcoll_8 = L_2;
+		Il2CppCodeGenWriteBarrier((void**)(&((Match_tFBEBCF225BD8EA17BCE6CE3FE5C1BD8E3074105F*)__this)->____groupcoll_8), (void*)L_2);
+	}
+
+IL_001a:
+	{
+		GroupCollection_tFFA1789730DD9EA122FBE77DC03BFEDCC3F2945E* L_3 = ((Match_tFBEBCF225BD8EA17BCE6CE3FE5C1BD8E3074105F*)__this)->____groupcoll_8;
+		return L_3;
 	}
 }
 #ifdef __clang__
@@ -19807,6 +19889,48 @@ IL_0083:
 	{
 		CachedCodeEntry_tE201C3AD65C234AD9ED7A78C95025824A7A9FF39* L_26 = V_0;
 		return L_26;
+	}
+}
+// System.Boolean System.Text.RegularExpressions.Regex::IsMatch(System.String,System.String)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Regex_IsMatch_m66D13054C7992322810B0CFC6B46AF11A927C9AA (String_t* ___0_input, String_t* ___1_pattern, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Regex_tE773142C2BE45C5D362B0F815AFF831707A51772_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		String_t* L_0 = ___0_input;
+		String_t* L_1 = ___1_pattern;
+		il2cpp_codegen_runtime_class_init_inline(Regex_tE773142C2BE45C5D362B0F815AFF831707A51772_il2cpp_TypeInfo_var);
+		TimeSpan_t8195C5B013A2C532FEBDF0B64B6911982E750F5A L_2 = ((Regex_tE773142C2BE45C5D362B0F815AFF831707A51772_StaticFields*)il2cpp_codegen_static_fields_for(Regex_tE773142C2BE45C5D362B0F815AFF831707A51772_il2cpp_TypeInfo_var))->___s_defaultMatchTimeout_8;
+		bool L_3;
+		L_3 = Regex_IsMatch_mCC0157A5E20FC634B8812B494F48877D55602C4D(L_0, L_1, 0, L_2, NULL);
+		return L_3;
+	}
+}
+// System.Boolean System.Text.RegularExpressions.Regex::IsMatch(System.String,System.String,System.Text.RegularExpressions.RegexOptions,System.TimeSpan)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Regex_IsMatch_mCC0157A5E20FC634B8812B494F48877D55602C4D (String_t* ___0_input, String_t* ___1_pattern, int32_t ___2_options, TimeSpan_t8195C5B013A2C532FEBDF0B64B6911982E750F5A ___3_matchTimeout, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Regex_tE773142C2BE45C5D362B0F815AFF831707A51772_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		String_t* L_0 = ___1_pattern;
+		int32_t L_1 = ___2_options;
+		TimeSpan_t8195C5B013A2C532FEBDF0B64B6911982E750F5A L_2 = ___3_matchTimeout;
+		Regex_tE773142C2BE45C5D362B0F815AFF831707A51772* L_3 = (Regex_tE773142C2BE45C5D362B0F815AFF831707A51772*)il2cpp_codegen_object_new(Regex_tE773142C2BE45C5D362B0F815AFF831707A51772_il2cpp_TypeInfo_var);
+		NullCheck(L_3);
+		Regex__ctor_mA8EBF2F80CC00D741BFD2FFD7DC9DB26FBCEE2A4(L_3, L_0, L_1, L_2, (bool)1, NULL);
+		String_t* L_4 = ___0_input;
+		NullCheck(L_3);
+		bool L_5;
+		L_5 = Regex_IsMatch_m7E96E666FBE7259D7638A3A6A21BE824D2406F49(L_3, L_4, NULL);
+		return L_5;
 	}
 }
 // System.Boolean System.Text.RegularExpressions.Regex::IsMatch(System.String)

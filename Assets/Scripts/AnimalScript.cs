@@ -64,7 +64,7 @@ public class AnimalScript : MonoBehaviour
                 enemy.transform.GetChild(4).gameObject.SetActive(true);
 
                 
-                    Instantiate(explosionPrefab, enemy.transform.position, Quaternion.identity);
+                Instantiate(explosionPrefab, enemy.transform.position, Quaternion.identity);
                 enemy.GetComponent<EnemyAI>().stun();
                 Invoke(nameof(DisableLine), 1f);
             }
