@@ -31,7 +31,7 @@ public class EnemyAIAggresive : MonoBehaviour
     private Vector3 initialPosition;
 
     public GameObject TextUIHealth;
-
+    public float waterAvoidanceDistance = 5f;
 
     void Start()
     {
@@ -76,6 +76,7 @@ public class EnemyAIAggresive : MonoBehaviour
 
         HealthBAr.transform.LookAt(Camera.transform);
         }
+        AvoidWater();
     }
     void ChasePlayer()
     {
@@ -251,5 +252,43 @@ public class EnemyAIAggresive : MonoBehaviour
         animator.SetBool("isRunning", false);
         animator.SetBool("Attack", false);
     }
+
+    void AvoidWater()
+    {
+        GameObject[] waterObjects = GameObject.FindGameObjectsWithTag("Water"); // Assuming you tagged your water GameObjects
+
+        foreach (GameObject water in waterObjects)
+        {
+            float distanceToWater = Vector3.Distance(transform.position, water.transform.position);
+
+            if (distanceToWater < waterAvoidanceDistance)
+            {
+                // Move away from water
+                MoveAwayFromWater(water.transform.position);
+            }
+        }
+    }
+
+    void MoveAwayFromWater(Vector3 waterPosition)
+    {
+        // Calculate the direction away from water
+        Vector3 moveDirection = transform.position - waterPosition;
+        moveDirection.y = 0; // Ensure movement is in the horizontal plane
+
+        // Normalize the direction vector to maintain consistent movement speed
+        moveDirection.Normalize();
+
+        // Move the animal away from water
+        transform.Translate(moveDirection * walkSpeed * Time.deltaTime);
+    }
+
+
+
+
+
+
+
+
+
 
 }

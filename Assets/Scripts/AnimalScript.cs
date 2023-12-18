@@ -89,6 +89,12 @@ public class AnimalScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
+
+        if (other.gameObject.tag == "Water")
+        {
+            //gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        }
         //if (other.gameObject.tag == "NPC")
         //{
         //    Debug.LogError(other.gameObject.name);
@@ -147,7 +153,7 @@ public class AnimalScript : MonoBehaviour
     {
         ClawIamge.SetActive(false);
     }
-
+    
 
 
 }

@@ -6236,7 +6236,7 @@ BlendTree:
   m_Name: BT Fall Height
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 7490146509174bc42b26105f3caf719c, type: 2}
+    m_Motion: {fileID: 7400002, guid: 27a43b964c2b5d0458d55f4619386534, type: 3}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -6244,7 +6244,7 @@ BlendTree:
     m_DirectBlendParameter: Vertical
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: db0e1c565f7fb194fa805951e79a3723, type: 2}
+    m_Motion: {fileID: 7400004, guid: 27a43b964c2b5d0458d55f4619386534, type: 3}
     m_Threshold: 1
     m_Position: {x: 0, y: 0.9}
     m_TimeScale: 1
@@ -6252,7 +6252,7 @@ BlendTree:
     m_DirectBlendParameter: Vertical
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 93bd7ed2c87e2bd4f9b7aaa30d1e351e, type: 2}
+    m_Motion: {fileID: 7400002, guid: 27a43b964c2b5d0458d55f4619386534, type: 3}
     m_Threshold: 2
     m_Position: {x: 1, y: 0}
     m_TimeScale: 1
@@ -6260,7 +6260,7 @@ BlendTree:
     m_DirectBlendParameter: Vertical
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: b742ae6bf0c363c4690e6035353234c3, type: 2}
+    m_Motion: {fileID: 7400004, guid: 27a43b964c2b5d0458d55f4619386534, type: 3}
     m_Threshold: 3
     m_Position: {x: 1, y: 0.9}
     m_TimeScale: 1
@@ -9599,7 +9599,7 @@ AnimatorStateMachine:
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 160, y: 60, z: 0}
   m_EntryPosition: {x: 160, y: -20, z: 0}
-  m_ExitPosition: {x: 390, y: 130, z: 0}
+  m_ExitPosition: {x: 270, y: 160, z: 0}
   m_ParentStateMachinePosition: {x: 340, y: -160, z: 0}
   m_DefaultState: {fileID: 1102961423624217714}
 --- !u!1107 &1107333133304072966

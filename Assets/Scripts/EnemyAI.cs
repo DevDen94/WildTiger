@@ -124,10 +124,12 @@ public class EnemyAI : MonoBehaviour
         if (HealthSlider.fillAmount <= 0)
         {
                 animator.SetBool("death", true);
+                GetComponent<MapMarker>().isActive = false;
                 GetComponent<NavMeshAgent>().isStopped = true;
                 transform.GetChild(4).gameObject.SetActive(false);
                 GameManager.Instance.update_stats(this.gameObject.name);
                 //GameManager.Instance.KillAnimals++;
+                Destroy(this);
                 for (int i = 0; i < GameManager.Instance.AnimalsNamesToKill.Length; i++)
                 {
                     if (name == GameManager.Instance.AnimalsNamesToKill[i])
