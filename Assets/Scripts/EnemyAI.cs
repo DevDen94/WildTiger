@@ -24,12 +24,14 @@ public class EnemyAI : MonoBehaviour
     int KillAnimals;
 
     public GameObject TextUIHealth;
+    public GameObject MouthPosition;
     void Start()
     {
         animator = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         HealthSlider.fillAmount = StartingHealth;
         PlayerAnimator = player.GetComponent<Animator>();
+        //MouthPosition = GameObject.FindGameObjectWithTag("MouthPosition");
     }
 
     void Update()
@@ -126,32 +128,53 @@ public class EnemyAI : MonoBehaviour
                 animator.SetBool("death", true);
                 GetComponent<NavMeshAgent>().isStopped = true;
                 transform.GetChild(4).gameObject.SetActive(false);
+                transform.GetChild(3).gameObject.SetActive(false);
                 GameManager.Instance.update_stats(this.gameObject.name);
                 GetComponent<MapMarker>().isActive = false;
-                
-                //GameManager.Instance.KillAnimals++;
-                for (int i = 0; i < GameManager.Instance.AnimalsNamesToKill.Length; i++)
-                {
-                    if (name == GameManager.Instance.AnimalsNamesToKill[i])
-                    {
-                        GameManager.Instance.KillAnimals++;
-                        if (GameManager.Instance.KillAnimals >= GameManager.Instance.TotalEnemyInLevel)
-                        {
-
-                            GameManager.Instance.MoveMentController.SetActive(false);
-                            StartCoroutine(CompletePanel());
-                        }
-                        return;
-                    }
-                    else
-                    {
-                        Destroy(this.gameObject);
-                    }
-                }
+                //GameManager.Instance.pickUpBtn.SetActive(true);
+                GameManager.Instance.MoveMentController.SetActive(false);
+                whenPickUp();
             }
 
         }
     }
+    public void whenPickUp()
+    {
+        
+        player.GetComponent<Animator>().Play("F_Eat", 0);
+        //transform.position= MouthPosition.transform.position;
+        //transform.transform.parent = MouthPosition.transform;
+        //transform.position = new Vector3(0f, 0f, 0f);
+        Invoke(nameof(checkComplete),5f);
+    }
+
+    public void checkComplete()
+    {
+
+        //GameManager.Instance.KillAnimals++;
+        for (int i = 0; i < GameManager.Instance.AnimalsNamesToKill.Length; i++)
+        {
+            if (name == GameManager.Instance.AnimalsNamesToKill[i])
+            {
+                GameManager.Instance.KillAnimals++;
+                if (GameManager.Instance.KillAnimals >= GameManager.Instance.TotalEnemyInLevel)
+                {
+                    GameManager.Instance.MoveMentController.SetActive(false);
+                    StartCoroutine(CompletePanel());
+                }
+                
+                return;
+            }
+            else
+            {
+                Destroy(this.gameObject);
+                GameManager.Instance.MoveMentController.SetActive(true);
+                //player.GetComponent<Animator>().("F_Eat", 0);
+            }
+
+        }
+    }
+
 
     IEnumerator CompletePanel()
     {

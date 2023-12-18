@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public int TotalEnemyInLevel;
 
-    public GameObject PausePanel,Complete,Fail,MoveMentController,TaskPanel;
+    public GameObject PausePanel,Complete,Fail,MoveMentController,TaskPanel,pickUpBtn;
 
     public static GameManager Instance;
 
