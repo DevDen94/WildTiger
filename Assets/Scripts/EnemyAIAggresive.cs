@@ -134,7 +134,9 @@ public class EnemyAIAggresive : MonoBehaviour
                 GameManager.Instance.update_stats(this.gameObject.name);
                 isDeath = true;
                 GameManager.Instance.KillAnimals++;
-                for(int i = 0; i < GameManager.Instance.AnimalsNamesToKill.Length; i++)
+                GetComponent<MapMarker>().isActive = false;
+                Destroy(this);
+                for (int i = 0; i < GameManager.Instance.AnimalsNamesToKill.Length; i++)
                 {
                     if(name== GameManager.Instance.AnimalsNamesToKill[i])
                     {
