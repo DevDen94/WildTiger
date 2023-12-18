@@ -19,7 +19,7 @@ public class AnimalScript : MonoBehaviour
     public GameObject ClawIamge;
 
     public GameObject TextUIHealth, camera,TextUIHealthParent;
-
+    public ParticleSystem water;
     void Start()
     {
         // Ensure the Line Renderer component is set up
@@ -148,6 +148,19 @@ public class AnimalScript : MonoBehaviour
         ClawIamge.SetActive(false);
     }
 
-
-
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "bubble")
+        {
+            Debug.Log("In water");
+            water.Play();
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "bubble")
+        {
+            water.Stop();
+        }
+    }
 }

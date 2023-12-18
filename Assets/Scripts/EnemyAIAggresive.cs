@@ -32,7 +32,7 @@ public class EnemyAIAggresive : MonoBehaviour
 
     public GameObject TextUIHealth;
 
-
+    public float waterAvoidanceDistance = 5f;
     void Start()
     {
         //navMeshAgent = GetComponent<NavMeshAgent>();
@@ -76,6 +76,7 @@ public class EnemyAIAggresive : MonoBehaviour
 
         HealthBAr.transform.LookAt(Camera.transform);
         }
+        
     }
     void ChasePlayer()
     {
@@ -86,12 +87,28 @@ public class EnemyAIAggresive : MonoBehaviour
             // Set animation parameter for running
             animator.SetBool("isRunning", true);
             animator.SetBool("Attack", false);
-            Vector3 direction = (player.position - transform.position).normalized;
-            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
 
-            // Move towards the player
-            transform.Translate(Vector3.forward * runSpeed * Time.deltaTime);
+            GameObject[] waterObjects = GameObject.FindGameObjectsWithTag("Water"); // Assuming you tagged your water GameObjects
+
+            foreach (GameObject water in waterObjects)
+            {
+                float distanceToWater = Vector3.Distance(transform.position, water.transform.position);
+                Debug.Log(water);
+                if (distanceToWater < waterAvoidanceDistance)
+                {
+                    // Move away from water
+                    MoveAwayFromWater(water.transform.position);
+                }
+                else
+                {
+                    Vector3 direction = (player.position - transform.position).normalized;
+                    Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+                    transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
+
+                    // Move towards the player
+                    transform.Translate(Vector3.forward * runSpeed * Time.deltaTime);
+                }
+            }
         }
     }
     void StopChasing()
@@ -100,7 +117,25 @@ public class EnemyAIAggresive : MonoBehaviour
         
         animator.SetBool("isRunning", false);
         animator.SetBool("Attack", false);
-        transform.Translate(Vector3.forward * walkSpeed * Time.deltaTime);
+
+
+        GameObject[] waterObjects = GameObject.FindGameObjectsWithTag("Water"); // Assuming you tagged your water GameObjects
+
+        foreach (GameObject water in waterObjects)
+        {
+            float distanceToWater = Vector3.Distance(transform.position, water.transform.position);
+           // Debug.Log(distanceToWater);
+            if (distanceToWater < waterAvoidanceDistance)
+            {
+                Debug.Log(distanceToWater);
+                // Move away from water
+                MoveAwayFromWater(water.transform.position);
+            }
+            else
+            {
+                transform.Translate(Vector3.forward * walkSpeed * Time.deltaTime);
+            }
+        }
 
 
     }
@@ -253,5 +288,22 @@ public class EnemyAIAggresive : MonoBehaviour
         animator.SetBool("isRunning", false);
         animator.SetBool("Attack", false);
     }
+
+
+
+
+
+
+
+
+   
+
+    void MoveAwayFromWater(Vector3 waterPosition)
+    {
+        ReturnToInitialPosition();
+    }
+
+
+
 
 }

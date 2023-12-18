@@ -128,7 +128,7 @@ public class EnemyAI : MonoBehaviour
                 transform.GetChild(4).gameObject.SetActive(false);
                 GameManager.Instance.update_stats(this.gameObject.name);
                 GetComponent<MapMarker>().isActive = false;
-                Destroy(this);
+                
                 //GameManager.Instance.KillAnimals++;
                 for (int i = 0; i < GameManager.Instance.AnimalsNamesToKill.Length; i++)
                 {
@@ -142,6 +142,10 @@ public class EnemyAI : MonoBehaviour
                             StartCoroutine(CompletePanel());
                         }
                         return;
+                    }
+                    else
+                    {
+                        Destroy(this.gameObject);
                     }
                 }
             }
