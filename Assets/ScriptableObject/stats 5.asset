@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d627e38aa81a544185a168eec86eae1, type: 3}
-  m_Name: stats 2
+  m_Name: stats 5
   m_EditorClassIdentifier: 
   Animals:
-  - Rabbit
-  - raccoon
-  TotalKillCount: 0100000002000000
-  killCount: 0000000000000000
+  - Bear
+  TotalKillCount: 02000000
+  killCount: 00000000

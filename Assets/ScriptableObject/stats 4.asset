@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: stats 4
   m_EditorClassIdentifier: 
   Animals:
-  - Wolf
+  - fox
   - deer
   - Bear
-  TotalKillCount: 010000000100000001000000
+  TotalKillCount: 020000000100000001000000
   killCount: 000000000000000000000000

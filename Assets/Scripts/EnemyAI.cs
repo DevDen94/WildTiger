@@ -163,12 +163,13 @@ public class EnemyAI : MonoBehaviour
                     StartCoroutine(CompletePanel());
                 }
                 
-                return;
+                
             }
             else
             {
-                Destroy(this.gameObject);
                 GameManager.Instance.MoveMentController.SetActive(true);
+                Destroy(this.gameObject);
+                
                 //player.GetComponent<Animator>().("F_Eat", 0);
             }
 
