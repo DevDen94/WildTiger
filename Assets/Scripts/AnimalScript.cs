@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class AnimalScript : MonoBehaviour
 {
+    public static AnimalScript Instance;
     public float explosionRadius = 5f;
     public LayerMask enemyLayer;
     public GameObject explosionPrefab; // Reference to your explosion prefab
@@ -20,6 +21,21 @@ public class AnimalScript : MonoBehaviour
 
     public GameObject TextUIHealth, camera,TextUIHealthParent;
     public ParticleSystem water;
+    public Transform ENEMY;
+    public int TigerExp;
+   
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        if (PlayerPrefs.GetInt("Firsttime") == 0)
+        {
+            PlayerPrefs.SetInt("TigerExp", 25);
+
+            PlayerPrefs.SetInt("Firsttime", 1);
+            
+        }
+    }
     void Start()
     {
         // Ensure the Line Renderer component is set up
@@ -33,9 +49,15 @@ public class AnimalScript : MonoBehaviour
             lineRenderer.startColor = Color.red;
             lineRenderer.endColor = Color.red;
         }
-
-        // Disable Line Renderer initially
         lineRenderer.enabled = false;
+        
+        
+        TigerExp = PlayerPrefs.GetInt("TigerExp");
+       
+        // Disable Line Renderer initially
+       
+        
+       
     }
 
     private void Update()
@@ -44,33 +66,52 @@ public class AnimalScript : MonoBehaviour
     }
     public void Stun()
     {
+        
         // Detect enemies within the explosion radius
         //Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRadius, enemyLayer);
-        Debug.LogError("Click");
+
         // Trigger explosion for each enemy in range
         foreach (GameObject enemy in Enemy)
         {
-            Debug.LogError("ForEach");
+            
             float distance = Vector3.Distance(transform.position, enemy.transform.position);
-            Debug.LogError(enemy.name+" "+distance);
+           
+            
             //EnemyController enemy = col.GetComponent<EnemyController>();
             if (distance <= explosionRadius)
             {
-                Debug.LogError("Distance");
-                lineRenderer.enabled = true;
-                lineRenderer.SetPosition(0, transform.position);
-                lineRenderer.SetPosition(1, enemy.transform.position);
+                ENEMY = enemy.transform;
+              
+                if (IsEnemyInFront())
+                {
+                    
+                    lineRenderer.enabled = true;
+                    lineRenderer.SetPosition(0, transform.position);
+                    lineRenderer.SetPosition(1, enemy.transform.position);
+                    ENEMY = null;
+                    ENEMY = enemy.transform;
+                    enemy.transform.GetChild(4).gameObject.SetActive(true);
+                   
 
-                enemy.transform.GetChild(4).gameObject.SetActive(true);
-
-                
-                Instantiate(explosionPrefab, enemy.transform.position, Quaternion.identity);
-                enemy.GetComponent<EnemyAI>().stun();
-                Invoke(nameof(DisableLine), 1f);
+                    Instantiate(explosionPrefab, enemy.transform.position, Quaternion.identity);
+                    enemy.GetComponent<EnemyAI>().stun();
+                    Invoke(nameof(DisableLine), 1f);
+                }
             }
         }
-    }
 
+    }
+    bool IsEnemyInFront()
+    {
+        Vector3 directionToEnemy = (ENEMY.transform.position - transform.position).normalized;
+        float dotProduct = Vector3.Dot(transform.forward, directionToEnemy);
+
+        // You can adjust the threshold value based on your needs
+        float angleThreshold = 0.8f;
+
+        // If dot product is greater than the threshold, the enemy is in front of the player
+        return dotProduct > angleThreshold;
+    }
 
     public void DisableLine()
     {
@@ -107,13 +148,22 @@ public class AnimalScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "NPC")
         {
-            Debug.LogError(collision.gameObject.name);
+            
             
 
             if (collision.gameObject.GetComponent<EnemyAIAggresive>().EnemyHealth.fillAmount > 0)
             {
-
-                PlayerHealth.value = PlayerHealth.value - HealthDown;
+                if (collision.gameObject.GetComponent<EnemyAIAggresive>().AttackingExp >= TigerExp)
+                {
+                    PlayerHealth.value = PlayerHealth.value - HealthDown*10;
+                    Debug.LogError("IfDamage");
+                }
+                else
+                {
+                    PlayerHealth.value = PlayerHealth.value - HealthDown;
+                    Debug.LogError("IfelseDamage");
+                }
+               
                 ClawIamge.SetActive(true);
                 Invoke(nameof(DisableClawIamge), 1f);
                 TextUIHealth.SetActive(true);
@@ -126,16 +176,28 @@ public class AnimalScript : MonoBehaviour
                 {
                     GameManager.Instance.LevelFail();
                     Invoke(nameof(DisableClawIamge), 0f);
+                    GoogleMobileAdsController.Instance.ShowInterstitialAd();
                 }
 
+            }
+            else
+            {
+                if (GameManager.Instance.KillAnimals >= GameManager.Instance.TotalEnemyInLevel)
+                {
+                    GameManager.Instance.MoveMentController.SetActive(false);
+                    // GameManager.Instance.EatBtn.SetActive(true);
+                    GameManager.Instance.CompletePanelFunc();
+                }
+                Debug.LogError("AYA");
             }
 
 
 
 
         }
+        
     }
-
+    
     public void DisableHealthText()
     {
         TextUIHealth.SetActive(false);
@@ -163,4 +225,19 @@ public class AnimalScript : MonoBehaviour
             water.Stop();
         }
     }
+    public void EatFunc()
+    {
+
+        this.GetComponent<Animator>().Play("F_Eat", 0);
+
+
+        Transform mouth = this.transform.Find("MouthPos").transform;
+        ENEMY.transform.position= mouth.transform.position;
+        ENEMY.transform.parent = mouth.transform;
+        //ENEMY.transform.GetComponent<EnemyAI>().whenPickUp();
+        
+        //ENEMY.transform.position = new Vector3(0f, 0f, 0f);
+        
+    }
+    
 }

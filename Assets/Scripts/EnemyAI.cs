@@ -25,8 +25,11 @@ public class EnemyAI : MonoBehaviour
 
     public GameObject TextUIHealth;
     public GameObject MouthPosition;
+    public bool CheckForIncriment;
+    public int DefenciveExp;
     void Start()
     {
+        player = GameManager.Instance.SelectedTiger.transform;
         animator = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         HealthSlider.fillAmount = StartingHealth;
@@ -104,7 +107,7 @@ public class EnemyAI : MonoBehaviour
     {
         animator.SetBool("stun", true);
         GetComponent<NavMeshAgent>().isStopped = true;  
-        //Invoke(nameof(stunOff), 5f);
+        Invoke(nameof(stunOff), 6f);
     }
 
     public void stunOff()
@@ -126,6 +129,8 @@ public class EnemyAI : MonoBehaviour
         if (HealthSlider.fillAmount <= 0)
         {
                 animator.SetBool("death", true);
+                GetComponent<NavMeshAgent>().enabled = false;
+                GetComponent<EnemyAI>().enabled = false;
                 GetComponent<NavMeshAgent>().isStopped = true;
                 transform.GetChild(4).gameObject.SetActive(false);
                 transform.GetChild(3).gameObject.SetActive(false);
@@ -133,7 +138,13 @@ public class EnemyAI : MonoBehaviour
                 GetComponent<MapMarker>().isActive = false;
                 //GameManager.Instance.pickUpBtn.SetActive(true);
                 GameManager.Instance.MoveMentController.SetActive(false);
+                //GameManager.Instance.EatBtn.SetActive(true);
                 whenPickUp();
+               
+               
+                PlayerPrefs.SetInt("TigerExp", PlayerPrefs.GetInt("TigerExp") + DefenciveExp);
+                GameManager.Instance.ExpTxt.text = PlayerPrefs.GetInt("TigerExp").ToString();
+                GameManager.Instance.TierUpdate();
             }
 
         }
@@ -142,42 +153,59 @@ public class EnemyAI : MonoBehaviour
     {
         
         player.GetComponent<Animator>().Play("F_Eat", 0);
+       
+        GameManager.Instance.EatPopUp.SetActive(true);
         //transform.position= MouthPosition.transform.position;
         //transform.transform.parent = MouthPosition.transform;
-        //transform.position = new Vector3(0f, 0f, 0f);
-        Invoke(nameof(checkComplete),5f);
-    }
 
+        //transform.position = new Vector3(0f, 0f, 0f);
+        //GetComponent<NavMeshAgent>().isStopped = true;
+        //transform.position = new Vector3(0f, 0f, 0f);
+        Invoke(nameof(checkComplete),3f);
+    }
+    
     public void checkComplete()
     {
-
+        CheckForIncriment = true;
         //GameManager.Instance.KillAnimals++;
         for (int i = 0; i < GameManager.Instance.AnimalsNamesToKill.Length; i++)
         {
             if (name == GameManager.Instance.AnimalsNamesToKill[i])
             {
-                GameManager.Instance.KillAnimals++;
+                if (CheckForIncriment == true)
+                {
+                    GameManager.Instance.KillAnimals++;
+                    CheckForIncriment = false;
+                    
+                }
+
                 if (GameManager.Instance.KillAnimals >= GameManager.Instance.TotalEnemyInLevel)
                 {
                     GameManager.Instance.MoveMentController.SetActive(false);
-                    StartCoroutine(CompletePanel());
+                    // GameManager.Instance.EatBtn.SetActive(true);
+                    GameManager.Instance.CompletePanelFunc();
                 }
-                
-                
+
+
             }
             else
             {
                 GameManager.Instance.MoveMentController.SetActive(true);
-                Destroy(this.gameObject);
-                
+                GameManager.Instance.EatPopUp.SetActive(false);
+                //player.GetComponent<AnimalScript>().Enemy.
+                //Invoke(nameof(PlayerOff), 3f);
+                //Destroy(this.gameObject);
+                this.gameObject.SetActive(false);
                 //player.GetComponent<Animator>().("F_Eat", 0);
             }
 
         }
     }
-
-
-    IEnumerator CompletePanel()
+    void PlayerOff()
+    {
+       
+    }
+   /* IEnumerator CompletePanel()
     {
         yield return new WaitForSeconds(5f);
         GameManager.Instance.LevelComplete();
@@ -186,10 +214,11 @@ public class EnemyAI : MonoBehaviour
         if(PlayerPrefs.GetInt("Level") == PlayerPrefs.GetInt("LastUnlockedLevel"))
         {
             PlayerPrefs.SetInt("UnlockedLevels", PlayerPrefs.GetInt("UnlockedLevels") + 1);
+           
         }
+       
 
-
-    }
+    }*/
 
     public void DisableHealthText()
     {

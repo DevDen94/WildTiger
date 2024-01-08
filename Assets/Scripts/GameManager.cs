@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public int TotalEnemyInLevel;
 
-    public GameObject PausePanel,Complete,Fail,MoveMentController,TaskPanel,pickUpBtn;
+    public GameObject PausePanel,Complete,Fail,MoveMentController,TaskPanel,pickUpBtn,EatPopUp;
 
     public static GameManager Instance;
 
@@ -19,10 +19,26 @@ public class GameManager : MonoBehaviour
     public Text ShowStatsText;
     public GameObject[] AnimalList;
     stats selectedLevelData;
-
+    public GameObject[] Tigers;
+    public GameObject SelectedTiger;
+    private int SneakInt;
+    public Text ExpTxt,Tiertxt,ExpBarTxt;
+    private int TierInt;
+    public Slider ExpBArSlider;
+    private bool OnStart=false;
     private void Start()
     {
-       
+
+
+
+        TierUpdate();
+
+
+
+
+
+        PlayerPrefs.SetInt("First", 0);
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
     }
 
     int abc;
@@ -53,9 +69,70 @@ public class GameManager : MonoBehaviour
             selectedLevelData.killCount[i] = 0;
             AnimalList[i].gameObject.GetComponent<Text>().text = selectedLevelData.Animals[i] + "                   " + selectedLevelData.killCount[i] + "/" + selectedLevelData.TotalKillCount[i];
         }
+        foreach (GameObject g in Tigers)
+        {
+            g.SetActive(false);
+            SelectedTiger = Tigers[PlayerPrefs.GetInt("SelectedCharacter")];
+            SelectedTiger.gameObject.SetActive(true);
+        }
 
-        
     }
+
+    void ExpBar()
+    {
+        if (OnStart == true)
+        {
+            ExpBArSlider.maxValue = LevelLoader.Instance.TierExp[PlayerPrefs.GetInt("Tier")];
+            ExpBArSlider.value = PlayerPrefs.GetInt("TigerExp");
+            ExpBarTxt.text = PlayerPrefs.GetInt("TigerExp") + "/" + LevelLoader.Instance.TierExp[PlayerPrefs.GetInt("Tier")].ToString();
+
+           
+        }
+        else
+        {
+            ExpBArSlider.maxValue = LevelLoader.Instance.TierExp[PlayerPrefs.GetInt("Tier")];
+            ExpBArSlider.value = PlayerPrefs.GetInt("TigerExp");
+            ExpBarTxt.text = PlayerPrefs.GetInt("TigerExp") + "/" + LevelLoader.Instance.TierExp[PlayerPrefs.GetInt("Tier")].ToString();
+            int exp = PlayerPrefs.GetInt("Tier") + 1;
+            Tiertxt.text = exp.ToString();
+        }
+       
+    }
+   public void TierUpdate()
+    {
+        if (PlayerPrefs.GetInt("TigerExp") >= LevelLoader.Instance.TierExp[0])
+        {
+            for (int i = 0; i < LevelLoader.Instance.TierExp.Length; i++)
+            {
+                if (PlayerPrefs.GetInt("TigerExp") > LevelLoader.Instance.TierExp[i])
+                {
+                    //TierInt = i;
+                    PlayerPrefs.SetInt("Tier", i + 1);
+
+                    Tiertxt.text = PlayerPrefs.GetInt("Tier").ToString();
+                    ExpBArSlider.maxValue = LevelLoader.Instance.TierExp[PlayerPrefs.GetInt("Tier")];
+                    ExpBArSlider.value = PlayerPrefs.GetInt("TigerExp");
+                    OnStart = false;
+
+
+                }
+            }
+        }
+        else
+        {
+
+            ExpBArSlider.maxValue = LevelLoader.Instance.TierExp[PlayerPrefs.GetInt("Tier")];
+            ExpBArSlider.value = PlayerPrefs.GetInt("TigerExp");
+            int exp = PlayerPrefs.GetInt("Tier") + 1;
+            Tiertxt.text = exp.ToString();
+            OnStart = true;
+
+        }
+        ExpTxt.text = PlayerPrefs.GetInt("TigerExp").ToString();
+
+        ExpBarTxt.text = PlayerPrefs.GetInt("TigerExp") + "/" + LevelLoader.Instance.TierExp[PlayerPrefs.GetInt("Tier")].ToString();
+    }
+
 
 
     public void PauseBtnClick()
@@ -103,6 +180,53 @@ public class GameManager : MonoBehaviour
     {
         TaskPanel.SetActive(false);
     }
+    public void Stun()
+    {
+        SelectedTiger.GetComponent<AnimalScript>().Stun();
+        
+    }
+    public void Eat()
+    {
+
+        //SelectedTiger.GetComponent<AnimalScript>().EatFunc();
+      
+        
+    }
+    private void Update()
+    {
+        ExpBar();
+    }
+    public void CompletePanelFunc()
+    {
+        StartCoroutine(CompletePanel());
+        IEnumerator CompletePanel()
+        {
+            yield return new WaitForSeconds(5f);
+            GameManager.Instance.LevelComplete();
+
+            if (PlayerPrefs.GetInt("Level") == PlayerPrefs.GetInt("UnlockedLevels"))
+            {
+                if (PlayerPrefs.GetInt("First") == 0)
+                {
+                    PlayerPrefs.SetInt("UnlockedLevels", PlayerPrefs.GetInt("UnlockedLevels") + 1);
+                    PlayerPrefs.SetInt("TigerExp", PlayerPrefs.GetInt("TigerExp") + LevelLoader.Instance.LevelRewardedExp[PlayerPrefs.GetInt("Level")]);
+                    PlayerPrefs.SetInt("First", 1);
+                }
+                /*if (PlayerPrefs.GetInt("Level") == PlayerPrefs.GetInt("LastUnlockedLevel"))
+                {
+                    if (PlayerPrefs.GetInt("First") == 0)
+                    {
+                        PlayerPrefs.SetInt("UnlockedLevels", PlayerPrefs.GetInt("UnlockedLevels") + 1);
+                        PlayerPrefs.SetInt("TigerExp", PlayerPrefs.GetInt("TigerExp") + LevelLoader.Instance.LevelRewardedExp[PlayerPrefs.GetInt("Level")]);
+                        PlayerPrefs.SetInt("First", 1);
+                    }
 
 
+                }*/
+
+
+            }
+            GoogleMobileAdsController.Instance.ShowInterstitialAd();
+        }
+    }
 }

@@ -1494,6 +1494,7 @@ MonoBehaviour:
   walkingRadius: 15
   TextUIHealth: {fileID: 6474301919326884698}
   waterAvoidanceDistance: 5
+  AttackingExp: 175
 --- !u!1 &8233720087250916114
 GameObject:
   m_ObjectHideFlags: 0

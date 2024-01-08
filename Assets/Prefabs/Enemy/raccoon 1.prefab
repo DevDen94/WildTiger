@@ -1907,6 +1907,9 @@ MonoBehaviour:
   Camera: {fileID: 0}
   Healthbar: {fileID: 6233033412788930610}
   TextUIHealth: {fileID: 6233033412254798184}
+  MouthPosition: {fileID: 0}
+  CheckForIncriment: 0
+  DefenciveExp: 35
 --- !u!195 &6233033411779006469
 NavMeshAgent:
   m_ObjectHideFlags: 0

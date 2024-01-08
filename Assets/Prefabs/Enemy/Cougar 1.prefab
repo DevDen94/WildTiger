@@ -3178,6 +3178,7 @@ MonoBehaviour:
   walkingRadius: 15
   TextUIHealth: {fileID: 5566925113422338986}
   waterAvoidanceDistance: 5
+  AttackingExp: 500
 --- !u!114 &3637497899944117969
 MonoBehaviour:
   m_ObjectHideFlags: 0

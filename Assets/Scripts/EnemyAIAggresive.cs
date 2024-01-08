@@ -33,8 +33,10 @@ public class EnemyAIAggresive : MonoBehaviour
     public GameObject TextUIHealth;
 
     public float waterAvoidanceDistance = 5f;
+    public int AttackingExp;
     void Start()
     {
+        player = GameManager.Instance.SelectedTiger.transform;
         //navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         //navMeshAgent.speed = walkSpeed; // Start with walk speed
@@ -143,6 +145,8 @@ public class EnemyAIAggresive : MonoBehaviour
     {
         animator.SetBool("Attack", true);
         Vector3 directionToPlayer = player.position - transform.position;
+        directionToPlayer.y = 0f;
+        directionToPlayer.Normalize();
         Quaternion rotation = Quaternion.LookRotation(directionToPlayer, Vector3.up);
         transform.rotation = rotation;
         transform.Translate(Vector3.forward * 1 * Time.deltaTime);
@@ -170,7 +174,8 @@ public class EnemyAIAggresive : MonoBehaviour
                 isDeath = true;
                 GameManager.Instance.KillAnimals++;
                 GetComponent<MapMarker>().isActive = false;
-                Destroy(this);
+                this.gameObject.GetComponent<BoxCollider>().enabled = false;
+                //Destroy(this);
                 for (int i = 0; i < GameManager.Instance.AnimalsNamesToKill.Length; i++)
                 {
                     if(name== GameManager.Instance.AnimalsNamesToKill[i])
@@ -180,11 +185,14 @@ public class EnemyAIAggresive : MonoBehaviour
                         {
                             
                             GameManager.Instance.MoveMentController.SetActive(false);
+                            //GameManager.Instance.EatBtn.SetActive(true);
                             StartCoroutine(CompletePanel());
                         }
                     }
                 }
-
+                PlayerPrefs.SetInt("TigerExp", PlayerPrefs.GetInt("TigerExp") + AttackingExp);
+                GameManager.Instance.ExpTxt.text = PlayerPrefs.GetInt("TigerExp").ToString();
+                GameManager.Instance.TierUpdate();
             }
 
         }
@@ -192,7 +200,7 @@ public class EnemyAIAggresive : MonoBehaviour
     IEnumerator CompletePanel()
     {
         yield return new WaitForSeconds(5f);
-        GameManager.Instance.LevelComplete();
+        GameManager.Instance.CompletePanelFunc();
     }
 
     private void OnTriggerStay(Collider other)
@@ -208,7 +216,7 @@ public class EnemyAIAggresive : MonoBehaviour
             }
             else
             {
-                other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                //other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
             }
         }
 
@@ -234,6 +242,7 @@ public class EnemyAIAggresive : MonoBehaviour
         }
         else
         {
+            if(other.gameObject.GetComponent<Rigidbody>())
             other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
         }
     }

@@ -25,14 +25,21 @@ public class MainMenu : MonoBehaviour
 
         if (!PlayerPrefs.HasKey("UnlockedLevels"))
         {
-            PlayerPrefs.SetInt("UnlockedLevels", 1);
+           // PlayerPrefs.SetInt("UnlockedLevels", 1);
             UpdateLevels();
+           
         }
         else
         {
             UpdateLevels();
+            
         }
-        GoogleAdMobController.instance.ShowSmallBannerAd();
+       // GoogleAdMobController.instance.ShowSmallBannerAd();
+        PlayerPrefs.SetInt("BuyTiger" + 0, 1);//ForlockedTigers
+        PlayerPrefs.SetInt("BuyTiger" + 1, 0);//ForlockedTigers
+        PlayerPrefs.SetInt("BuyTiger" + 2, 0);//ForlockedTigers
+        GoogleMobileAdsController.Instance.ShowSmallBannerAd();
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
     }
 
     IEnumerator LoadingComplete()
@@ -73,17 +80,18 @@ public class MainMenu : MonoBehaviour
         for (int i = 0; i < LevelButtons.Length; i++)
         {
             int TotalUnlock = PlayerPrefs.GetInt("UnlockedLevels");
-            if (i < TotalUnlock)
+            if (i <= TotalUnlock)
             {
                 LevelButtons[i].transform.GetChild(1).gameObject.SetActive(false);
                 LevelButtons[i].GetComponent<Button>().enabled = true;
             }
             else
             {
-                PlayerPrefs.SetInt("LastUnlockedLevel", i);
-                Debug.Log(i);
+               // PlayerPrefs.SetInt("LastUnlockedLevel", i);
+                //Debug.Log(i);
                 return;
             }
+            PlayerPrefs.SetInt("LastUnlockedLevel", i);
         }
     }
 
@@ -125,8 +133,14 @@ public class MainMenu : MonoBehaviour
 
     public void showInterstatialAD()
     {
-        GoogleAdMobController.instance.ShowInterstitialAd();
+        GoogleMobileAdsController.Instance.ShowInterstitialAd();
     }
-
-
+    public void ExitBtn()
+    {
+        Application.Quit();
+    }
+    public void Links(string link)
+    {
+        Application.OpenURL(link);
+    }
 }

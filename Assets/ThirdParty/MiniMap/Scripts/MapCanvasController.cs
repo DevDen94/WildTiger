@@ -115,7 +115,7 @@ public class MapCanvasController : MonoBehaviour
 
     void Awake()
     {
-
+        
         if (!playerTransform)
         {
             Debug.LogError("You must specify the player transform");
@@ -144,8 +144,11 @@ public class MapCanvasController : MonoBehaviour
         innerMapRadius = innerMap.getMapRadius();
 
     }
-
-	void Update () 
+    private void Start()
+    {
+        playerTransform = GameManager.Instance.SelectedTiger.transform;
+    }
+    void Update () 
     {
         if (!playerTransform)
         {
