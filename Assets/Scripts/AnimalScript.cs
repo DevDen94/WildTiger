@@ -30,7 +30,7 @@ public class AnimalScript : MonoBehaviour
             Instance = this;
         if (PlayerPrefs.GetInt("Firsttime") == 0)
         {
-            PlayerPrefs.SetInt("TigerExp", 25);
+            PlayerPrefs.SetInt("TigerExp", 0);
 
             PlayerPrefs.SetInt("Firsttime", 1);
             

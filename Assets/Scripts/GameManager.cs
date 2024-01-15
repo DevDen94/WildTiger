@@ -210,6 +210,8 @@ public class GameManager : MonoBehaviour
                 {
                     PlayerPrefs.SetInt("UnlockedLevels", PlayerPrefs.GetInt("UnlockedLevels") + 1);
                     PlayerPrefs.SetInt("TigerExp", PlayerPrefs.GetInt("TigerExp") + LevelLoader.Instance.LevelRewardedExp[PlayerPrefs.GetInt("Level")]);
+                    Debug.LogError("ExpLevelReward" + LevelLoader.Instance.LevelRewardedExp[PlayerPrefs.GetInt("Level")]);
+
                     PlayerPrefs.SetInt("First", 1);
                 }
                 /*if (PlayerPrefs.GetInt("Level") == PlayerPrefs.GetInt("LastUnlockedLevel"))
