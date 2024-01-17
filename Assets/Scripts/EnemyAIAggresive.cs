@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -20,6 +21,9 @@ public class EnemyAIAggresive : MonoBehaviour
     public float minDistance = 2f;
 
     public Image EnemyHealth,HealthBAr;
+   /// <summary>
+   /// //public TextMeshPro CrownTierText;
+   /// </summary>
     public Transform Camera;
 
     public float StartingHealth = 1;
@@ -78,7 +82,8 @@ public class EnemyAIAggresive : MonoBehaviour
 
         HealthBAr.transform.LookAt(Camera.transform);
         }
-        
+     /////   CrownTierText.transform.LookAt(Camera.transform);
+
     }
     void ChasePlayer()
     {
