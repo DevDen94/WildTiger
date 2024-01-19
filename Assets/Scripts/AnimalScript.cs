@@ -88,17 +88,24 @@ public class AnimalScript : MonoBehaviour
                     lineRenderer.enabled = true;
                     lineRenderer.SetPosition(0, transform.position);
                     lineRenderer.SetPosition(1, enemy.transform.position);
+                    FireBallAnimation.instance.moveFireballToTarget(lineRenderer);
                     ENEMY = null;
                     ENEMY = enemy.transform;
                     enemy.transform.GetChild(4).gameObject.SetActive(true);
-                   
 
-                    Instantiate(explosionPrefab, enemy.transform.position, Quaternion.identity);
+                    Invoke("explosionPrefabDelay",FireBallAnimation.instance.time);
+                    //Instantiate(explosionPrefab, enemy.transform.position, Quaternion.identity);
+
                     enemy.GetComponent<EnemyAI>().stun();
                     Invoke(nameof(DisableLine), 1f);
                 }
             }
         }
+
+    }
+    public void explosionPrefabDelay()
+    {
+        Instantiate(explosionPrefab, ENEMY.transform.position, Quaternion.identity);
 
     }
     bool IsEnemyInFront()
