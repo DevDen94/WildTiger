@@ -24,7 +24,7 @@ public class EnemyAIAggresive : MonoBehaviour
    /// <summary>
    /// //public TextMeshPro CrownTierText;
    /// </summary>
-    public Transform Camera;
+    public Transform _Camera;
 
     public float StartingHealth = 1;
 
@@ -40,6 +40,7 @@ public class EnemyAIAggresive : MonoBehaviour
     public int AttackingExp;
     void Start()
     {
+        _Camera = Camera.main.transform;
         player = GameManager.Instance.SelectedTiger.transform;
         //navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
@@ -80,7 +81,7 @@ public class EnemyAIAggresive : MonoBehaviour
             AttackPlayer();
         }
 
-        HealthBAr.transform.LookAt(Camera.transform);
+        HealthBAr.transform.LookAt(_Camera.transform);
         }
      /////   CrownTierText.transform.LookAt(Camera.transform);
 

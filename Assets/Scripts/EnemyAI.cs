@@ -20,7 +20,7 @@ public class EnemyAI : MonoBehaviour
     public Animator PlayerAnimator;
 
 
-    public GameObject Camera,Healthbar;
+    public GameObject _Camera,Healthbar;
     int KillAnimals;
 
     public GameObject TextUIHealth;
@@ -29,6 +29,7 @@ public class EnemyAI : MonoBehaviour
     public int DefenciveExp;
     void Start()
     {
+        this._Camera = Camera.main.gameObject;
         player = GameManager.Instance.SelectedTiger.transform;
         animator = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -54,7 +55,7 @@ public class EnemyAI : MonoBehaviour
 
 
 
-        Healthbar.transform.LookAt(Camera.transform);
+        Healthbar.transform.LookAt(_Camera.transform);
         
     }
 

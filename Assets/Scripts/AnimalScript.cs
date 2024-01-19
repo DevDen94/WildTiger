@@ -1,3 +1,4 @@
+using MalbersAnimations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,6 +39,7 @@ public class AnimalScript : MonoBehaviour
     }
     void Start()
     {
+        this.camera = Camera.main.gameObject;
         // Ensure the Line Renderer component is set up
         if (lineRenderer == null)
         {
