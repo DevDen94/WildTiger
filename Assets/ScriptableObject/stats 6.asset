@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: stats 6
   m_EditorClassIdentifier: 
   Animals:
-  - Bear
-  - Panda
+  - Boar
+  - Fox
   TotalKillCount: 0200000001000000
   killCount: 0000000000000000
