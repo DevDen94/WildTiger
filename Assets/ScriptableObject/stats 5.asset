@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: stats 5
   m_EditorClassIdentifier: 
   Animals:
-  - Fox
+  - fox
   - deer
   - Boar
   TotalKillCount: 020000000100000001000000

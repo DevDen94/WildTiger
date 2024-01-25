@@ -14,7 +14,7 @@ public class AnimalScript : MonoBehaviour
     public GameObject[] Enemy;
     public LineRenderer lineRenderer;
 
-
+    public GameObject slashVfx;
     public Slider PlayerHealth;
 
     public float HealthDown;
@@ -65,6 +65,10 @@ public class AnimalScript : MonoBehaviour
     private void Update()
     {
         TextUIHealth.transform.LookAt(TextUIHealth.transform.position+camera.transform.rotation*Vector3.forward);
+    }
+    public void playVFX_slash()
+    {
+        slashVfx.GetComponent<ParticleSystem>().Play();
     }
     public void Stun()
     {

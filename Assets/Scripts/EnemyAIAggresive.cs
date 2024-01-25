@@ -4,11 +4,12 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using static UnityEditor.Experimental.GraphView.GraphView;
 public class EnemyAIAggresive : MonoBehaviour
 {
     public float detectionRadius = 10f;
     public float attackRange = 5f;
-    public float runSpeed = 6f;
+    public float runSpeed = 3f;
     public float walkSpeed = 3f;
     public float rotationSpeed = 3f;
 
@@ -54,7 +55,7 @@ public class EnemyAIAggresive : MonoBehaviour
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
         if (!isDeath) { 
-        if (distanceToPlayer <= detectionRadius)
+        if (distanceToPlayer <= detectionRadius)//detectionradius
         {
             isChasing = true;
             ChasePlayer();
@@ -78,6 +79,7 @@ public class EnemyAIAggresive : MonoBehaviour
 
         if (isChasing && distanceToPlayer <= attackRange)
         {
+                
             AttackPlayer();
         }
 
@@ -86,6 +88,8 @@ public class EnemyAIAggresive : MonoBehaviour
      /////   CrownTierText.transform.LookAt(Camera.transform);
 
     }
+    private float distanceToWater;
+    private GameObject Water;
     void ChasePlayer()
     {
         if (isChasing)
@@ -100,23 +104,26 @@ public class EnemyAIAggresive : MonoBehaviour
 
             foreach (GameObject water in waterObjects)
             {
-                float distanceToWater = Vector3.Distance(transform.position, water.transform.position);
-                Debug.Log(water);
-                if (distanceToWater < waterAvoidanceDistance)
-                {
-                    // Move away from water
-                    MoveAwayFromWater(water.transform.position);
-                }
-                else
-                {
-                    Vector3 direction = (player.position - transform.position).normalized;
-                    Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-                    transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
-
-                    // Move towards the player
-                    transform.Translate(Vector3.forward * runSpeed * Time.deltaTime);
-                }
+                distanceToWater = Vector3.Distance(transform.position, water.transform.position);
+                Water = water;
             }
+           
+           
+            if (distanceToWater < waterAvoidanceDistance)
+            {
+                // Move away from water
+                MoveAwayFromWater(Water.transform.position);
+            }
+            else
+            {
+                Vector3 direction = (player.position - transform.position).normalized;
+                Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
+
+                // Move towards the player
+                transform.Translate(Vector3.forward * runSpeed * Time.deltaTime);
+            }
+           
         }
     }
     void StopChasing()
@@ -149,6 +156,7 @@ public class EnemyAIAggresive : MonoBehaviour
     }
     void AttackPlayer()
     {
+        isChasing = false;
         animator.SetBool("Attack", true);
         Vector3 directionToPlayer = player.position - transform.position;
         directionToPlayer.y = 0f;

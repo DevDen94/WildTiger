@@ -1899,8 +1899,8 @@ MonoBehaviour:
   miniMapShowRotation: 0
   miniMapRotationAngleOffset: 0
   miniMapIconScale: 1
-  distanceToCameraSQR: 957008.94
-  computedIconScale: {x: 0.49916196, y: 0.49916196, z: 1}
+  distanceToCameraSQR: 2.4335997
+  computedIconScale: {x: 1.1505558, y: 1.1505558, z: 1}
   iconAlpha: 0
   miniMapCurrentIconScale: {x: 0.5, y: 0.5, z: 0.5}
 --- !u!114 &2111074717118803064
@@ -1917,19 +1917,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionRadius: 30
   attackRange: 5
-  runSpeed: 1
+  runSpeed: 0.7
   walkSpeed: 0.001
   rotationSpeed: 0.01
   player: {fileID: 0}
   minDistance: 2
-  EnemyHealth: {fileID: 0}
-  HealthBAr: {fileID: 0}
+  EnemyHealth: {fileID: 339327890431405507}
+  HealthBAr: {fileID: 4024997480006597484}
   _Camera: {fileID: 0}
   StartingHealth: 1
   HalthDownSpeed: 0.0005
   PlayerAnimator: {fileID: 0}
   walkingRadius: 15
-  TextUIHealth: {fileID: 0}
+  TextUIHealth: {fileID: 4434393726435849193}
   waterAvoidanceDistance: 5
   AttackingExp: 150
 --- !u!114 &6575890317508882577

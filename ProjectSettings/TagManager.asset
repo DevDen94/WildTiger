@@ -15,6 +15,8 @@ TagManager:
   - NPC
   - bubble
   - MouthPosition
+  - SOUND
+  - TAZOFX
   layers:
   - Default
   - TransparentFX
@@ -47,7 +49,7 @@ TagManager:
   - 
   - 
   - Item
-  - 
+  - Body
   m_SortingLayers:
   - name: Default
     uniqueID: 0

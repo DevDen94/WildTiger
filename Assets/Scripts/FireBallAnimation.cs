@@ -11,7 +11,8 @@ public class FireBallAnimation : MonoBehaviour
     public Vector3 offset = Vector3.zero;
     public iTween.EaseType easetype = iTween.EaseType.linear;
     public iTween.LoopType looptype= iTween.LoopType.none;
-
+    public bool lookAt = false;
+    Vector3 Target;
     private void Awake()
     {
         if (instance == null)
@@ -20,6 +21,7 @@ public class FireBallAnimation : MonoBehaviour
 
     public void moveFireballToTarget(LineRenderer line)
     {
+        Target = line.GetPosition(line.positionCount - 1);
         fireball.gameObject.SetActive(true);
         fireball.transform.position = line.GetPosition(0);
         iTween.MoveTo(fireball.gameObject, iTween.Hash("position", line.GetPosition(line.positionCount - 1)+offset, "time", time, "easetype", easetype, "looptype", looptype,"oncomplete",nameof(atEndOfAnimation),"oncompletetarget",gameObject));
@@ -27,6 +29,8 @@ public class FireBallAnimation : MonoBehaviour
 
     public void moveFireballToTarget(TrailRenderer trail)
     {
+        Target = trail.GetPosition(trail.positionCount - 1);
+
         fireball.gameObject.SetActive(true);
         fireball.transform.position = trail.GetPosition(0);
         iTween.MoveTo(fireball.gameObject, iTween.Hash("position", trail.GetPosition(trail.positionCount - 1)+offset, "time", time, "easetype", easetype, "looptype", looptype, "oncomplete", nameof(atEndOfAnimation), "oncompletetarget", gameObject));
@@ -35,6 +39,14 @@ public class FireBallAnimation : MonoBehaviour
 
     void atEndOfAnimation()
     {
+        Target = Vector3.zero;
         fireball.gameObject.SetActive(false);
+    }
+    private void Update()
+    {
+        if (lookAt && fireball.gameObject != null )
+        {
+            fireball.transform.LookAt(Target);
+        }
     }
 }

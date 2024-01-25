@@ -175,7 +175,10 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         PausePanel.SetActive(false);
     }
-
+    public void VFX_on_Attack()
+    {
+        SelectedTiger.GetComponent<AnimalScript>().playVFX_slash();
+    }
     public void ClickOkInTask()
     {
         TaskPanel.SetActive(false);
