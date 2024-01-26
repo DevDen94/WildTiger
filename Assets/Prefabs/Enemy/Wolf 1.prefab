@@ -2085,6 +2085,7 @@ GameObject:
   - component: {fileID: 4884736126842135915}
   - component: {fileID: 3375688101452941367}
   - component: {fileID: 4884736126842135916}
+  - component: {fileID: -8318948471134980693}
   m_Layer: 20
   m_Name: Wolf 1
   m_TagString: NPC
@@ -2204,6 +2205,77 @@ MonoBehaviour:
   TextUIHealth: {fileID: 1782480550781245942}
   waterAvoidanceDistance: 5
   AttackingExp: 75
+--- !u!114 &-8318948471134980693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4886388230241726275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78ba861a214074aa4bdac708dcacc9fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  priority: 0
+  visibility: 0
+  visibleDistanceOverride: 0
+  visibleMinDistanceOverride: 0
+  minDistanceText: 10
+  title: 
+  titleVisibility: 0
+  canBeVisited: 1
+  visitedDistanceOverride: 0
+  hideWhenVisited: 0
+  isVisited: 0
+  visitedText: 
+  visitedAudioClip: {fileID: 0}
+  radius: 0
+  iconScale: 1
+  iconNonVisited: {fileID: 0}
+  iconVisited: {fileID: 0}
+  tintColor: {r: 1, g: 1, b: 1, a: 1}
+  showPlayModeGizmo: 0
+  clampPosition: 0
+  beaconAudioClip: {fileID: 0}
+  dontDestroyOnLoad: 0
+  heartbeatEnabled: 0
+  heartbeatAudioClip: {fileID: 0}
+  heartbeatDistance: 20
+  heartbeatInterval:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.25
+      inSlope: 0
+      outSlope: 2.75
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 3
+      inSlope: 2.75
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  miniMapVisibility: 0
+  miniMapClampPosition: 0
+  miniMapShowRotation: 0
+  miniMapRotationAngleOffset: 0
+  miniMapIconScale: 1
+  distanceToCameraSQR: 0
+  computedIconScale: {x: 0, y: 0, z: 0}
+  iconAlpha: 0
+  miniMapCurrentIconScale: {x: 0, y: 0, z: 0}
 --- !u!1001 &1093912102276050081
 PrefabInstance:
   m_ObjectHideFlags: 0
