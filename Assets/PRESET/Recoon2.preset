@@ -30,15 +30,15 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_LocalPosition.x
-    value: -233.9
+    value: -363.2
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_LocalPosition.y
-    value: -4.22
+    value: -3.72
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_LocalPosition.z
-    value: 327.88
+    value: 315.6
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_LocalScale.x

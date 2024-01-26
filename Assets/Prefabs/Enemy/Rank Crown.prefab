@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4561911039802882774}
   - component: {fileID: 882885574263739154}
   - component: {fileID: 1601263933098290985}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Rank Crown
   m_TagString: Untagged
   m_Icon: {fileID: 0}

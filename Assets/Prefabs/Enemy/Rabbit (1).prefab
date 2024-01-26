@@ -244,7 +244,7 @@ GameObject:
   - component: {fileID: 3256990330751917408}
   - component: {fileID: 3256990330751917409}
   - component: {fileID: 3256990330751917410}
-  m_Layer: 23
+  m_Layer: 20
   m_Name: Rabbit (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

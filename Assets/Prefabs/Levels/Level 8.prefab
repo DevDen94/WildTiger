@@ -33389,27 +33389,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 352041573628464472, guid: ef182087fce33cc4e9ec00f480997288, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 352041573628464472, guid: ef182087fce33cc4e9ec00f480997288, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 352041573628464472, guid: ef182087fce33cc4e9ec00f480997288, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 352041573628464472, guid: ef182087fce33cc4e9ec00f480997288, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -372.9676
+      value: -363.2
       objectReference: {fileID: 0}
     - target: {fileID: 352041573628464472, guid: ef182087fce33cc4e9ec00f480997288, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.13
+      value: -3.72
       objectReference: {fileID: 0}
     - target: {fileID: 352041573628464472, guid: ef182087fce33cc4e9ec00f480997288, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 324.84793
+      value: 315.6
       objectReference: {fileID: 0}
     - target: {fileID: 352041573628464472, guid: ef182087fce33cc4e9ec00f480997288, type: 3}
       propertyPath: m_LocalRotation.w
@@ -33491,7 +33491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ba861a214074aa4bdac708dcacc9fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 822903819
+  id: 1530869785
   priority: 0
   visibility: 0
   visibleDistanceOverride: 0
@@ -33546,7 +33546,7 @@ MonoBehaviour:
   miniMapShowRotation: 0
   miniMapRotationAngleOffset: 0
   miniMapIconScale: 1
-  distanceToCameraSQR: 562978.94
+  distanceToCameraSQR: 554171.2
   computedIconScale: {x: 0.49916196, y: 0.49916196, z: 1}
   iconAlpha: 0
   miniMapCurrentIconScale: {x: 0.5, y: 0.5, z: 0.5}
@@ -33729,43 +33729,47 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 352041573628464472, guid: ef182087fce33cc4e9ec00f480997288, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -238.57
+      value: -436.829
       objectReference: {fileID: 0}
     - target: {fileID: 352041573628464472, guid: ef182087fce33cc4e9ec00f480997288, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.723
+      value: -4.04
       objectReference: {fileID: 0}
     - target: {fileID: 352041573628464472, guid: ef182087fce33cc4e9ec00f480997288, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 375.9067
+      value: 339.112
       objectReference: {fileID: 0}
     - target: {fileID: 352041573628464472, guid: ef182087fce33cc4e9ec00f480997288, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.63321656
       objectReference: {fileID: 0}
     - target: {fileID: 352041573628464472, guid: ef182087fce33cc4e9ec00f480997288, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.009840824
       objectReference: {fileID: 0}
     - target: {fileID: 352041573628464472, guid: ef182087fce33cc4e9ec00f480997288, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.7738187
       objectReference: {fileID: 0}
     - target: {fileID: 352041573628464472, guid: ef182087fce33cc4e9ec00f480997288, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.012025461
       objectReference: {fileID: 0}
     - target: {fileID: 352041573628464472, guid: ef182087fce33cc4e9ec00f480997288, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 1.781
       objectReference: {fileID: 0}
     - target: {fileID: 352041573628464472, guid: ef182087fce33cc4e9ec00f480997288, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 101.413
       objectReference: {fileID: 0}
     - target: {fileID: 352041573628464472, guid: ef182087fce33cc4e9ec00f480997288, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 352041573628464472, guid: ef182087fce33cc4e9ec00f480997288, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 352050410038962864, guid: ef182087fce33cc4e9ec00f480997288, type: 3}
       propertyPath: m_LocalRotation.w
@@ -33819,7 +33823,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ba861a214074aa4bdac708dcacc9fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: -1944936126
+  id: 51761541
   priority: 0
   visibility: 0
   visibleDistanceOverride: 0
@@ -33874,7 +33878,7 @@ MonoBehaviour:
   miniMapShowRotation: 0
   miniMapRotationAngleOffset: 0
   miniMapIconScale: 1
-  distanceToCameraSQR: 715861.7
+  distanceToCameraSQR: 559726.6
   computedIconScale: {x: 0.49916196, y: 0.49916196, z: 1}
   iconAlpha: 0
   miniMapCurrentIconScale: {x: 0.5, y: 0.5, z: 0.5}
@@ -34140,7 +34144,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 275849225, guid: 169992767148ed44992a98cb6ee11e71, type: 3}
       propertyPath: id
-      value: -38808888
+      value: -1730154552
       objectReference: {fileID: 0}
     - target: {fileID: 275849225, guid: 169992767148ed44992a98cb6ee11e71, type: 3}
       propertyPath: distanceToCameraSQR
@@ -34401,43 +34405,47 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 352041573628464472, guid: ef182087fce33cc4e9ec00f480997288, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -185.64774
+      value: -409.257
       objectReference: {fileID: 0}
     - target: {fileID: 352041573628464472, guid: ef182087fce33cc4e9ec00f480997288, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.689
+      value: -7.509
       objectReference: {fileID: 0}
     - target: {fileID: 352041573628464472, guid: ef182087fce33cc4e9ec00f480997288, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 350.2
+      value: 351.039
       objectReference: {fileID: 0}
     - target: {fileID: 352041573628464472, guid: ef182087fce33cc4e9ec00f480997288, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.63321656
       objectReference: {fileID: 0}
     - target: {fileID: 352041573628464472, guid: ef182087fce33cc4e9ec00f480997288, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.009840824
       objectReference: {fileID: 0}
     - target: {fileID: 352041573628464472, guid: ef182087fce33cc4e9ec00f480997288, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.7738187
       objectReference: {fileID: 0}
     - target: {fileID: 352041573628464472, guid: ef182087fce33cc4e9ec00f480997288, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.012025461
       objectReference: {fileID: 0}
     - target: {fileID: 352041573628464472, guid: ef182087fce33cc4e9ec00f480997288, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 1.781
       objectReference: {fileID: 0}
     - target: {fileID: 352041573628464472, guid: ef182087fce33cc4e9ec00f480997288, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 101.413
       objectReference: {fileID: 0}
     - target: {fileID: 352041573628464472, guid: ef182087fce33cc4e9ec00f480997288, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 352041573628464472, guid: ef182087fce33cc4e9ec00f480997288, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 352050410038962864, guid: ef182087fce33cc4e9ec00f480997288, type: 3}
       propertyPath: m_LocalRotation.w
@@ -34491,7 +34499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ba861a214074aa4bdac708dcacc9fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: -219037623
+  id: -2022274603
   priority: 0
   visibility: 0
   visibleDistanceOverride: 0
@@ -34546,7 +34554,7 @@ MonoBehaviour:
   miniMapShowRotation: 0
   miniMapRotationAngleOffset: 0
   miniMapIconScale: 1
-  distanceToCameraSQR: 717238.56
+  distanceToCameraSQR: 586655.7
   computedIconScale: {x: 0.49916196, y: 0.49916196, z: 1}
   iconAlpha: 0
   miniMapCurrentIconScale: {x: 0.5, y: 0.5, z: 0.5}
@@ -34559,7 +34567,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 34487239, guid: 010452953d33eb34091228b8496769c4, type: 3}
       propertyPath: id
-      value: -1196596117
+      value: -130940221
       objectReference: {fileID: 0}
     - target: {fileID: 34487239, guid: 010452953d33eb34091228b8496769c4, type: 3}
       propertyPath: distanceToCameraSQR
@@ -34642,11 +34650,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 420486554, guid: 68844edfdd09b6f45b4a36f26c3b5f70, type: 3}
       propertyPath: id
-      value: 1015987347
+      value: 1497287762
       objectReference: {fileID: 0}
     - target: {fileID: 420486554, guid: 68844edfdd09b6f45b4a36f26c3b5f70, type: 3}
       propertyPath: distanceToCameraSQR
-      value: 647664.1
+      value: 562978.94
       objectReference: {fileID: 0}
     - target: {fileID: 5643802374264702969, guid: 68844edfdd09b6f45b4a36f26c3b5f70, type: 3}
       propertyPath: Camera
@@ -34666,15 +34674,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5643802374264702975, guid: 68844edfdd09b6f45b4a36f26c3b5f70, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -233.9
+      value: -372.9676
       objectReference: {fileID: 0}
     - target: {fileID: 5643802374264702975, guid: 68844edfdd09b6f45b4a36f26c3b5f70, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.22
+      value: -3.328
       objectReference: {fileID: 0}
     - target: {fileID: 5643802374264702975, guid: 68844edfdd09b6f45b4a36f26c3b5f70, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 327.88
+      value: 324.84793
       objectReference: {fileID: 0}
     - target: {fileID: 5643802374264702975, guid: 68844edfdd09b6f45b4a36f26c3b5f70, type: 3}
       propertyPath: m_LocalRotation.w

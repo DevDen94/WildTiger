@@ -30,7 +30,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_LocalPosition.x
-    value: -159.56207
+    value: -349.57
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_LocalPosition.y
@@ -38,7 +38,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_LocalPosition.z
-    value: 350.74362
+    value: 339.73
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_LocalScale.x
@@ -58,7 +58,7 @@ Preset:
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_RootOrder
-    value: 0
+    value: 9
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: m_LocalEulerAnglesHint.x

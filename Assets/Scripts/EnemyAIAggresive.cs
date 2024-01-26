@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
-using static UnityEditor.Experimental.GraphView.GraphView;
+//using static UnityEditor.Experimental.GraphView.GraphView;
 public class EnemyAIAggresive : MonoBehaviour
 {
     public float detectionRadius = 10f;
@@ -189,6 +189,8 @@ public class EnemyAIAggresive : MonoBehaviour
                 GameManager.Instance.KillAnimals++;
                 GetComponent<MapMarker>().isActive = false;
                 this.gameObject.GetComponent<BoxCollider>().enabled = false;
+               // GameManager.Instance.EatPopUp.SetActive(true);
+
                 //Destroy(this);
                 for (int i = 0; i < GameManager.Instance.AnimalsNamesToKill.Length; i++)
                 {
@@ -210,6 +212,8 @@ public class EnemyAIAggresive : MonoBehaviour
             }
 
         }
+     //   GameManager.Instance.EatPopUp.SetActive(false);
+
     }
     IEnumerator CompletePanel()
     {
@@ -256,8 +260,8 @@ public class EnemyAIAggresive : MonoBehaviour
         }
         else
         {
-            if(other.gameObject.GetComponent<Rigidbody>())
-            other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+          //////  if(other.gameObject.GetComponent<Rigidbody>())
+          ////////  other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
         }
     }
     public void DisableHealthText()

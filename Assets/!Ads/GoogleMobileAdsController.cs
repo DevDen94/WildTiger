@@ -1,4 +1,5 @@
 using GoogleMobileAds.Api;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -419,7 +420,20 @@ public class GoogleMobileAdsController : MonoBehaviour, IUnityAdsInitializationL
         // You can implement your reward logic here
     }
 
+    public void ShowRewardedAd_()
+    {
+        const string rewardMsg =
+            "Rewarded ad rewarded the user. Type: {0}, amount: {1}.";
 
+        if (rewardedAd != null && rewardedAd.CanShowAd())
+        {
+            rewardedAd.Show((Reward reward) =>
+            {
+                // TODO: Reward the user.
+                Debug.Log(String.Format(rewardMsg, reward.Type, reward.Amount));
+            });
+        }
+    }
     #endregion
 
     #region Unity Ads

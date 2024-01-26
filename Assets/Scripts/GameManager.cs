@@ -63,19 +63,21 @@ public class GameManager : MonoBehaviour
         selectedLevelData = Stats[0];
         Instance = this;
 
-        for(int i = 0; i < selectedLevelData.Animals.Length; i++)
-        {
-            AnimalList[i].SetActive(true);
-            selectedLevelData.killCount[i] = 0;
-            AnimalList[i].gameObject.GetComponent<Text>().text = selectedLevelData.Animals[i] + "                   " + selectedLevelData.killCount[i] + "/" + selectedLevelData.TotalKillCount[i];
-        }
         foreach (GameObject g in Tigers)
         {
             g.SetActive(false);
             SelectedTiger = Tigers[PlayerPrefs.GetInt("SelectedCharacter")];
             SelectedTiger.gameObject.SetActive(true);
         }
-
+        for (int i = 0; i < selectedLevelData.Animals.Length; i++)
+        {
+            Debug.LogError(AnimalList[i]);
+            AnimalList[i].SetActive(true);
+            selectedLevelData.killCount[i] = 0;
+            AnimalList[i].gameObject.GetComponent<Text>().text = selectedLevelData.Animals[i] + "                   " + selectedLevelData.killCount[i] + "/" + selectedLevelData.TotalKillCount[i];
+        }
+       
+      
     }
 
     void ExpBar()

@@ -2188,7 +2188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f37f48a4ce8324881f006723b66b22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 30
+  detectionRadius: 10
   attackRange: 5
   runSpeed: 1
   walkSpeed: 0.001
@@ -2217,7 +2217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ba861a214074aa4bdac708dcacc9fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
+  id: 1127260340
   priority: 0
   visibility: 0
   visibleDistanceOverride: 0
@@ -2233,8 +2233,8 @@ MonoBehaviour:
   visitedAudioClip: {fileID: 0}
   radius: 0
   iconScale: 1
-  iconNonVisited: {fileID: 0}
-  iconVisited: {fileID: 0}
+  iconNonVisited: {fileID: 21300000, guid: c555532502b14da478469508d84897f1, type: 3}
+  iconVisited: {fileID: 21300000, guid: c555532502b14da478469508d84897f1, type: 3}
   tintColor: {r: 1, g: 1, b: 1, a: 1}
   showPlayModeGizmo: 0
   clampPosition: 0

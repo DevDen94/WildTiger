@@ -1534,7 +1534,7 @@ GameObject:
   - component: {fileID: 2448312975052633359}
   - component: {fileID: 2448312975052633344}
   - component: {fileID: 275849225}
-  m_Layer: 23
+  m_Layer: 20
   m_Name: deer 1
   m_TagString: Animal
   m_Icon: {fileID: 0}

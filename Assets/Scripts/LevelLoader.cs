@@ -33,7 +33,7 @@ public class LevelLoader : MonoBehaviour
         if (PlayerPrefs.GetInt("Level") < Levels.Length)
         {
             Debug.Log("All levels completed!");
-            LoadLevel(PlayerPrefs.GetInt("Level"));
+            //LoadLevel(PlayerPrefs.GetInt("Level"));
             
             
                
@@ -56,6 +56,7 @@ public class LevelLoader : MonoBehaviour
 
     private void LoadLevel(int index)
     {
+        Debug.LogError(PlayerPrefs.GetInt("UnlockedLevels"));
         // Load the next level prefab
         Instantiate(Levels[index]);
     }

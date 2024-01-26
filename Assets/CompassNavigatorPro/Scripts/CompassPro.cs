@@ -69,6 +69,7 @@ namespace CompassNavigatorPro {
             }
         }
 
+      
 
         [SerializeField]
         UPDATE_INTERVAL _updateInterval = UPDATE_INTERVAL.NumberOfFrames;
