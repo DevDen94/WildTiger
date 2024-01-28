@@ -121,6 +121,8 @@ struct CanvasGroup_t048C1461B14628CFAEBE6E7353093ADB04EBC094;
 struct CanvasRenderer_tAB9A55A976C4E3B2B37D0CE5616E5685A8B43860;
 // UnityEngine.Collider
 struct Collider_t1CC3163924FCD6C4CC2E816373A929C1E3D55E76;
+// CompassNavigatorPro.CompassButtonHandler
+struct CompassButtonHandler_t16208A0225987345B0F97D17F65727F57EEC43A8;
 // CompassNavigatorPro.CompassPro
 struct CompassPro_t74E7DB09BB6E1EE7577DA16E6160ABD94064DD6B;
 // CompassNavigatorPro.CompassProPOI
@@ -233,6 +235,8 @@ struct PCMReaderCallback_t3396D9613664F0AFF65FB91018FD0F901CC16F1E;
 struct PCMSetPositionCallback_t8D7135A2FB40647CAEC93F5254AD59E18DEB6072;
 // UnityEngine.Camera/CameraCallback
 struct CameraCallback_t844E527BFE37BC0495E7F67993E43C07642DA9DD;
+// CompassNavigatorPro.CompassButtonHandler/<ExecuteHandler>d__4
+struct U3CExecuteHandlerU3Ed__4_t0427C52E4303C9EF647CE706F53AB5DBAE0C5B62;
 // UnityEngine.GUISkin/SkinChangedDelegate
 struct SkinChangedDelegate_tA6D456E853D58AD2EF8A599F543C7E5BA8E94B98;
 // CompassNavigatorProDemos.LevelManager/<RemovePOI>d__13
@@ -281,6 +285,7 @@ IL2CPP_EXTERN_C const RuntimeMethod* LevelManager_POIExit_mDE121AF289222F2ECF09C
 IL2CPP_EXTERN_C const RuntimeMethod* LevelManager_POIHover_m639A18BF87915EA713B13044CAB2DCDFBABEEDE9_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* LevelManager_POIVisited_mE277E36E61BF98457453B25B4B215104C84B6773_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* POIHeartbeatAnimator_OnHeartbeatHandler_m6E43398A08DAAD615226A28D40F948F7111D7AF7_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* U3CExecuteHandlerU3Ed__4_System_Collections_IEnumerator_Reset_m27E3973E6BDA5FFBDE8035116CF103B00C23B0D3_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* U3CRemovePOIU3Ed__13_System_Collections_IEnumerator_Reset_m26B110E801FAEFC903353769BFED1734A26EE52C_RuntimeMethod_var;
 struct Delegate_t_marshaled_com;
 struct Delegate_t_marshaled_pinvoke;
@@ -346,6 +351,19 @@ struct YieldInstruction_tFCE35FD0907950EFEE9BC2890AC664E41C53728D_marshaled_pinv
 // Native definition for COM marshalling of UnityEngine.YieldInstruction
 struct YieldInstruction_tFCE35FD0907950EFEE9BC2890AC664E41C53728D_marshaled_com
 {
+};
+
+// CompassNavigatorPro.CompassButtonHandler/<ExecuteHandler>d__4
+struct U3CExecuteHandlerU3Ed__4_t0427C52E4303C9EF647CE706F53AB5DBAE0C5B62  : public RuntimeObject
+{
+	// System.Int32 CompassNavigatorPro.CompassButtonHandler/<ExecuteHandler>d__4::<>1__state
+	int32_t ___U3CU3E1__state_0;
+	// System.Object CompassNavigatorPro.CompassButtonHandler/<ExecuteHandler>d__4::<>2__current
+	RuntimeObject* ___U3CU3E2__current_1;
+	// CompassNavigatorPro.CompassButtonHandler CompassNavigatorPro.CompassButtonHandler/<ExecuteHandler>d__4::<>4__this
+	CompassButtonHandler_t16208A0225987345B0F97D17F65727F57EEC43A8* ___U3CU3E4__this_2;
+	// UnityEngine.WaitForEndOfFrame CompassNavigatorPro.CompassButtonHandler/<ExecuteHandler>d__4::<w>5__2
+	WaitForEndOfFrame_tE38D80923E3F8380069B423968C25ABE50A46663* ___U3CwU3E5__2_3;
 };
 
 // CompassNavigatorProDemos.LevelManager/<RemovePOI>d__13
@@ -1166,6 +1184,11 @@ struct Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1  : public Component_t
 {
 };
 
+// UnityEngine.Events.UnityAction
+struct UnityAction_t11A1F3B953B365C072A5DCC32677EE1796A962A7  : public MulticastDelegate_t
+{
+};
+
 // UnityEngine.Camera
 struct Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184  : public Behaviour_t01970CFBBA658497AE30F311C447DB0440BAB7FA
 {
@@ -1179,6 +1202,15 @@ struct MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71  : public Behavio
 // UnityEngine.RectTransform
 struct RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5  : public Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1
 {
+};
+
+// CompassNavigatorPro.CompassButtonHandler
+struct CompassButtonHandler_t16208A0225987345B0F97D17F65727F57EEC43A8  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
+{
+	// UnityEngine.Events.UnityAction CompassNavigatorPro.CompassButtonHandler::actionHandler
+	UnityAction_t11A1F3B953B365C072A5DCC32677EE1796A962A7* ___actionHandler_4;
+	// UnityEngine.Coroutine CompassNavigatorPro.CompassButtonHandler::co
+	Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B* ___co_5;
 };
 
 // CompassNavigatorPro.CompassPro
@@ -1928,6 +1960,10 @@ struct String_t_StaticFields
 
 // UnityEngine.YieldInstruction
 
+// CompassNavigatorPro.CompassButtonHandler/<ExecuteHandler>d__4
+
+// CompassNavigatorPro.CompassButtonHandler/<ExecuteHandler>d__4
+
 // CompassNavigatorProDemos.LevelManager/<RemovePOI>d__13
 
 // CompassNavigatorProDemos.LevelManager/<RemovePOI>d__13
@@ -2295,6 +2331,10 @@ struct GUISkin_t8C65CE1424D4B5D8D73022E266BDAD3BDE8612D9_StaticFields
 
 // UnityEngine.Transform
 
+// UnityEngine.Events.UnityAction
+
+// UnityEngine.Events.UnityAction
+
 // UnityEngine.Camera
 struct Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184_StaticFields
 {
@@ -2320,6 +2360,10 @@ struct RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_StaticFields
 };
 
 // UnityEngine.RectTransform
+
+// CompassNavigatorPro.CompassButtonHandler
+
+// CompassNavigatorPro.CompassButtonHandler
 
 // CompassNavigatorPro.CompassPro
 struct CompassPro_t74E7DB09BB6E1EE7577DA16E6160ABD94064DD6B_StaticFields
@@ -2547,6 +2591,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* GameObject_GetComponent_TisRun
 // T UnityEngine.GameObject::AddComponent<System.Object>()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* GameObject_AddComponent_TisRuntimeObject_m69B93700FACCF372F5753371C6E8FB780800B824_gshared (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* __this, const RuntimeMethod* method) ;
 
+// System.Void System.Object::.ctor()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2 (RuntimeObject* __this, const RuntimeMethod* method) ;
+// System.Void UnityEngine.WaitForEndOfFrame::.ctor()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WaitForEndOfFrame__ctor_m4AF7E576C01E6B04443BB898B1AE5D645F7D45AB (WaitForEndOfFrame_tE38D80923E3F8380069B423968C25ABE50A46663* __this, const RuntimeMethod* method) ;
+// System.Void UnityEngine.Events.UnityAction::Invoke()
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void UnityAction_Invoke_m5CB9EE17CCDF64D00DE5D96DF3553CDB20D66F70_inline (UnityAction_t11A1F3B953B365C072A5DCC32677EE1796A962A7* __this, const RuntimeMethod* method) ;
+// System.Void System.NotSupportedException::.ctor()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NotSupportedException__ctor_m1398D0CDE19B36AA3DE9392879738C1EA2439CDF (NotSupportedException_t1429765983D409BD2986508963C98D214E4EBF4A* __this, const RuntimeMethod* method) ;
 // UnityEngine.Transform UnityEngine.Component::get_transform()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371 (Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3* __this, const RuntimeMethod* method) ;
 // UnityEngine.Vector3 UnityEngine.Transform::get_localScale()
@@ -2822,14 +2874,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF87
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CRemovePOIU3Ed__13__ctor_mCF4C431429A89C5839018E0A90D87E83771620AA (U3CRemovePOIU3Ed__13_tB21D14AD0A7DECEC7E7DF9CFFB19EF84DFC0741D* __this, int32_t ___0_U3CU3E1__state, const RuntimeMethod* method) ;
 // System.String UnityEngine.Vector3::ToString()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* Vector3_ToString_m6C24B9F0382D25D75B05C606E127CD14660574EE (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2* __this, const RuntimeMethod* method) ;
-// System.Void System.Object::.ctor()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2 (RuntimeObject* __this, const RuntimeMethod* method) ;
-// System.Void UnityEngine.WaitForEndOfFrame::.ctor()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WaitForEndOfFrame__ctor_m4AF7E576C01E6B04443BB898B1AE5D645F7D45AB (WaitForEndOfFrame_tE38D80923E3F8380069B423968C25ABE50A46663* __this, const RuntimeMethod* method) ;
 // System.Void UnityEngine.Object::Destroy(UnityEngine.Object)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Object_Destroy_mE97D0A766419A81296E8D4E5C23D01D3FE91ACBB (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C* ___0_obj, const RuntimeMethod* method) ;
-// System.Void System.NotSupportedException::.ctor()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NotSupportedException__ctor_m1398D0CDE19B36AA3DE9392879738C1EA2439CDF (NotSupportedException_t1429765983D409BD2986508963C98D214E4EBF4A* __this, const RuntimeMethod* method) ;
 // T UnityEngine.Component::GetComponent<CompassNavigatorPro.CompassProPOI>()
 inline CompassProPOI_t23B47A8A8CD83B4B52C2F23C9FD537F28EEF3607* Component_GetComponent_TisCompassProPOI_t23B47A8A8CD83B4B52C2F23C9FD537F28EEF3607_m8281F2C78F2AE9755001A814555B84B4DBEA4A16 (Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3* __this, const RuntimeMethod* method)
 {
@@ -2860,6 +2906,124 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t String_get_Length_m42625D
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 Quaternion_Internal_FromEulerRad_m66D4475341F53949471E6870FB5C5E4A5E9BA93E (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_euler, const RuntimeMethod* method) ;
 // System.Void UnityEngine.Quaternion::.ctor(System.Single,System.Single,System.Single,System.Single)
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Quaternion__ctor_m868FD60AA65DD5A8AC0C5DEB0608381A8D85FCD8_inline (Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974* __this, float ___0_x, float ___1_y, float ___2_z, float ___3_w, const RuntimeMethod* method) ;
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// System.Void CompassNavigatorPro.CompassButtonHandler/<ExecuteHandler>d__4::.ctor(System.Int32)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CExecuteHandlerU3Ed__4__ctor_m91063F33BF7B05F908461E66EAADC559E96498C1 (U3CExecuteHandlerU3Ed__4_t0427C52E4303C9EF647CE706F53AB5DBAE0C5B62* __this, int32_t ___0_U3CU3E1__state, const RuntimeMethod* method) 
+{
+	{
+		Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2(__this, NULL);
+		int32_t L_0 = ___0_U3CU3E1__state;
+		__this->___U3CU3E1__state_0 = L_0;
+		return;
+	}
+}
+// System.Void CompassNavigatorPro.CompassButtonHandler/<ExecuteHandler>d__4::System.IDisposable.Dispose()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CExecuteHandlerU3Ed__4_System_IDisposable_Dispose_m122B70AD9D3AB7054A7C109C900792BED5C286C3 (U3CExecuteHandlerU3Ed__4_t0427C52E4303C9EF647CE706F53AB5DBAE0C5B62* __this, const RuntimeMethod* method) 
+{
+	{
+		return;
+	}
+}
+// System.Boolean CompassNavigatorPro.CompassButtonHandler/<ExecuteHandler>d__4::MoveNext()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool U3CExecuteHandlerU3Ed__4_MoveNext_m24F9EFA1274F48A3F23F26F5CD22DD75C2DC9DC3 (U3CExecuteHandlerU3Ed__4_t0427C52E4303C9EF647CE706F53AB5DBAE0C5B62* __this, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&WaitForEndOfFrame_tE38D80923E3F8380069B423968C25ABE50A46663_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	int32_t V_0 = 0;
+	CompassButtonHandler_t16208A0225987345B0F97D17F65727F57EEC43A8* V_1 = NULL;
+	{
+		int32_t L_0 = __this->___U3CU3E1__state_0;
+		V_0 = L_0;
+		CompassButtonHandler_t16208A0225987345B0F97D17F65727F57EEC43A8* L_1 = __this->___U3CU3E4__this_2;
+		V_1 = L_1;
+		int32_t L_2 = V_0;
+		if (!L_2)
+		{
+			goto IL_0017;
+		}
+	}
+	{
+		int32_t L_3 = V_0;
+		if ((((int32_t)L_3) == ((int32_t)1)))
+		{
+			goto IL_0049;
+		}
+	}
+	{
+		return (bool)0;
+	}
+
+IL_0017:
+	{
+		__this->___U3CU3E1__state_0 = (-1);
+		// WaitForEndOfFrame w = new WaitForEndOfFrame ();
+		WaitForEndOfFrame_tE38D80923E3F8380069B423968C25ABE50A46663* L_4 = (WaitForEndOfFrame_tE38D80923E3F8380069B423968C25ABE50A46663*)il2cpp_codegen_object_new(WaitForEndOfFrame_tE38D80923E3F8380069B423968C25ABE50A46663_il2cpp_TypeInfo_var);
+		NullCheck(L_4);
+		WaitForEndOfFrame__ctor_m4AF7E576C01E6B04443BB898B1AE5D645F7D45AB(L_4, NULL);
+		__this->___U3CwU3E5__2_3 = L_4;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CwU3E5__2_3), (void*)L_4);
+	}
+
+IL_0029:
+	{
+		// actionHandler ();
+		CompassButtonHandler_t16208A0225987345B0F97D17F65727F57EEC43A8* L_5 = V_1;
+		NullCheck(L_5);
+		UnityAction_t11A1F3B953B365C072A5DCC32677EE1796A962A7* L_6 = L_5->___actionHandler_4;
+		NullCheck(L_6);
+		UnityAction_Invoke_m5CB9EE17CCDF64D00DE5D96DF3553CDB20D66F70_inline(L_6, NULL);
+		// yield return w;
+		WaitForEndOfFrame_tE38D80923E3F8380069B423968C25ABE50A46663* L_7 = __this->___U3CwU3E5__2_3;
+		__this->___U3CU3E2__current_1 = L_7;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CU3E2__current_1), (void*)L_7);
+		__this->___U3CU3E1__state_0 = 1;
+		return (bool)1;
+	}
+
+IL_0049:
+	{
+		__this->___U3CU3E1__state_0 = (-1);
+		// while (true) {
+		goto IL_0029;
+	}
+}
+// System.Object CompassNavigatorPro.CompassButtonHandler/<ExecuteHandler>d__4::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* U3CExecuteHandlerU3Ed__4_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m78FCD224E8FA3A475BD9BCD8902BC79E53F8CA74 (U3CExecuteHandlerU3Ed__4_t0427C52E4303C9EF647CE706F53AB5DBAE0C5B62* __this, const RuntimeMethod* method) 
+{
+	{
+		RuntimeObject* L_0 = __this->___U3CU3E2__current_1;
+		return L_0;
+	}
+}
+// System.Void CompassNavigatorPro.CompassButtonHandler/<ExecuteHandler>d__4::System.Collections.IEnumerator.Reset()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CExecuteHandlerU3Ed__4_System_Collections_IEnumerator_Reset_m27E3973E6BDA5FFBDE8035116CF103B00C23B0D3 (U3CExecuteHandlerU3Ed__4_t0427C52E4303C9EF647CE706F53AB5DBAE0C5B62* __this, const RuntimeMethod* method) 
+{
+	{
+		NotSupportedException_t1429765983D409BD2986508963C98D214E4EBF4A* L_0 = (NotSupportedException_t1429765983D409BD2986508963C98D214E4EBF4A*)il2cpp_codegen_object_new(((RuntimeClass*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&NotSupportedException_t1429765983D409BD2986508963C98D214E4EBF4A_il2cpp_TypeInfo_var)));
+		NullCheck(L_0);
+		NotSupportedException__ctor_m1398D0CDE19B36AA3DE9392879738C1EA2439CDF(L_0, NULL);
+		IL2CPP_RAISE_MANAGED_EXCEPTION(L_0, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&U3CExecuteHandlerU3Ed__4_System_Collections_IEnumerator_Reset_m27E3973E6BDA5FFBDE8035116CF103B00C23B0D3_RuntimeMethod_var)));
+	}
+}
+// System.Object CompassNavigatorPro.CompassButtonHandler/<ExecuteHandler>d__4::System.Collections.IEnumerator.get_Current()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* U3CExecuteHandlerU3Ed__4_System_Collections_IEnumerator_get_Current_m4EF4D840C1943F7744621C2CDEF946550F1DAE4F (U3CExecuteHandlerU3Ed__4_t0427C52E4303C9EF647CE706F53AB5DBAE0C5B62* __this, const RuntimeMethod* method) 
+{
+	{
+		RuntimeObject* L_0 = __this->___U3CU3E2__current_1;
+		return L_0;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
 #ifdef __clang__
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
@@ -5177,6 +5341,11 @@ IL_002a:
 #ifdef __clang__
 #pragma clang diagnostic pop
 #endif
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void UnityAction_Invoke_m5CB9EE17CCDF64D00DE5D96DF3553CDB20D66F70_inline (UnityAction_t11A1F3B953B365C072A5DCC32677EE1796A962A7* __this, const RuntimeMethod* method) 
+{
+	typedef void (*FunctionPointerType) (RuntimeObject*, const RuntimeMethod*);
+	((FunctionPointerType)__this->___invoke_impl_1)((Il2CppObject*)__this->___method_code_6, reinterpret_cast<RuntimeMethod*>(__this->___method_3));
+}
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float Mathf_Clamp01_mA7E048DBDA832D399A581BE4D6DED9FA44CE0F14_inline (float ___0_value, const RuntimeMethod* method) 
 {
 	bool V_0 = false;

@@ -31933,6 +31933,7 @@ GameObject:
   - component: {fileID: 8690520201512690546}
   - component: {fileID: 5045454102403754022}
   - component: {fileID: 640769546677180891}
+  - component: {fileID: 231681732599453140}
   m_Layer: 5
   m_Name: CompassNavigatorPro
   m_TagString: Untagged
@@ -32244,6 +32245,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &231681732599453140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8704323803279566936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41446819a7f69fb4a8796d6d81c43e3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8718675868536603779
 GameObject:
   m_ObjectHideFlags: 0

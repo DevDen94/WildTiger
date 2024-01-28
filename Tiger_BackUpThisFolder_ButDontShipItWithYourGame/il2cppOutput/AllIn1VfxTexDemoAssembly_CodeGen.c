@@ -62,21 +62,21 @@ static Il2CppMethodPointer s_methodPointers[15] =
 };
 static const int32_t s_InvokerIndices[15] = 
 {
-	6983,
-	6983,
-	6983,
-	6983,
-	6983,
-	6983,
-	6983,
-	6983,
-	6983,
-	6983,
-	5620,
-	5620,
-	6983,
-	6983,
-	6983,
+	6952,
+	6952,
+	6952,
+	6952,
+	6952,
+	6952,
+	6952,
+	6952,
+	6952,
+	6952,
+	5596,
+	5596,
+	6952,
+	6952,
+	6952,
 };
 IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AllIn1VfxTexDemoAssembly_CodeGenModule;
 const Il2CppCodeGenModule g_AllIn1VfxTexDemoAssembly_CodeGenModule = 

@@ -209,12 +209,15 @@ public class EnemyAIAggresive : MonoBehaviour
                 PlayerPrefs.SetInt("TigerExp", PlayerPrefs.GetInt("TigerExp") + AttackingExp);
                 GameManager.Instance.ExpTxt.text = PlayerPrefs.GetInt("TigerExp").ToString();
                 GameManager.Instance.TierUpdate();
+               // gameObject.SetActive(false);
             }
 
         }
      //   GameManager.Instance.EatPopUp.SetActive(false);
 
     }
+
+
     IEnumerator CompletePanel()
     {
         yield return new WaitForSeconds(5f);

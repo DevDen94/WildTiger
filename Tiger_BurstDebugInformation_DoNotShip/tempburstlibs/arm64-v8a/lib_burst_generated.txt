@@ -1,4 +1,4 @@
-Library: E:\GitProjects\WildTiger\Temp\StagingArea\tempburstlibs\arm64-v8a\lib_burst_generated
+Library: D:\gameShock\GitHub\WildTiger\Temp\StagingArea\tempburstlibs\arm64-v8a\lib_burst_generated
 --platform=Android
 --backend=burst-llvm-14
 --target=ARMV8A_AARCH64
@@ -139,8 +139,8 @@ Library: E:\GitProjects\WildTiger\Temp\StagingArea\tempburstlibs\arm64-v8a\lib_b
 --compilation-defines=MATHEMATICS
 --compilation-defines=URP
 --generate-link-xml=Temp\burst.link.xml
---temp-folder=E:\GitProjects\WildTiger\Temp\Burst
---output=E:\GitProjects\WildTiger\Temp\StagingArea\tempburstlibs\arm64-v8a\lib_burst_generated
+--temp-folder=D:\gameShock\GitHub\WildTiger\Temp\Burst
+--output=D:\gameShock\GitHub\WildTiger\Temp\StagingArea\tempburstlibs\arm64-v8a\lib_burst_generated
 --pdb-search-paths=Temp/ManagedSymbols/
 --pdb-search-paths=Temp/ManagedSymbols/
 
