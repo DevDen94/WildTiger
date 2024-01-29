@@ -165,6 +165,7 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0f;
         Fail.SetActive(true);
+        Implementation.instance.ShowInterstitial();
     }
 
 
@@ -204,6 +205,8 @@ public class GameManager : MonoBehaviour
     public void CompletePanelFunc()
     {
         StartCoroutine(CompletePanel());
+        Implementation.instance.ShowInterstitial();
+
         IEnumerator CompletePanel()
         {
             yield return new WaitForSeconds(3f);
@@ -234,7 +237,6 @@ public class GameManager : MonoBehaviour
 
             }
             // GoogleMobileAdsController.Instance.ShowInterstitialAd();
-            Implementation.instance.ShowInterstitial();
         }
     }
 }

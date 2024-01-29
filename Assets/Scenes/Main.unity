@@ -1047,8 +1047,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 80278456}
-  - component: {fileID: 80278457}
   - component: {fileID: 80278458}
+  - component: {fileID: 80278459}
   m_Layer: 0
   m_Name: AdManager
   m_TagString: Untagged
@@ -1071,38 +1071,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &80278457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 80278455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 658f5d4a5db9e664e853c59896ceec7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bannerAdUnitId: ca-app-pub-5227706387493609/5503454569
-  interstitialAdUnitId: ca-app-pub-5227706387493609/5589400267
-  rewardedAdUnitId: null
-  BIGbannerAdUnitId: null
-  MediumBannerAdUnitId: ca-app-pub-5227706387493609/1166159279
-  MediumInterstitialAdUnitId: ca-app-pub-5227706387493609/4467890283
-  MediumRewardedAdUnitId: null
-  BIGbannerMediumAdUnitId: null
-  ALLPriceBannerAdUnitId: ca-app-pub-5227706387493609/8818991427
-  ALLPriceInterstitialAdUnitId: ca-app-pub-5227706387493609/3887063097
-  ALLPriceRewardedAdUnitId: null
-  BIGbannerAllAdUnitId: null
-  SmallBannerPosition: 0
-  BigBannerPosition: 0
-  ShowTestAds: 1
-  UnityAdsID: 5507201
-  BANNER_PLACEMENT: 
-  InterstatialPlacement: 
-  REWARDED_VIDEO_PLACEMENT: 
-  number: 0
 --- !u!114 &80278458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1113,6 +1081,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eff0f1a9e89db6c458f99ead6d1d2190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &80278459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 80278455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9c66cbde894a934b836028197da8f09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &85251535
