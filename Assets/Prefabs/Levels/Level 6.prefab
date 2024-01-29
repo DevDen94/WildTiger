@@ -720,7 +720,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: HP
+  m_Text: 
 --- !u!1 &45851686088455346
 GameObject:
   m_ObjectHideFlags: 0
@@ -10280,7 +10280,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4689733059147359227}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
@@ -14959,7 +14959,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7038456491292805300}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
@@ -33318,7 +33318,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 290579019, guid: a21eb25456847a84baaa1d76451129b3, type: 3}
       propertyPath: id
-      value: -1252845512
+      value: 1696726322
       objectReference: {fileID: 0}
     - target: {fileID: 290579019, guid: a21eb25456847a84baaa1d76451129b3, type: 3}
       propertyPath: computedIconScale.x
@@ -33358,7 +33358,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4107015967540446, guid: a21eb25456847a84baaa1d76451129b3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.2
+      value: -7.43
       objectReference: {fileID: 0}
     - target: {fileID: 4107015967540446, guid: a21eb25456847a84baaa1d76451129b3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -33394,7 +33394,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2111074717118803064, guid: a21eb25456847a84baaa1d76451129b3, type: 3}
       propertyPath: AttackingExp
-      value: 175
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 2111074717118803064, guid: a21eb25456847a84baaa1d76451129b3, type: 3}
+      propertyPath: HalthDownSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2111074717118803064, guid: a21eb25456847a84baaa1d76451129b3, type: 3}
+      propertyPath: StartingHealth
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a21eb25456847a84baaa1d76451129b3, type: 3}
@@ -33674,7 +33682,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 352041573628464472, guid: ef182087fce33cc4e9ec00f480997288, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.03
+      value: -6.394
       objectReference: {fileID: 0}
     - target: {fileID: 352041573628464472, guid: ef182087fce33cc4e9ec00f480997288, type: 3}
       propertyPath: m_LocalPosition.z
@@ -34366,7 +34374,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 34487239, guid: 010452953d33eb34091228b8496769c4, type: 3}
       propertyPath: id
-      value: -70076726
+      value: -213201183
       objectReference: {fileID: 0}
     - target: {fileID: 34487239, guid: 010452953d33eb34091228b8496769c4, type: 3}
       propertyPath: distanceToCameraSQR
@@ -34382,7 +34390,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8733184696557853765, guid: 010452953d33eb34091228b8496769c4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.017
+      value: -6.92
       objectReference: {fileID: 0}
     - target: {fileID: 8733184696557853765, guid: 010452953d33eb34091228b8496769c4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -34449,7 +34457,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 420486554, guid: 68844edfdd09b6f45b4a36f26c3b5f70, type: 3}
       propertyPath: id
-      value: 1162364397
+      value: -1680709460
       objectReference: {fileID: 0}
     - target: {fileID: 420486554, guid: 68844edfdd09b6f45b4a36f26c3b5f70, type: 3}
       propertyPath: distanceToCameraSQR
@@ -34477,7 +34485,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5643802374264702975, guid: 68844edfdd09b6f45b4a36f26c3b5f70, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.328
+      value: -6.12
       objectReference: {fileID: 0}
     - target: {fileID: 5643802374264702975, guid: 68844edfdd09b6f45b4a36f26c3b5f70, type: 3}
       propertyPath: m_LocalPosition.z
@@ -34532,7 +34540,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 290579019, guid: a21eb25456847a84baaa1d76451129b3, type: 3}
       propertyPath: id
-      value: -663955723
+      value: 299407427
       objectReference: {fileID: 0}
     - target: {fileID: 290579019, guid: a21eb25456847a84baaa1d76451129b3, type: 3}
       propertyPath: computedIconScale.x
@@ -34544,7 +34552,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 290579019, guid: a21eb25456847a84baaa1d76451129b3, type: 3}
       propertyPath: distanceToCameraSQR
-      value: 595366.1
+      value: 687657.1
       objectReference: {fileID: 0}
     - target: {fileID: 1833125029741782, guid: a21eb25456847a84baaa1d76451129b3, type: 3}
       propertyPath: m_Name
@@ -34556,11 +34564,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4107015967540446, guid: a21eb25456847a84baaa1d76451129b3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -349.57
+      value: -203.418
       objectReference: {fileID: 0}
     - target: {fileID: 4107015967540446, guid: a21eb25456847a84baaa1d76451129b3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.974
+      value: -7.679
       objectReference: {fileID: 0}
     - target: {fileID: 4107015967540446, guid: a21eb25456847a84baaa1d76451129b3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -34596,7 +34604,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2111074717118803064, guid: a21eb25456847a84baaa1d76451129b3, type: 3}
       propertyPath: AttackingExp
-      value: 175
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 2111074717118803064, guid: a21eb25456847a84baaa1d76451129b3, type: 3}
+      propertyPath: HalthDownSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2111074717118803064, guid: a21eb25456847a84baaa1d76451129b3, type: 3}
+      propertyPath: StartingHealth
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a21eb25456847a84baaa1d76451129b3, type: 3}

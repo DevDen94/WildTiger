@@ -255,6 +255,7 @@ IL2CPP_EXTERN_C RuntimeClass* Misc_t7962CF9F87E4652A78745EA78F8BA07AB8473FC8_il2
 IL2CPP_EXTERN_C RuntimeClass* NotSupportedException_t1429765983D409BD2986508963C98D214E4EBF4A_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* OnHeartbeatEvent_tC87603285930CB2FFFFFD6CCC332F978BBBD31E3_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* U3CExecuteHandlerU3Ed__4_t0427C52E4303C9EF647CE706F53AB5DBAE0C5B62_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* U3CRemovePOIU3Ed__13_tB21D14AD0A7DECEC7E7DF9CFFB19EF84DFC0741D_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C_il2cpp_TypeInfo_var;
@@ -2591,6 +2592,16 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* GameObject_GetComponent_TisRun
 // T UnityEngine.GameObject::AddComponent<System.Object>()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* GameObject_AddComponent_TisRuntimeObject_m69B93700FACCF372F5753371C6E8FB780800B824_gshared (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* __this, const RuntimeMethod* method) ;
 
+// System.Void UnityEngine.MonoBehaviour::StopCoroutine(UnityEngine.Coroutine)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MonoBehaviour_StopCoroutine_mB0FC91BE84203BD8E360B3FBAE5B958B4C5ED22A (MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71* __this, Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B* ___0_routine, const RuntimeMethod* method) ;
+// System.Collections.IEnumerator CompassNavigatorPro.CompassButtonHandler::ExecuteHandler()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* CompassButtonHandler_ExecuteHandler_m9DB798A954AB413D436058CD77D8EF3F7B470B13 (CompassButtonHandler_t16208A0225987345B0F97D17F65727F57EEC43A8* __this, const RuntimeMethod* method) ;
+// UnityEngine.Coroutine UnityEngine.MonoBehaviour::StartCoroutine(System.Collections.IEnumerator)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B* MonoBehaviour_StartCoroutine_m4CAFF732AA28CD3BDC5363B44A863575530EC812 (MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71* __this, RuntimeObject* ___0_routine, const RuntimeMethod* method) ;
+// System.Void CompassNavigatorPro.CompassButtonHandler/<ExecuteHandler>d__4::.ctor(System.Int32)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CExecuteHandlerU3Ed__4__ctor_m91063F33BF7B05F908461E66EAADC559E96498C1 (U3CExecuteHandlerU3Ed__4_t0427C52E4303C9EF647CE706F53AB5DBAE0C5B62* __this, int32_t ___0_U3CU3E1__state, const RuntimeMethod* method) ;
+// System.Void UnityEngine.MonoBehaviour::.ctor()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E (MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71* __this, const RuntimeMethod* method) ;
 // System.Void System.Object::.ctor()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2 (RuntimeObject* __this, const RuntimeMethod* method) ;
 // System.Void UnityEngine.WaitForEndOfFrame::.ctor()
@@ -2623,8 +2634,6 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Transform_set_localScale_mBA79E811BAF6C47B80FF76414C12B47B3CD03633 (Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* __this, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_value, const RuntimeMethod* method) ;
 // System.Void UnityEngine.Color::.ctor(System.Single,System.Single,System.Single,System.Single)
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline (Color_tD001788D726C3A7F1379BEED0260B9591F440C1F* __this, float ___0_r, float ___1_g, float ___2_b, float ___3_a, const RuntimeMethod* method) ;
-// System.Void UnityEngine.MonoBehaviour::.ctor()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E (MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71* __this, const RuntimeMethod* method) ;
 // System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602 (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C* ___0_x, Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C* ___1_y, const RuntimeMethod* method) ;
 // UnityEngine.Vector2 UnityEngine.EventSystems.PointerEventData::get_position()
@@ -2868,8 +2877,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* String_Concat_m8855A6DE10F84DA7F4EC
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB (RuntimeObject* ___0_message, const RuntimeMethod* method) ;
 // System.Collections.IEnumerator CompassNavigatorProDemos.LevelManager::RemovePOI(CompassNavigatorPro.CompassProPOI)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* LevelManager_RemovePOI_m35198F2A56183744C390E97F85E51DAF5773736C (LevelManager_t12A59FD04F93561AEC3E55D9E40A0A1C7173F814* __this, CompassProPOI_t23B47A8A8CD83B4B52C2F23C9FD537F28EEF3607* ___0_poi, const RuntimeMethod* method) ;
-// UnityEngine.Coroutine UnityEngine.MonoBehaviour::StartCoroutine(System.Collections.IEnumerator)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B* MonoBehaviour_StartCoroutine_m4CAFF732AA28CD3BDC5363B44A863575530EC812 (MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71* __this, RuntimeObject* ___0_routine, const RuntimeMethod* method) ;
 // System.Void CompassNavigatorProDemos.LevelManager/<RemovePOI>d__13::.ctor(System.Int32)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CRemovePOIU3Ed__13__ctor_mCF4C431429A89C5839018E0A90D87E83771620AA (U3CRemovePOIU3Ed__13_tB21D14AD0A7DECEC7E7DF9CFFB19EF84DFC0741D* __this, int32_t ___0_U3CU3E1__state, const RuntimeMethod* method) ;
 // System.String UnityEngine.Vector3::ToString()
@@ -2906,6 +2913,95 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t String_get_Length_m42625D
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 Quaternion_Internal_FromEulerRad_m66D4475341F53949471E6870FB5C5E4A5E9BA93E (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___0_euler, const RuntimeMethod* method) ;
 // System.Void UnityEngine.Quaternion::.ctor(System.Single,System.Single,System.Single,System.Single)
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Quaternion__ctor_m868FD60AA65DD5A8AC0C5DEB0608381A8D85FCD8_inline (Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974* __this, float ___0_x, float ___1_y, float ___2_z, float ___3_w, const RuntimeMethod* method) ;
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// System.Void CompassNavigatorPro.CompassButtonHandler::OnPointerDown(UnityEngine.EventSystems.PointerEventData)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CompassButtonHandler_OnPointerDown_mDD716330BA98DE60DA5EC681307B18B91F9AB953 (CompassButtonHandler_t16208A0225987345B0F97D17F65727F57EEC43A8* __this, PointerEventData_t9670F3C7D823CCB738A1604C72A1EB90292396FB* ___0_eventData, const RuntimeMethod* method) 
+{
+	{
+		// if (co != null) {
+		Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B* L_0 = __this->___co_5;
+		if (!L_0)
+		{
+			goto IL_0014;
+		}
+	}
+	{
+		// StopCoroutine (co);
+		Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B* L_1 = __this->___co_5;
+		MonoBehaviour_StopCoroutine_mB0FC91BE84203BD8E360B3FBAE5B958B4C5ED22A(__this, L_1, NULL);
+	}
+
+IL_0014:
+	{
+		// co = StartCoroutine (ExecuteHandler ());
+		RuntimeObject* L_2;
+		L_2 = CompassButtonHandler_ExecuteHandler_m9DB798A954AB413D436058CD77D8EF3F7B470B13(__this, NULL);
+		Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B* L_3;
+		L_3 = MonoBehaviour_StartCoroutine_m4CAFF732AA28CD3BDC5363B44A863575530EC812(__this, L_2, NULL);
+		__this->___co_5 = L_3;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___co_5), (void*)L_3);
+		// }
+		return;
+	}
+}
+// System.Void CompassNavigatorPro.CompassButtonHandler::OnPointerUp(UnityEngine.EventSystems.PointerEventData)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CompassButtonHandler_OnPointerUp_m8E3965A479CDD16DB76D696E9FD0720F021E2653 (CompassButtonHandler_t16208A0225987345B0F97D17F65727F57EEC43A8* __this, PointerEventData_t9670F3C7D823CCB738A1604C72A1EB90292396FB* ___0_eventData, const RuntimeMethod* method) 
+{
+	{
+		// if (co != null) {
+		Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B* L_0 = __this->___co_5;
+		if (!L_0)
+		{
+			goto IL_0014;
+		}
+	}
+	{
+		// StopCoroutine (co);
+		Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B* L_1 = __this->___co_5;
+		MonoBehaviour_StopCoroutine_mB0FC91BE84203BD8E360B3FBAE5B958B4C5ED22A(__this, L_1, NULL);
+	}
+
+IL_0014:
+	{
+		// }
+		return;
+	}
+}
+// System.Collections.IEnumerator CompassNavigatorPro.CompassButtonHandler::ExecuteHandler()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* CompassButtonHandler_ExecuteHandler_m9DB798A954AB413D436058CD77D8EF3F7B470B13 (CompassButtonHandler_t16208A0225987345B0F97D17F65727F57EEC43A8* __this, const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&U3CExecuteHandlerU3Ed__4_t0427C52E4303C9EF647CE706F53AB5DBAE0C5B62_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		U3CExecuteHandlerU3Ed__4_t0427C52E4303C9EF647CE706F53AB5DBAE0C5B62* L_0 = (U3CExecuteHandlerU3Ed__4_t0427C52E4303C9EF647CE706F53AB5DBAE0C5B62*)il2cpp_codegen_object_new(U3CExecuteHandlerU3Ed__4_t0427C52E4303C9EF647CE706F53AB5DBAE0C5B62_il2cpp_TypeInfo_var);
+		NullCheck(L_0);
+		U3CExecuteHandlerU3Ed__4__ctor_m91063F33BF7B05F908461E66EAADC559E96498C1(L_0, 0, NULL);
+		U3CExecuteHandlerU3Ed__4_t0427C52E4303C9EF647CE706F53AB5DBAE0C5B62* L_1 = L_0;
+		NullCheck(L_1);
+		L_1->___U3CU3E4__this_2 = __this;
+		Il2CppCodeGenWriteBarrier((void**)(&L_1->___U3CU3E4__this_2), (void*)__this);
+		return L_1;
+	}
+}
+// System.Void CompassNavigatorPro.CompassButtonHandler::.ctor()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CompassButtonHandler__ctor_m23A6D2060836130D753372E1C8D8C6CB5B6FA1F7 (CompassButtonHandler_t16208A0225987345B0F97D17F65727F57EEC43A8* __this, const RuntimeMethod* method) 
+{
+	{
+		MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E(__this, NULL);
+		return;
+	}
+}
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
 #ifdef __clang__
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Winvalid-offsetof"

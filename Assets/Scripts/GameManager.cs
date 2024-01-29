@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
         }
         for (int i = 0; i < selectedLevelData.Animals.Length; i++)
         {
-            Debug.LogError(AnimalList[i]);
+          //  Debug.LogError(AnimalList[i]);
             AnimalList[i].SetActive(true);
             selectedLevelData.killCount[i] = 0;
             AnimalList[i].gameObject.GetComponent<Text>().text = selectedLevelData.Animals[i] + "                   " + selectedLevelData.killCount[i] + "/" + selectedLevelData.TotalKillCount[i];
@@ -206,7 +206,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(CompletePanel());
         IEnumerator CompletePanel()
         {
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(3f);
             GameManager.Instance.LevelComplete();
 
             if (PlayerPrefs.GetInt("Level") == PlayerPrefs.GetInt("UnlockedLevels"))

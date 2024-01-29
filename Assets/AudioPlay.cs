@@ -11,6 +11,7 @@ public class AudioPlay : MonoBehaviour
         {
             this.gameObject.GetComponent<AudioSource>().enabled = true;
         }
+
     }
     private void OnTriggerExit(Collider other)
     {

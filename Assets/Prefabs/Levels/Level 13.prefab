@@ -8394,7 +8394,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1554620845395472997}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
@@ -23576,7 +23576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b228ecea880bf78479417e649caa3d35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TotalEnemyInLevel: 2
+  TotalEnemyInLevel: 7
   PausePanel: {fileID: 4831960023586526833}
   Complete: {fileID: 4831960023103088568}
   Fail: {fileID: 4831960022467609376}
@@ -24759,7 +24759,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: HP
+  m_Text: 
 --- !u!1 &5135846842195619560
 GameObject:
   m_ObjectHideFlags: 0
@@ -25260,7 +25260,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5321675535971731202}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 

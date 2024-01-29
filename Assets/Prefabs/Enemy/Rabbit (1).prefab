@@ -244,6 +244,7 @@ GameObject:
   - component: {fileID: 3256990330751917408}
   - component: {fileID: 3256990330751917409}
   - component: {fileID: 3256990330751917410}
+  - component: {fileID: -1024516778799586272}
   m_Layer: 20
   m_Name: Rabbit (1)
   m_TagString: Untagged
@@ -380,6 +381,77 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.42674774, y: 0.65842694, z: 0.6196696}
   m_Center: {x: -0.002141277, y: 0.34109497, z: 0.112202965}
+--- !u!114 &-1024516778799586272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3256990330751917412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78ba861a214074aa4bdac708dcacc9fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 231617286
+  priority: 0
+  visibility: 0
+  visibleDistanceOverride: 0
+  visibleMinDistanceOverride: 0
+  minDistanceText: 10
+  title: Rabbit
+  titleVisibility: 1
+  canBeVisited: 1
+  visitedDistanceOverride: 0
+  hideWhenVisited: 0
+  isVisited: 1
+  visitedText: 
+  visitedAudioClip: {fileID: 0}
+  radius: 0
+  iconScale: 1
+  iconNonVisited: {fileID: 0}
+  iconVisited: {fileID: 21300000, guid: f50c9f6964f674e4b80d82111447e0de, type: 3}
+  tintColor: {r: 1, g: 1, b: 1, a: 1}
+  showPlayModeGizmo: 0
+  clampPosition: 0
+  beaconAudioClip: {fileID: 0}
+  dontDestroyOnLoad: 0
+  heartbeatEnabled: 0
+  heartbeatAudioClip: {fileID: 0}
+  heartbeatDistance: 20
+  heartbeatInterval:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.25
+      inSlope: 0
+      outSlope: 2.75
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 3
+      inSlope: 2.75
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  miniMapVisibility: 0
+  miniMapClampPosition: 0
+  miniMapShowRotation: 0
+  miniMapRotationAngleOffset: 0
+  miniMapIconScale: 1
+  distanceToCameraSQR: 462865.97
+  computedIconScale: {x: 0.49916196, y: 0.49916196, z: 1}
+  iconAlpha: 0
+  miniMapCurrentIconScale: {x: 0.5, y: 0.5, z: 0.5}
 --- !u!1 &3256990330755557753
 GameObject:
   m_ObjectHideFlags: 0

@@ -3195,7 +3195,7 @@ MonoBehaviour:
   radius: 0
   iconScale: 1
   iconNonVisited: {fileID: 0}
-  iconVisited: {fileID: 21300000, guid: 4e844242f419f7d4e93d93bf789b305c, type: 3}
+  iconVisited: {fileID: 21300000, guid: c1362b7739148924aaf3dad164672da3, type: 3}
   tintColor: {r: 1, g: 1, b: 1, a: 1}
   showPlayModeGizmo: 0
   clampPosition: 0

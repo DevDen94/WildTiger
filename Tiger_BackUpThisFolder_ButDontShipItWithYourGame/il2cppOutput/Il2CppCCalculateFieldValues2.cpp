@@ -4618,12 +4618,12 @@ struct U3CU3Ec_t124AFA44553F835AFE37BF9E66B435E4CA7DB8B4  : public RuntimeObject
 {
 };
 
-// EnemyAIAggresive/<CompletePanel>d__31
-struct U3CCompletePanelU3Ed__31_t542250D093A521B376C69869F576FBE70F8FADD4  : public RuntimeObject
+// EnemyAIAggresive/<CompletePanel>d__32
+struct U3CCompletePanelU3Ed__32_tFAAD6EB22D7519DD21A582B1A8E7683F1B52BA49  : public RuntimeObject
 {
-	// System.Int32 EnemyAIAggresive/<CompletePanel>d__31::<>1__state
+	// System.Int32 EnemyAIAggresive/<CompletePanel>d__32::<>1__state
 	int32_t ___U3CU3E1__state_0;
-	// System.Object EnemyAIAggresive/<CompletePanel>d__31::<>2__current
+	// System.Object EnemyAIAggresive/<CompletePanel>d__32::<>2__current
 	RuntimeObject* ___U3CU3E2__current_1;
 };
 
@@ -27130,9 +27130,9 @@ struct U3CU3Ec_t124AFA44553F835AFE37BF9E66B435E4CA7DB8B4_StaticFields
 
 // DG.Tweening.Core.Easing.EaseManager/<>c
 
-// EnemyAIAggresive/<CompletePanel>d__31
+// EnemyAIAggresive/<CompletePanel>d__32
 
-// EnemyAIAggresive/<CompletePanel>d__31
+// EnemyAIAggresive/<CompletePanel>d__32
 
 // UnityEngine.EventSystems.EventSystem/<>c__DisplayClass52_0
 
@@ -33689,7 +33689,7 @@ IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable6585[16] =
 	static_cast<int32_t>(offsetof(EnemyAI_t062D6559860346BBF7415F088B566404469B3C50, ___player_4)),static_cast<int32_t>(offsetof(EnemyAI_t062D6559860346BBF7415F088B566404469B3C50, ___detectionRange_5)),static_cast<int32_t>(offsetof(EnemyAI_t062D6559860346BBF7415F088B566404469B3C50, ___runningSpeed_6)),static_cast<int32_t>(offsetof(EnemyAI_t062D6559860346BBF7415F088B566404469B3C50, ___animator_7)),static_cast<int32_t>(offsetof(EnemyAI_t062D6559860346BBF7415F088B566404469B3C50, ___navMeshAgent_8)),static_cast<int32_t>(offsetof(EnemyAI_t062D6559860346BBF7415F088B566404469B3C50, ___HealthSlider_9)),static_cast<int32_t>(offsetof(EnemyAI_t062D6559860346BBF7415F088B566404469B3C50, ___StartingHealth_10)),static_cast<int32_t>(offsetof(EnemyAI_t062D6559860346BBF7415F088B566404469B3C50, ___HalthDownSpeed_11)),static_cast<int32_t>(offsetof(EnemyAI_t062D6559860346BBF7415F088B566404469B3C50, ___PlayerAnimator_12)),static_cast<int32_t>(offsetof(EnemyAI_t062D6559860346BBF7415F088B566404469B3C50, ____Camera_13)),static_cast<int32_t>(offsetof(EnemyAI_t062D6559860346BBF7415F088B566404469B3C50, ___Healthbar_14)),static_cast<int32_t>(offsetof(EnemyAI_t062D6559860346BBF7415F088B566404469B3C50, ___KillAnimals_15)),static_cast<int32_t>(offsetof(EnemyAI_t062D6559860346BBF7415F088B566404469B3C50, ___TextUIHealth_16)),static_cast<int32_t>(offsetof(EnemyAI_t062D6559860346BBF7415F088B566404469B3C50, ___MouthPosition_17)),static_cast<int32_t>(offsetof(EnemyAI_t062D6559860346BBF7415F088B566404469B3C50, ___CheckForIncriment_18)),static_cast<int32_t>(offsetof(EnemyAI_t062D6559860346BBF7415F088B566404469B3C50, ___DefenciveExp_19)),};
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable6586[2] = 
 {
-	static_cast<int32_t>(offsetof(U3CCompletePanelU3Ed__31_t542250D093A521B376C69869F576FBE70F8FADD4, ___U3CU3E1__state_0)),static_cast<int32_t>(offsetof(U3CCompletePanelU3Ed__31_t542250D093A521B376C69869F576FBE70F8FADD4, ___U3CU3E2__current_1)),};
+	static_cast<int32_t>(offsetof(U3CCompletePanelU3Ed__32_tFAAD6EB22D7519DD21A582B1A8E7683F1B52BA49, ___U3CU3E1__state_0)),static_cast<int32_t>(offsetof(U3CCompletePanelU3Ed__32_tFAAD6EB22D7519DD21A582B1A8E7683F1B52BA49, ___U3CU3E2__current_1)),};
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable6587[25] = 
 {
 	static_cast<int32_t>(offsetof(EnemyAIAggresive_tFB562ACEE4C534435126EE25BE2F8299B9AF7318, ___detectionRadius_4)),static_cast<int32_t>(offsetof(EnemyAIAggresive_tFB562ACEE4C534435126EE25BE2F8299B9AF7318, ___attackRange_5)),static_cast<int32_t>(offsetof(EnemyAIAggresive_tFB562ACEE4C534435126EE25BE2F8299B9AF7318, ___runSpeed_6)),static_cast<int32_t>(offsetof(EnemyAIAggresive_tFB562ACEE4C534435126EE25BE2F8299B9AF7318, ___walkSpeed_7)),static_cast<int32_t>(offsetof(EnemyAIAggresive_tFB562ACEE4C534435126EE25BE2F8299B9AF7318, ___rotationSpeed_8)),static_cast<int32_t>(offsetof(EnemyAIAggresive_tFB562ACEE4C534435126EE25BE2F8299B9AF7318, ___player_9)),static_cast<int32_t>(offsetof(EnemyAIAggresive_tFB562ACEE4C534435126EE25BE2F8299B9AF7318, ___animator_10)),static_cast<int32_t>(offsetof(EnemyAIAggresive_tFB562ACEE4C534435126EE25BE2F8299B9AF7318, ___playerDetected_11)),static_cast<int32_t>(offsetof(EnemyAIAggresive_tFB562ACEE4C534435126EE25BE2F8299B9AF7318, ___isAttacking_12)),static_cast<int32_t>(offsetof(EnemyAIAggresive_tFB562ACEE4C534435126EE25BE2F8299B9AF7318, ___isChasing_13)),static_cast<int32_t>(offsetof(EnemyAIAggresive_tFB562ACEE4C534435126EE25BE2F8299B9AF7318, ___minDistance_14)),static_cast<int32_t>(offsetof(EnemyAIAggresive_tFB562ACEE4C534435126EE25BE2F8299B9AF7318, ___EnemyHealth_15)),static_cast<int32_t>(offsetof(EnemyAIAggresive_tFB562ACEE4C534435126EE25BE2F8299B9AF7318, ___HealthBAr_16)),static_cast<int32_t>(offsetof(EnemyAIAggresive_tFB562ACEE4C534435126EE25BE2F8299B9AF7318, ____Camera_17)),static_cast<int32_t>(offsetof(EnemyAIAggresive_tFB562ACEE4C534435126EE25BE2F8299B9AF7318, ___StartingHealth_18)),static_cast<int32_t>(offsetof(EnemyAIAggresive_tFB562ACEE4C534435126EE25BE2F8299B9AF7318, ___HalthDownSpeed_19)),static_cast<int32_t>(offsetof(EnemyAIAggresive_tFB562ACEE4C534435126EE25BE2F8299B9AF7318, ___PlayerAnimator_20)),static_cast<int32_t>(offsetof(EnemyAIAggresive_tFB562ACEE4C534435126EE25BE2F8299B9AF7318, ___walkingRadius_21)),static_cast<int32_t>(offsetof(EnemyAIAggresive_tFB562ACEE4C534435126EE25BE2F8299B9AF7318, ___initialPosition_22)),static_cast<int32_t>(offsetof(EnemyAIAggresive_tFB562ACEE4C534435126EE25BE2F8299B9AF7318, ___TextUIHealth_23)),static_cast<int32_t>(offsetof(EnemyAIAggresive_tFB562ACEE4C534435126EE25BE2F8299B9AF7318, ___waterAvoidanceDistance_24)),static_cast<int32_t>(offsetof(EnemyAIAggresive_tFB562ACEE4C534435126EE25BE2F8299B9AF7318, ___AttackingExp_25)),static_cast<int32_t>(offsetof(EnemyAIAggresive_tFB562ACEE4C534435126EE25BE2F8299B9AF7318, ___distanceToWater_26)),static_cast<int32_t>(offsetof(EnemyAIAggresive_tFB562ACEE4C534435126EE25BE2F8299B9AF7318, ___Water_27)),static_cast<int32_t>(offsetof(EnemyAIAggresive_tFB562ACEE4C534435126EE25BE2F8299B9AF7318, ___isDeath_28)),};

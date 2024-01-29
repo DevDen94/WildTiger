@@ -187,6 +187,7 @@ public class EnemyAIAggresive : MonoBehaviour
                 GameManager.Instance.update_stats(this.gameObject.name);
                 isDeath = true;
                 GameManager.Instance.KillAnimals++;
+               
                 GetComponent<MapMarker>().isActive = false;
                 this.gameObject.GetComponent<BoxCollider>().enabled = false;
                // GameManager.Instance.EatPopUp.SetActive(true);
@@ -209,7 +210,7 @@ public class EnemyAIAggresive : MonoBehaviour
                 PlayerPrefs.SetInt("TigerExp", PlayerPrefs.GetInt("TigerExp") + AttackingExp);
                 GameManager.Instance.ExpTxt.text = PlayerPrefs.GetInt("TigerExp").ToString();
                 GameManager.Instance.TierUpdate();
-               // gameObject.SetActive(false);
+                Invoke("disableSelf", 3f);
             }
 
         }
@@ -217,7 +218,10 @@ public class EnemyAIAggresive : MonoBehaviour
 
     }
 
-
+    public void disableSelf()
+    {
+        gameObject.SetActive(false);
+    }
     IEnumerator CompletePanel()
     {
         yield return new WaitForSeconds(5f);

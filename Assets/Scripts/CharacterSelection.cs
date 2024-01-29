@@ -60,7 +60,7 @@ public class CharacterSelection : MonoBehaviour
     }
     public void BuyCharacter()
     {
-        GoogleMobileAdsController.Instance.ShowRewardedAd();
+        GoogleMobileAdsController.Instance.ShowRewardedAd_();
         
        
     }
@@ -113,6 +113,7 @@ public class CharacterSelection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+      
+
     }
 }

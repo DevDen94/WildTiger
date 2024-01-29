@@ -34,9 +34,7 @@ public class LevelLoader : MonoBehaviour
         {
             Debug.Log("All levels completed!");
             //LoadLevel(PlayerPrefs.GetInt("Level"));
-            
-            
-               
+             
             SceneManager.LoadScene(1);
         }
         else
@@ -61,5 +59,13 @@ public class LevelLoader : MonoBehaviour
         Instantiate(Levels[index]);
     }
 
+    private void Update()
+    {
+        if (PlayerPrefs.GetInt("Level") > Levels.Length)
+        {
+          
 
+            SceneManager.LoadScene(0);
+        }
+    }
 }
