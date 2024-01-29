@@ -233,7 +233,8 @@ public class GameManager : MonoBehaviour
 
 
             }
-            GoogleMobileAdsController.Instance.ShowInterstitialAd();
+            // GoogleMobileAdsController.Instance.ShowInterstitialAd();
+            Implementation.instance.ShowInterstitial();
         }
     }
 }

@@ -38,8 +38,9 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.SetInt("BuyTiger" + 0, 1);//ForlockedTigers
         PlayerPrefs.SetInt("BuyTiger" + 1, 0);//ForlockedTigers
         PlayerPrefs.SetInt("BuyTiger" + 2, 0);//ForlockedTigers
-        GoogleMobileAdsController.Instance.ShowSmallBannerAd();
+        //GoogleMobileAdsController.Instance.ShowSmallBannerAd();
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        Implementation.instance.ShowBanner();
     }
 
     IEnumerator LoadingComplete()
@@ -133,7 +134,8 @@ public class MainMenu : MonoBehaviour
 
     public void showInterstatialAD()
     {
-        GoogleMobileAdsController.Instance.ShowInterstitialAd();
+        //  GoogleMobileAdsController.Instance.ShowInterstitialAd();
+        Implementation.instance.ShowInterstitial();
     }
     public void ExitBtn()
     {

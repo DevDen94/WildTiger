@@ -60,7 +60,7 @@ public class CharacterSelection : MonoBehaviour
     }
     public void BuyCharacter()
     {
-        GoogleMobileAdsController.Instance.ShowRewardedAd_();
+        Implementation.instance.ShowRewardedVideo();
         
        
     }

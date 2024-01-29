@@ -189,7 +189,7 @@ public class AnimalScript : MonoBehaviour
                 {
                     GameManager.Instance.LevelFail();
                     Invoke(nameof(DisableClawIamge), 0f);
-                    GoogleMobileAdsController.Instance.ShowInterstitialAd();
+                    //GoogleMobileAdsController.Instance.ShowInterstitialAd();
                 }
 
             }
