@@ -54,7 +54,7 @@ public class LevelLoader : MonoBehaviour
 
     private void LoadLevel(int index)
     {
-        Debug.LogError(PlayerPrefs.GetInt("UnlockedLevels"));
+    //    Debug.LogError(PlayerPrefs.GetInt("UnlockedLevels"));
         // Load the next level prefab
         Instantiate(Levels[index]);
     }
