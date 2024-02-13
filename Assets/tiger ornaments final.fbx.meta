@@ -1,0 +1,264 @@
+fileFormatVersion: 2
+guid: 2bfcd320be8946947958f4aaa7e0498e
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 03 - Default.001
+    second: {fileID: 2100000, guid: 01510d1ecce79ca4fb1cacf4e2ce3911, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FedoraHat
+    second: {fileID: 2100000, guid: 1752cdb8f343a4445bd041e550b931fc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GoldChain
+    second: {fileID: 2100000, guid: 3b8154a57d3994c4d923b5678731ab33, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HeartSunglasses
+    second: {fileID: 2100000, guid: 864e4aeea34af3e4083e7790fd4af092, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HeartSunglasses_Lenses
+    second: {fileID: 2100000, guid: c24044a0d0dc8be48b3e6cc8795397be, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: f117ed445f2153a479b735071d5d087d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: b240eb79c60610d42b6fc5ac4f987725, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MusketeerHat
+    second: {fileID: 2100000, guid: 57806e1160e3de3468bed0bd9fc8751f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SamuraiHelmet
+    second: {fileID: 2100000, guid: 66050091558525e408d9b5596b28f543, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StarSunglasses
+    second: {fileID: 2100000, guid: 9a3534519cd76134d9ec4308b1576133, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StarSunglasses_Lenses
+    second: {fileID: 2100000, guid: ca2c896c8d84420478453aa32f96b851, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SteampunkHat
+    second: {fileID: 2100000, guid: 8443186f4bd7dd94c99ec34d3cb6716b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SultanHat
+    second: {fileID: 2100000, guid: e70b9e1abac30ad4c8c7f9460b3a0abc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: VintageRoundSunglasses
+    second: {fileID: 2100000, guid: 4cbbe5c0e5051b9459cdb34c20474c47, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: VintageRoundSunglasses2
+    second: {fileID: 2100000, guid: 07f1199b60e4da941afed7c658668c5c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: VintageRoundSunglasses_Lenses
+    second: {fileID: 2100000, guid: 374abb774c82efd46882b335fb213d36, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhiteCowboyHat
+    second: {fileID: 2100000, guid: 5bdeb9e1ae7432e4b96f7febb82a0070, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: FedoraHat_Albedo
+    second: {fileID: 2800000, guid: af3960a849b32884baa747e98e111f81, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: FedoraHat_Normal
+    second: {fileID: 2800000, guid: b1ca2e1e3820a364d9932a70f24faec8, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: MusketeerHat_Albedo
+    second: {fileID: 2800000, guid: af30f58532bee4b4799161c072ddcf06, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: MusketeerHat_Normal
+    second: {fileID: 2800000, guid: edf5386ef9838ec4cb18349c83383a59, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: SamuraiHelmet_BaseColor
+    second: {fileID: 2800000, guid: 5f4ca49b03fb66a4b958826b5d4eb9cf, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: SamuraiHelmet_Normal
+    second: {fileID: 2800000, guid: c21a12dadc4310742b8013226f284a37, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: SteampunkHat_BaseColor
+    second: {fileID: 2800000, guid: 89acdae6a141e6342a6b56c296406be3, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: SteampunkHat_Normal
+    second: {fileID: 2800000, guid: bb35fab224bce74438d5a7961a84584c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: SultanHat_Albedo
+    second: {fileID: 2800000, guid: 9941ff2eb61e1064c8eb38c4f1f246ee, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: SultanHat_Normal
+    second: {fileID: 2800000, guid: 1ca5fed60b25ab94d8cbe2230863519e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Tiger Skin White
+    second: {fileID: 2800000, guid: 3e13ae503f3d5d8488bb8d5879189663, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: WhiteCowboyHat_Albedo
+    second: {fileID: 2800000, guid: ed27b249328681146a9cbaa95f40e787, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: WhiteCowboyHat_Normal
+    second: {fileID: 2800000, guid: bdfd16c2e4179f641a199c1ab7292314, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: tiger claw texture
+    second: {fileID: 2800000, guid: f7e64e22a99578e46863fcfb8e59920c, type: 3}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

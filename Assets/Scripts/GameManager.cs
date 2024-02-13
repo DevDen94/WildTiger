@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
 
         PlayerPrefs.SetInt("First", 0);
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        SelectedTiger.GetComponent<ItemsData>().Selected();
     }
 
     int abc;
