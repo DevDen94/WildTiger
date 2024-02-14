@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using TMPro;
+using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour
 {
@@ -12,9 +14,13 @@ public class ShopManager : MonoBehaviour
     public int[] glassPrice;
     public int[] LocketPrice;
     public int[] CapsPrice;
+    public Material[] skins; 
     public ItemsData itemData;
-    public GameObject BuyButton, SelectButton;
+    public GameObject BuyButton, SelectButton, watchadButton ; 
     int selectedIndex = -1;
+    public SkinnedMeshRenderer SkinnedMeshRenderer;
+    public GameObject notcoins;
+    
     bool isItemPurchased
     {
         
@@ -26,6 +32,48 @@ public class ShopManager : MonoBehaviour
         {
           
             PlayerPrefs.SetInt("Purcashed" + selectedIndex + "_" + itemIndex, Convert.ToInt32(value));
+        }
+    }
+  
+
+    public void SetMterial(int index)
+    {
+        notcoins.SetActive(false);
+        SkinnedMeshRenderer.material = skins[index];
+        PlayerPrefs.SetInt("SelectedCharacter",index);
+        Debug.LogError(PlayerPrefs.GetInt("BuyTiger" + index, 1));
+        if (PlayerPrefs.GetInt("BuyTiger" + index, 1)==1) 
+        {
+            BuyButton.SetActive(false);
+            watchadButton.SetActive(false);
+            SelectButton.SetActive(true);
+            
+        }
+        else
+        {
+            BuyButton.SetActive(true); 
+            watchadButton.SetActive(true);
+            SelectButton.SetActive(false);
+
+            // 
+        }
+
+        BuyButton.transform.GetChild(0).GetComponent<Text>().text = skinprices[index].ToString();
+    }
+    public int[] skinprices;
+    public  void unlockTigerWithCoins()
+    {
+        if (CoinsManager.instance.coins >= skinprices[PlayerPrefs.GetInt("SelectedCharacter")])
+        {
+            CoinsManager.instance.deductCoins(skinprices[PlayerPrefs.GetInt("SelectedCharacter")]); 
+            CharacterSelection.Instance.UnlockAfterAddWatch(PlayerPrefs.GetInt("SelectedCharacter"));
+            BuyButton.SetActive(false);
+            watchadButton.SetActive(false);
+
+        }
+        else
+        {
+            notcoins.SetActive(true);
         }
     }
     public void Start()
@@ -98,9 +146,9 @@ public class ShopManager : MonoBehaviour
             PlayerPrefs.SetInt("CapsitemIndex", itemIndex);
             }
             
-        }
+        } 
     }
-
+    
     public void SetItems()
     {
 

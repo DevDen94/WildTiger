@@ -12,15 +12,15 @@ public class MainMenu : MonoBehaviour
     public GameObject MainMenuPanel;
     public Image LoadingFillAmount;
     public Text loadingText;
-
+    public GameObject coinmanager;
     [Space(2)]
     [Header("Level Selection")]
     public GameObject[] LevelButtons;
 
     void Start()
     {
+  //   CharacterSelection.Instance.enableTigerModel.SetActive(false);
 
-       
         StartCoroutine(LoadingComplete());
 
         if (!PlayerPrefs.HasKey("UnlockedLevels"))
@@ -45,9 +45,10 @@ public class MainMenu : MonoBehaviour
 
     IEnumerator LoadingComplete()
     {
+
         // Show loading panel
         LoadingPanel.SetActive(true);
-
+        coinmanager.SetActive(false);
         // Set initial values
         LoadingFillAmount.fillAmount = 0f;
         loadingText.text = "Loading 0%";
@@ -70,6 +71,7 @@ public class MainMenu : MonoBehaviour
        
             // Hide loading panel
             LoadingPanel.SetActive(false);
+        coinmanager.SetActive(true);
 
             // Show main menu panel
             MainMenuPanel.SetActive(true);

@@ -90,7 +90,7 @@ public class AnimalScript : MonoBehaviour
               
                 if (IsEnemyInFront())
                 {
-                    
+                    GameManager.Instance.StunSound.Play();
                     lineRenderer.enabled = true;
                     lineRenderer.SetPosition(0, transform.position);
                     lineRenderer.SetPosition(1, enemy.transform.position);

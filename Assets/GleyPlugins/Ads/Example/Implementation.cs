@@ -64,7 +64,7 @@ public class Implementation : MonoBehaviour
     private void CompleteMethod(bool completed)
     {
         
-            CharacterSelection.Instance.UnlockAfterAddWatch();
+            CharacterSelection.Instance.UnlockAfterAddWatch(PlayerPrefs.GetInt("SelectedCharacter"));
         
     }
 }

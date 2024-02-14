@@ -17,8 +17,8 @@ public class CoinsManager : MonoBehaviour
 	}
 
 
-	int coins {
-		get { return PlayerPrefs.GetInt ("Coins", 10000); }
+public 	int coins {
+		get { return PlayerPrefs.GetInt ("Coins", 10); }
 		set { PlayerPrefs.SetInt ("Coins", value); }
 	}
 
@@ -40,8 +40,8 @@ public class CoinsManager : MonoBehaviour
 		while (t > coins) {
 			coins++;
 			CoinsText.text = coins.ToString ();
-			yield return new WaitForEndOfFrame ();
 		}
+			yield return null;
 
 		//coins = amount;
 		CoinsText.text = coins.ToString ();
@@ -54,8 +54,8 @@ public class CoinsManager : MonoBehaviour
 		{
 			coins--;
 			CoinsText.text = coins.ToString();
-			yield return new WaitForEndOfFrame();
 		}
+			yield return null;
 
 		//coins = amount;
 		CoinsText.text = coins.ToString();

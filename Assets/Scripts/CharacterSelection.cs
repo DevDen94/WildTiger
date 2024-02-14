@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 public class CharacterSelection : MonoBehaviour
 {
     public static CharacterSelection Instance;
-    public Button[] CharctersButtons;
+  //  public Button[] CharctersButtons;
     public int SelectedTiger;
     public Button Selectbtn;
     public GameObject AdPopup;
     public Text FirstAdtxt, Secondtxt;
+    public GameObject WatchAd, CoinsButton;
+    public GameObject enableTigerModel;
     private void Awake()
     {
         if (Instance == null)
@@ -22,6 +25,7 @@ public class CharacterSelection : MonoBehaviour
         FirstAdtxt.text = "0/1".ToString();
         Secondtxt.text = "0/1".ToString();
         //LockingButtons();
+        enableTigerModel.SetActive(true);
 
     }
     public void SelectedCharacter(int i)
@@ -33,18 +37,22 @@ public class CharacterSelection : MonoBehaviour
         LockingButtons();
        
     }
-    public void UnlockAfterAddWatch()
+    public void UnlockAfterAddWatch(int index)
     {
-        if (SelectedTiger > 0)
+        WatchAd.SetActive(false);
+        CoinsButton.SetActive(false); // 
+   
         {
-            PlayerPrefs.SetInt("BuyTiger" + SelectedTiger, 1);
+            PlayerPrefs.SetInt("BuyTiger" + index, 1);
 
             Selectbtn.gameObject.SetActive(true);
 
             AdPopup.SetActive(false);
+            enableTigerModel.SetActive(true);
+
             PlayerPrefs.SetInt("FirstTime", 1);
 
-            CharctersButtons[SelectedTiger].transform.GetChild(0).gameObject.SetActive(false);
+            //////////CharctersButtons[SelectedTiger].transform.GetChild(0).gameObject.SetActive(false);
             if (PlayerPrefs.GetInt("BuyTiger" + 1) == 1)
             {
 
@@ -53,7 +61,7 @@ public class CharacterSelection : MonoBehaviour
             if (PlayerPrefs.GetInt("BuyTiger" + 2) == 1)
             {
 
-                Secondtxt.text = "1/1".ToString();
+                Secondtxt.text = "1/1".ToString(); //
             }
 
         }
@@ -72,13 +80,13 @@ public class CharacterSelection : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("BuyTiger" + SelectedTiger) > 0)
         {
-            if (CharctersButtons[SelectedTiger].transform.GetChild(0) != null)
-            {
-                CharctersButtons[SelectedTiger].transform.GetChild(0).gameObject.SetActive(false);
-                Selectbtn.gameObject.SetActive(true);
-                AdPopup.SetActive(false);
+            ////if (CharctersButtons[SelectedTiger].transform.GetChild(0) != null)
+            ////{
+            ////    CharctersButtons[SelectedTiger].transform.GetChild(0).gameObject.SetActive(false);
+            ////    Selectbtn.gameObject.SetActive(true);
+            ////    AdPopup.SetActive(false);
                
-            }
+            ////}
             if (PlayerPrefs.GetInt("BuyTiger" + 1) == 1)
             {
 
@@ -95,16 +103,18 @@ public class CharacterSelection : MonoBehaviour
         }
         else
         {
-            if (CharctersButtons[SelectedTiger].transform.GetChild(0) != null)
-            {
-                CharctersButtons[SelectedTiger].transform.GetChild(0).gameObject.SetActive(true);
-                Selectbtn.gameObject.SetActive(false);
-                AdPopup.SetActive(true);
-                
-            }
+            //if (CharctersButtons[SelectedTiger].transform.GetChild(0) != null)
+            //{
+            //    CharctersButtons[SelectedTiger].transform.GetChild(0).gameObject.SetActive(true);
+            //    Selectbtn.gameObject.SetActive(false);
+            //    AdPopup.SetActive(true);
+            //    enableTigerModel.SetActive(false);
 
 
-          
+            //}
+
+
+
         }
 
        

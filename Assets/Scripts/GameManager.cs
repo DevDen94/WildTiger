@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
     private int TierInt;
     public Slider ExpBArSlider;
     private bool OnStart=false;
+
+    public AudioSource StunSound;
     private void Start()
     {
 
@@ -172,6 +174,7 @@ public class GameManager : MonoBehaviour
 
     public void LevelNext()
     {
+        CoinsManager.instance.addCoins(100);
         LevelLoader.Instance.LoadNextLevel();
     }
     public void ResumeGame()
