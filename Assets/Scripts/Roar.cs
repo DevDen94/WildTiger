@@ -11,22 +11,22 @@ public class Roar : MonoBehaviour
 
     public void PlayRoarSound()
     {
-        Debug.LogError("Roar");
+      //  Debug.LogError("Roar");
         RoaR.Play();
     }
     public void PlayjumpSound()
     {
-        Debug.LogError("Roar");
+       // Debug.LogError("Roar");
         jump.Play();
     }
      public void PlayrunSound()
     {
-        Debug.LogError("Roar");
+        //Debug.LogError("Roar");
         run.Play();
     }
     public void StoprunSound()
     {
-        Debug.LogError("Roar");
+        //Debug.LogError("Roar");
         run.Stop();
     }
 }

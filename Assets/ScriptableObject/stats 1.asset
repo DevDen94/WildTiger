@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: stats 1
   m_EditorClassIdentifier: 
   Animals:
-  - Rabbit
-  TotalKillCount: 01000000
-  killCount: 00000000
+  - Bear
+  TotalKillCount: 03000000
+  killCount: 01000000
