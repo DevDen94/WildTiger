@@ -8,5 +8,5 @@ public class stats : ScriptableObject
     public string[] Animals;
     public int[] TotalKillCount;
     public int[] killCount;
-
+    public string StartingInstructions;
 }

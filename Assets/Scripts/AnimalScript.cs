@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Cinemachine;
 public class AnimalScript : MonoBehaviour
 {
     public static AnimalScript Instance;
@@ -25,7 +24,7 @@ public class AnimalScript : MonoBehaviour
     public ParticleSystem water;
     public Transform ENEMY;
     public int TigerExp;
-    
+   
     private void Awake()
     {
         if (Instance == null)
@@ -56,17 +55,13 @@ public class AnimalScript : MonoBehaviour
         
         
         TigerExp = PlayerPrefs.GetInt("TigerExp");
-
+       
         // Disable Line Renderer initially
-
-        Delay();
+       
+        
        
     }
-    public CinemachineFreeLook cm;
-    void Delay()
-    {
-        cm.m_YAxis.Value = 0.68f;
-    }
+
     private void Update()
     {
         TextUIHealth.transform.LookAt(TextUIHealth.transform.position+camera.transform.rotation*Vector3.forward);
@@ -173,13 +168,13 @@ public class AnimalScript : MonoBehaviour
             {
                 if (collision.gameObject.GetComponent<EnemyAIAggresive>().AttackingExp >= TigerExp)
                 {
-                    PlayerHealth.value = PlayerHealth.value - HealthDown*3;
-                   // Debug.LogError("IfDamage");
+                    PlayerHealth.value = PlayerHealth.value - HealthDown*10;
+                    Debug.LogError("IfDamage");
                 }
                 else
                 {
                     PlayerHealth.value = PlayerHealth.value - HealthDown;
-                   // Debug.LogError("IfelseDamage");
+                    Debug.LogError("IfelseDamage");
                 }
                
                 ClawIamge.SetActive(true);
@@ -192,9 +187,8 @@ public class AnimalScript : MonoBehaviour
                 
                 if (PlayerHealth.value <= 0)
                 {
-                    GameManager.Instance.LevelFail();
+                    LevelLoader.Instance.LevelFail();
                     Invoke(nameof(DisableClawIamge), 0f);
-                    //GoogleMobileAdsController.Instance.ShowInterstitialAd();
                 }
 
             }
@@ -203,8 +197,7 @@ public class AnimalScript : MonoBehaviour
                 if (GameManager.Instance.KillAnimals >= GameManager.Instance.TotalEnemyInLevel)
                 {
                     GameManager.Instance.MoveMentController.SetActive(false);
-                    // GameManager.Instance.EatBtn.SetActive(true);
-                    GameManager.Instance.CompletePanelFunc();
+                    LevelLoader.Instance.CompletePanelFunc();
                 }
                 Debug.LogError("AYA");
             }

@@ -183,8 +183,7 @@ public class EnemyAI : MonoBehaviour
                 if (GameManager.Instance.KillAnimals >= GameManager.Instance.TotalEnemyInLevel)
                 {
                     GameManager.Instance.MoveMentController.SetActive(false);
-                    // GameManager.Instance.EatBtn.SetActive(true);
-                    GameManager.Instance.CompletePanelFunc();
+                    LevelLoader.Instance.CompletePanelFunc();
                 }
 
 

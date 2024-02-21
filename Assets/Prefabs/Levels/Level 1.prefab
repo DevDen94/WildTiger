@@ -1094,8 +1094,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 641746658}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.6522589, y: 0.5}
-  m_AnchorMax: {x: 0.6522589, y: 0.5}
+  m_AnchorMin: {x: 0.4740282, y: 0.5}
+  m_AnchorMax: {x: 0.4740282, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -2}
   m_SizeDelta: {x: 137.25958, y: 22}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -31242,7 +31242,7 @@ Transform:
   m_GameObject: {fileID: 8720133673757830478}
   serializedVersion: 2
   m_LocalRotation: {x: -0.0018030965, y: 0.99645066, z: -0.081200324, w: -0.02212374}
-  m_LocalPosition: {x: 183.65, y: 40.56, z: 759.59}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -32094,15 +32094,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 275849225, guid: 169992767148ed44992a98cb6ee11e71, type: 3}
       propertyPath: computedIconScale.x
-      value: 1.0244642
+      value: 0.49916196
       objectReference: {fileID: 0}
     - target: {fileID: 275849225, guid: 169992767148ed44992a98cb6ee11e71, type: 3}
       propertyPath: computedIconScale.y
-      value: 1.0244642
+      value: 0.49916196
       objectReference: {fileID: 0}
     - target: {fileID: 275849225, guid: 169992767148ed44992a98cb6ee11e71, type: 3}
       propertyPath: distanceToCameraSQR
-      value: 1090.8044
+      value: 596755.9
       objectReference: {fileID: 0}
     - target: {fileID: 2448312975052633345, guid: 169992767148ed44992a98cb6ee11e71, type: 3}
       propertyPath: m_RootOrder
@@ -32335,7 +32335,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 420486554, guid: 68844edfdd09b6f45b4a36f26c3b5f70, type: 3}
       propertyPath: distanceToCameraSQR
-      value: 27027.963
+      value: 632270.94
       objectReference: {fileID: 0}
     - target: {fileID: 5643802374264702969, guid: 68844edfdd09b6f45b4a36f26c3b5f70, type: 3}
       propertyPath: Camera
@@ -32426,15 +32426,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 34487239, guid: 010452953d33eb34091228b8496769c4, type: 3}
       propertyPath: computedIconScale.x
-      value: 0.87987846
+      value: 0.49916196
       objectReference: {fileID: 0}
     - target: {fileID: 34487239, guid: 010452953d33eb34091228b8496769c4, type: 3}
       propertyPath: computedIconScale.y
-      value: 0.87987846
+      value: 0.49916196
       objectReference: {fileID: 0}
     - target: {fileID: 34487239, guid: 010452953d33eb34091228b8496769c4, type: 3}
       propertyPath: distanceToCameraSQR
-      value: 2338.8105
+      value: 544903.8
       objectReference: {fileID: 0}
     - target: {fileID: 624826398205962612, guid: 010452953d33eb34091228b8496769c4, type: 3}
       propertyPath: Loop

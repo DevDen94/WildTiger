@@ -7,16 +7,16 @@ public class StartingCutscenes : MonoBehaviour
     public GameObject Cage;
     public GameObject[] LevelObjects_ToBeOff;
     public GameObject[] LevelObjects_ToBeOn;
-    public GameObject fadeScreen;
+ 
     public GameObject Helicopter;
-    public GameObject InstructionPanel;
+   
     public void Cage_On()
     {
         Cage.SetActive(true);
     }
     public void Instr_Panel()
     {
-        InstructionPanel.SetActive(true);
+      LevelLoader.Instance.InstructionPanel.SetActive(true);
     }
     public void Helicopter_()
     {
@@ -24,8 +24,8 @@ public class StartingCutscenes : MonoBehaviour
     }
     public void Level_Start()
     {
-      
-        fadeScreen.SetActive(true);
+        LevelLoader.Instance.Level_Start();
+        LevelLoader.Instance.fadeScreen.SetActive(true);
         foreach(GameObject a in LevelObjects_ToBeOff)
         {
             a.SetActive(true);

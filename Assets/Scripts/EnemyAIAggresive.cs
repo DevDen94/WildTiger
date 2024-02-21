@@ -42,7 +42,7 @@ public class EnemyAIAggresive : MonoBehaviour
     void Start()
     {
         _Camera = Camera.main.transform;
-        player = GameManager.Instance.SelectedTiger.transform;
+        player = LevelLoader.Instance.SelectedTiger.transform;
         //navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         //navMeshAgent.speed = walkSpeed; // Start with walk speed
@@ -158,6 +158,7 @@ public class EnemyAIAggresive : MonoBehaviour
     {
         isChasing = false;
         animator.SetBool("Attack", true);
+        animator.SetBool("isRunning", false);
         Vector3 directionToPlayer = player.position - transform.position;
         directionToPlayer.y = 0f;
         directionToPlayer.Normalize();
@@ -225,7 +226,7 @@ public class EnemyAIAggresive : MonoBehaviour
     IEnumerator CompletePanel()
     {
         yield return new WaitForSeconds(5f);
-        GameManager.Instance.CompletePanelFunc();
+        LevelLoader.Instance.CompletePanelFunc();
     }
 
     private void OnTriggerStay(Collider other)

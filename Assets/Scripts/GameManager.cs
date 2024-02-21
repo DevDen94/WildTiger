@@ -31,14 +31,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
 
-
-
         TierUpdate();
-
-
-
-
-
         PlayerPrefs.SetInt("First", 0);
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
         SelectedTiger.GetComponent<ItemsData>().Selected();
@@ -146,31 +139,8 @@ public class GameManager : MonoBehaviour
         PausePanel.SetActive(true);
     }
 
-    public void Home()
-    {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene("Main");
-    }
-
-    public void Restart()
-    {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene("Gameplay");
-    }
-
-    public void LevelComplete()
-    {
-        Time.timeScale = 0f;
-        Complete.SetActive(true);
-    }
-
-    public void LevelFail()
-    {
-        Time.timeScale = 0f;
-        Fail.SetActive(true);
-        Implementation.instance.ShowInterstitial();
-    }
-
+   
+ 
 
     public void LevelNext()
     {
@@ -206,41 +176,5 @@ public class GameManager : MonoBehaviour
     {
         ExpBar();
     }
-    public void CompletePanelFunc()
-    {
-        StartCoroutine(CompletePanel());
-        Implementation.instance.ShowInterstitial();
-
-        IEnumerator CompletePanel()
-        {
-            yield return new WaitForSeconds(3f);
-            GameManager.Instance.LevelComplete();
-
-            if (PlayerPrefs.GetInt("Level") == PlayerPrefs.GetInt("UnlockedLevels"))
-            {
-                if (PlayerPrefs.GetInt("First") == 0)
-                {
-                    PlayerPrefs.SetInt("UnlockedLevels", PlayerPrefs.GetInt("UnlockedLevels") + 1);
-                    PlayerPrefs.SetInt("TigerExp", PlayerPrefs.GetInt("TigerExp") + LevelLoader.Instance.LevelRewardedExp[PlayerPrefs.GetInt("Level")]);
-                    Debug.LogError("ExpLevelReward" + LevelLoader.Instance.LevelRewardedExp[PlayerPrefs.GetInt("Level")]);
-
-                    PlayerPrefs.SetInt("First", 1);
-                }
-                /*if (PlayerPrefs.GetInt("Level") == PlayerPrefs.GetInt("LastUnlockedLevel"))
-                {
-                    if (PlayerPrefs.GetInt("First") == 0)
-                    {
-                        PlayerPrefs.SetInt("UnlockedLevels", PlayerPrefs.GetInt("UnlockedLevels") + 1);
-                        PlayerPrefs.SetInt("TigerExp", PlayerPrefs.GetInt("TigerExp") + LevelLoader.Instance.LevelRewardedExp[PlayerPrefs.GetInt("Level")]);
-                        PlayerPrefs.SetInt("First", 1);
-                    }
-
-
-                }*/
-
-
-            }
-            // GoogleMobileAdsController.Instance.ShowInterstitialAd();
-        }
-    }
+  
 }
