@@ -24,7 +24,7 @@ public class AnimalScript : MonoBehaviour
     public ParticleSystem water;
     public Transform ENEMY;
     public int TigerExp;
-   
+    public GameObject Planks;
     private void Awake()
     {
         if (Instance == null)
@@ -143,27 +143,18 @@ public class AnimalScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //if (other.gameObject.tag == "NPC")
-        //{
-        //    Debug.LogError(other.gameObject.name);
-        //    PlayerHealth.value = PlayerHealth.value - HealthDown;
-        //    ClawIamge.SetActive(true);
-        //    Invoke(nameof(DisableClawIamge),1f);
-        //    if (PlayerHealth.value <= 0)
-        //    {
-        //        GameManager.Instance.LevelFail();
-        //    }
-
-
-        //}
+        if (other.gameObject.tag == "Stick")
+        {
+            Debug.LogError(other.gameObject.name);
+            other.gameObject.SetActive(false);
+            Planks.SetActive(true);
+            Level_Manager.instance.FireTriggerPoint.SetActive(true);
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "NPC")
         {
-            
-            
-
             if (collision.gameObject.GetComponent<EnemyAIAggresive>().EnemyHealth.fillAmount > 0)
             {
                 if (collision.gameObject.GetComponent<EnemyAIAggresive>().AttackingExp >= TigerExp)
@@ -194,10 +185,10 @@ public class AnimalScript : MonoBehaviour
             }
             else
             {
-                if (GameManager.Instance.KillAnimals >= GameManager.Instance.TotalEnemyInLevel)
+                if (LevelLoader.Instance.lvl_M.KillAnimals >= LevelLoader.Instance.lvl_M.TotalEnemyInLevel)
                 {
-                    GameManager.Instance.MoveMentController.SetActive(false);
-                    LevelLoader.Instance.CompletePanelFunc();
+                    LevelLoader.Instance.MoveMentController.SetActive(false);
+                    LevelLoader.Instance.lvl_M.End_Level();
                 }
                 Debug.LogError("AYA");
             }

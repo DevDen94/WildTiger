@@ -30,7 +30,7 @@ public class EnemyAI : MonoBehaviour
     void Start()
     {
         this._Camera = Camera.main.gameObject;
-        player = GameManager.Instance.SelectedTiger.transform;
+        player = LevelLoader.Instance.SelectedTiger.transform;
         animator = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         HealthSlider.fillAmount = StartingHealth;
@@ -135,17 +135,17 @@ public class EnemyAI : MonoBehaviour
                 GetComponent<NavMeshAgent>().isStopped = true;
                 transform.GetChild(4).gameObject.SetActive(false);
                 transform.GetChild(3).gameObject.SetActive(false);
-                GameManager.Instance.update_stats(this.gameObject.name);
+                LevelLoader.Instance.lvl_M.update_stats(this.gameObject.name);
                 GetComponent<MapMarker>().isActive = false;
                 //GameManager.Instance.pickUpBtn.SetActive(true);
-                GameManager.Instance.MoveMentController.SetActive(false);
+                LevelLoader.Instance.MoveMentController.SetActive(false);
                 //GameManager.Instance.EatBtn.SetActive(true);
                 whenPickUp();
                
                
                 PlayerPrefs.SetInt("TigerExp", PlayerPrefs.GetInt("TigerExp") + DefenciveExp);
-                GameManager.Instance.ExpTxt.text = PlayerPrefs.GetInt("TigerExp").ToString();
-                GameManager.Instance.TierUpdate();
+                LevelLoader.Instance.ExpTxt.text = PlayerPrefs.GetInt("TigerExp").ToString();
+                LevelLoader.Instance.TierUpdate();
             }
 
         }
@@ -183,7 +183,7 @@ public class EnemyAI : MonoBehaviour
                 if (GameManager.Instance.KillAnimals >= GameManager.Instance.TotalEnemyInLevel)
                 {
                     GameManager.Instance.MoveMentController.SetActive(false);
-                    LevelLoader.Instance.CompletePanelFunc();
+                    LevelLoader.Instance.lvl_M.End_Level();
                 }
 
 

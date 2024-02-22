@@ -146,7 +146,7 @@ public class MapCanvasController : MonoBehaviour
     }
     private void Start()
     {
-        playerTransform = GameManager.Instance.SelectedTiger.transform;
+        playerTransform = LevelLoader.Instance.SelectedTiger.transform;
     }
     void Update () 
     {

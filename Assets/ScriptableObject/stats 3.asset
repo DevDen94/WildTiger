@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Animals:
   - deer
-  - Rabbit
-  TotalKillCount: 0200000001000000
-  killCount: 0000000000000000
+  TotalKillCount: 02000000
+  killCount: 00000000
+  StartingInstructions:
+  - Happy for you. Kid tiger born into your family
+  - Congrats You and tigeres are now in your's cabe
+  - URRRAH!  Kid tiger born into your family
+  - Go search for meal. Your family is hungry

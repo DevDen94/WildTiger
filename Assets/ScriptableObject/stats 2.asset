@@ -16,3 +16,7 @@ MonoBehaviour:
   - Boar
   TotalKillCount: 03000000
   killCount: 00000000
+  StartingInstructions:
+  - You need to free this cave for you.
+  - You need to free this cave for you.
+  - Kill all boars and set this place for yours family

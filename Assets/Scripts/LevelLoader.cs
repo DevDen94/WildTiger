@@ -15,7 +15,8 @@ public class LevelLoader : MonoBehaviour
     public GameObject[] GameObject_DeactiveOnStart;
     public CinemachineFreeLook cm_Camera;
     int selected_Level;
-    private Level_Manager lvl_M;
+    [HideInInspector]
+    public Level_Manager lvl_M;
 
     private int SneakInt; private int TierInt;
 
@@ -40,13 +41,15 @@ public class LevelLoader : MonoBehaviour
         SelectedTiger.transform.SetPositionAndRotation(lvl_M.SpawnPoint.transform.position, lvl_M.SpawnPoint.transform.rotation);
         MyMaterial.SetTexture("_BaseMap", TigerSprites[PlayerPrefs.GetInt("SelectedCharacter")]);
         Instruction_Text.text = lvl_M.Stats.StartingInstructions.ToString();
-        Level_Start();
-        TierUpdate();
+        cm_Camera.m_YAxis.Value = 0.7f;
+       // Level_Start();
+       TierUpdate();
        
     }
 
     public void Level_Start()
     {
+        InstructionPanel.SetActive(false);
         foreach(GameObject a in GameObject_DeactiveOnStart)
         {
             a.SetActive(true);
@@ -94,6 +97,7 @@ public class LevelLoader : MonoBehaviour
         SceneManager.LoadScene("Gameplay");
     }
 
+
     public void CompletePanelFunc()
     {
         Time.timeScale = 0f;
@@ -118,7 +122,7 @@ public class LevelLoader : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("TigerExp") >= TierExp[0])
         {
-            for (int i = 0; i <=TierExp.Length; i++)
+            for (int i = 0; i<TierExp.Length; i++)
             {
                 if (PlayerPrefs.GetInt("TigerExp") > TierExp[i])
                 {

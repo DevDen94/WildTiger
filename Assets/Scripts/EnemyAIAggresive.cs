@@ -185,32 +185,32 @@ public class EnemyAIAggresive : MonoBehaviour
             if (EnemyHealth.fillAmount <= 0)
             {
                 animator.SetTrigger("Death");
-                GameManager.Instance.update_stats(this.gameObject.name);
+                LevelLoader.Instance.lvl_M.update_stats(this.gameObject.name);
                 isDeath = true;
-                GameManager.Instance.KillAnimals++;
+                LevelLoader.Instance.lvl_M.KillAnimals++;
                
                 GetComponent<MapMarker>().isActive = false;
                 this.gameObject.GetComponent<BoxCollider>().enabled = false;
                // GameManager.Instance.EatPopUp.SetActive(true);
 
                 //Destroy(this);
-                for (int i = 0; i < GameManager.Instance.AnimalsNamesToKill.Length; i++)
+                for (int i = 0; i < LevelLoader.Instance.lvl_M.AnimalsNamesToKill.Length; i++)
                 {
-                    if(name== GameManager.Instance.AnimalsNamesToKill[i])
+                    if(name== LevelLoader.Instance.lvl_M.AnimalsNamesToKill[i])
                     {
-                        GameManager.Instance.KillAnimals++;
-                        if (GameManager.Instance.KillAnimals >= GameManager.Instance.TotalEnemyInLevel)
+                        LevelLoader.Instance.lvl_M.KillAnimals++;
+                        if (LevelLoader.Instance.lvl_M.KillAnimals >= LevelLoader.Instance.lvl_M.TotalEnemyInLevel)
                         {
-                            
-                            GameManager.Instance.MoveMentController.SetActive(false);
+
+                            LevelLoader.Instance.MoveMentController.SetActive(false);
                             //GameManager.Instance.EatBtn.SetActive(true);
                             StartCoroutine(CompletePanel());
                         }
                     }
                 }
                 PlayerPrefs.SetInt("TigerExp", PlayerPrefs.GetInt("TigerExp") + AttackingExp);
-                GameManager.Instance.ExpTxt.text = PlayerPrefs.GetInt("TigerExp").ToString();
-                GameManager.Instance.TierUpdate();
+                LevelLoader.Instance.ExpTxt.text = PlayerPrefs.GetInt("TigerExp").ToString();
+                LevelLoader.Instance.TierUpdate();
                 Invoke("disableSelf", 3f);
             }
 
@@ -226,7 +226,7 @@ public class EnemyAIAggresive : MonoBehaviour
     IEnumerator CompletePanel()
     {
         yield return new WaitForSeconds(5f);
-        LevelLoader.Instance.CompletePanelFunc();
+        LevelLoader.Instance.lvl_M.End_Level();
     }
 
     private void OnTriggerStay(Collider other)

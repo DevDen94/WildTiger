@@ -14,5 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Animals:
   - Bear
-  TotalKillCount: 03000000
-  killCount: 01000000
+  TotalKillCount: 01000000
+  killCount: 00000000
+  StartingInstructions:
+  - We need to deliver this Tiger at the zoo by this afternoon.
+  - We need to deliver this Tiger at the zoo by this afternoon.
+  - Oh no!! The rope has broken and the cage fell down.
+  - You are alone here in jungle. Go safe Tigeress from bear to make her yours companion.

@@ -17,6 +17,7 @@ TagManager:
   - MouthPosition
   - SOUND
   - TAZOFX
+  - Stick
   layers:
   - Default
   - TransparentFX

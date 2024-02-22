@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: stats 4
   m_EditorClassIdentifier: 
   Animals:
-  - Rabbit
-  - deer
-  - raccoon
-  TotalKillCount: 030000000200000002000000
-  killCount: 000000000000000000000000
+  - Sticks
+  TotalKillCount: 03000000
+  killCount: 00000000
+  StartingInstructions:
+  - Sad for Your family. Little tiger is ill and getting cold.
+  - Sad for Your family. Little tiger is ill and getting cold.
+  - Go find some sticks and lit up the fire

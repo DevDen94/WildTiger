@@ -7,17 +7,19 @@ public class StartingCutscenes : MonoBehaviour
     public GameObject Cage;
     public GameObject[] LevelObjects_ToBeOff;
     public GameObject[] LevelObjects_ToBeOn;
- 
+    public Level_Manager lvl;
     public GameObject Helicopter;
-   
+    int instruction_no;
+    private void Start()
+    {
+        instruction_no = 0;
+        
+    }
     public void Cage_On()
     {
         Cage.SetActive(true);
     }
-    public void Instr_Panel()
-    {
-      LevelLoader.Instance.InstructionPanel.SetActive(true);
-    }
+   
     public void Helicopter_()
     {
         Helicopter.SetActive(true);
@@ -34,5 +36,12 @@ public class StartingCutscenes : MonoBehaviour
         {
             a.SetActive(false);
         }
+    }
+    public void Load_Instructions()
+    {
+        instruction_no = instruction_no + 1;
+        LevelLoader.Instance.Instruction_Text.text = lvl.Stats.StartingInstructions[instruction_no].ToString();
+        LevelLoader.Instance.InstructionPanel.SetActive(true);
+               
     }
 }
