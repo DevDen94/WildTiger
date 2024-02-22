@@ -141,16 +141,7 @@ public class AnimalScript : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Stick")
-        {
-            Debug.LogError(other.gameObject.name);
-            other.gameObject.SetActive(false);
-            Planks.SetActive(true);
-            Level_Manager.instance.FireTriggerPoint.SetActive(true);
-        }
-    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "NPC")
