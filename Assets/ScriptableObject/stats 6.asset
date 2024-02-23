@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: stats 6
   m_EditorClassIdentifier: 
   Animals:
-  - Boar
-  - fox
-  TotalKillCount: 0200000001000000
-  killCount: 0000000000000000
+  - Rabbit
+  TotalKillCount: 02000000
+  killCount: 00000000
+  StartingInstructions:
+  - 
+  - It's time for little tiger to know how to hunt.
+  - Go and take him. Teach him with a liitle rabbit.

@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: stats 8
   m_EditorClassIdentifier: 
   Animals:
-  - fox
-  TotalKillCount: 03000000
+  - Bear
+  TotalKillCount: 01000000
   killCount: 00000000
+  StartingInstructions:
+  - 
+  - Last and hard task is to kill Bear.
+  - Be careful. This task will be dangerous for your child

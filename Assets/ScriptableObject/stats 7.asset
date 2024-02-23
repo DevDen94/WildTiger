@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: stats 7
   m_EditorClassIdentifier: 
   Animals:
-  - deer
   - Boar
-  TotalKillCount: 0100000003000000
-  killCount: 0000000000000000
+  TotalKillCount: 02000000
+  killCount: 00000000
+  StartingInstructions:
+  - This time a you need to hunt Boars
+  - This time a you need to hunt Boars
+  - Be careful. Boars are aggressive they will be dangerous for little tiger.

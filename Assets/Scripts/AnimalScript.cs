@@ -146,9 +146,9 @@ public class AnimalScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "NPC")
         {
-            if (collision.gameObject.GetComponent<EnemyAIAggresive>().EnemyHealth.fillAmount > 0)
+            if (collision.gameObject.GetComponent<EnemyAIAggressive>().EnemyHealth.fillAmount > 0)
             {
-                if (collision.gameObject.GetComponent<EnemyAIAggresive>().AttackingExp >= TigerExp)
+                if (collision.gameObject.GetComponent<EnemyAIAggressive>().AttackingExp >= TigerExp)
                 {
                     PlayerHealth.value = PlayerHealth.value - HealthDown*10;
                     Debug.LogError("IfDamage");
