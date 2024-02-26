@@ -39,7 +39,9 @@ public class StartingCutscenes : MonoBehaviour
     }
     public void Load_Instructions()
     {
+        LevelLoader.Instance.InstructionPanel.SetActive(false);
         instruction_no = instruction_no + 1;
+
         LevelLoader.Instance.Instruction_Text.text = lvl.Stats.StartingInstructions[instruction_no].ToString();
         LevelLoader.Instance.InstructionPanel.SetActive(true);
                

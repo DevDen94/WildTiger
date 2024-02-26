@@ -29,6 +29,9 @@ public class LevelLoader : MonoBehaviour
     public Text Instruction_Text;
     public GameObject fadeScreen;
     public Text[] AnimalList;
+    public Text timerText;
+    float totalTimeInSeconds;
+    public GameObject secondPlayer;
     private void Awake()
     {
         Instance = this;
@@ -36,6 +39,7 @@ public class LevelLoader : MonoBehaviour
 
     private void Start()
     {
+        PlayerPrefs.SetInt("Level", 1);
         selected_Level = PlayerPrefs.GetInt("Level");
         lvl_M = Instantiate(Levels[selected_Level]);
         SelectedTiger.transform.SetPositionAndRotation(lvl_M.SpawnPoint.transform.position, lvl_M.SpawnPoint.transform.rotation);
@@ -43,8 +47,24 @@ public class LevelLoader : MonoBehaviour
         Instruction_Text.text = lvl_M.Stats.StartingInstructions.ToString();
         cm_Camera.m_YAxis.Value = 0.7f;
        // Level_Start();
-       TierUpdate();
-       
+        TierUpdate();
+        totalTimeInSeconds = lvl_M.Time;
+        foreach(GameObject a in GameObject_DeactiveOnStart)
+        {
+            a.SetActive(false);
+        }
+
+
+    }
+    public void Pasued_Level()
+    {
+        PausePanel.SetActive(true);
+        Time.timeScale = 0f;
+    }
+    public void Resume_Level()
+    {
+        PausePanel.SetActive(false);
+        Time.timeScale = 1f;
     }
 
     public void Level_Start()
@@ -54,6 +74,7 @@ public class LevelLoader : MonoBehaviour
         {
             a.SetActive(true);
         }
+        StartCoroutine(StartTimer());
     }
 
     public void LoadNextLevel()
@@ -182,5 +203,26 @@ public class LevelLoader : MonoBehaviour
             Tiertxt.text = exp.ToString();
         }
 
+    }
+
+    IEnumerator StartTimer()
+    {
+        float timeRemaining = totalTimeInSeconds;
+
+        while (timeRemaining > 0)
+        {
+            UpdateTimerText(timeRemaining);
+            yield return new WaitForSeconds(1f);
+            timeRemaining--;
+        }
+
+        LevelFail();
+    }
+    void UpdateTimerText(float timeInSeconds)
+    {
+        int minutes = Mathf.FloorToInt(timeInSeconds / 60);
+        int seconds = Mathf.FloorToInt(timeInSeconds % 60);
+
+        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 }

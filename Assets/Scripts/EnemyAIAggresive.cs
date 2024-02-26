@@ -30,7 +30,7 @@ public class EnemyAIAggresive : MonoBehaviour
     public float StartingHealth = 1;
 
     public float HalthDownSpeed;
-    public Animator PlayerAnimator;
+    public Animator PlayerAnimator,secondplayer;
 
     public float walkingRadius = 5f;
     private Vector3 initialPosition;
@@ -39,6 +39,7 @@ public class EnemyAIAggresive : MonoBehaviour
 
     public float waterAvoidanceDistance = 5f;
     public int AttackingExp;
+    public GameObject SecondPlayer;
     void Start()
     {
         _Camera = Camera.main.transform;
@@ -47,7 +48,12 @@ public class EnemyAIAggresive : MonoBehaviour
         animator = GetComponent<Animator>();
         //navMeshAgent.speed = walkSpeed; // Start with walk speed
         PlayerAnimator = player.GetComponent<Animator>();
+        if (!LevelLoader.Instance.secondPlayer)
+        {
+            SecondPlayer = LevelLoader.Instance.secondPlayer;
+        }
         initialPosition = transform.position;
+        secondplayer = SecondPlayer.GetComponent<Animator>();
     }
 
     void Update()
@@ -284,30 +290,30 @@ public class EnemyAIAggresive : MonoBehaviour
     {
         // Check if the "Attack" animation is playing
 
-        return PlayerAnimator.GetCurrentAnimatorStateInfo(1).IsName("Attack Bite Left");
-
+        //return PlayerAnimator.GetCurrentAnimatorStateInfo(1).IsName("Attack Bite Left");
+        return secondplayer.GetCurrentAnimatorStateInfo(1).IsName("Attack Bite Left");
     }
     bool IsAttackAnimationPlaying1()
     {
         // Check if the "Attack" animation is playing
         //animator.SetBool("Demage", true);
-        return PlayerAnimator.GetCurrentAnimatorStateInfo(1).IsName("Attack Bite Right");
-
+        //return PlayerAnimator.GetCurrentAnimatorStateInfo(1).IsName("Attack Bite Right");
+        return secondplayer.GetCurrentAnimatorStateInfo(1).IsName("Attack Bite Right");
     }
 
     bool IsAttackAnimationPlaying2()
     {
         // Check if the "Attack" animation is playing
         //animator.SetBool("Demage", true);
-        return PlayerAnimator.GetCurrentAnimatorStateInfo(1).IsName("Attack Paw Right");
-
+        //return PlayerAnimator.GetCurrentAnimatorStateInfo(1).IsName("Attack Paw Right");
+        return secondplayer.GetCurrentAnimatorStateInfo(1).IsName("Attack Paw Right");
     }
     bool IsAttackAnimationPlaying3()
     {
         // Check if the "Attack" animation is playing_
         //animator.SetBool("Demage", true);
-        return PlayerAnimator.GetCurrentAnimatorStateInfo(1).IsName("Attack Paw Left");
-
+        //return PlayerAnimator.GetCurrentAnimatorStateInfo(1).IsName("Attack Paw Left");
+        return secondplayer.GetCurrentAnimatorStateInfo(1).IsName("Attack Paw Left");
     }
 
     void ReturnToInitialPosition()

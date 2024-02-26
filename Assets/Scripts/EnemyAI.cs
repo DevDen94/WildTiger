@@ -169,34 +169,29 @@ public class EnemyAI : MonoBehaviour
     {
         CheckForIncriment = true;
         //GameManager.Instance.KillAnimals++;
-        for (int i = 0; i < GameManager.Instance.AnimalsNamesToKill.Length; i++)
+        for (int i = 0; i < LevelLoader.Instance.lvl_M.AnimalsNamesToKill.Length; i++)
         {
-            if (name == GameManager.Instance.AnimalsNamesToKill[i])
+            if (name == LevelLoader.Instance.lvl_M.AnimalsNamesToKill[i])
             {
                 if (CheckForIncriment == true)
                 {
-                    GameManager.Instance.KillAnimals++;
+                    LevelLoader.Instance.lvl_M.KillAnimals++;
                     CheckForIncriment = false;
                     
                 }
 
-                if (GameManager.Instance.KillAnimals >= GameManager.Instance.TotalEnemyInLevel)
+                if (LevelLoader.Instance.lvl_M.KillAnimals >= LevelLoader.Instance.lvl_M.TotalEnemyInLevel)
                 {
-                    GameManager.Instance.MoveMentController.SetActive(false);
+                    LevelLoader.Instance.MoveMentController.SetActive(false);
                     LevelLoader.Instance.lvl_M.End_Level();
                 }
-
-
             }
             else
             {
-                GameManager.Instance.MoveMentController.SetActive(true);
-                GameManager.Instance.EatPopUp.SetActive(false);
-                //player.GetComponent<AnimalScript>().Enemy.
-                //Invoke(nameof(PlayerOff), 3f);
-                //Destroy(this.gameObject);
+                LevelLoader.Instance.MoveMentController.SetActive(true);
+                LevelLoader.Instance.EatPopUp.SetActive(false);
                 this.gameObject.SetActive(false);
-                //player.GetComponent<Animator>().("F_Eat", 0);
+
             }
 
         }

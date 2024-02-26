@@ -7,24 +7,24 @@ public class EnemyAIAggressive : MonoBehaviour
 {
 
 
-    public Transform TargetPlayer,camera;
+    public Transform TargetPlayer,TargetPlayer2,camera;
 
     public float AttackRange;
     public float ChasseRange;
     public float distanceToPlayer;
-
+    public float distanceToPlayer2;
 
     private Animator animator;
 
-
+    private Vector3 initialPosition;
     public float walkSpeed;
     public float RunSpeed;
     public float rotationSpeed = 5f;
     public int numberOfPoints = 5;
     public Transform[] targetPoints;
     private int currentTargetIndex = 0;
-
-    private Animator PlayerAnimator;
+    
+    public Animator PlayerAnimator, secondplayer;
     private void Start()
     {
         camera = Camera.main.transform;
@@ -33,13 +33,35 @@ public class EnemyAIAggressive : MonoBehaviour
         GenerateRandomPoints();
         animator = GetComponent<Animator>();
         SetNewRandomTarget();
+        Invoke(nameof(AssignPalyer), 1f);
+        StartCoroutine(waitforDistance());
     }
+    public void AssignPalyer()
+    {
+        if (!LevelLoader.Instance.secondPlayer)
+        {
+           // SecondPlayer = LevelLoader.Instance.secondPlayer;
+        }
+        initialPosition = transform.position;
+        //secondplayer = SecondPlayer.GetComponent<Animator>();
+    }
+
+
+    IEnumerator waitforDistance()
+    {
+        yield return new WaitForSeconds(1);
+        distanceToPlayer = Vector3.Distance(transform.position, TargetPlayer.position);
+        distanceToPlayer2 = Vector3.Distance(transform.position, TargetPlayer2.position);
+        StartCoroutine(waitforDistance());
+    }
+
+
 
 
     private void Update()
     {
-        distanceToPlayer = Vector3.Distance(transform.position, TargetPlayer.position);
-
+        
+       // Transform targetPlayer = (distanceToPlayer < distanceToPlayer2) ? TargetPlayer : TargetPlayer2;
         if (distanceToPlayer > ChasseRange)
         {
             animator.SetBool("isRunning", false);
@@ -53,17 +75,38 @@ public class EnemyAIAggressive : MonoBehaviour
             }
             Debug.Log("Patrol");
         }
-        else if (distanceToPlayer < ChasseRange && distanceToPlayer > AttackRange)
+        //else if (distanceToPlayer < ChasseRange || distanceToPlayer2<ChasseRange && distanceToPlayer > AttackRange&& distanceToPlayer2 > AttackRange)
+        //{
+        //    Chasse(targetPlayer);
+        //    Debug.Log(targetPlayer);
+        //    Debug.Log("Chasse");
+        //}
+        //else if (distanceToPlayer <= AttackRange || distanceToPlayer2 <= AttackRange)
+        //{
+        //    //Attack
+        //    Debug.Log("Attack");
+        //    Attack(targetPlayer);
+        //}
+
+        if (distanceToPlayer < distanceToPlayer2 && distanceToPlayer > AttackRange)
         {
-            Chasse();
-            Debug.Log("Chasse");
+            Chasse(TargetPlayer);
         }
-        else if (distanceToPlayer <= AttackRange)
+        else if (distanceToPlayer > distanceToPlayer2 && distanceToPlayer2 > AttackRange)
         {
-            //Attack
-            Debug.Log("Attack");
-            Attack();
+            Chasse(TargetPlayer2);
         }
+
+        if(distanceToPlayer <= AttackRange)
+        {
+            Attack(TargetPlayer);
+        }else if (distanceToPlayer <= AttackRange)
+        {
+            Attack(TargetPlayer2);
+
+        }
+
+
         HealthBAr.transform.LookAt(camera.transform);
     }
     void SetNewRandomTarget()
@@ -84,20 +127,20 @@ public class EnemyAIAggressive : MonoBehaviour
             targetPoints[i].position = randomPosition;
         }
     }
-    public void Chasse()
+    public void Chasse(Transform player)
     {
-        transform.LookAt(TargetPlayer);
-        transform.position = Vector3.MoveTowards(transform.position, TargetPlayer.position, RunSpeed * Time.deltaTime);
+        transform.LookAt(player);
+        transform.position = Vector3.MoveTowards(transform.position, player.position, RunSpeed * Time.deltaTime);
         animator.SetBool("isRunning", true);
         animator.SetBool("Attack", false);
     }
 
-    public void Attack()
+    public void Attack(Transform target)
     {
         animator.SetBool("Attack", true);
 
         TargetPlayer.GetComponent<Rigidbody>().isKinematic = true;
-        Quaternion targetRotation = Quaternion.LookRotation(TargetPlayer.position - transform.position);
+        Quaternion targetRotation = Quaternion.LookRotation(target.position - transform.position);
 
         // Smoothly rotate towards the player
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
@@ -108,6 +151,7 @@ public class EnemyAIAggressive : MonoBehaviour
         {
             if (IsAttackAnimationPlaying() || IsAttackAnimationPlaying1() || IsAttackAnimationPlaying2() || IsAttackAnimationPlaying3())
             {
+                Debug.Log("Hit");
                 //if (EnemyHealth.fillAmount > 0)
                 //{
                 //    TextUIHealth.SetActive(true);
@@ -117,10 +161,16 @@ public class EnemyAIAggressive : MonoBehaviour
                 //}
                 Demage(other.gameObject.name);
             }
+            else if (IsAttackAnimationPlaying11() || IsAttackAnimationPlaying122() || IsAttackAnimationPlaying233() || IsAttackAnimationPlaying344())
+            {
+                Demage(other.gameObject.name);
+            }
         }
 
     }
+    
 
+    
 
 
     public void DisableHealthText()
@@ -142,8 +192,9 @@ public class EnemyAIAggressive : MonoBehaviour
     {
         // Check if the "Attack" animation is playing
         //animator.SetBool("Demage", true);
-        return PlayerAnimator.GetCurrentAnimatorStateInfo(1).IsName("Attack Bite Right");
-
+        
+        
+            return PlayerAnimator.GetCurrentAnimatorStateInfo(1).IsName("Attack Bite Right");
     }
 
     bool IsAttackAnimationPlaying2()
@@ -158,6 +209,39 @@ public class EnemyAIAggressive : MonoBehaviour
         // Check if the "Attack" animation is playing_
         //animator.SetBool("Demage", true);
         return PlayerAnimator.GetCurrentAnimatorStateInfo(1).IsName("Attack Paw Left");
+
+    }
+    //////////////////////////////////////////////////////////////
+    ///
+
+    bool IsAttackAnimationPlaying11()
+    {
+        // Check if the "Attack" animation is playing
+
+        return secondplayer.GetCurrentAnimatorStateInfo(1).IsName("Attack Bite Left");
+
+    }
+    bool IsAttackAnimationPlaying122()
+    {
+        // Check if the "Attack" animation is playing
+        //animator.SetBool("Demage", true);
+
+
+        return secondplayer.GetCurrentAnimatorStateInfo(1).IsName("Attack Bite Right");
+    }
+
+    bool IsAttackAnimationPlaying233()
+    {
+        // Check if the "Attack" animation is playing
+        //animator.SetBool("Demage", true);
+        return secondplayer.GetCurrentAnimatorStateInfo(1).IsName("Attack Paw Right");
+
+    }
+    bool IsAttackAnimationPlaying344()
+    {
+        // Check if the "Attack" animation is playing_
+        //animator.SetBool("Demage", true);
+        return secondplayer.GetCurrentAnimatorStateInfo(1).IsName("Attack Paw Left");
 
     }
 
@@ -188,12 +272,12 @@ public class EnemyAIAggressive : MonoBehaviour
                 walkSpeed = 0;
                 RunSpeed = 0;
                 LevelLoader.Instance.lvl_M.KillAnimals++;
-
+                Destroy(this.gameObject);
                 GetComponent<MapMarker>().isActive = false;
-                this.gameObject.GetComponent<BoxCollider>().enabled = false;
+                this.gameObject.GetComponent<CapsuleCollider>().enabled = false;
                 // GameManager.Instance.EatPopUp.SetActive(true);
 
-                //Destroy(this);
+                
                 for (int i = 0; i < LevelLoader.Instance.lvl_M.AnimalsNamesToKill.Length; i++)
                 {
                     if (name == LevelLoader.Instance.lvl_M.AnimalsNamesToKill[i])
