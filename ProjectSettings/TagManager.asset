@@ -18,6 +18,8 @@ TagManager:
   - SOUND
   - TAZOFX
   - Stick
+  - Health
+  - Jump
   layers:
   - Default
   - TransparentFX

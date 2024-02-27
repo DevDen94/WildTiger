@@ -18,9 +18,9 @@ namespace MalbersAnimations.Controller
         [Tooltip("Lerp Value for Pressing Jump. THis will smooth out exiting the height of the jump ")]
         public float JumpPressedLerp = 5;
 
-        private float JumpPressHeight_Value = 1;
-        private float JumpPressForward = 1;
-        private float JumpPressForwardAdditive = 0;
+        public float JumpPressHeight_Value = 1;
+        public float JumpPressForward = 1;
+        public float JumpPressForwardAdditive = 0;
 
         [Tooltip("Can the Animal be Rotated while Jumping?")]
         public BoolReference AirControl = new(true);
