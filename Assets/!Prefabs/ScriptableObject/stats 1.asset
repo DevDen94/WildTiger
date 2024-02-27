@@ -15,7 +15,7 @@ MonoBehaviour:
   Animals:
   - Bear
   TotalKillCount: 01000000
-  killCount: 00000000
+  killCount: 01000000
   StartingInstructions:
   - We need to deliver this Tiger at the zoo by this afternoon.
   - We need to deliver this Tiger at the zoo by this afternoon.

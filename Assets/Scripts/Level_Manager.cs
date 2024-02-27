@@ -62,7 +62,7 @@ public class Level_Manager : MonoBehaviour
     {
         if (is_Comp == false)
         {
-            LevelLoader.Instance.Characters_Parent.SetActive(false);
+           
             Invoke("Finish_Cutscene_", 2f);
             is_Comp = true;
         }
@@ -76,6 +76,6 @@ public class Level_Manager : MonoBehaviour
          {
                 a.SetActive(false);
           }
-
+        LevelLoader.Instance.Characters_Parent.SetActive(false);
     }
 }
