@@ -49,26 +49,20 @@ public class Level_Manager : MonoBehaviour
     }
     public void update_stats(string animal_name)
     {
-        //Debug.Log("Enter InUpdate" + animal_name);
-        for (int i = 0; i < Stats.Animals.Length; i++)
-        {
-            if (Stats.Animals[i] == animal_name)
+     
+          if (Stats.killCount[0] < Stats.TotalKillCount[0])
             {
-               // Debug.Log("Enter condition" + animal_name + i);
-
-                if (Stats.killCount[i] < Stats.TotalKillCount[i])
-                {
-                    Stats.killCount[i] = Stats.killCount[i] + 1;
-                    lvl_loader.AnimalList[i].gameObject.GetComponent<Text>().text = Stats.Animals[i] + " \t" + Stats.killCount[i] + "/" + Stats.TotalKillCount[i];
-                }
-            }
-        }
+                Stats.killCount[0] = Stats.killCount[0] + 1;
+                 lvl_loader.AnimalList[0].gameObject.GetComponent<Text>().text = Stats.Animals[0] + " \t" + Stats.killCount[0] + "/" + Stats.TotalKillCount[0];
+           }
+       
     }
     private bool is_Comp;
     public void End_Level()
     {
         if (is_Comp == false)
         {
+            LevelLoader.Instance.Characters_Parent.SetActive(false);
             Invoke("Finish_Cutscene_", 2f);
             is_Comp = true;
         }

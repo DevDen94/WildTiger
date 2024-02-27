@@ -7815,6 +7815,10 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5694220749683260242, guid: 757fa70f9100bc1408beae567ffb138e, type: 3}
+      propertyPath: HalthDownSpeed
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 5694220749683260242, guid: 757fa70f9100bc1408beae567ffb138e, type: 3}
       propertyPath: patrolWaypoints.Array.data[0]
       value: 
       objectReference: {fileID: 7786611292531729862}

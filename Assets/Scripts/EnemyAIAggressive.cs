@@ -127,7 +127,7 @@ public class EnemyAIAggressive : MonoBehaviour
     {
         //animator.SetBool("Attack", true);
         nav.isStopped = true;
-        Quaternion targetRotation = Quaternion.LookRotation(TargetPlayer.position - transform.position);
+        Quaternion targetRotation = Quaternion.LookRotation(target.position - transform.position);
      
         // Smoothly rotate towards the player
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
@@ -268,7 +268,8 @@ public class EnemyAIAggressive : MonoBehaviour
                     {
                         
                         LevelLoader.Instance.lvl_M.KillAnimals++;
-                        LevelLoader.Instance.lvl_M.update_stats(gameObject.name);
+                        LevelLoader.Instance.lvl_M.Stats.killCount[0]++;
+                       
                         if (LevelLoader.Instance.lvl_M.KillAnimals >= LevelLoader.Instance.lvl_M.TotalEnemyInLevel)
                         {
 
@@ -281,6 +282,7 @@ public class EnemyAIAggressive : MonoBehaviour
                 LevelLoader.Instance.ExpTxt.text = PlayerPrefs.GetInt("TigerExp").ToString();
                 LevelLoader.Instance.TierUpdate();
                 Invoke("disableSelf", 3f);
+                LevelLoader.Instance.lvl_M.update_stats(gameObject.name);
             }
 
         }
