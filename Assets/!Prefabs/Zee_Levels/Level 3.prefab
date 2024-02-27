@@ -24056,7 +24056,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TotalEnemyInLevel: 2
   SpawnPoint: {fileID: 3577243484036640233}
-  Stun_Enemies: []
+  SpawnPoint_Tigeress: {fileID: 0}
+  SpawnPoint_Child: {fileID: 0}
+  Stun_Enemies:
+  - {fileID: 7965802111901588402}
+  - {fileID: 8786163987364248758}
   Stats: {fileID: 11400000, guid: a508cd4b2c4b48740b07e800b2bbb389, type: 2}
   FinishLevel: {fileID: 7149491939120813530}
   AnimalsNamesToKill:
@@ -24064,8 +24068,11 @@ MonoBehaviour:
   KillAnimals: 0
   Off_MainCh: 1
   Time: 400
+  agg_Animals: []
   FireStick: []
   FireTriggerPoint: {fileID: 0}
+  Tigress: 0
+  Child: 0
 --- !u!1 &8224226524106950491
 GameObject:
   m_ObjectHideFlags: 0
@@ -39860,7 +39867,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2448312975052633346, guid: 169992767148ed44992a98cb6ee11e71, type: 3}
       propertyPath: m_Name
-      value: deer 1
+      value: Deer
+      objectReference: {fileID: 0}
+    - target: {fileID: 2448312975052633359, guid: 169992767148ed44992a98cb6ee11e71, type: 3}
+      propertyPath: runningSpeed
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -39870,6 +39881,11 @@ PrefabInstance:
 --- !u!4 &7965802111901588401 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2448312975052633345, guid: 169992767148ed44992a98cb6ee11e71, type: 3}
+  m_PrefabInstance: {fileID: 5725783205723680432}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7965802111901588402 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2448312975052633346, guid: 169992767148ed44992a98cb6ee11e71, type: 3}
   m_PrefabInstance: {fileID: 5725783205723680432}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5931035585539991452
@@ -40008,7 +40024,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2448312975052633346, guid: 169992767148ed44992a98cb6ee11e71, type: 3}
       propertyPath: m_Name
-      value: deer 1 (1)
+      value: Deer
+      objectReference: {fileID: 0}
+    - target: {fileID: 2448312975052633359, guid: 169992767148ed44992a98cb6ee11e71, type: 3}
+      propertyPath: runningSpeed
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -40018,6 +40038,11 @@ PrefabInstance:
 --- !u!4 &8786163987364248757 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2448312975052633345, guid: 169992767148ed44992a98cb6ee11e71, type: 3}
+  m_PrefabInstance: {fileID: 6346871728392702388}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8786163987364248758 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2448312975052633346, guid: 169992767148ed44992a98cb6ee11e71, type: 3}
   m_PrefabInstance: {fileID: 6346871728392702388}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7451707181357565091

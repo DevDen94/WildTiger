@@ -17,7 +17,7 @@ public class Level_Manager : MonoBehaviour
     public bool Off_MainCh;
     public static Level_Manager instance;
     public float Time;
-
+    public EnemyAIAggressive[] agg_Animals;
     [Header("Level---------------4--------------------")]
     public GameObject[] FireStick;
     public GameObject FireTriggerPoint;
@@ -37,7 +37,7 @@ public class Level_Manager : MonoBehaviour
         }
 
         TransferGameObjects();
-
+        is_Comp = false;
     }
     void TransferGameObjects()
     {
@@ -49,12 +49,12 @@ public class Level_Manager : MonoBehaviour
     }
     public void update_stats(string animal_name)
     {
-        Debug.Log("Enter InUpdate" + animal_name);
+        //Debug.Log("Enter InUpdate" + animal_name);
         for (int i = 0; i < Stats.Animals.Length; i++)
         {
             if (Stats.Animals[i] == animal_name)
             {
-                Debug.Log("Enter condition" + animal_name + i);
+               // Debug.Log("Enter condition" + animal_name + i);
 
                 if (Stats.killCount[i] < Stats.TotalKillCount[i])
                 {
@@ -64,9 +64,14 @@ public class Level_Manager : MonoBehaviour
             }
         }
     }
+    private bool is_Comp;
     public void End_Level()
     {
-        Invoke("Finish_Cutscene_", 2f);
+        if (is_Comp == false)
+        {
+            Invoke("Finish_Cutscene_", 2f);
+            is_Comp = true;
+        }
     }
    
     void Finish_Cutscene_()

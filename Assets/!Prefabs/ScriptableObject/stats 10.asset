@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: stats 10
   m_EditorClassIdentifier: 
   Animals:
-  - Diano
+  - Dinosaur
   TotalKillCount: 02000000
   killCount: 00000000
   StartingInstructions:

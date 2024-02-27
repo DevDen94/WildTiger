@@ -23,6 +23,7 @@ public class FirePoint : MonoBehaviour
             gameObject.GetComponent<BoxCollider>().enabled = false;
             Pointer.SetActive(false);
             LevelLoader.Instance.SelectedTiger.GetComponent<AnimalScript>().Planks.SetActive(false);
+            lvl.update_stats("Sticks");
             if (Woods == 3)
             {
                 Woods_Planks[Woods].SetActive(true);

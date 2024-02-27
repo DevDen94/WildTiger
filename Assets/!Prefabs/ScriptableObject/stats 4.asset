@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Animals:
   - Sticks
-  TotalKillCount: 03000000
-  killCount: 00000000
+  TotalKillCount: 04000000
+  killCount: 04000000
   StartingInstructions:
   - Sad for Your family. Little tiger is ill and getting cold.
   - Sad for Your family. Little tiger is ill and getting cold.

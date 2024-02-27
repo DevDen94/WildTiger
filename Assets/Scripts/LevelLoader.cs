@@ -31,7 +31,7 @@ public class LevelLoader : MonoBehaviour
     public Text[] AnimalList;
     public Text timerText;
     float totalTimeInSeconds;
-    public GameObject secondPlayer;
+    public GameObject secondPlayer; public AudioSource StunSound;
     private void Awake()
     {
         Instance = this;
@@ -39,7 +39,7 @@ public class LevelLoader : MonoBehaviour
 
     private void Start()
     {
-        PlayerPrefs.SetInt("Level", 1);
+        PlayerPrefs.SetInt("Level", 0);
         selected_Level = PlayerPrefs.GetInt("Level");
         lvl_M = Instantiate(Levels[selected_Level]);
         SelectedTiger.transform.SetPositionAndRotation(lvl_M.SpawnPoint.transform.position, lvl_M.SpawnPoint.transform.rotation);
@@ -53,6 +53,7 @@ public class LevelLoader : MonoBehaviour
         {
             a.SetActive(false);
         }
+   
 
 
     }
@@ -215,7 +216,7 @@ public class LevelLoader : MonoBehaviour
             yield return new WaitForSeconds(1f);
             timeRemaining--;
         }
-
+        Debug.LogError("aaaa");
         LevelFail();
     }
     void UpdateTimerText(float timeInSeconds)

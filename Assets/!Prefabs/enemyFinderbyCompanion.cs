@@ -33,8 +33,12 @@ public class enemyFinderbyCompanion : MonoBehaviour
             Current_Companion = Tigress;
             Tigeress.SetActive(true);
             Tigeress.transform.SetPositionAndRotation(GetComponent<LevelLoader>().lvl_M.SpawnPoint_Tigeress.transform.position,
-                GetComponent<LevelLoader>().lvl_M.SpawnPoint_Tigeress.transform.rotation);
-            LevelLoader.Instance.secondPlayer = Tigeress;
+            GetComponent<LevelLoader>().lvl_M.SpawnPoint_Tigeress.transform.rotation);
+            GetComponent<LevelLoader>().secondPlayer = Tigeress;
+            foreach (EnemyAIAggressive a in GetComponent<LevelLoader>().lvl_M.agg_Animals)
+            {
+                a.TargetPlayer2= Tigeress.transform;
+            }
         }else if (GetComponent<LevelLoader>().lvl_M.Child == true)
         {
             Current_Companion = Child;
@@ -60,7 +64,7 @@ public class enemyFinderbyCompanion : MonoBehaviour
         foreach (Collider collider in colliders)
         {
             // Do something with the detected enemy collider
-          //  Current_Companion.currentState = gotoPoint;
+            Current_Companion.currentState = gotoPoint;
             Current_Companion.currentState = AttackState;
             Current_Companion.enabled = false;
 

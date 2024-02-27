@@ -1738,8 +1738,6 @@ MonoBehaviour:
   camera: {fileID: 0}
   AttackRange: 5
   ChasseRange: 20
-  distanceToPlayer: 0
-  distanceToPlayer2: 0
   walkSpeed: 1
   RunSpeed: 2
   rotationSpeed: 5
@@ -1747,6 +1745,11 @@ MonoBehaviour:
   targetPoints: []
   PlayerAnimator: {fileID: 0}
   secondplayer: {fileID: 0}
+  playerColliders: []
+  target: {fileID: 0}
+  patrolWaypoints: []
+  point: {fileID: 0}
+  t: 0
   EnemyHealth: {fileID: 676980088146230177}
   HealthBAr: {fileID: 676980087717357799}
   StartingHealth: 1
@@ -3001,7 +3004,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2743591043096627057, guid: 15b33d708e80e4f4d8332183586e684b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2743591043096627070, guid: 15b33d708e80e4f4d8332183586e684b, type: 3}
       propertyPath: m_RootOrder

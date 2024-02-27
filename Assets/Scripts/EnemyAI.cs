@@ -107,15 +107,16 @@ public class EnemyAI : MonoBehaviour
     public void stun()
     {
         animator.SetBool("stun", true);
-        GetComponent<NavMeshAgent>().isStopped = true;  
-        Invoke(nameof(stunOff), 6f);
+        GetComponent<NavMeshAgent>().isStopped = true;
+        if (HealthSlider.fillAmount > 0) {
+            Invoke(nameof(stunOff), 6f); }
     }
 
     public void stunOff()
     {
         animator.SetBool("stun", false);
-        GetComponent<NavMeshAgent>().isStopped = false;
         transform.GetChild(4).gameObject.SetActive(false);
+        GetComponent<NavMeshAgent>().isStopped = false;
     }
 
 
@@ -132,7 +133,6 @@ public class EnemyAI : MonoBehaviour
                 animator.SetBool("death", true);
                 GetComponent<NavMeshAgent>().enabled = false;
                 GetComponent<EnemyAI>().enabled = false;
-                GetComponent<NavMeshAgent>().isStopped = true;
                 transform.GetChild(4).gameObject.SetActive(false);
                 transform.GetChild(3).gameObject.SetActive(false);
                 LevelLoader.Instance.lvl_M.update_stats(this.gameObject.name);
@@ -155,20 +155,15 @@ public class EnemyAI : MonoBehaviour
         
         player.GetComponent<Animator>().Play("F_Eat", 0);
        
-        GameManager.Instance.EatPopUp.SetActive(true);
-        //transform.position= MouthPosition.transform.position;
-        //transform.transform.parent = MouthPosition.transform;
-
-        //transform.position = new Vector3(0f, 0f, 0f);
-        //GetComponent<NavMeshAgent>().isStopped = true;
-        //transform.position = new Vector3(0f, 0f, 0f);
+        LevelLoader.Instance.EatPopUp.SetActive(true);
+     
         Invoke(nameof(checkComplete),3f);
     }
     
     public void checkComplete()
     {
         CheckForIncriment = true;
-        //GameManager.Instance.KillAnimals++;
+       
         for (int i = 0; i < LevelLoader.Instance.lvl_M.AnimalsNamesToKill.Length; i++)
         {
             if (name == LevelLoader.Instance.lvl_M.AnimalsNamesToKill[i])
@@ -177,7 +172,9 @@ public class EnemyAI : MonoBehaviour
                 {
                     LevelLoader.Instance.lvl_M.KillAnimals++;
                     CheckForIncriment = false;
-                    
+                    LevelLoader.Instance.MoveMentController.SetActive(true);
+                    LevelLoader.Instance.EatPopUp.SetActive(false);
+                    this.gameObject.SetActive(false);
                 }
 
                 if (LevelLoader.Instance.lvl_M.KillAnimals >= LevelLoader.Instance.lvl_M.TotalEnemyInLevel)
@@ -186,13 +183,7 @@ public class EnemyAI : MonoBehaviour
                     LevelLoader.Instance.lvl_M.End_Level();
                 }
             }
-            else
-            {
-                LevelLoader.Instance.MoveMentController.SetActive(true);
-                LevelLoader.Instance.EatPopUp.SetActive(false);
-                this.gameObject.SetActive(false);
-
-            }
+        
 
         }
     }

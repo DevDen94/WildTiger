@@ -90,7 +90,7 @@ public class AnimalScript : MonoBehaviour
               
                 if (IsEnemyInFront())
                 {
-                    GameManager.Instance.StunSound.Play();
+                    LevelLoader.Instance.StunSound.Play();
                     lineRenderer.enabled = true;
                     lineRenderer.SetPosition(0, transform.position);
                     lineRenderer.SetPosition(1, enemy.transform.position);
@@ -169,6 +169,7 @@ public class AnimalScript : MonoBehaviour
                 
                 if (PlayerHealth.value <= 0)
                 {
+                    Debug.LogError("aaaa");
                     LevelLoader.Instance.LevelFail();
                     Invoke(nameof(DisableClawIamge), 0f);
                 }

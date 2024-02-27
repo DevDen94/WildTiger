@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using System.Linq;
+using UnityEngine.AI;
 public class EnemyAIAggressive : MonoBehaviour
 {
 
@@ -11,8 +12,7 @@ public class EnemyAIAggressive : MonoBehaviour
 
     public float AttackRange;
     public float ChasseRange;
-    public float distanceToPlayer;
-    public float distanceToPlayer2;
+
 
     private Animator animator;
 
@@ -23,127 +23,115 @@ public class EnemyAIAggressive : MonoBehaviour
     public int numberOfPoints = 5;
     public Transform[] targetPoints;
     private int currentTargetIndex = 0;
-    
+    private NavMeshAgent nav;
+ 
     public Animator PlayerAnimator, secondplayer;
     private void Start()
     {
+        nav = GetComponent<NavMeshAgent>();
         camera = Camera.main.transform;
         TargetPlayer = LevelLoader.Instance.SelectedTiger.transform;
         PlayerAnimator = TargetPlayer.GetComponent<Animator>();
-        GenerateRandomPoints();
         animator = GetComponent<Animator>();
         SetNewRandomTarget();
-        Invoke(nameof(AssignPalyer), 1f);
-        StartCoroutine(waitforDistance());
+        Invoke("AssignPalyer", 2f);
+
     }
     public void AssignPalyer()
     {
-        if (!LevelLoader.Instance.secondPlayer)
-        {
-           // SecondPlayer = LevelLoader.Instance.secondPlayer;
-        }
         initialPosition = transform.position;
-        //secondplayer = SecondPlayer.GetComponent<Animator>();
+        if (TargetPlayer2 !=null)
+        {
+            secondplayer = TargetPlayer2.GetComponent<Animator>();
+        }
     }
 
-
-    IEnumerator waitforDistance()
-    {
-        yield return new WaitForSeconds(1);
-        distanceToPlayer = Vector3.Distance(transform.position, TargetPlayer.position);
-        distanceToPlayer2 = Vector3.Distance(transform.position, TargetPlayer2.position);
-        StartCoroutine(waitforDistance());
-    }
-
-
-
+    public Collider[] playerColliders;
 
     private void Update()
     {
-        
-       // Transform targetPlayer = (distanceToPlayer < distanceToPlayer2) ? TargetPlayer : TargetPlayer2;
-        if (distanceToPlayer > ChasseRange)
-        {
-            animator.SetBool("isRunning", false);
-            transform.position = Vector3.MoveTowards(transform.position, targetPoints[currentTargetIndex].position, walkSpeed * Time.deltaTime);
-            transform.LookAt(targetPoints[currentTargetIndex]);
-            // Check if AI has reached the target point
-            if (Vector3.Distance(transform.position, targetPoints[currentTargetIndex].position) < 0.1f)
-            {
-                // Set a new target point
-                SetNewRandomTarget();
-            }
-            Debug.Log("Patrol");
-        }
-        //else if (distanceToPlayer < ChasseRange || distanceToPlayer2<ChasseRange && distanceToPlayer > AttackRange&& distanceToPlayer2 > AttackRange)
-        //{
-        //    Chasse(targetPlayer);
-        //    Debug.Log(targetPlayer);
-        //    Debug.Log("Chasse");
-        //}
-        //else if (distanceToPlayer <= AttackRange || distanceToPlayer2 <= AttackRange)
-        //{
-        //    //Attack
-        //    Debug.Log("Attack");
-        //    Attack(targetPlayer);
-        //}
-
-        if (distanceToPlayer < distanceToPlayer2 && distanceToPlayer > AttackRange)
-        {
-            Chasse(TargetPlayer);
-        }
-        else if (distanceToPlayer > distanceToPlayer2 && distanceToPlayer2 > AttackRange)
-        {
-            Chasse(TargetPlayer2);
-        }
-
-        if(distanceToPlayer <= AttackRange)
-        {
-            Attack(TargetPlayer);
-        }else if (distanceToPlayer <= AttackRange)
-        {
-            Attack(TargetPlayer2);
-
-        }
-
-
-        HealthBAr.transform.LookAt(camera.transform);
+        Chase();
+      
     }
+    public Transform target;
+    void Chase()
+    {
+       playerColliders = Physics.OverlapSphere(transform.position, ChasseRange, LayerMask.GetMask("Animal"));
+
+        if (playerColliders.Length > 0)
+        {
+            // Find the nearest player
+            target = playerColliders.OrderBy(p => Vector3.Distance(transform.position, p.transform.position)).First().transform;
+
+            if (Vector3.Distance(transform.position, target.position) < AttackRange)
+            {
+                
+                Attack(target);
+                animator.SetBool("Attack", true); animator.SetBool("isRunning", false);
+                HealthBAr.transform.LookAt(camera.transform);
+            }
+            else
+            {
+                GetComponent<Rigidbody>().isKinematic = false;
+                Chasse(target);
+                animator.SetBool("isRunning", true);
+                animator.SetBool("Attack", false);
+            }
+        }
+        else
+        {
+           
+            SetNewRandomTarget();
+            animator.SetBool("isRunning", false);
+        }
+    }
+    int currentWaypointIndex = 0;
+    public Transform[] patrolWaypoints;
+    public Transform point;
+    public float t;
     void SetNewRandomTarget()
     {
-        // Generate a new random position within a certain range
-        currentTargetIndex = (currentTargetIndex + 1) % targetPoints.Length;
-    }
-    void GenerateRandomPoints()
-    {
-        // Initialize the array
-        targetPoints = new Transform[numberOfPoints];
-
-        // Generate random points within a certain range
-        for (int i = 0; i < numberOfPoints; i++)
+      
+        point = patrolWaypoints[currentWaypointIndex];
+        
+        t = Vector3.Distance(transform.position, point.position);
+        if ( t< 2f)
         {
-            Vector3 randomPosition = new Vector3(Random.Range(-10f, 10f), 0f, Random.Range(-10f, 10f));
-            targetPoints[i] = new GameObject("TargetPoint" + i).transform;
-            targetPoints[i].position = randomPosition;
+        
+            currentWaypointIndex = (currentWaypointIndex + 1) % patrolWaypoints.Length;
+             nav.SetDestination(patrolWaypoints[currentWaypointIndex].position);
+          
         }
+        else
+        {
+             nav.SetDestination(patrolWaypoints[currentWaypointIndex].position);
+         
+        }
+
     }
+ 
     public void Chasse(Transform player)
     {
-        transform.LookAt(player);
-        transform.position = Vector3.MoveTowards(transform.position, player.position, RunSpeed * Time.deltaTime);
-        animator.SetBool("isRunning", true);
-        animator.SetBool("Attack", false);
+
+            nav.isStopped = false;
+            nav.SetDestination(target.position);
+/*
+        }
+        else
+        {
+            transform.position = Vector3.MoveTowards(transform.position, patrolWaypoints[currentWaypointIndex].position, walkSpeed * Time.deltaTime);
+        }*/
     }
 
     public void Attack(Transform target)
     {
-        animator.SetBool("Attack", true);
-
-        TargetPlayer.GetComponent<Rigidbody>().isKinematic = true;
-        Quaternion targetRotation = Quaternion.LookRotation(target.position - transform.position);
-
+        //animator.SetBool("Attack", true);
+        nav.isStopped = true;
+        Quaternion targetRotation = Quaternion.LookRotation(TargetPlayer.position - transform.position);
+     
         // Smoothly rotate towards the player
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        GetComponent<Rigidbody>().isKinematic = true;
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -151,19 +139,15 @@ public class EnemyAIAggressive : MonoBehaviour
         {
             if (IsAttackAnimationPlaying() || IsAttackAnimationPlaying1() || IsAttackAnimationPlaying2() || IsAttackAnimationPlaying3())
             {
-                Debug.Log("Hit");
-                //if (EnemyHealth.fillAmount > 0)
-                //{
-                //    TextUIHealth.SetActive(true);
-                //    TextUIHealth.GetComponent<TMPro.TextMeshPro>().text = (Random.Range(4, 10)).ToString();
-                //    TextUIHealth.GetComponent<DG.Tweening.DOTweenAnimation>().DORestart();
-                //    Invoke(nameof(DisableHealthText), 1f);
-                //}
+
                 Demage(other.gameObject.name);
             }
-            else if (IsAttackAnimationPlaying11() || IsAttackAnimationPlaying122() || IsAttackAnimationPlaying233() || IsAttackAnimationPlaying344())
+            else if (secondplayer !=null)
             {
-                Demage(other.gameObject.name);
+                if (IsAttackAnimationPlaying11() || IsAttackAnimationPlaying122() || IsAttackAnimationPlaying233() || IsAttackAnimationPlaying344())
+                {
+                    Demage(other.gameObject.name);
+                }
             }
         }
 
@@ -272,7 +256,7 @@ public class EnemyAIAggressive : MonoBehaviour
                 walkSpeed = 0;
                 RunSpeed = 0;
                 LevelLoader.Instance.lvl_M.KillAnimals++;
-                Destroy(this.gameObject);
+              
                 GetComponent<MapMarker>().isActive = false;
                 this.gameObject.GetComponent<CapsuleCollider>().enabled = false;
                 // GameManager.Instance.EatPopUp.SetActive(true);
@@ -282,12 +266,13 @@ public class EnemyAIAggressive : MonoBehaviour
                 {
                     if (name == LevelLoader.Instance.lvl_M.AnimalsNamesToKill[i])
                     {
+                        
                         LevelLoader.Instance.lvl_M.KillAnimals++;
+                        LevelLoader.Instance.lvl_M.update_stats(gameObject.name);
                         if (LevelLoader.Instance.lvl_M.KillAnimals >= LevelLoader.Instance.lvl_M.TotalEnemyInLevel)
                         {
 
                             LevelLoader.Instance.MoveMentController.SetActive(false);
-                            //GameManager.Instance.EatBtn.SetActive(true);
                             StartCoroutine(CompletePanel());
                         }
                     }
