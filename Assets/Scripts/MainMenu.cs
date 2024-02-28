@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,6 +16,15 @@ public class MainMenu : MonoBehaviour
     [Space(2)]
     [Header("Level Selection")]
     public GameObject[] LevelButtons;
+
+    public static MainMenu Instance;
+
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
 
     void Start()
     {
@@ -51,7 +60,15 @@ public class MainMenu : MonoBehaviour
         coinmanager.SetActive(false);
         // Set initial values
         LoadingFillAmount.fillAmount = 0f;
-        loadingText.text = "Loading 0%";
+        if (PlayerPrefs.GetString("CurrentLanguage") == "english")
+        {
+            loadingText.text = "Loading 0%";
+        }
+        else if (PlayerPrefs.GetString("CurrentLanguage") == "chinese")
+        {
+            loadingText.text = "加载中 0%";
+        }
+            
 
         // Simulate loading by waiting for 4 seconds
         float startTime = Time.time;
@@ -62,7 +79,19 @@ public class MainMenu : MonoBehaviour
             // Update the loading slider and text
             float progress = elapsedTime / 5f;
             LoadingFillAmount.fillAmount = progress;
-            loadingText.text = "Loading " + (int)(progress * 100) + "%";
+
+            if (PlayerPrefs.GetString("CurrentLanguage") == "english")
+            {
+                Debug.Log("english");
+                loadingText.text = "Loading " + (int)(progress * 100) + "%";
+            }
+            else if (PlayerPrefs.GetString("CurrentLanguage") == "chinese")
+            {
+                Debug.Log("chinese");
+                loadingText.text = "加载中 " + (int)(progress * 100) + "%";
+            }
+
+           
 
             elapsedTime = Time.time - startTime;
 
@@ -123,7 +152,17 @@ public class MainMenu : MonoBehaviour
             // Update the loading slider and text
             float progress = elapsedTime / 5f;
             LoadingFillAmount.fillAmount = progress;
-            loadingText.text = "Loading " + (int)(progress * 100) + "%";
+            if (PlayerPrefs.GetString("CurrentLanguage") == "english")
+            {
+                Debug.Log("english");
+                loadingText.text = "Loading " + (int)(progress * 100) + "%";
+            }
+            else if (PlayerPrefs.GetString("CurrentLanguage") == "chinese")
+            {
+                Debug.Log("chinese");
+                loadingText.text = "加载中 " + (int)(progress * 100) + "%";
+            }
+
 
             elapsedTime = Time.time - startTime;
 
