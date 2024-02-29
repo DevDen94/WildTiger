@@ -25,7 +25,7 @@ public class MainMenu : MonoBehaviour
 
         if (!PlayerPrefs.HasKey("UnlockedLevels"))
         {
-       //   PlayerPrefs.SetInt("UnlockedLevels", 14);
+            PlayerPrefs.SetInt("TUT", 1);
             UpdateLevels();
            
         }

@@ -91,7 +91,7 @@ public class EnemyAIAggressive : MonoBehaviour
     public float t;
     void SetNewRandomTarget()
     {
-      
+        nav.speed = 1.7f;
         point = patrolWaypoints[currentWaypointIndex];
         
         t = Vector3.Distance(transform.position, point.position);
@@ -112,7 +112,7 @@ public class EnemyAIAggressive : MonoBehaviour
  
     public void Chasse(Transform player)
     {
-
+            nav.speed = 3.5f;
             nav.isStopped = false;
             nav.SetDestination(target.position);
 /*
@@ -243,6 +243,12 @@ public class EnemyAIAggressive : MonoBehaviour
         yield return new WaitForSeconds(5f);
         LevelLoader.Instance.lvl_M.End_Level();
     }
+
+    IEnumerator CompleteTutorial()
+    {
+        yield return new WaitForSeconds(5f);
+        LevelLoader.Instance.tut_g.End_Level();
+    }
     public void Demage(string name)
     {
         if (EnemyHealth.fillAmount > 0)
@@ -255,10 +261,18 @@ public class EnemyAIAggressive : MonoBehaviour
                 animator.SetTrigger("Death");
                 walkSpeed = 0;
                 RunSpeed = 0;
-                LevelLoader.Instance.lvl_M.KillAnimals++;
-              
                 GetComponent<MapMarker>().isActive = false;
                 this.gameObject.GetComponent<CapsuleCollider>().enabled = false;
+                if (PlayerPrefs.GetInt("TUT") == 1)
+                {
+                    LevelLoader.Instance.Tutorial_Game.gameObject.SetActive(false);
+                    StartCoroutine(CompleteTutorial());
+                    Invoke("disableSelf", 3f);
+                    return;
+                }
+                LevelLoader.Instance.lvl_M.KillAnimals++;
+              
+              
                 // GameManager.Instance.EatPopUp.SetActive(true);
 
                 
