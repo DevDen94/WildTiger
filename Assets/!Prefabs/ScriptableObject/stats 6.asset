@@ -20,3 +20,7 @@ MonoBehaviour:
   - 
   - It's time for little tiger to know how to hunt.
   - Go and take him. Teach him with all liitle rabbits.
+  StartingInstructionsChineese:
+  - 
+  - "\u662F\u65F6\u5019\u8BA9\u5C0F\u8001\u864E\u5B66\u4F1A\u5982\u4F55\u72E9\u730E\u4E86\u3002"
+  - "\u53BB\u5E26\u4ED6\u53BB\u5427\u3002\u7528\u6240\u6709\u7684\u5C0F\u5154\u5B50\u6765\u6559\u4ED6\u3002"

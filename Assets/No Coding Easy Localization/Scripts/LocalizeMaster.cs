@@ -48,6 +48,7 @@ namespace NoCodingEasyLocalization
             var json = JsonUtility.ToJson(nextSaveData);
             PlayerPrefs.SetString(DATA_KEY, json);
             PlayerPrefs.Save();
+            
         }
 
         public UniSimpleLocalizeData ReadData()

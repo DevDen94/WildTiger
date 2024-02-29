@@ -9,4 +9,5 @@ public class stats : ScriptableObject
     public int[] TotalKillCount;
     public int[] killCount;
     public string[] StartingInstructions;
+    public string[] StartingInstructionsChineese;
 }

@@ -13,7 +13,7 @@ public class Implementation : MonoBehaviour
     {
         instance = this;
         Advertisements.Instance.Initialize();
-        Debug.unityLogger.logEnabled = false;
+        //Debug.unityLogger.logEnabled = false;
         DontDestroyOnLoad(this);
     }
 

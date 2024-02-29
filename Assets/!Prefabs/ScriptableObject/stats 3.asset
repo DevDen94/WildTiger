@@ -21,3 +21,8 @@ MonoBehaviour:
   - Congrats You and tigeres are now in your's cave
   - HRRRAH!  Kid tiger born into your family
   - Go search for meal. Your family is hungry
+  StartingInstructionsChineese:
+  - "\u4E3A\u4F60\u611F\u5230\u9AD8\u5174\u3002\u4F60\u5BB6\u51FA\u751F\u7684\u5C0F\u8001\u864E"
+  - "\u606D\u559C\u4F60\u548C\u8001\u864E\u73B0\u5728\u5728\u4F60\u7684\u6D1E\u7A74\u91CC\u4E86"
+  - "\u54C8\u5566\uFF01\u4F60\u5BB6\u51FA\u751F\u7684\u5C0F\u8001\u864E"
+  - "\u53BB\u627E\u996D\u5403\u5427\u3002\u4F60\u7684\u5BB6\u4EBA\u997F\u4E86"

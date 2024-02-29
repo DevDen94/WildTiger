@@ -20,3 +20,7 @@ MonoBehaviour:
   - 
   - This time a hard task for little tiger is to kill Bear.
   - Be careful. This task will be dangerous for your child
+  StartingInstructionsChineese:
+  - 
+  - "\u8FD9\u6B21\u5C0F\u8001\u864E\u7684\u8270\u5DE8\u4EFB\u52A1\u662F\u6740\u6B7B\u5C0F\u718A\u3002"
+  - "\u5F53\u5FC3\u3002\u8FD9\u9879\u4EFB\u52A1\u5BF9\u60A8\u7684\u5B69\u5B50\u6765\u8BF4\u4F1A\u6709\u5371\u9669"

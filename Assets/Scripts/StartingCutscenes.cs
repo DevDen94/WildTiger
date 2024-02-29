@@ -42,7 +42,15 @@ public class StartingCutscenes : MonoBehaviour
         LevelLoader.Instance.InstructionPanel.SetActive(false);
         instruction_no = instruction_no + 1;
 
-        LevelLoader.Instance.Instruction_Text.text = lvl.Stats.StartingInstructions[instruction_no].ToString();
+        
+        if (PlayerPrefs.GetInt("Localization") == 1)
+        {
+            LevelLoader.Instance.Instruction_Text.text = lvl.Stats.StartingInstructionsChineese[instruction_no].ToString();
+        }
+        else if (PlayerPrefs.GetInt("Localization") == 2)
+        {
+            LevelLoader.Instance.Instruction_Text.text = lvl.Stats.StartingInstructions[instruction_no].ToString();
+        }
         LevelLoader.Instance.InstructionPanel.SetActive(true);
                
     }

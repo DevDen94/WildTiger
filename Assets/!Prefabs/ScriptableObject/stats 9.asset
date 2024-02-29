@@ -19,4 +19,8 @@ MonoBehaviour:
   StartingInstructions:
   - 
   - Some farmers kidnapped your family. They are coming to take them.
-  - You have to rescue them in time and kill all Panthes
+  - You have to rescue them in time and kill all Panthers
+  StartingInstructionsChineese:
+  - 
+  - "\u4E00\u4E9B\u519C\u6C11\u7ED1\u67B6\u4E86\u4F60\u7684\u5BB6\u4EBA\u3002\u4ED6\u4EEC\u8981\u6765\u63A5\u4ED6\u4EEC\u4E86\u3002"
+  - "\u4F60\u5FC5\u987B\u53CA\u65F6\u8425\u6551\u4ED6\u4EEC\u5E76\u6740\u6B7B\u6240\u6709\u9ED1\u8C79"

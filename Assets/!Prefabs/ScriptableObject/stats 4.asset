@@ -20,3 +20,7 @@ MonoBehaviour:
   - Sad for Your family. Little tiger is ill and getting cold.
   - Sad for Your family. Little tiger is ill and getting cold.
   - Go find some sticks and lit up the fire
+  StartingInstructionsChineese:
+  - "\u4E3A\u4F60\u7684\u5BB6\u4EBA\u611F\u5230\u96BE\u8FC7\u3002\u5C0F\u8001\u864E\u751F\u75C5\u4E86\uFF0C\u611F\u5192\u4E86\u3002"
+  - "\u4E3A\u4F60\u7684\u5BB6\u4EBA\u611F\u5230\u96BE\u8FC7\u3002\u5C0F\u8001\u864E\u751F\u75C5\u4E86\uFF0C\u611F\u5192\u4E86\u3002"
+  - "\u53BB\u627E\u4E00\u4E9B\u6728\u68CD\uFF0C\u7136\u540E\u70B9\u71C3\u706B"

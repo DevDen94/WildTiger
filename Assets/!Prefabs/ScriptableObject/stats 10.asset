@@ -19,3 +19,6 @@ MonoBehaviour:
   StartingInstructions:
   - Dinosaur are moving around you. You need to kill all of them
   - Dinosaur are moving around you. You need to kill all of them
+  StartingInstructionsChineese:
+  - "\u6050\u9F99\u5728\u4F60\u5468\u56F4\u79FB\u52A8\u3002\u4F60\u9700\u8981\u6740\u6B7B\u4ED6\u4EEC\u6240\u6709\u4EBA"
+  - "\u6050\u9F99\u5728\u4F60\u5468\u56F4\u79FB\u52A8\u3002\u4F60\u9700\u8981\u6740\u6B7B\u4ED6\u4EEC\u6240\u6709\u4EBA"

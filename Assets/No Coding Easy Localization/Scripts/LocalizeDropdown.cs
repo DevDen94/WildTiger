@@ -10,15 +10,19 @@ namespace NoCodingEasyLocalization
     {
         [Header("Be careful that you are setting the correct LocalizeMaster.")]
         [SerializeField] LocalizeMaster lm = null;
-        private Dropdown dropdown = null;
+        public Dropdown dropdown = null;
 
         private void Awake()
         {
             dropdown = GetComponent<Dropdown>();
+           
         }
+
+       
 
         void Start()
         {
+            
             if (lm == null) {
                 Debug.LogError("lm (LocalizeMaster) must be setted.");
                 return;
@@ -37,6 +41,9 @@ namespace NoCodingEasyLocalization
             });
 
             ApplyDropdownValue();
+
+            
+            
         }
 
         public void ApplyDropdownValue()

@@ -13,7 +13,7 @@ public class MainMenu : MonoBehaviour
     public Image LoadingFillAmount;
     public Text loadingText;
 
-    public Text Coins;
+    public Text Coins,Play;
    
     [Space(2)]
     [Header("Level Selection")]
@@ -45,7 +45,7 @@ public class MainMenu : MonoBehaviour
         //GoogleMobileAdsController.Instance.ShowSmallBannerAd();
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
         Implementation.instance.ShowBanner();
-
+        CheckLanguage();
         
     }
 
@@ -153,4 +153,21 @@ public class MainMenu : MonoBehaviour
     {
         Application.OpenURL(link);
     }
+
+    public void CheckLanguage()
+    {
+        Debug.Log(Play.text);
+        if (Play.text == "PLAY")
+        {
+            PlayerPrefs.SetInt("Localization", 2);
+            Debug.Log("English");
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Localization", 1);
+            Debug.Log("Chinese");
+        }
+    }
+
+
 }

@@ -19,3 +19,6 @@ MonoBehaviour:
   StartingInstructions:
   - Your cave is attacked by Cougar. Little Tiger is in danger. Go and Safe him
   - Your cave is attacked by Cougar. Little Tiger is in danger. Go and Safe him
+  StartingInstructionsChineese:
+  - "\u4F60\u7684\u6D1E\u7A74\u88AB\u7F8E\u6D32\u72EE\u88AD\u51FB\u4E86\u3002\u5C0F\u8001\u864E\u9047\u5230\u5371\u9669\u4E86\u3002\u53BB\u4FDD\u62A4\u4ED6"
+  - "\u4F60\u7684\u6D1E\u7A74\u88AB\u7F8E\u6D32\u72EE\u88AD\u51FB\u4E86\u3002\u5C0F\u8001\u864E\u9047\u5230\u5371\u9669\u4E86\u3002\u53BB\u4FDD\u62A4\u4ED6"

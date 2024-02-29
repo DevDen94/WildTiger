@@ -20,3 +20,7 @@ MonoBehaviour:
   - This time a you need to hunt Boars
   - This time a you need to hunt Boars
   - Be careful. Boars are aggressive they will be dangerous for little tiger.
+  StartingInstructionsChineese:
+  - "\u8FD9\u6B21\u4F60\u9700\u8981\u730E\u6740\u91CE\u732A"
+  - "\u8FD9\u6B21\u4F60\u9700\u8981\u730E\u6740\u91CE\u732A"
+  - "\u5F53\u5FC3\u3002\u91CE\u732A\u5177\u6709\u653B\u51FB\u6027\uFF0C\u5B83\u4EEC\u5BF9\u5C0F\u8001\u864E\u6765\u8BF4\u662F\u5371\u9669\u7684\u3002"

@@ -20,3 +20,7 @@ MonoBehaviour:
   - You need to free this cave for you.
   - You need to free this cave for you.
   - Kill all boars and set this place for yours family
+  StartingInstructionsChineese:
+  - "\u4F60\u9700\u8981\u4E3A\u4F60\u91CA\u653E\u8FD9\u4E2A\u6D1E\u7A74\u3002"
+  - "\u4F60\u9700\u8981\u4E3A\u4F60\u91CA\u653E\u8FD9\u4E2A\u6D1E\u7A74\u3002"
+  - "\u6740\u6B7B\u6240\u6709\u91CE\u732A\uFF0C\u4E3A\u4F60\u7684\u5BB6\u4EBA\u8BBE\u7F6E\u8FD9\u4E2A\u5730\u65B9"
