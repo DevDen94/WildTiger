@@ -18745,7 +18745,7 @@ MonoBehaviour:
   TigerExp: 0
   PlayerHealth: {fileID: 290146319}
   healthParent: {fileID: 1278903384}
-  healthDown_s: 0.003
+  healthDown_s: 0.007
   StartingHealth: 1
 --- !u!65 &2078790911
 BoxCollider:

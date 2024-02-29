@@ -114,7 +114,7 @@ public class LevelLoader : MonoBehaviour
         if (selected_Level == PlayerPrefs.GetInt("UnlockedLevels"))
         {
             PlayerPrefs.SetInt("UnlockedLevels", PlayerPrefs.GetInt("UnlockedLevels" + 1));
-            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 200);
+           
         }
         PlayerPrefs.SetInt("Level", selected_Level + 1);
         
@@ -160,6 +160,7 @@ public class LevelLoader : MonoBehaviour
         {
             if (!lvl_Compl)
             {
+                PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 200);
                 PlayerPrefs.SetInt("UnlockedLevels", PlayerPrefs.GetInt("UnlockedLevels") + 1);
                 PlayerPrefs.SetInt("TigerExp", PlayerPrefs.GetInt("TigerExp") + LevelRewardedExp[selected_Level]);
                 Debug.LogError("ExpLevelReward" + LevelRewardedExp[selected_Level]);
