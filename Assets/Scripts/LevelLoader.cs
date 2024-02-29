@@ -36,6 +36,7 @@ public class LevelLoader : MonoBehaviour
     public TutorialScene Tutorial_Game;
     public TutorialLevel tut;
     public enemyFinderbyCompanion em;
+    public Text Level_No;
 
     [HideInInspector]
     public TutorialLevel tut_g;
@@ -59,7 +60,7 @@ public class LevelLoader : MonoBehaviour
         else
         {
             em.enabled = true;
-            PlayerPrefs.SetInt("Level", 1);
+       
             selected_Level = PlayerPrefs.GetInt("Level");
             lvl_M = Instantiate(Levels[selected_Level]);
             SelectedTiger.transform.SetPositionAndRotation(lvl_M.SpawnPoint.transform.position, lvl_M.SpawnPoint.transform.rotation);
@@ -69,6 +70,7 @@ public class LevelLoader : MonoBehaviour
             // Level_Start();
             TierUpdate();
             totalTimeInSeconds = lvl_M.Time;
+            Level_No.text = "LEVEL \t " + (selected_Level+1);
             foreach (GameObject a in GameObject_DeactiveOnStart)
             {
                 a.SetActive(false);
@@ -112,6 +114,7 @@ public class LevelLoader : MonoBehaviour
         if (selected_Level == PlayerPrefs.GetInt("UnlockedLevels"))
         {
             PlayerPrefs.SetInt("UnlockedLevels", PlayerPrefs.GetInt("UnlockedLevels" + 1));
+            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 200);
         }
         PlayerPrefs.SetInt("Level", selected_Level + 1);
         

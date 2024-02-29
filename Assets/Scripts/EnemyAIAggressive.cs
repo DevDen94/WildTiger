@@ -91,7 +91,7 @@ public class EnemyAIAggressive : MonoBehaviour
     public float t;
     void SetNewRandomTarget()
     {
-        nav.speed = 1.7f;
+        nav.speed = 1.2f;
         point = patrolWaypoints[currentWaypointIndex];
         
         t = Vector3.Distance(transform.position, point.position);

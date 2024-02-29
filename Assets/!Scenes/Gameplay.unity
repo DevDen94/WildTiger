@@ -8382,6 +8382,16 @@ MonoBehaviour:
   - {fileID: 3401256549576140936, guid: dc0865fe5c785284ab1b89e8e6e725b3, type: 3}
   - {fileID: 3401256549576140936, guid: 3949afa66c44af049ba431db7b17b2e4, type: 3}
   - {fileID: 6180253272741903440, guid: 25a2e0d52e69e014894e7530376972f9, type: 3}
+  - {fileID: 5730245507529570364, guid: 7121d8ef303b5e54c8fb02d42dc3bbf5, type: 3}
+  - {fileID: 3096216467685681652, guid: ef1d9d1a2c247c444b0a202d603d3101, type: 3}
+  - {fileID: 523113391481743881, guid: 5b6bb7af97c50bf4ab293d1fc8aee570, type: 3}
+  - {fileID: 523113391481743881, guid: b53594f9b62f7f34e9af69e1a2e55692, type: 3}
+  - {fileID: 1367202495558578247, guid: f59cab3a0a405e44a844beb54d7dfc63, type: 3}
+  - {fileID: 7764735331142630970, guid: 94178e63c8294f44586506f3aa3e8b94, type: 3}
+  - {fileID: 7764735331142630970, guid: c60815130b9f2fb4ab057277d01f4dcb, type: 3}
+  - {fileID: 3401256549576140936, guid: dc0865fe5c785284ab1b89e8e6e725b3, type: 3}
+  - {fileID: 3401256549576140936, guid: 3949afa66c44af049ba431db7b17b2e4, type: 3}
+  - {fileID: 6180253272741903440, guid: 25a2e0d52e69e014894e7530376972f9, type: 3}
   LevelRewardedExp: 3200000064000000c80000009001000020030000dc050000d0070000c4090000b80b0000e40c0000ac0d0000740e00003c0f0000a00f000004100000
   TierExp: c8000000f4010000dc050000b80b000094110000581b000010270000c8320000803e0000204e0000204e0000a86100003075000018790000b8880000
   SelectedTiger: {fileID: 1869802653}
@@ -8423,6 +8433,7 @@ MonoBehaviour:
   Tutorial_Game: {fileID: 237658970}
   tut: {fileID: 7125093477800547614, guid: a91a9e93106f8c14195a236451f33575, type: 3}
   em: {fileID: 869168421}
+  Level_No: {fileID: 6355296267968814226}
   tut_g: {fileID: 0}
 --- !u!4 &869168420
 Transform:
@@ -11884,7 +11895,7 @@ MonoBehaviour:
   TigerExp: 0
   PlayerHealth: {fileID: 1674569862}
   healthParent: {fileID: 1629833527}
-  healthDown_s: 0.001
+  healthDown_s: 0.003
   StartingHealth: 1
 --- !u!4 &1456862536 stripped
 Transform:
@@ -12129,9 +12140,9 @@ RectTransform:
   - {fileID: 313714651}
   m_Father: {fileID: 3621736100466115262}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 168, y: -77}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -164, y: -94}
   m_SizeDelta: {x: 254, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1479133508
@@ -15866,7 +15877,7 @@ PrefabInstance:
       objectReference: {fileID: 235376256024388753}
     - target: {fileID: 3440537947860849996, guid: ea028631c02c1fa44b029d9c77edc80d, type: 3}
       propertyPath: HealthDown
-      value: 0.001
+      value: 0.003
       objectReference: {fileID: 0}
     - target: {fileID: 3440537947860849996, guid: ea028631c02c1fa44b029d9c77edc80d, type: 3}
       propertyPath: StunButton
@@ -18734,7 +18745,7 @@ MonoBehaviour:
   TigerExp: 0
   PlayerHealth: {fileID: 290146319}
   healthParent: {fileID: 1278903384}
-  healthDown_s: 0.001
+  healthDown_s: 0.003
   StartingHealth: 1
 --- !u!65 &2078790911
 BoxCollider:
@@ -20664,7 +20675,7 @@ RectTransform:
   m_Father: {fileID: 301724553848795466}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -33276,7 +33287,7 @@ RectTransform:
   m_Father: {fileID: 5350050772647201252}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.225, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -33574,7 +33585,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!223 &3621736098971163758
 Canvas:
   m_ObjectHideFlags: 0
@@ -49828,7 +49839,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 391, y: -92}
+  m_AnchoredPosition: {x: 134.6, y: -77.6}
   m_SizeDelta: {x: 111, y: 111}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6663690546294249710

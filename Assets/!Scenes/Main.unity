@@ -13545,7 +13545,7 @@ MonoBehaviour:
   MainMenuPanel: {fileID: 1190527005}
   LoadingFillAmount: {fileID: 913872160}
   loadingText: {fileID: 1045668670}
-  coinmanager: {fileID: 1254684084}
+  Coins: {fileID: 1185322326}
   LevelButtons:
   - {fileID: 982083884}
   - {fileID: 1326749534}
