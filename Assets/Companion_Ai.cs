@@ -24,20 +24,28 @@ public class Companion_Ai : MonoBehaviour
                     else
                     {
                         LevelLoader.Instance.MoveMentController.SetActive(false);
-                        Debug.LogError("endddddddddddddddddddddddd");
+                      
                         LevelLoader.Instance.LevelFail();
                     }
                 }
             }
             else
             {
-                if (LevelLoader.Instance.lvl_M.KillAnimals >= LevelLoader.Instance.lvl_M.TotalEnemyInLevel)
+                if (PlayerPrefs.GetInt("TUT") == 1)
                 {
-                    LevelLoader.Instance.MoveMentController.SetActive(false);
-                    LevelLoader.Instance.lvl_M.End_Level();
-                   
-                }
+                    LevelLoader.Instance.Tutorial_Game.gameObject.SetActive(false);
+                    LevelLoader.Instance.tut_g.End_Level();
 
+                }
+                else
+                {
+                    if (LevelLoader.Instance.lvl_M.KillAnimals >= LevelLoader.Instance.lvl_M.TotalEnemyInLevel)
+                    {
+                        LevelLoader.Instance.MoveMentController.SetActive(false);
+                        LevelLoader.Instance.lvl_M.End_Level();
+
+                    }
+                }
             }
 
         }

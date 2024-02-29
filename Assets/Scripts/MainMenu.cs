@@ -12,7 +12,9 @@ public class MainMenu : MonoBehaviour
     public GameObject MainMenuPanel;
     public Image LoadingFillAmount;
     public Text loadingText;
-    public GameObject coinmanager;
+
+    public Text Coins;
+   
     [Space(2)]
     [Header("Level Selection")]
     public GameObject[] LevelButtons;
@@ -25,7 +27,8 @@ public class MainMenu : MonoBehaviour
 
         if (!PlayerPrefs.HasKey("UnlockedLevels"))
         {
-       //   PlayerPrefs.SetInt("UnlockedLevels", 14);
+            PlayerPrefs.SetInt("TUT", 1);
+            PlayerPrefs.SetInt("Coins", 200);
             UpdateLevels();
            
         }
@@ -34,13 +37,16 @@ public class MainMenu : MonoBehaviour
             UpdateLevels();
             
         }
-       // GoogleAdMobController.instance.ShowSmallBannerAd();
+        Coins.text = PlayerPrefs.GetInt("Coins").ToString();
+        // GoogleAdMobController.instance.ShowSmallBannerAd();
         PlayerPrefs.SetInt("BuyTiger" + 0, 1);//ForlockedTigers
         PlayerPrefs.SetInt("BuyTiger" + 1, 0);//ForlockedTigers
         PlayerPrefs.SetInt("BuyTiger" + 2, 0);//ForlockedTigers
         //GoogleMobileAdsController.Instance.ShowSmallBannerAd();
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
         Implementation.instance.ShowBanner();
+
+        
     }
 
     IEnumerator LoadingComplete()
@@ -48,7 +54,7 @@ public class MainMenu : MonoBehaviour
 
         // Show loading panel
         LoadingPanel.SetActive(true);
-        coinmanager.SetActive(false);
+       
         // Set initial values
         LoadingFillAmount.fillAmount = 0f;
         loadingText.text = "Loading 0%";
@@ -71,7 +77,7 @@ public class MainMenu : MonoBehaviour
        
             // Hide loading panel
             LoadingPanel.SetActive(false);
-        coinmanager.SetActive(true);
+      
 
             // Show main menu panel
             MainMenuPanel.SetActive(true);

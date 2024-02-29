@@ -19,39 +19,58 @@ public class enemyFinderbyCompanion : MonoBehaviour
     public GameObject[] CompanionBtns;
     public GameObject Unfollow;
     public static enemyFinderbyCompanion instance;
+   
     private void Start()
     {
         instance = this;
-        Invoke("Activate", 1f);
+        
+        Invoke("Activate", 0.5f);
       
     }
     void Activate()
     {
-
-        if (GetComponent<LevelLoader>().lvl_M.Tigress == true)
+        if (PlayerPrefs.GetInt("TUT") == 1)
         {
             Current_Companion = Tigress;
             Tigeress.SetActive(true);
-            Tigeress.transform.SetPositionAndRotation(GetComponent<LevelLoader>().lvl_M.SpawnPoint_Tigeress.transform.position,
-            GetComponent<LevelLoader>().lvl_M.SpawnPoint_Tigeress.transform.rotation);
+            Tigeress.transform.SetPositionAndRotation(LevelLoader.Instance.tut_g.SpawnPoint_Tigeress.transform.position,
+            LevelLoader.Instance.tut_g.SpawnPoint_Tigeress.transform.rotation);
             GetComponent<LevelLoader>().secondPlayer = Tigeress;
-            foreach (EnemyAIAggressive a in GetComponent<LevelLoader>().lvl_M.agg_Animals)
+            foreach (EnemyAIAggressive a in LevelLoader.Instance.tut_g.agg)
             {
-                a.TargetPlayer2= Tigeress.transform;
+                a.TargetPlayer2 = Tigeress.transform;
             }
-        }else if (GetComponent<LevelLoader>().lvl_M.Child == true)
-        {
-            Current_Companion = Child;
-            Child_.SetActive(true);
-            Child_.transform.SetPositionAndRotation(GetComponent<LevelLoader>().lvl_M.SpawnPoint_Child.transform.position,
-                GetComponent<LevelLoader>().lvl_M.SpawnPoint_Child.transform.rotation);
-            LevelLoader.Instance.secondPlayer = Child_;
+
+
         }
         else
         {
-            foreach (GameObject a in CompanionBtns)
+            if (GetComponent<LevelLoader>().lvl_M.Tigress == true)
             {
-                a.SetActive(false);
+                Current_Companion = Tigress;
+                Tigeress.SetActive(true);
+                Tigeress.transform.SetPositionAndRotation(GetComponent<LevelLoader>().lvl_M.SpawnPoint_Tigeress.transform.position,
+                GetComponent<LevelLoader>().lvl_M.SpawnPoint_Tigeress.transform.rotation);
+                GetComponent<LevelLoader>().secondPlayer = Tigeress;
+                foreach (EnemyAIAggressive a in GetComponent<LevelLoader>().lvl_M.agg_Animals)
+                {
+                    a.TargetPlayer2 = Tigeress.transform;
+                }
+            }
+            else if (GetComponent<LevelLoader>().lvl_M.Child == true)
+            {
+                Current_Companion = Child;
+                Child_.SetActive(true);
+                Child_.transform.SetPositionAndRotation(GetComponent<LevelLoader>().lvl_M.SpawnPoint_Child.transform.position,
+                    GetComponent<LevelLoader>().lvl_M.SpawnPoint_Child.transform.rotation);
+                LevelLoader.Instance.secondPlayer = Child_;
+            }
+            else
+            {
+                foreach (GameObject a in CompanionBtns)
+                {
+                    a.SetActive(false);
+                }
             }
         }
     }

@@ -55,13 +55,16 @@ public class AnimalScript : MonoBehaviour
         
         
         TigerExp = PlayerPrefs.GetInt("TigerExp");
-       
+
         // Disable Line Renderer initially
-       
-        
+
+        if (PlayerPrefs.GetInt("Level") == 9)
+        {
+            Boundary.SetActive(false);
+        }
        
     }
-
+    public GameObject Boundary;
     private void Update()
     {
         TextUIHealth.transform.LookAt(TextUIHealth.transform.position+camera.transform.rotation*Vector3.forward);
@@ -150,7 +153,7 @@ public class AnimalScript : MonoBehaviour
             {
                 if (collision.gameObject.GetComponent<EnemyAIAggressive>().AttackingExp >= TigerExp)
                 {
-                    PlayerHealth.value = PlayerHealth.value - HealthDown*10;
+                    PlayerHealth.value = PlayerHealth.value - HealthDown * 10;
                     Debug.LogError("IfDamage");
                 }
                 else
@@ -158,18 +161,18 @@ public class AnimalScript : MonoBehaviour
                     PlayerHealth.value = PlayerHealth.value - HealthDown;
                     Debug.LogError("IfelseDamage");
                 }
-               
+
                 ClawIamge.SetActive(true);
                 Invoke(nameof(DisableClawIamge), 1f);
                 TextUIHealth.SetActive(true);
-                
+
                 TextUIHealth.GetComponent<TMPro.TextMeshPro>().text = (Random.Range(4, 10)).ToString();
                 //TextUIHealth.GetComponent<DG.Tweening.DOTweenAnimation>().DORestart();
                 Invoke(nameof(DisableHealthText), 1f);
-                
+
                 if (PlayerHealth.value <= 0)
                 {
-                    Debug.LogError("aaaa");
+                   // Debug.LogError("aaaa");
                     LevelLoader.Instance.LevelFail();
                     Invoke(nameof(DisableClawIamge), 0f);
                 }
@@ -177,12 +180,22 @@ public class AnimalScript : MonoBehaviour
             }
             else
             {
-                if (LevelLoader.Instance.lvl_M.KillAnimals >= LevelLoader.Instance.lvl_M.TotalEnemyInLevel)
+                if (PlayerPrefs.GetInt("TUT") == 1)
                 {
-                    LevelLoader.Instance.MoveMentController.SetActive(false);
-                    LevelLoader.Instance.lvl_M.End_Level();
+                    LevelLoader.Instance.Tutorial_Game.gameObject.SetActive(false);
+                    LevelLoader.Instance.tut_g.End_Level();
+                    //Debug.LogError("enddddddddddd");
+
                 }
-                Debug.LogError("AYA");
+                else
+                {
+                    if (LevelLoader.Instance.lvl_M.KillAnimals >= LevelLoader.Instance.lvl_M.TotalEnemyInLevel)
+                    {
+                        LevelLoader.Instance.MoveMentController.SetActive(false);
+                        LevelLoader.Instance.lvl_M.End_Level();
+                    }
+                   // Debug.LogError("AYA");
+                }
             }
 
 

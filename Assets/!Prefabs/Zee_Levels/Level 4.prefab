@@ -22424,7 +22424,7 @@ MonoBehaviour:
   radius: 0
   iconScale: 1
   iconNonVisited: {fileID: 0}
-  iconVisited: {fileID: 21300000, guid: a40bc644f8df6cf42a8d57b5d14f6b94, type: 3}
+  iconVisited: {fileID: 21300000, guid: 176193899520ae5439b380f327250c83, type: 3}
   tintColor: {r: 1, g: 1, b: 1, a: 1}
   showPlayModeGizmo: 0
   clampPosition: 0
@@ -22478,7 +22478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 492392c310a924d4291d26c3c333296b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  markerSprite: {fileID: 21300000, guid: a40bc644f8df6cf42a8d57b5d14f6b94, type: 3}
+  markerSprite: {fileID: 21300000, guid: 176193899520ae5439b380f327250c83, type: 3}
   markerSize: 40
   isActive: 1
 --- !u!1 &3354376907255150722
@@ -60209,7 +60209,7 @@ MonoBehaviour:
   radius: 0
   iconScale: 1
   iconNonVisited: {fileID: 0}
-  iconVisited: {fileID: 21300000, guid: a40bc644f8df6cf42a8d57b5d14f6b94, type: 3}
+  iconVisited: {fileID: 21300000, guid: 176193899520ae5439b380f327250c83, type: 3}
   tintColor: {r: 1, g: 1, b: 1, a: 1}
   showPlayModeGizmo: 0
   clampPosition: 0
@@ -60263,7 +60263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 492392c310a924d4291d26c3c333296b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  markerSprite: {fileID: 21300000, guid: a40bc644f8df6cf42a8d57b5d14f6b94, type: 3}
+  markerSprite: {fileID: 21300000, guid: 176193899520ae5439b380f327250c83, type: 3}
   markerSize: 40
   isActive: 1
 --- !u!1 &7532994418925446179
@@ -60905,7 +60905,7 @@ MonoBehaviour:
   radius: 0
   iconScale: 1
   iconNonVisited: {fileID: 0}
-  iconVisited: {fileID: 21300000, guid: a40bc644f8df6cf42a8d57b5d14f6b94, type: 3}
+  iconVisited: {fileID: 21300000, guid: 176193899520ae5439b380f327250c83, type: 3}
   tintColor: {r: 1, g: 1, b: 1, a: 1}
   showPlayModeGizmo: 0
   clampPosition: 0
@@ -60959,7 +60959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 492392c310a924d4291d26c3c333296b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  markerSprite: {fileID: 21300000, guid: a40bc644f8df6cf42a8d57b5d14f6b94, type: 3}
+  markerSprite: {fileID: 21300000, guid: 176193899520ae5439b380f327250c83, type: 3}
   markerSize: 40
   isActive: 1
 --- !u!1 &7843323155018960915

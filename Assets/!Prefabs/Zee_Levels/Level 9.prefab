@@ -5659,7 +5659,11 @@ MonoBehaviour:
   KillAnimals: 0
   Off_MainCh: 0
   Time: 400
-  agg_Animals: []
+  agg_Animals:
+  - {fileID: 1890565463165924170}
+  - {fileID: 6406111178253534809}
+  - {fileID: 7413623724779629876}
+  - {fileID: 2598879284891735819}
   FireStick: []
   FireTriggerPoint: {fileID: 0}
   Tigress: 0
@@ -7034,7 +7038,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3516438782303373587
 Transform:
   m_ObjectHideFlags: 0
@@ -7771,7 +7775,7 @@ MonoBehaviour:
   EnemyHealth: {fileID: 1632369448232483565}
   HealthBAr: {fileID: 1632369447338654978}
   StartingHealth: 1
-  HalthDownSpeed: 0.05
+  HalthDownSpeed: 0.02
   isDeath: 0
   AttackingExp: 0
 --- !u!136 &6710171896341507333
@@ -8308,7 +8312,7 @@ MonoBehaviour:
   EnemyHealth: {fileID: 954144977270410900}
   HealthBAr: {fileID: 954144978448664955}
   StartingHealth: 1
-  HalthDownSpeed: 0.05
+  HalthDownSpeed: 0.02
   isDeath: 0
   AttackingExp: 0
 --- !u!136 &5419563321492137851
@@ -8850,7 +8854,7 @@ MonoBehaviour:
   EnemyHealth: {fileID: 944992462278499960}
   HealthBAr: {fileID: 944992463247038871}
   StartingHealth: 1
-  HalthDownSpeed: 0.05
+  HalthDownSpeed: 0.02
   isDeath: 0
   AttackingExp: 0
 --- !u!136 &6107040418787252735
@@ -9370,7 +9374,7 @@ MonoBehaviour:
   EnemyHealth: {fileID: 5961863811692601673}
   HealthBAr: {fileID: 5961863812880230054}
   StartingHealth: 1
-  HalthDownSpeed: 0.05
+  HalthDownSpeed: 0.02
   isDeath: 0
   AttackingExp: 0
 --- !u!136 &8462851697257853495

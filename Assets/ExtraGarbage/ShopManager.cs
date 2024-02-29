@@ -63,9 +63,10 @@ public class ShopManager : MonoBehaviour
     public int[] skinprices;
     public  void unlockTigerWithCoins()
     {
-        if (CoinsManager.instance.coins >= skinprices[PlayerPrefs.GetInt("SelectedCharacter")])
+        if (PlayerPrefs.GetInt("Coins") >= skinprices[PlayerPrefs.GetInt("SelectedCharacter")])
         {
-            CoinsManager.instance.deductCoins(skinprices[PlayerPrefs.GetInt("SelectedCharacter")]); 
+            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - skinprices[PlayerPrefs.GetInt("SelectedCharacter")]);
+            //CoinsManager.instance.deductCoins(skinprices[PlayerPrefs.GetInt("SelectedCharacter")]); 
             CharacterSelection.Instance.UnlockAfterAddWatch(PlayerPrefs.GetInt("SelectedCharacter"));
             BuyButton.SetActive(false);
             watchadButton.SetActive(false);

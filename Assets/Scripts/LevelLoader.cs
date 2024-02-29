@@ -33,6 +33,13 @@ public class LevelLoader : MonoBehaviour
     float totalTimeInSeconds;
     public GameObject secondPlayer; public AudioSource StunSound;
     public GameObject Characters_Parent;
+    public TutorialScene Tutorial_Game;
+    public TutorialLevel tut;
+    public enemyFinderbyCompanion em;
+    public Text Level_No;
+
+    [HideInInspector]
+    public TutorialLevel tut_g;
     private void Awake()
     {
         Instance = this;
@@ -40,23 +47,35 @@ public class LevelLoader : MonoBehaviour
 
     private void Start()
     {
+
       
-        selected_Level = PlayerPrefs.GetInt("Level");
-        lvl_M = Instantiate(Levels[selected_Level]);
-        SelectedTiger.transform.SetPositionAndRotation(lvl_M.SpawnPoint.transform.position, lvl_M.SpawnPoint.transform.rotation);
-        MyMaterial.SetTexture("_BaseMap", TigerSprites[PlayerPrefs.GetInt("SelectedCharacter")]);
-        Instruction_Text.text = lvl_M.Stats.StartingInstructions.ToString();
-        cm_Camera.m_YAxis.Value = 0.7f;
-       // Level_Start();
-        TierUpdate();
-        totalTimeInSeconds = lvl_M.Time;
-        foreach(GameObject a in GameObject_DeactiveOnStart)
+        if (PlayerPrefs.GetInt("TUT") == 1)
         {
-            a.SetActive(false);
+           
+            tut_g= Instantiate(tut); 
+            SelectedTiger.transform.SetPositionAndRotation(tut_g.SpawnPoint.transform.position, tut_g.SpawnPoint.transform.rotation);
+            MyMaterial.SetTexture("_BaseMap", TigerSprites[PlayerPrefs.GetInt("SelectedCharacter")]);
+           
         }
-   
-
-
+        else
+        {
+            em.enabled = true;
+       
+            selected_Level = PlayerPrefs.GetInt("Level");
+            lvl_M = Instantiate(Levels[selected_Level]);
+            SelectedTiger.transform.SetPositionAndRotation(lvl_M.SpawnPoint.transform.position, lvl_M.SpawnPoint.transform.rotation);
+            MyMaterial.SetTexture("_BaseMap", TigerSprites[PlayerPrefs.GetInt("SelectedCharacter")]);
+            Instruction_Text.text = lvl_M.Stats.StartingInstructions.ToString();
+            cm_Camera.m_YAxis.Value = 0.7f;
+            // Level_Start();
+            TierUpdate();
+            totalTimeInSeconds = lvl_M.Time;
+            Level_No.text = "LEVEL \t " + (selected_Level+1);
+            foreach (GameObject a in GameObject_DeactiveOnStart)
+            {
+                a.SetActive(false);
+            }
+        }
     }
     public void Pasued_Level()
     {
@@ -71,12 +90,23 @@ public class LevelLoader : MonoBehaviour
 
     public void Level_Start()
     {
-        InstructionPanel.SetActive(false);
-        foreach(GameObject a in GameObject_DeactiveOnStart)
+        if(PlayerPrefs.GetInt("TUT") == 1) {
+
+            InstructionPanel.SetActive(false);
+            Tutorial_Game.gameObject.SetActive(true); 
+            SelectedTiger.SetActive(true); 
+            cm_Camera.m_YAxis.Value = 0.7f;
+        } 
+        else
         {
-            a.SetActive(true);
+            InstructionPanel.SetActive(false);
+            foreach (GameObject a in GameObject_DeactiveOnStart)
+            {
+                a.SetActive(true);
+            }
+            StartCoroutine(StartTimer());
         }
-        StartCoroutine(StartTimer());
+       
     }
 
     public void LoadNextLevel()
@@ -84,6 +114,7 @@ public class LevelLoader : MonoBehaviour
         if (selected_Level == PlayerPrefs.GetInt("UnlockedLevels"))
         {
             PlayerPrefs.SetInt("UnlockedLevels", PlayerPrefs.GetInt("UnlockedLevels" + 1));
+           
         }
         PlayerPrefs.SetInt("Level", selected_Level + 1);
         
@@ -129,6 +160,7 @@ public class LevelLoader : MonoBehaviour
         {
             if (!lvl_Compl)
             {
+                PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 200);
                 PlayerPrefs.SetInt("UnlockedLevels", PlayerPrefs.GetInt("UnlockedLevels") + 1);
                 PlayerPrefs.SetInt("TigerExp", PlayerPrefs.GetInt("TigerExp") + LevelRewardedExp[selected_Level]);
                 Debug.LogError("ExpLevelReward" + LevelRewardedExp[selected_Level]);
