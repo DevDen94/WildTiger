@@ -62,7 +62,7 @@ public class MainMenu : MonoBehaviour
             // Update the loading slider and text
             float progress = elapsedTime / 5f;
             LoadingFillAmount.fillAmount = progress;
-            loadingText.text = "Loading " + (int)(progress * 100) + "%";
+            loadingText.text = (int)(progress * 100) + "%";
 
             elapsedTime = Time.time - startTime;
 
@@ -123,7 +123,7 @@ public class MainMenu : MonoBehaviour
             // Update the loading slider and text
             float progress = elapsedTime / 5f;
             LoadingFillAmount.fillAmount = progress;
-            loadingText.text = "Loading " + (int)(progress * 100) + "%";
+            loadingText.text = (int)(progress * 100) + "%";
 
             elapsedTime = Time.time - startTime;
 
