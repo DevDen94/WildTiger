@@ -7647,6 +7647,7 @@ GameObject:
   - component: {fileID: 744761848}
   - component: {fileID: 744761850}
   - component: {fileID: 744761849}
+  - component: {fileID: 744761851}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -7715,6 +7716,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 744761847}
   m_CullTransparentMesh: 1
+--- !u!114 &744761851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744761847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a3cf81c4395048e6ba9a9f19368943d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizeMaster: {fileID: 11400000, guid: 33bfb788efc4c4d78b02401c26a40631, type: 2}
+  LocalizeScritableObject: {fileID: 11400000, guid: 48fa7c8b64b91214b9d7de8cfefc5aaa, type: 2}
 --- !u!4 &747858480 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2187137937558563460, guid: ea028631c02c1fa44b029d9c77edc80d, type: 3}
@@ -7731,6 +7746,7 @@ GameObject:
   - component: {fileID: 748359719}
   - component: {fileID: 748359721}
   - component: {fileID: 748359720}
+  - component: {fileID: 748359722}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -7799,6 +7815,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 748359718}
   m_CullTransparentMesh: 1
+--- !u!114 &748359722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 748359718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a3cf81c4395048e6ba9a9f19368943d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizeMaster: {fileID: 11400000, guid: 33bfb788efc4c4d78b02401c26a40631, type: 2}
+  LocalizeScritableObject: {fileID: 11400000, guid: 48fa7c8b64b91214b9d7de8cfefc5aaa, type: 2}
 --- !u!4 &750054313 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2918124277766394492, guid: ea028631c02c1fa44b029d9c77edc80d, type: 3}
@@ -9795,6 +9825,7 @@ GameObject:
   - component: {fileID: 997145477}
   - component: {fileID: 997145479}
   - component: {fileID: 997145478}
+  - component: {fileID: 997145480}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -9863,6 +9894,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 997145476}
   m_CullTransparentMesh: 1
+--- !u!114 &997145480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997145476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a3cf81c4395048e6ba9a9f19368943d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizeMaster: {fileID: 11400000, guid: 33bfb788efc4c4d78b02401c26a40631, type: 2}
+  LocalizeScritableObject: {fileID: 11400000, guid: bbf2cd31f6259e1469c9cfb62ad26157, type: 2}
 --- !u!1001 &1001767887
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10097,6 +10142,7 @@ GameObject:
   - component: {fileID: 1029426196}
   - component: {fileID: 1029426198}
   - component: {fileID: 1029426197}
+  - component: {fileID: 1029426199}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -10165,6 +10211,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1029426195}
   m_CullTransparentMesh: 1
+--- !u!114 &1029426199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029426195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a3cf81c4395048e6ba9a9f19368943d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizeMaster: {fileID: 11400000, guid: 33bfb788efc4c4d78b02401c26a40631, type: 2}
+  LocalizeScritableObject: {fileID: 11400000, guid: bbf2cd31f6259e1469c9cfb62ad26157, type: 2}
 --- !u!1 &1038355602
 GameObject:
   m_ObjectHideFlags: 0
@@ -10342,6 +10402,7 @@ GameObject:
   - component: {fileID: 1045885403}
   - component: {fileID: 1045885405}
   - component: {fileID: 1045885404}
+  - component: {fileID: 1045885406}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -10410,6 +10471,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1045885402}
   m_CullTransparentMesh: 1
+--- !u!114 &1045885406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045885402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a3cf81c4395048e6ba9a9f19368943d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizeMaster: {fileID: 11400000, guid: 33bfb788efc4c4d78b02401c26a40631, type: 2}
+  LocalizeScritableObject: {fileID: 11400000, guid: bbf2cd31f6259e1469c9cfb62ad26157, type: 2}
 --- !u!1 &1052530935
 GameObject:
   m_ObjectHideFlags: 0
@@ -11773,6 +11848,7 @@ GameObject:
   - component: {fileID: 1452546937}
   - component: {fileID: 1452546939}
   - component: {fileID: 1452546938}
+  - component: {fileID: 1452546940}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -11841,6 +11917,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1452546936}
   m_CullTransparentMesh: 1
+--- !u!114 &1452546940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1452546936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a3cf81c4395048e6ba9a9f19368943d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizeMaster: {fileID: 11400000, guid: 33bfb788efc4c4d78b02401c26a40631, type: 2}
+  LocalizeScritableObject: {fileID: 11400000, guid: 48fa7c8b64b91214b9d7de8cfefc5aaa, type: 2}
 --- !u!1001 &1453492239
 PrefabInstance:
   m_ObjectHideFlags: 0
