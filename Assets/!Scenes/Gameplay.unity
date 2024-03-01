@@ -8926,9 +8926,9 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 02d4125ac4773cf43ae1bcdb9faf4a21, type: 3}
   - {fileID: 2800000, guid: c6984fd4a18aaa34d9745e64577fde14, type: 3}
   Tigeress_Sprites:
-  - {fileID: 2800000, guid: 7f7932523cc1cd6469f8a498bbb3e35d, type: 3}
-  - {fileID: 2800000, guid: 02d4125ac4773cf43ae1bcdb9faf4a21, type: 3}
-  - {fileID: 2800000, guid: c6984fd4a18aaa34d9745e64577fde14, type: 3}
+  - {fileID: 2800000, guid: a5fd42df2c9a62f4ea8d13bf0a541b1e, type: 3}
+  - {fileID: 2800000, guid: 1eca11553ee06de43b1e8a214f344b90, type: 3}
+  - {fileID: 2800000, guid: ed75f1be222a58344ada6f310a405d36, type: 3}
   MyMaterial: {fileID: 2100000, guid: 27caf351cbba408449731f818cd6d24a, type: 2}
   Tigress_M: {fileID: 2100000, guid: 38e705bf276503b4a9bd980e0035b7d0, type: 2}
   GameObject_DeactiveOnStart:

@@ -2562,7 +2562,7 @@ MonoBehaviour:
   EnemyHealth: {fileID: 97455716182510073}
   HealthBAr: {fileID: 4700083299332401083}
   StartingHealth: 1
-  HalthDownSpeed: 0.01
+  HalthDownSpeed: 0.09
   isDeath: 0
   AttackingExp: 0
 --- !u!114 &1653878532621717103
@@ -11026,7 +11026,7 @@ MonoBehaviour:
   EnemyHealth: {fileID: 6372350169339326006}
   HealthBAr: {fileID: 17577281691677633}
   StartingHealth: 1
-  HalthDownSpeed: 0.01
+  HalthDownSpeed: 0.09
   isDeath: 0
   AttackingExp: 0
 --- !u!114 &8633059470448837054

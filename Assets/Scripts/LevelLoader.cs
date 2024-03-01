@@ -63,7 +63,6 @@ public class LevelLoader : MonoBehaviour
         else
         {
             em.enabled = true;
-          
             selected_Level = PlayerPrefs.GetInt("Level");
             lvl_M = Instantiate(Levels[selected_Level]);
             SelectedTiger.transform.SetPositionAndRotation(lvl_M.SpawnPoint.transform.position, lvl_M.SpawnPoint.transform.rotation);
