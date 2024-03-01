@@ -11,12 +11,15 @@ public class LevelLoader : MonoBehaviour
     public static LevelLoader Instance;
     public GameObject SelectedTiger;
     public Texture[] TigerSprites;
+    public Texture[] Tigeress_Sprites;
     public Material MyMaterial;
+    public Material Tigress_M;
     public GameObject[] GameObject_DeactiveOnStart;
-    public CinemachineFreeLook cm_Camera;
+    public CinemachineFreeLook cm_Camera; public GameObject StunBtn;
     int selected_Level;
     [HideInInspector]
     public Level_Manager lvl_M;
+   
 
     private int SneakInt; private int TierInt;
 
@@ -55,16 +58,17 @@ public class LevelLoader : MonoBehaviour
             tut_g= Instantiate(tut); 
             SelectedTiger.transform.SetPositionAndRotation(tut_g.SpawnPoint.transform.position, tut_g.SpawnPoint.transform.rotation);
             MyMaterial.SetTexture("_BaseMap", TigerSprites[PlayerPrefs.GetInt("SelectedCharacter")]);
-           
+            Tigress_M.SetTexture("_BaseMap", Tigeress_Sprites[PlayerPrefs.GetInt("SelectedCharacter")]);
         }
         else
         {
             em.enabled = true;
-       
+          
             selected_Level = PlayerPrefs.GetInt("Level");
             lvl_M = Instantiate(Levels[selected_Level]);
             SelectedTiger.transform.SetPositionAndRotation(lvl_M.SpawnPoint.transform.position, lvl_M.SpawnPoint.transform.rotation);
             MyMaterial.SetTexture("_BaseMap", TigerSprites[PlayerPrefs.GetInt("SelectedCharacter")]);
+            Tigress_M.SetTexture("_BaseMap", Tigeress_Sprites[PlayerPrefs.GetInt("SelectedCharacter")]);
             Instruction_Text.text = lvl_M.Stats.StartingInstructions.ToString();
             cm_Camera.m_YAxis.Value = 0.7f;
             // Level_Start();
@@ -74,6 +78,11 @@ public class LevelLoader : MonoBehaviour
             foreach (GameObject a in GameObject_DeactiveOnStart)
             {
                 a.SetActive(false);
+            }
+
+            if(selected_Level==2 || selected_Level == 5)
+            {
+                StunBtn.SetActive(true);
             }
         }
     }

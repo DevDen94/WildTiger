@@ -22,6 +22,7 @@ public class TutorialScene : MonoBehaviour
     public Text cs;
 
     public string[] Instructions;
+    public string[] Chinese_Instructions;
     public enemyFinderbyCompanion en;
     public stats st;
     private void Start()
@@ -54,38 +55,87 @@ public class TutorialScene : MonoBehaviour
                 print(counter);
                 counter_Start = true;
                 TextPanel.SetActive(true);
-                cs.text = Instructions[counter].ToString();
+                if (PlayerPrefs.GetInt("Localization") == 1)
+                {
+                    cs.text = Chinese_Instructions[counter].ToString();
+                }
+                else
+                {
+                    cs.text = Instructions[counter].ToString();
+                }
                 cs.gameObject.SetActive(true);
                 break;
             case 1:
                 TextPanel.SetActive(true);
-                cs.text = Instructions[counter].ToString();
+                if (PlayerPrefs.GetInt("Localization") == 1)
+                {
+                    cs.text = Chinese_Instructions[counter].ToString();
+                }
+                else
+                {
+                    cs.text = Instructions[counter].ToString();
+                }
                 cs.gameObject.SetActive(true);
                 break;
             case 2:
                 TextPanel.SetActive(true);
-                cs.text = Instructions[counter].ToString();
+                if (PlayerPrefs.GetInt("Localization") == 1)
+                {
+                    cs.text = Chinese_Instructions[counter].ToString();
+                }
+                else
+                {
+                    cs.text = Instructions[counter].ToString();
+                }
                 cs.gameObject.SetActive(true);
                 break;
             case 3:
                 TextPanel.SetActive(true);
-                cs.text = Instructions[counter].ToString();
+                if (PlayerPrefs.GetInt("Localization") == 1)
+                {
+                    cs.text = Chinese_Instructions[counter].ToString();
+                }
+                else
+                {
+                    cs.text = Instructions[counter].ToString();
+                }
                 cs.gameObject.SetActive(true);
                 Invoke("off", 3f);
                 break;
             case 4:
                 TextPanel.SetActive(true);
-                cs.text = Instructions[counter].ToString();
+                if (PlayerPrefs.GetInt("Localization") == 1)
+                {
+                    cs.text = Chinese_Instructions[counter].ToString();
+                }
+                else
+                {
+                    cs.text = Instructions[counter].ToString();
+                }
                 cs.gameObject.SetActive(true);
                 break;
             case 5:
                 TextPanel.SetActive(true);
-                cs.text = Instructions[counter].ToString();
+                if (PlayerPrefs.GetInt("Localization") == 1)
+                {
+                    cs.text = Chinese_Instructions[counter].ToString();
+                }
+                else
+                {
+                    cs.text = Instructions[counter].ToString();
+                }
                 cs.gameObject.SetActive(true);
                 break;
             case 6:
                 TextPanel.SetActive(true);
-                cs.text = Instructions[counter].ToString();
+                if (PlayerPrefs.GetInt("Localization") == 1)
+                {
+                    cs.text = Chinese_Instructions[counter].ToString();
+                }
+                else
+                {
+                    cs.text = Instructions[counter].ToString();
+                }
                 cs.gameObject.SetActive(true);
                 LevelLoader.Instance.tut_g.Enemy.SetActive(true);
                 break;

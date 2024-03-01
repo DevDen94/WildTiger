@@ -17,7 +17,7 @@ public class enemyFinderbyCompanion : MonoBehaviour
     public MAnimalBrain Child;public GameObject Child_;
     public MAnimalBrain Current_Companion;
     public GameObject[] CompanionBtns;
-    public GameObject Unfollow;
+    public GameObject[] Unfollow;
     public static enemyFinderbyCompanion instance;
    
     private void Start()
@@ -100,26 +100,30 @@ public class enemyFinderbyCompanion : MonoBehaviour
 
         if (Current_Companion.currentState == StopState)
         {
-            Unfollow.SetActive(true);
+            Unfollow[0].SetActive(true);
+            Unfollow[1].SetActive(true);
             Current_Companion.currentState = FOllowPalyerState;
             Current_Companion.enabled = false;
             Invoke(nameof(enebaleTrue), 0.5f);
         }
         else if (Current_Companion.currentState == FOllowPalyerState)
         {
-            Unfollow.SetActive(false);
+            Unfollow[0].SetActive(false);
+            Unfollow[1].SetActive(false);
             Current_Companion.currentState = StopState;
             Current_Companion.enabled = false;
             Invoke(nameof(enebaleTrue), 0.5f);
         }else if (Current_Companion.currentState == AttackState)
         {
-            Unfollow.SetActive(false);
+            Unfollow[0].SetActive(false);
+            Unfollow[1].SetActive(false);
             Current_Companion.currentState = StopState;
             Current_Companion.enabled = false;
             Invoke(nameof(enebaleTrue), 0.5f);
         }else if(Current_Companion.currentState == AttackCurrentTarget)
         {
-            Unfollow.SetActive(false);
+            Unfollow[0].SetActive(false);
+            Unfollow[1].SetActive(false);
             Current_Companion.currentState = StopState;
             Current_Companion.enabled = false;
             Invoke(nameof(enebaleTrue), 0.5f);

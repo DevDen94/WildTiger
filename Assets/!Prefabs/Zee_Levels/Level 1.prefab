@@ -6814,7 +6814,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 27caf351cbba408449731f818cd6d24a, type: 2}
+  - {fileID: 2100000, guid: 38e705bf276503b4a9bd980e0035b7d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7073,6 +7073,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5383066424351635632, guid: bd36e15b98579774794f4ba0003a7f7d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 38e705bf276503b4a9bd980e0035b7d0, type: 2}
     - target: {fileID: 6358523641018624259, guid: bd36e15b98579774794f4ba0003a7f7d, type: 3}
       propertyPath: m_Name
       value: MaleTiger (2)
