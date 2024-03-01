@@ -44,14 +44,15 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.SetInt("BuyTiger" + 2, 0);//ForlockedTigers
         //GoogleMobileAdsController.Instance.ShowSmallBannerAd();
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
-        Implementation.instance.ShowBanner();
+       // Implementation.instance.ShowBanner();
         CheckLanguage();
         
     }
 
     IEnumerator LoadingComplete()
     {
-
+        
+        Debug.Log("Loading");
         // Show loading panel
         LoadingPanel.SetActive(true);
        
@@ -62,7 +63,7 @@ public class MainMenu : MonoBehaviour
         // Simulate loading by waiting for 4 seconds
         float startTime = Time.time;
         float elapsedTime = 0f;
-
+        
         while (elapsedTime < 5f)
         {
             // Update the loading slider and text
@@ -81,7 +82,13 @@ public class MainMenu : MonoBehaviour
 
             // Show main menu panel
             MainMenuPanel.SetActive(true);
-        
+
+        if (Gley.MobileAds.Internal.MobileAdsExample.Instance.isAppOpen == false)
+        {
+            Gley.MobileAds.Internal.MobileAdsExample.Instance.showAppopen();
+            Gley.MobileAds.Internal.MobileAdsExample.Instance.isAppOpen = true;
+        }
+        Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowBanner();
     }
 
     public void UpdateLevels()
@@ -107,6 +114,7 @@ public class MainMenu : MonoBehaviour
 
     public void LevelButtonClick(int LevelNumber)
     {
+        Gley.MobileAds.Internal.MobileAdsExample.Instance.showMRac();
         LoadingPanel.SetActive(true);
         PlayerPrefs.SetInt("Level", LevelNumber);
         StartCoroutine(LoadingAfterLEvelSelectionComplete());
@@ -142,8 +150,7 @@ public class MainMenu : MonoBehaviour
 
     public void showInterstatialAD()
     {
-        //  GoogleMobileAdsController.Instance.ShowInterstitialAd();
-        Implementation.instance.ShowInterstitial();
+        Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowInterstitial();
     }
     public void ExitBtn()
     {

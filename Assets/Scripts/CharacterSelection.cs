@@ -68,9 +68,9 @@ public class CharacterSelection : MonoBehaviour
     }
     public void BuyCharacter()
     {
-        Implementation.instance.ShowRewardedVideo();
-        
-       
+        Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowRewardedVideo();
+
+
     }
    
     

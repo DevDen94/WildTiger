@@ -85,16 +85,19 @@ public class LevelLoader : MonoBehaviour
                 StunBtn.SetActive(true);
             }
         }
+        Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowBanner();
     }
     public void Pasued_Level()
     {
         PausePanel.SetActive(true);
         Time.timeScale = 0f;
+        Gley.MobileAds.Internal.MobileAdsExample.Instance.showMRac();
     }
     public void Resume_Level()
     {
         PausePanel.SetActive(false);
         Time.timeScale = 1f;
+        Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowBanner();
     }
 
     public void Level_Start()
@@ -145,19 +148,22 @@ public class LevelLoader : MonoBehaviour
     {
         Time.timeScale = 0f;
         Fail.SetActive(true);
-        Implementation.instance.ShowInterstitial();
-    }
+        Gley.MobileAds.Internal.MobileAdsExample.Instance.showMRac();
+    
+}
 
     public void Home()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("Main");
+        Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowInterstitial();
     }
 
     public void Restart()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("Gameplay");
+        Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowInterstitial();
     }
 
 
@@ -177,7 +183,10 @@ public class LevelLoader : MonoBehaviour
             }
 
         }
-    }
+        Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowInterstitial();
+        Gley.MobileAds.Internal.MobileAdsExample.Instance.showMRac();
+    
+}
 
 
     bool lvl_Compl = false;
