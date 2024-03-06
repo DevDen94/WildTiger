@@ -17,11 +17,13 @@ namespace Gley.MobileAds.Internal
             Instance = this;
             Gley.MobileAds.API.Initialize();
             isAppOpen = false;
+            Debug.unityLogger.logEnabled = false;
         }
         private void Start()
         {
             //Invoke(nameof(ShowBanner), 1f);
             //Invoke(nameof(showMRac), 1f);
+
         }
         public void ShowBanner()
         {

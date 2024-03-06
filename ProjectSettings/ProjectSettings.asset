@@ -246,10 +246,10 @@ PlayerSettings:
   templateDefaultScene: Assets/Scenes/SampleScene.unity
   useCustomMainManifest: 0
   useCustomLauncherManifest: 0
-  useCustomMainGradleTemplate: 1
+  useCustomMainGradleTemplate: 0
   useCustomLauncherGradleManifest: 0
   useCustomBaseGradleTemplate: 0
-  useCustomGradlePropertiesTemplate: 1
+  useCustomGradlePropertiesTemplate: 0
   useCustomGradleSettingsTemplate: 0
   useCustomProguardFile: 0
   AndroidTargetArchitectures: 3
@@ -840,7 +840,7 @@ PlayerSettings:
     Android: USE_ADMOB;USE_ADMOB_PATCH;OBI_ONI_SUPPORTED;GLEY_ADMOB;GLEY_PATCH_ADMOB
     Standalone: OBI_ONI_SUPPORTED
     Windows Store Apps: 
-    iPhone: USE_ADMOB_PATCH;OBI_ONI_SUPPORTED
+    iPhone: USE_ADMOB_PATCH;OBI_ONI_SUPPORTED;GLEY_ADMOB;GLEY_PATCH_ADMOB
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:

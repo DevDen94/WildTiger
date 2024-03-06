@@ -25,7 +25,7 @@ MonoBehaviour:
     showConsentPopup: 0
     platformSettings:
     - platform: 0
-      enabled: 1
+      enabled: 0
       appId:
         id: ca-app-pub-5227706387493609~3867145124
         displayName: App ID
@@ -58,33 +58,33 @@ MonoBehaviour:
       testDevice: 
       debugGeography: 0
     - platform: 1
-      enabled: 0
+      enabled: 1
       appId:
-        id: 
+        id: ca-app-pub-5227706387493609~3505157788
         displayName: App ID
         required: 1
       idBanner:
-        id: 
+        id: ca-app-pub-5227706387493609/9687422754
         displayName: Banner ID
         required: 1
       idMRec:
-        id: 
+        id: ca-app-pub-5227706387493609/8058945031
         displayName: MRec ID
         required: 1
       idInterstitial:
-        id: 
+        id: ca-app-pub-5227706387493609/5320802337
         displayName: Interstitial ID
         required: 1
       idRewarded:
-        id: 
+        id: ca-app-pub-5227706387493609/3537192194
         displayName: Rewarded Video ID
         required: 1
       idRewardedInterstitial:
-        id: 
+        id: ca-app-pub-5227706387493609/3537192194
         displayName: Rewarded Interstitial ID
         required: 1
       idOpenApp:
-        id: 
+        id: ca-app-pub-5227706387493609/4751143468
         displayName: App Open ID
         required: 1
       testMode: 0
@@ -481,5 +481,5 @@ MonoBehaviour:
   enableATT: 0
   nativePopupText: We will use your data to provide a better and personalized ad
     experience.
-  selectedAndroidAdvertiser: 20
-  selectediOSAdvertiser: 0
+  selectedAndroidAdvertiser: 0
+  selectediOSAdvertiser: 20
