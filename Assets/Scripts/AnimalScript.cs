@@ -9,9 +9,11 @@ public class AnimalScript : MonoBehaviour
     public float explosionRadius = 5f;
     public LayerMask enemyLayer;
     public GameObject explosionPrefab; // Reference to your explosion prefab
-
+    public FireBallAnimation Stun_Particle;
+    public FireBallAnimation SuperAttack_P;
     public GameObject StunButton;
     public GameObject[] Enemy;
+    public GameObject[] SuperAttack_Enemies;
     public LineRenderer lineRenderer;
 
     public GameObject slashVfx;
@@ -25,6 +27,14 @@ public class AnimalScript : MonoBehaviour
     public Transform ENEMY;
     public int TigerExp;
     public GameObject Planks;
+
+    public GameObject Attack_Btn;
+    public Text Attack_Text; 
+    public float cooldownDuration = 5f;
+    private float cooldownTimer = 0f;
+    private bool isCooldown = false;
+   // public GameObject Attacker_Effect;
+    public GameObject EndingEffect;
     private void Awake()
     {
         if (Instance == null)
@@ -55,7 +65,7 @@ public class AnimalScript : MonoBehaviour
         
         
         TigerExp = PlayerPrefs.GetInt("TigerExp");
-
+  
         // Disable Line Renderer initially
 
         if (PlayerPrefs.GetInt("Level") == 9)
@@ -64,10 +74,83 @@ public class AnimalScript : MonoBehaviour
         }
        
     }
+    public void Super_Attack()
+    {
+        if (!isCooldown)
+        {
+           
+            foreach (GameObject enemy in SuperAttack_Enemies)
+            {
+
+                float distance = Vector3.Distance(transform.position, enemy.transform.position);
+
+                if (distance <= explosionRadius)
+                {
+                    CameraShake.instance.Shake();
+                    Attack_Btn.transform.GetChild(1).gameObject.SetActive(true);
+                    cooldownTimer = cooldownDuration;
+                    isCooldown = true;
+                    ENEMY = enemy.transform;
+
+                    if (IsEnemyInFront())
+                    {
+                        EndingEffect.SetActive(true);
+                        LevelLoader.Instance.StunSound.Play();
+                        lineRenderer.enabled = true;
+                        lineRenderer.SetPosition(0, transform.position);
+                        lineRenderer.SetPosition(1, enemy.transform.position);
+                        SuperAttack_P.moveFireballToTarget(lineRenderer);
+                        ENEMY = null;
+                        ENEMY = enemy.transform;
+                       
+
+                        Invoke("explosionPrefabDelay", FireBallAnimation.instance.time);
+                        //Instantiate(explosionPrefab, enemy.transform.position, Quaternion.identity);
+                        if (enemy.GetComponent<EnemyAI>())
+                        {
+                            enemy.GetComponent<EnemyAI>().stun();
+                            enemy.GetComponent<EnemyAI>().Damage(0.6f);
+                        }
+                        else
+                        {
+                            enemy.GetComponent<EnemyAIAggressive>().stun();
+                            enemy.GetComponent<EnemyAIAggressive>().StartingHealth = 0.00001f;
+                            enemy.GetComponent<EnemyAIAggressive>().Demage(enemy.gameObject.name);
+                            Debug.LogError("SuperAttack");
+                        }
+
+                        Invoke(nameof(DisableLine), 1f);
+                    }
+                }
+            }
+            }
+       
+        
+    }
+   
     public GameObject Boundary;
     private void Update()
     {
+       
         TextUIHealth.transform.LookAt(TextUIHealth.transform.position+camera.transform.rotation*Vector3.forward);
+        if (isCooldown)
+        {
+            cooldownTimer -= Time.deltaTime;
+            if (cooldownTimer <= 0)
+            {
+                isCooldown = false;
+                Attack_Btn.transform.GetChild(1).gameObject.SetActive(false);
+                Attack_Text.text = "";
+                
+            }
+            else
+            {
+                Attack_Text.text = Mathf.Ceil(cooldownTimer).ToString();
+               
+                    
+         
+            }
+        }
     }
     public void playVFX_slash()
     {
@@ -97,11 +180,10 @@ public class AnimalScript : MonoBehaviour
                     lineRenderer.enabled = true;
                     lineRenderer.SetPosition(0, transform.position);
                     lineRenderer.SetPosition(1, enemy.transform.position);
-                    FireBallAnimation.instance.moveFireballToTarget(lineRenderer);
+                    Stun_Particle.moveFireballToTarget(lineRenderer);
                     ENEMY = null;
                     ENEMY = enemy.transform;
                     enemy.transform.GetChild(4).gameObject.SetActive(true);
-
                     Invoke("explosionPrefabDelay",FireBallAnimation.instance.time);
                     //Instantiate(explosionPrefab, enemy.transform.position, Quaternion.identity);
 
@@ -112,6 +194,7 @@ public class AnimalScript : MonoBehaviour
         }
 
     }
+
     public void explosionPrefabDelay()
     {
         Instantiate(explosionPrefab, ENEMY.transform.position, Quaternion.identity);
@@ -144,9 +227,21 @@ public class AnimalScript : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
 
+    void Heal_Off()
+    {
+        LevelLoader.Instance.MoveMentController.SetActive(true); HealingEffect.SetActive(false);
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.tag == "Heal")
+        {
+            collision.gameObject.SetActive(false);
+            PlayerHealth.value = PlayerHealth.value + 20f;
+            HealingEffect.SetActive(true);
+           // LevelLoader.Instance.MoveMentController.SetActive(false);
+           // Invoke("Heal_Off",3f);
+        }
         if (collision.gameObject.tag == "NPC")
         {
             if (collision.gameObject.GetComponent<EnemyAIAggressive>().EnemyHealth.fillAmount > 0)
@@ -211,7 +306,7 @@ public class AnimalScript : MonoBehaviour
         //TextUIHealth.GetComponent<DG.Tweening.DOTweenAnimation>().DORewind();
 
     }
-
+    public GameObject HealingEffect;
     public void DisableClawIamge()
     {
         ClawIamge.SetActive(false);
@@ -224,6 +319,7 @@ public class AnimalScript : MonoBehaviour
             Debug.Log("In water");
             water.Play();
         }
+    
     }
     private void OnTriggerExit(Collider other)
     {

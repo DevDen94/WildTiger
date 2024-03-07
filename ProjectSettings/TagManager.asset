@@ -18,6 +18,20 @@ TagManager:
   - SOUND
   - TAZOFX
   - Stick
+  - EatAble
+  - Exploder
+  - NotEatAble
+  - Pet
+  - MainCanvas
+  - UIManager
+  - TryAnimal
+  - Stoper
+  - Effects
+  - TowerExploder
+  - Celebrations
+  - Fire
+  - SuperAttack
+  - Heal
   layers:
   - Default
   - TransparentFX

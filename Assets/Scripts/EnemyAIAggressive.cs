@@ -35,6 +35,7 @@ public class EnemyAIAggressive : MonoBehaviour
         animator = GetComponent<Animator>();
         SetNewRandomTarget();
         Invoke("AssignPalyer", 2f);
+        super_Attack = false;
 
     }
     public void AssignPalyer()
@@ -50,9 +51,13 @@ public class EnemyAIAggressive : MonoBehaviour
 
     private void Update()
     {
-        Chase();
+        if (!super_Attack)
+        {
+            Chase();
+        }
       
     }
+    bool super_Attack;
     public Transform target;
     void Chase()
     {
@@ -60,6 +65,7 @@ public class EnemyAIAggressive : MonoBehaviour
 
         if (playerColliders.Length > 0)
         {
+           
             // Find the nearest player
             target = playerColliders.OrderBy(p => Vector3.Distance(transform.position, p.transform.position)).First().transform;
 
@@ -76,6 +82,7 @@ public class EnemyAIAggressive : MonoBehaviour
                 Chasse(target);
                 animator.SetBool("isRunning", true);
                 animator.SetBool("Attack", false);
+          
             }
         }
         else
@@ -83,6 +90,7 @@ public class EnemyAIAggressive : MonoBehaviour
            
             SetNewRandomTarget();
             animator.SetBool("isRunning", false);
+          
         }
     }
     int currentWaypointIndex = 0;
@@ -122,7 +130,22 @@ public class EnemyAIAggressive : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, patrolWaypoints[currentWaypointIndex].position, walkSpeed * Time.deltaTime);
         }*/
     }
-
+    public void stun()
+    {
+        super_Attack = true;
+        animator.SetTrigger("Death");
+        GetComponent<NavMeshAgent>().isStopped = true;
+        if (StartingHealth> 0)
+        {
+            Invoke(nameof(stunOff), 6f);
+        }
+    }
+    public void stunOff()
+    {
+  
+        GetComponent<NavMeshAgent>().isStopped = false;
+        super_Attack = false;
+    }
     public void Attack(Transform target)
     {
         //animator.SetBool("Attack", true);
@@ -238,11 +261,7 @@ public class EnemyAIAggressive : MonoBehaviour
     public float HalthDownSpeed;
     public bool isDeath;
     public int AttackingExp;
-    IEnumerator CompletePanel()
-    {
-        yield return new WaitForSeconds(5f);
-        LevelLoader.Instance.lvl_M.End_Level();
-    }
+    
 
     IEnumerator CompleteTutorial()
     {
@@ -288,7 +307,7 @@ public class EnemyAIAggressive : MonoBehaviour
                         {
 
                             LevelLoader.Instance.MoveMentController.SetActive(false);
-                            StartCoroutine(CompletePanel());
+                            LevelLoader.Instance.Load_Final();
                         }
                     }
                 }
@@ -303,6 +322,7 @@ public class EnemyAIAggressive : MonoBehaviour
        
        
     }
+ 
     public void disableSelf()
     {
         Destroy(this.gameObject);

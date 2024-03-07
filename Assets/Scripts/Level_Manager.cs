@@ -9,6 +9,7 @@ public class Level_Manager : MonoBehaviour
     public GameObject SpawnPoint_Tigeress;
     public GameObject SpawnPoint_Child;
     public GameObject[] Stun_Enemies;
+    public GameObject[] SuperAttack_En;
     public stats Stats;
     private LevelLoader lvl_loader;
     public GameObject FinishLevel;
@@ -45,6 +46,12 @@ public class Level_Manager : MonoBehaviour
         for (int i = 0; i < Stun_Enemies.Length; i++)
         {
             LevelLoader.Instance.SelectedTiger.GetComponent<AnimalScript>().Enemy[i] = Stun_Enemies[i];
+        }
+
+        LevelLoader.Instance.SelectedTiger.GetComponent<AnimalScript>().SuperAttack_Enemies = new GameObject[SuperAttack_En.Length];
+        for (int i = 0; i < SuperAttack_En.Length; i++)
+        {
+            LevelLoader.Instance.SelectedTiger.GetComponent<AnimalScript>().SuperAttack_Enemies[i] = SuperAttack_En[i];
         }
     }
     public void update_stats(string animal_name)

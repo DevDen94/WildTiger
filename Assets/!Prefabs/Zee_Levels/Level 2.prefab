@@ -2141,6 +2141,10 @@ MonoBehaviour:
   SpawnPoint_Tigeress: {fileID: 4062177683869146880}
   SpawnPoint_Child: {fileID: 0}
   Stun_Enemies: []
+  SuperAttack_En:
+  - {fileID: 5304486844595048313}
+  - {fileID: 770333200358413530}
+  - {fileID: 2546650226703262536}
   Stats: {fileID: 11400000, guid: e128c06af2b6772489b1ea5f069c0573, type: 2}
   FinishLevel: {fileID: 3949029626420600148}
   AnimalsNamesToKill:
@@ -3793,6 +3797,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a21eb25456847a84baaa1d76451129b3, type: 3}
+--- !u!1 &770333200358413530 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1833125029741782, guid: a21eb25456847a84baaa1d76451129b3, type: 3}
+  m_PrefabInstance: {fileID: 771882182765940748}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &772597745451177170 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4107015967540446, guid: a21eb25456847a84baaa1d76451129b3, type: 3}
@@ -3803,7 +3812,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8130693097902314085, guid: a21eb25456847a84baaa1d76451129b3, type: 3}
   m_PrefabInstance: {fileID: 771882182765940748}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 770333200358413530}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e62bd368e0bec0143b5aa1d6315ad101, type: 3}
@@ -3895,7 +3904,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3232092328676797050, guid: d2e52446a0ccd7140b0f22d1e90f9d37, type: 3}
   m_PrefabInstance: {fileID: 1555823296410530736}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 5304486844595048313}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e62bd368e0bec0143b5aa1d6315ad101, type: 3}
@@ -3904,6 +3913,11 @@ MonoBehaviour:
 --- !u!4 &5302222024494354289 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6629901034643700929, guid: d2e52446a0ccd7140b0f22d1e90f9d37, type: 3}
+  m_PrefabInstance: {fileID: 1555823296410530736}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5304486844595048313 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6632174586354056393, guid: d2e52446a0ccd7140b0f22d1e90f9d37, type: 3}
   m_PrefabInstance: {fileID: 1555823296410530736}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2544823875312215966
@@ -4295,6 +4309,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a21eb25456847a84baaa1d76451129b3, type: 3}
+--- !u!1 &2546650226703262536 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1833125029741782, guid: a21eb25456847a84baaa1d76451129b3, type: 3}
+  m_PrefabInstance: {fileID: 2544823875312215966}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2548914913607148352 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4107015967540446, guid: a21eb25456847a84baaa1d76451129b3, type: 3}
@@ -4305,7 +4324,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8130693097902314085, guid: a21eb25456847a84baaa1d76451129b3, type: 3}
   m_PrefabInstance: {fileID: 2544823875312215966}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2546650226703262536}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e62bd368e0bec0143b5aa1d6315ad101, type: 3}

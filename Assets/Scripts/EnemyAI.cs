@@ -29,6 +29,7 @@ public class EnemyAI : MonoBehaviour
     public int DefenciveExp;
     void Start()
     {
+ 
         this._Camera = Camera.main.gameObject;
         player = LevelLoader.Instance.SelectedTiger.transform;
         animator = GetComponent<Animator>();
@@ -116,7 +117,10 @@ public class EnemyAI : MonoBehaviour
     {
         animator.SetBool("stun", false);
         transform.GetChild(4).gameObject.SetActive(false);
-        GetComponent<NavMeshAgent>().isStopped = false;
+        if (!GetComponent<NavMeshAgent>())
+        {
+            GetComponent<NavMeshAgent>().isStopped = false;
+        }
     }
 
 
@@ -124,10 +128,13 @@ public class EnemyAI : MonoBehaviour
     public void Demage(string animalName)
     {
 
-        if (HealthSlider.fillAmount > 0) { 
-        StartingHealth = StartingHealth - HalthDownSpeed;
-        HealthSlider.fillAmount = StartingHealth;
-        
+        if (HealthSlider.fillAmount > 0)
+        {
+           
+           StartingHealth = StartingHealth - HalthDownSpeed;
+            HealthSlider.fillAmount = StartingHealth;
+        }
+
         if (HealthSlider.fillAmount <= 0)
         {
                 animator.SetBool("death", true);
@@ -137,28 +144,27 @@ public class EnemyAI : MonoBehaviour
                 transform.GetChild(3).gameObject.SetActive(false);
                 LevelLoader.Instance.lvl_M.update_stats(this.gameObject.name);
                 GetComponent<MapMarker>().isActive = false;
-                //GameManager.Instance.pickUpBtn.SetActive(true);
-                LevelLoader.Instance.MoveMentController.SetActive(false);
-                //GameManager.Instance.EatBtn.SetActive(true);
-                whenPickUp();
+           
+               // whenPickUp();
                
                
                 PlayerPrefs.SetInt("TigerExp", PlayerPrefs.GetInt("TigerExp") + DefenciveExp);
                 LevelLoader.Instance.ExpTxt.text = PlayerPrefs.GetInt("TigerExp").ToString();
                 LevelLoader.Instance.TierUpdate();
-            }
-
+            Invoke("checkComplete", 3f);
         }
+
+        
     }
-    public void whenPickUp()
+  /*  public void whenPickUp()
     {
         
         player.GetComponent<Animator>().Play("F_Eat", 0);
        
-        LevelLoader.Instance.EatPopUp.SetActive(true);
+        //LevelLoader.Instance.EatPopUp.SetActive(true);
      
         Invoke(nameof(checkComplete),3f);
-    }
+    }*/
     
     public void checkComplete()
     {
@@ -173,7 +179,7 @@ public class EnemyAI : MonoBehaviour
                     LevelLoader.Instance.lvl_M.KillAnimals++;
                     CheckForIncriment = false;
                     LevelLoader.Instance.MoveMentController.SetActive(true);
-                    LevelLoader.Instance.EatPopUp.SetActive(false);
+
                     this.gameObject.SetActive(false);
                 }
 
@@ -231,7 +237,10 @@ public class EnemyAI : MonoBehaviour
             Invoke(nameof(DisableHealthText), 1f);
             }
         }
+
+      
     }
+
 
     private void OnTriggerStay(Collider other)
     {
@@ -249,6 +258,33 @@ public class EnemyAI : MonoBehaviour
        
     }
 
+    public void Damage(float value)
+    {
+        if (HealthSlider.fillAmount > 0)
+        {
+
+            StartingHealth = StartingHealth-value;
+            HealthSlider.fillAmount = StartingHealth;
+        }
+
+
+        if (HealthSlider.fillAmount <= 0)
+        {
+            animator.SetBool("death", true);
+            GetComponent<NavMeshAgent>().enabled = false;
+            GetComponent<EnemyAI>().enabled = false;
+            transform.GetChild(4).gameObject.SetActive(false);
+            transform.GetChild(3).gameObject.SetActive(false);
+            LevelLoader.Instance.lvl_M.update_stats(this.gameObject.name);
+            GetComponent<MapMarker>().isActive = false;
+
+
+            PlayerPrefs.SetInt("TigerExp", PlayerPrefs.GetInt("TigerExp") + DefenciveExp);
+            LevelLoader.Instance.ExpTxt.text = PlayerPrefs.GetInt("TigerExp").ToString();
+            LevelLoader.Instance.TierUpdate();
+            Invoke("checkComplete", 3f);
+        }
+    }
 
 
     bool IsAttackAnimationPlaying()

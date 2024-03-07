@@ -26,7 +26,7 @@ public class LevelLoader : MonoBehaviour
     [Header("--------------------UI ELEMENTS-----------------------")]
     public Slider ExpBArSlider;
     public Text ExpTxt, Tiertxt, ExpBarTxt;
-    public GameObject PausePanel, Complete, Fail, MoveMentController, TaskPanel, pickUpBtn, EatPopUp;
+    public GameObject PausePanel, Complete, Fail, MoveMentController, TaskPanel, pickUpBtn;
    
     public GameObject InstructionPanel;
     public Text Instruction_Text;
@@ -63,7 +63,7 @@ public class LevelLoader : MonoBehaviour
         else
         {
             em.enabled = true;
-            selected_Level = PlayerPrefs.GetInt("Level");
+            selected_Level = 2; //PlayerPrefs.GetInt("Level");
             lvl_M = Instantiate(Levels[selected_Level]);
             SelectedTiger.transform.SetPositionAndRotation(lvl_M.SpawnPoint.transform.position, lvl_M.SpawnPoint.transform.rotation);
             MyMaterial.SetTexture("_BaseMap", TigerSprites[PlayerPrefs.GetInt("SelectedCharacter")]);
@@ -230,6 +230,19 @@ public class LevelLoader : MonoBehaviour
     {
         SelectedTiger.GetComponent<AnimalScript>().Stun();
 
+    }
+  public  void Load_Final()
+    {
+        StartCoroutine(CompletePanel());
+    }
+    IEnumerator CompletePanel()
+    {
+        yield return new WaitForSeconds(5f);
+        lvl_M.End_Level();
+    }
+    public void SuperAttack()
+    {
+        SelectedTiger.GetComponent<AnimalScript>().Super_Attack();
     }
     private void Update()
     {

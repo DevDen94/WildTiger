@@ -24061,6 +24061,9 @@ MonoBehaviour:
   Stun_Enemies:
   - {fileID: 7965802111901588402}
   - {fileID: 8786163987364248758}
+  SuperAttack_En:
+  - {fileID: 7965802111901588402}
+  - {fileID: 8786163987364248758}
   Stats: {fileID: 11400000, guid: a508cd4b2c4b48740b07e800b2bbb389, type: 2}
   FinishLevel: {fileID: 7149491939120813530}
   AnimalsNamesToKill:
@@ -40088,6 +40091,10 @@ PrefabInstance:
     - target: {fileID: 8132487568110104524, guid: 169992767148ed44992a98cb6ee11e71, type: 3}
       propertyPath: m_Layer
       value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 8830594116963562351, guid: 169992767148ed44992a98cb6ee11e71, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
