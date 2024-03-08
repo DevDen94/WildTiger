@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 public class MainMenu : MonoBehaviour
 {
     // Start is called before the first frame update
-
+    [SerializeField] private List<AssetReference> _scenes = new List<AssetReference>();
     [Header("Loading Screen")]
     public GameObject LoadingPanel;
     public GameObject MainMenuPanel;
@@ -143,8 +145,8 @@ public class MainMenu : MonoBehaviour
 
             yield return null;
         }
-
-        SceneManager.LoadScene(1);
+        Addressables.LoadSceneAsync(_scenes[0], LoadSceneMode.Single);
+        //   SceneManager.LoadScene(1);
 
     }
 

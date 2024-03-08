@@ -3984,7 +3984,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0.9
+  m_Text: 0.10:0.3
 --- !u!222 &282423780
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14343,6 +14343,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be6e8f60f17e62a4b88cd68cbcb5255a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _scenes:
+  - m_AssetGUID: 9fc0d4010bbf28b4594072e72b8655ab
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   LoadingPanel: {fileID: 1747765738}
   MainMenuPanel: {fileID: 1190527005}
   LoadingFillAmount: {fileID: 913872160}

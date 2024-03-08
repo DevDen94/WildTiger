@@ -53,7 +53,7 @@ public class LevelLoader : MonoBehaviour
 
     private void Start()
     {
-         Addressables.LoadSceneAsync(_scenes[0], LoadSceneMode.Additive);
+         
         is_Complete = false;
         if (PlayerPrefs.GetInt("TUT") == 1)
         {
@@ -135,11 +135,11 @@ public class LevelLoader : MonoBehaviour
         if (selected_Level < Levels.Length)
         {
             Debug.Log("Levels_Remaining");
-            SceneManager.LoadScene(1);
+            Addressables.LoadSceneAsync(_scenes[1], LoadSceneMode.Single);
         }
         else
         {
-            SceneManager.LoadScene(0);
+            Addressables.LoadSceneAsync(_scenes[0], LoadSceneMode.Single);
             Debug.Log("All levels completed!");
         }
 
@@ -157,14 +157,16 @@ public class LevelLoader : MonoBehaviour
     public void Home()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Main");
+        Addressables.LoadSceneAsync(_scenes[0], LoadSceneMode.Single);
+        //SceneManager.LoadScene("Main");
         Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowInterstitial();
     }
 
     public void Restart()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Gameplay");
+        Addressables.LoadSceneAsync(_scenes[1], LoadSceneMode.Single);
+        // SceneManager.LoadScene("Gameplay");
         Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowInterstitial();
     }
 
