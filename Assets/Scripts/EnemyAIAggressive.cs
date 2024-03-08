@@ -36,8 +36,10 @@ public class EnemyAIAggressive : MonoBehaviour
         SetNewRandomTarget();
         Invoke("AssignPalyer", 2f);
         super_Attack = false;
+        dead = false;
 
     }
+    bool dead;
     public void AssignPalyer()
     {
         initialPosition = transform.position;
@@ -265,7 +267,7 @@ public class EnemyAIAggressive : MonoBehaviour
 
     IEnumerator CompleteTutorial()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2f);
         LevelLoader.Instance.tut_g.End_Level();
     }
     public void Demage(string name)
@@ -275,8 +277,9 @@ public class EnemyAIAggressive : MonoBehaviour
             StartingHealth = StartingHealth - HalthDownSpeed;
             EnemyHealth.fillAmount = StartingHealth;
 
-            if (EnemyHealth.fillAmount <= 0)
+            if (EnemyHealth.fillAmount <= 0 && !dead)
             {
+                dead = true;
                 animator.SetTrigger("Death");
                 walkSpeed = 0;
                 RunSpeed = 0;
@@ -289,7 +292,8 @@ public class EnemyAIAggressive : MonoBehaviour
                     Invoke("disableSelf", 3f);
                     return;
                 }
-                LevelLoader.Instance.lvl_M.KillAnimals++;
+               
+              //  LevelLoader.Instance.lvl_M.KillAnimals++;
               
               
                 // GameManager.Instance.EatPopUp.SetActive(true);

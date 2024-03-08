@@ -4,8 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Cinemachine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 public class LevelLoader : MonoBehaviour
 {
+    [SerializeField] private List<AssetReference> _scenes = new List<AssetReference>();
     public Level_Manager[] Levels;
     public int[] LevelRewardedExp,TierExp;
     public static LevelLoader Instance;
@@ -50,8 +53,8 @@ public class LevelLoader : MonoBehaviour
 
     private void Start()
     {
-
-      
+         Addressables.LoadSceneAsync(_scenes[0], LoadSceneMode.Additive);
+        is_Complete = false;
         if (PlayerPrefs.GetInt("TUT") == 1)
         {
            
@@ -63,7 +66,7 @@ public class LevelLoader : MonoBehaviour
         else
         {
             em.enabled = true;
-            selected_Level = 2; //PlayerPrefs.GetInt("Level");
+            selected_Level = PlayerPrefs.GetInt("Level");
             lvl_M = Instantiate(Levels[selected_Level]);
             SelectedTiger.transform.SetPositionAndRotation(lvl_M.SpawnPoint.transform.position, lvl_M.SpawnPoint.transform.rotation);
             MyMaterial.SetTexture("_BaseMap", TigerSprites[PlayerPrefs.GetInt("SelectedCharacter")]);
@@ -244,9 +247,36 @@ public class LevelLoader : MonoBehaviour
     {
         SelectedTiger.GetComponent<AnimalScript>().Super_Attack();
     }
+    public GameObject WatchAd;
+    public void Super_Attack_WatchAd()
+    {
+        timer = 30;
+        PlayerPrefs.SetInt("Reward", 1);
+        Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowRewardedVideo();
+    }
+  public  bool is_Complete;
+    float timer = 30;
+    public Text Timer;
     private void Update()
     {
         ExpBar();
+        if (is_Complete)
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                is_Complete = false;
+                Timer.text = "";
+                WatchAd.SetActive(true);
+
+            }
+            else
+            {
+                WatchAd.SetActive(false);
+                Timer.text = Mathf.Ceil(timer).ToString();
+
+            }
+        }
     }
     void ExpBar()
     {

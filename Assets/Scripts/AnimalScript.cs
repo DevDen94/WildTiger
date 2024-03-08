@@ -49,6 +49,7 @@ public class AnimalScript : MonoBehaviour
     }
     void Start()
     {
+        size = 0.6f;
         this.camera = Camera.main.gameObject;
         // Ensure the Line Renderer component is set up
         if (lineRenderer == null)
@@ -76,9 +77,7 @@ public class AnimalScript : MonoBehaviour
     }
     public void Super_Attack()
     {
-        if (!isCooldown)
-        {
-           
+     
             foreach (GameObject enemy in SuperAttack_Enemies)
             {
 
@@ -89,7 +88,7 @@ public class AnimalScript : MonoBehaviour
                     CameraShake.instance.Shake();
                     Attack_Btn.transform.GetChild(1).gameObject.SetActive(true);
                     cooldownTimer = cooldownDuration;
-                    isCooldown = true;
+                   
                     ENEMY = enemy.transform;
 
                     if (IsEnemyInFront())
@@ -114,7 +113,7 @@ public class AnimalScript : MonoBehaviour
                         else
                         {
                             enemy.GetComponent<EnemyAIAggressive>().stun();
-                            enemy.GetComponent<EnemyAIAggressive>().StartingHealth = 0.00001f;
+                            enemy.GetComponent<EnemyAIAggressive>().StartingHealth = 0.001f;
                             enemy.GetComponent<EnemyAIAggressive>().Demage(enemy.gameObject.name);
                             Debug.LogError("SuperAttack");
                         }
@@ -123,11 +122,11 @@ public class AnimalScript : MonoBehaviour
                     }
                 }
             }
-            }
+            
        
         
     }
-   
+    float size=0.4f;
     public GameObject Boundary;
     private void Update()
     {
@@ -135,21 +134,21 @@ public class AnimalScript : MonoBehaviour
         TextUIHealth.transform.LookAt(TextUIHealth.transform.position+camera.transform.rotation*Vector3.forward);
         if (isCooldown)
         {
-            cooldownTimer -= Time.deltaTime;
+            /*cooldownTimer -= Time.deltaTime;
             if (cooldownTimer <= 0)
             {
                 isCooldown = false;
-                Attack_Btn.transform.GetChild(1).gameObject.SetActive(false);
-                Attack_Text.text = "";
-                
+                // Attack_Btn.transform.GetChild(1).gameObject.SetActive(false);
+                /// Attack_Text.text = "";
+
             }
             else
             {
-                Attack_Text.text = Mathf.Ceil(cooldownTimer).ToString();
-               
-                    
-         
-            }
+                //  Attack_Text.text = Mathf.Ceil(cooldownTimer).ToString();
+
+
+
+            }*/
         }
     }
     public void playVFX_slash()

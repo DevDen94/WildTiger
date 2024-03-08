@@ -433,24 +433,29 @@ namespace BuildReportTool
 		public static void DebugLogBuildReport(UnityEditor.Build.Reporting.BuildReport report)
 		{
 			var sb = new System.Text.StringBuilder();
-			sb.AppendFormat("Build Files {0}\n\n", report.GetFiles().Length.ToString());
+#if !UNITY_2022_2_OR_NEWER
+			var files = report.files;
+#else
+			var files = report.GetFiles();
+#endif
+			sb.AppendFormat("Build Files {0}\n\n", files.Length.ToString());
 
-			for (int i = 0; i < report.GetFiles().Length; i++)
+			for (int i = 0; i < files.Length; i++)
 			{
 				sb.AppendFormat("File {0}: {1} ({2}) {3}\n",
-					(i+1).ToString(), report.GetFiles()[i].path, report.GetFiles()[i].role,
-					BuildReportTool.Util.GetBytesReadable(report.GetFiles()[i].size));
+					(i+1).ToString(), files[i].path, files[i].role,
+					BuildReportTool.Util.GetBytesReadable(files[i].size));
 				if ((i+1) % 100 == 0)
 				{
 					Debug.Log(sb.ToString());
-					sb.Clear();
+					sb.Length = 0;
 				}
 			}
 
 			if (sb.Length > 0)
 			{
 				Debug.Log(sb.ToString());
-				sb.Clear();
+				sb.Length = 0;
 			}
 
 			if (report.strippingInfo != null && report.strippingInfo.includedModules != null)
@@ -460,7 +465,7 @@ namespace BuildReportTool
 					sb.AppendFormat("\nIncluded Module: {0}", module);
 				}
 				Debug.Log(sb.ToString());
-				sb.Clear();
+				sb.Length = 0;
 			}
 
 			sb.AppendFormat("Build Steps {0}", report.steps.Length.ToString());
@@ -505,7 +510,7 @@ namespace BuildReportTool
 			sb.AppendFormat("\nTotal Scene Duration: {0}", totalSceneTime.ToString());
 
 			Debug.Log(sb.ToString());
-			sb.Clear();
+			sb.Length = 0;
 
 			sb.AppendFormat("Build Size: {0}", BuildReportTool.Util.GetBytesReadable(report.summary.totalSize));
 
@@ -644,7 +649,7 @@ namespace BuildReportTool
 			    buildPlatform == BuildPlatform.Linux64)
 			{
 				// in windows builds, `buildFilePath` is the executable file
-				// we additionaly need to get the size of the Data folder
+				// we additionally need to get the size of the Data folder
 
 				// in 32 bit builds, `buildFilePath` is the executable file (.x86 file). we still need the Data folder
 				// in 64 bit builds, `buildFilePath` is the executable file (.x86_64 file). we still need the Data folder
@@ -653,7 +658,7 @@ namespace BuildReportTool
 				var dataFolder = BuildReportTool.Util.ReplaceFileType(exeFile, "_Data");
 				var buildParentFolder = GetPathParentFolder(buildReport.BuildFilePath);
 
-				return string.Format("File size of {0} and the {1} folder in <b>{2}</b>", exeFile, dataFolder,
+				return string.Format("File size of {0} and the {1} folder in <b><color=white>{2}</color></b>", exeFile, dataFolder,
 					buildParentFolder);
 			}
 
@@ -666,11 +671,11 @@ namespace BuildReportTool
 				var dataFolder = BuildReportTool.Util.ReplaceFileType(exe32File, "_Data");
 				var buildParentFolder = GetPathParentFolder(buildReport.BuildFilePath);
 
-				return string.Format("File size of {0}, {1}, and the {2} folder in <b>{3}</b>", exe32File, exe64File,
+				return string.Format("File size of {0}, {1}, and the {2} folder in <b><color=white>{3}</color></b>", exe32File, exe64File,
 					dataFolder, buildParentFolder);
 			}
 
-			return string.Format("File size of <b>{0}</b>", buildReport.BuildFilePath);
+			return string.Format("File size of <b><color=white>{0}</color></b>", buildReport.BuildFilePath);
 		}
 
 
@@ -1059,9 +1064,39 @@ namespace BuildReportTool
 			return filepath.EndsWith(typeExtenstion, StringComparison.OrdinalIgnoreCase);
 		}
 
+		static readonly char[] InvalidPathChars = System.IO.Path.GetInvalidPathChars();
+
+		public static bool DoesFileHaveInvalidPathChars(this string filepath)
+		{
+			if (filepath == null)
+			{
+				return false;
+			}
+
+			return filepath.IndexOfAny(InvalidPathChars) >= 0;
+		}
+
+		public static string GetFileNameOnly(this string filepath)
+		{
+			if ((filepath.StartsWith("Built-in") && filepath.EndsWith(":")) || filepath.DoesFileHaveInvalidPathChars())
+			{
+				return filepath;
+			}
+			return System.IO.Path.GetFileName(filepath);
+		}
+
+		public static string GetFileNameOnlyNoExtension(this string filepath)
+		{
+			if ((filepath.StartsWith("Built-in") && filepath.EndsWith(":")) || filepath.DoesFileHaveInvalidPathChars())
+			{
+				return filepath;
+			}
+			return System.IO.Path.GetFileNameWithoutExtension(filepath);
+		}
+
 		public static bool IsFileName(string filepath, string filenameToCheck)
 		{
-			return string.Equals(System.IO.Path.GetFileName(filepath), filenameToCheck,
+			return string.Equals(filepath.GetFileNameOnly(), filenameToCheck,
 				StringComparison.OrdinalIgnoreCase);
 		}
 
@@ -1072,7 +1107,7 @@ namespace BuildReportTool
 				return false;
 			}
 
-			return System.IO.Path.GetFileName(filepath).StartsWith(".");
+			return filepath.GetFileNameOnly().StartsWith(".");
 		}
 
 		public static bool DoesFileBeginWith(this string filepath, string stringToCheck)
@@ -1082,7 +1117,7 @@ namespace BuildReportTool
 				return false;
 			}
 
-			return System.IO.Path.GetFileName(filepath).StartsWith(stringToCheck, StringComparison.OrdinalIgnoreCase);
+			return filepath.GetFileNameOnly().StartsWith(stringToCheck, StringComparison.OrdinalIgnoreCase);
 		}
 
 		/// <summary>
@@ -1303,7 +1338,7 @@ namespace BuildReportTool
 				return GetBuiltInAssetFilename(assetPath);
 			}
 
-			return System.IO.Path.GetFileName(assetPath);
+			return assetPath.GetFileNameOnly();
 		}
 
 
@@ -1336,7 +1371,7 @@ namespace BuildReportTool
 
 			if (hasSlash)
 			{
-				return System.IO.Path.GetFileName(assetPath);
+				return assetPath.GetFileNameOnly();
 			}
 
 			int idxOfColon = assetPath.IndexOf(":", StringComparison.Ordinal);
@@ -1388,7 +1423,7 @@ namespace BuildReportTool
 			// search for it
 
 #if BRT_SHOW_MINOR_WARNINGS
-		Debug.LogWarning(BuildReportTool.Options.BUILD_REPORT_PACKAGE_MOVED_MSG);
+			Debug.LogWarning(BuildReportTool.Options.BUILD_REPORT_PACKAGE_MOVED_MSG);
 #endif
 
 			string folderPath = BuildReportTool.Util.FindAssetFolder(Application.dataPath,
@@ -1406,9 +1441,11 @@ namespace BuildReportTool
 
 			// could not find it
 			// giving up
+#if BRT_SHOW_MINOR_WARNINGS
 			Debug.LogError(BuildReportTool.Options.BUILD_REPORT_PACKAGE_MISSING_MSG);
+#endif
 
-			return "";
+			return null;
 		}
 
 
@@ -2133,6 +2170,11 @@ namespace BuildReportTool
 
 		public static BuildReportTool.BuildInfo OpenSerializedBuildInfo(string serializedBuildInfoFilePath, bool fromMainThread = true)
 		{
+			if (!System.IO.File.Exists(serializedBuildInfoFilePath))
+			{
+				return null;
+			}
+
 			BuildReportTool.BuildInfo ret = null;
 
 			var x = new System.Xml.Serialization.XmlSerializer(typeof(BuildReportTool.BuildInfo));
@@ -2190,24 +2232,22 @@ namespace BuildReportTool
 
 		public static T OpenSerialized<T>(string filePath) where T : class, BuildReportTool.IDataFile
 		{
+			if (!System.IO.File.Exists(filePath))
+			{
+				return null;
+			}
+
 			T ret = null;
 
 			var x = new System.Xml.Serialization.XmlSerializer(typeof(T));
 
-			try
+			// no corrections in the xml file
+			// proceed to open the file normally
+			using (var fs = new System.IO.FileStream(filePath, System.IO.FileMode.Open))
 			{
-				// no corrections in the xml file
-				// proceed to open the file normally
-				using (var fs = new System.IO.FileStream(filePath, System.IO.FileMode.Open))
-				{
-					System.Xml.XmlReader reader = new System.Xml.XmlTextReader(fs);
-					ret = (T) x.Deserialize(reader);
-					fs.Close();
-				}
-			}
-			catch (Exception e)
-			{
-				Debug.LogError(e);
+				System.Xml.XmlReader reader = new System.Xml.XmlTextReader(fs);
+				ret = (T) x.Deserialize(reader);
+				fs.Close();
 			}
 
 			if (ret != null)
@@ -2240,6 +2280,12 @@ namespace BuildReportTool
 			return string.Format("TextureData-{0}-{1}-{2}.xml", projectName, buildType, timeGot.ToString(SAVE_DATE_TIME_FORMAT));
 		}
 
+		public static string GetMeshDataDefaultFilename(string projectName, string buildType,
+			System.DateTime timeGot)
+		{
+			return string.Format("MeshData-{0}-{1}-{2}.xml", projectName, buildType, timeGot.ToString(SAVE_DATE_TIME_FORMAT));
+		}
+
 		public static string GetUnityBuildReportDefaultFilename(string projectName, string buildType,
 			System.DateTime timeGot)
 		{
@@ -2249,22 +2295,36 @@ namespace BuildReportTool
 		public static string GetAssetDependenciesFilenameFromBuildInfo(string filepath)
 		{
 			var folderPath = System.IO.Path.GetDirectoryName(filepath);
-			var filename = System.IO.Path.GetFileName(filepath);
+			var filename = filepath.GetFileNameOnly();
 			return string.Format("{0}/DEP-{1}", folderPath, filename);
 		}
 
 		public static string GetTextureDataFilenameFromBuildInfo(string filepath)
 		{
 			var folderPath = System.IO.Path.GetDirectoryName(filepath);
-			var filename = System.IO.Path.GetFileName(filepath);
+			var filename = filepath.GetFileNameOnly();
 			return string.Format("{0}/TextureData-{1}", folderPath, filename);
+		}
+
+		public static string GetMeshDataFilenameFromBuildInfo(string filepath)
+		{
+			var folderPath = System.IO.Path.GetDirectoryName(filepath);
+			var filename = filepath.GetFileNameOnly();
+			return string.Format("{0}/MeshData-{1}", folderPath, filename);
 		}
 
 		public static string GetUnityBuildReportFilenameFromBuildInfo(string filepath)
 		{
 			var folderPath = System.IO.Path.GetDirectoryName(filepath);
-			var filename = System.IO.Path.GetFileName(filepath);
+			var filename = filepath.GetFileNameOnly();
 			return string.Format("{0}/UBR-{1}", folderPath, filename);
+		}
+
+		public static string GetExtraDataFilename(string filepath)
+		{
+			var folderPath = System.IO.Path.GetDirectoryName(filepath);
+			var filename = filepath.GetFileNameOnlyNoExtension();
+			return string.Format("{0}/ExtraData-{1}.txt", folderPath, filename);
 		}
 
 		// ---------------------------------
@@ -2280,7 +2340,15 @@ namespace BuildReportTool
 					System.IO.Directory.CreateDirectory(folderPathToSaveTo);
 				}
 
-				filePath = string.Format("{0}/{1}", folderPathToSaveTo, data.GetDefaultFilename());
+				char lastChar = folderPathToSaveTo[folderPathToSaveTo.Length - 1];
+				if (lastChar == '/' || lastChar == '\\' || lastChar == ':')
+				{
+					filePath = string.Format("{0}{1}", folderPathToSaveTo, data.GetDefaultFilename());
+				}
+				else
+				{
+					filePath = string.Format("{0}/{1}", folderPathToSaveTo, data.GetDefaultFilename());
+				}
 			}
 			else
 			{

@@ -1655,6 +1655,8 @@ MonoBehaviour:
   SpawnPoint_Tigeress: {fileID: 0}
   SpawnPoint_Child: {fileID: 0}
   Stun_Enemies: []
+  SuperAttack_En:
+  - {fileID: 8817904814498564899}
   Stats: {fileID: 11400000, guid: eb866d494f333cb4d959d32dc27cacb7, type: 2}
   FinishLevel: {fileID: 9058773914635332899}
   AnimalsNamesToKill:
@@ -7892,7 +7894,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5694220749683260242, guid: 757fa70f9100bc1408beae567ffb138e, type: 3}
   m_PrefabInstance: {fileID: 5177980927423167033}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 8817904814498564899}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e62bd368e0bec0143b5aa1d6315ad101, type: 3}
@@ -7901,6 +7903,11 @@ MonoBehaviour:
 --- !u!4 &8814444044619448537 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4434022602244602592, guid: 757fa70f9100bc1408beae567ffb138e, type: 3}
+  m_PrefabInstance: {fileID: 5177980927423167033}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8817904814498564899 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4432843363521851674, guid: 757fa70f9100bc1408beae567ffb138e, type: 3}
   m_PrefabInstance: {fileID: 5177980927423167033}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7805489866871494293

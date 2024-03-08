@@ -266,13 +266,28 @@ namespace BuildReportTool
 
 			settings.UsingAdvancedLicense = PlayerSettings.advancedLicense;
 
-
 			// debug settings
 			// ---------------------------------------------------------------
 			settings.EnableDevelopmentBuild = EditorUserBuildSettings.development;
 			settings.EnableDebugLog = PlayerSettings.usePlayerLog;
 			settings.EnableSourceDebugging = EditorUserBuildSettings.allowDebugging;
+#if UNITY_2019_3_OR_NEWER
+			settings.WaitForManagedDebugger = EditorUserBuildSettings.waitForManagedDebugger;
+#endif
 			settings.EnableExplicitNullChecks = EditorUserBuildSettings.explicitNullChecks;
+
+#if UNITY_EDITOR_WIN
+#if UNITY_5_6_OR_NEWER
+			settings.WinIncludeNativePdbFilesInBuild = UnityEditor.WindowsStandalone.UserBuildSettings.copyPDBFiles;
+#else
+			settings.WinIncludeNativePdbFilesInBuild = false;
+#endif
+#if UNITY_2017_1_OR_NEWER
+			settings.WinCreateVisualStudioSolution = UnityEditor.WindowsStandalone.UserBuildSettings.createSolution;
+#else
+			settings.WinCreateVisualStudioSolution = false;
+#endif
+#endif
 
 #if !UNITY_5_3_AND_LESSER
 			settings.EnableExplicitDivideByZeroChecks = EditorUserBuildSettings.explicitDivideByZeroChecks;
@@ -287,10 +302,10 @@ namespace BuildReportTool
 			settings.ConnectProfiler = EditorUserBuildSettings.connectProfiler;
 
 #if UNITY_5_3_AND_GREATER
-		// this setting actually started appearing in Unity 5.2.2 (it is not present in 5.2.1)
-		// but our script compilation defines can't detect the patch number in the version,
-		// so we have no choice but to restrict this to 5.3
-		settings.ForceOptimizeScriptCompilation = EditorUserBuildSettings.forceOptimizeScriptCompilation;
+			// this setting actually started appearing in Unity 5.2.2 (it is not present in 5.2.1)
+			// but our script compilation defines can't detect the patch number in the version,
+			// so we have no choice but to restrict this to 5.3
+			settings.ForceOptimizeScriptCompilation = EditorUserBuildSettings.forceOptimizeScriptCompilation;
 #endif
 
 #if UNITY_5_4_OR_NEWER
@@ -304,8 +319,11 @@ namespace BuildReportTool
 
 			// build settings
 			// ---------------------------------------------------------------
-
+#if UNITY_2021_2_OR_NEWER
+			settings.EnableHeadlessMode = EditorUserBuildSettings.standaloneBuildSubtarget == StandaloneBuildSubtarget.Server;
+#else
 			settings.EnableHeadlessMode = EditorUserBuildSettings.enableHeadlessMode;
+#endif
 			settings.InstallInBuildFolder = EditorUserBuildSettings.installInBuildFolder;
 #if !UNITY_4
 			settings.ForceInstallation = EditorUserBuildSettings.forceInstallation;
@@ -314,7 +332,7 @@ namespace BuildReportTool
 #endif
 
 #if UNITY_4
-		settings.StripPhysicsCode = PlayerSettings.stripPhysics;
+			settings.StripPhysicsCode = PlayerSettings.stripPhysics;
 #endif
 			settings.StripUnusedMeshComponents = PlayerSettings.stripUnusedMeshComponents;
 
@@ -348,7 +366,7 @@ namespace BuildReportTool
 			                              .GetManagedStrippingLevel(EditorUserBuildSettings.selectedBuildTargetGroup)
 			                              .ToString();
 #else
-		settings.StrippingLevelUsed = PlayerSettings.strippingLevel.ToString();
+			settings.StrippingLevelUsed = PlayerSettings.strippingLevel.ToString();
 #endif
 
 #if UNITY_5_6_OR_NEWER
@@ -356,7 +374,7 @@ namespace BuildReportTool
 			                                    .GetApiCompatibilityLevel(EditorUserBuildSettings.selectedBuildTargetGroup)
 			                                    .ToString();
 #else
-		settings.NETApiCompatibilityLevel = PlayerSettings.apiCompatibilityLevel.ToString();
+			settings.NETApiCompatibilityLevel = PlayerSettings.apiCompatibilityLevel.ToString();
 #endif
 
 			settings.AOTOptions = PlayerSettings.aotOptions;
@@ -364,7 +382,7 @@ namespace BuildReportTool
 #if UNITY_5_5_OR_NEWER
 			settings.LocationUsageDescription = PlayerSettings.iOS.locationUsageDescription;
 #else
-		settings.LocationUsageDescription = PlayerSettings.locationUsageDescription;
+			settings.LocationUsageDescription = PlayerSettings.locationUsageDescription;
 #endif
 
 
@@ -388,16 +406,17 @@ namespace BuildReportTool
 			                                        .GetTierSettings(EditorUserBuildSettings.selectedBuildTargetGroup,
 				                                        Graphics.activeTier).renderingPath.ToString();
 #else
-		settings.RenderingPathUsed = PlayerSettings.renderingPath.ToString();
+			settings.RenderingPathUsed = PlayerSettings.renderingPath.ToString();
 #endif
 #endif
 
 #if !UNITY_5_1_AND_LESSER && !UNITY_2019_3_OR_NEWER // 5.2 to 2019.2
-		settings.EnableVirtualRealitySupport = PlayerSettings.virtualRealitySupported;
+			settings.EnableVirtualRealitySupport = PlayerSettings.virtualRealitySupported;
 #elif UNITY_2019_3_OR_NEWER
 			settings.EnableVirtualRealitySupport = UnityEngine.XR.XRSettings.enabled;
 #endif
 
+#if !UNITY_2022_2_OR_NEWER
 			// collect all aspect ratios
 			UnityEditor.AspectRatio[] aspectRatios =
 			{
@@ -422,6 +441,9 @@ namespace BuildReportTool
 			}
 
 			settings.AspectRatiosAllowed = aspectRatiosList.ToArray();
+#else
+			settings.AspectRatiosAllowed = new string[]{"N/A"}; // AspectRatio enum removed in Unity 2022.2
+#endif
 
 #if !UNITY_5_1_AND_LESSER // 5.2 and greater
 			settings.GraphicsAPIsUsed = PlayerSettings.GetGraphicsAPIs(EditorUserBuildSettings.activeBuildTarget)
@@ -447,15 +469,15 @@ namespace BuildReportTool
 			settings.WebPlayerEnableStreaming = false;
 			settings.WebPlayerDeployOffline = false;
 #else
-		settings.WebPlayerDefaultScreenWidth = PlayerSettings.defaultWebScreenWidth;
-		settings.WebPlayerDefaultScreenHeight = PlayerSettings.defaultWebScreenHeight;
+			settings.WebPlayerDefaultScreenWidth = PlayerSettings.defaultWebScreenWidth;
+			settings.WebPlayerDefaultScreenHeight = PlayerSettings.defaultWebScreenHeight;
 
-		settings.WebPlayerEnableStreaming = EditorUserBuildSettings.webPlayerStreamed;
-		settings.WebPlayerDeployOffline = EditorUserBuildSettings.webPlayerOfflineDeployment;
+			settings.WebPlayerEnableStreaming = EditorUserBuildSettings.webPlayerStreamed;
+			settings.WebPlayerDeployOffline = EditorUserBuildSettings.webPlayerOfflineDeployment;
 #endif
 
 #if UNITY_5_2_AND_LESSER
-		settings.WebPlayerFirstStreamedLevelWithResources = PlayerSettings.firstStreamedLevelWithResources;
+			settings.WebPlayerFirstStreamedLevelWithResources = PlayerSettings.firstStreamedLevelWithResources;
 #else
 			settings.WebPlayerFirstStreamedLevelWithResources = 0;
 #endif
@@ -464,15 +486,21 @@ namespace BuildReportTool
 			// ---------------------------------------------------------------
 
 #if UNITY_5_3_AND_LESSER
-		settings.WebGLOptimizationLevel = EditorUserBuildSettings.webGLOptimizationLevel.ToString();
+			settings.WebGLOptimizationLevel = EditorUserBuildSettings.webGLOptimizationLevel.ToString();
 #endif
 #if UNITY_5_4_OR_NEWER && !UNITY_2019_1_OR_NEWER
-		settings.WebGLUsePreBuiltUnityEngine = EditorUserBuildSettings.webGLUsePreBuiltUnityEngine;
+			settings.WebGLUsePreBuiltUnityEngine = EditorUserBuildSettings.webGLUsePreBuiltUnityEngine;
 #endif
 #if UNITY_5_5_OR_NEWER
 			settings.WebGLCompressionFormat = PlayerSettings.WebGL.compressionFormat.ToString();
 			settings.WebGLAutoCacheAssetsData = PlayerSettings.WebGL.dataCaching;
+#if UNITY_2021_2_OR_NEWER
+			settings.WebGLDebugSymbolMode = PlayerSettings.WebGL.debugSymbolMode.ToString();
+			settings.WebGLCreateDebugSymbolsFile = PlayerSettings.WebGL.debugSymbolMode != WebGLDebugSymbolMode.Off;
+#else
+			settings.WebGLDebugSymbolMode = null;
 			settings.WebGLCreateDebugSymbolsFile = PlayerSettings.WebGL.debugSymbols;
+#endif
 			settings.WebGLExceptionSupportType = PlayerSettings.WebGL.exceptionSupport.ToString();
 			settings.WebGLMemorySize = PlayerSettings.WebGL.memorySize;
 			settings.WebGLTemplatePath = PlayerSettings.WebGL.template;
@@ -579,23 +607,26 @@ namespace BuildReportTool
 
 			// Unity 5: EditorUserBuildSettings.appendProject is removed
 #if UNITY_4
-		settings.iOSAppendedToProject = EditorUserBuildSettings.appendProject;
+			settings.iOSAppendedToProject = EditorUserBuildSettings.appendProject;
 #endif
 
 #if UNITY_5_5_OR_NEWER
 			settings.iOSTargetOSVersion = PlayerSettings.iOS.targetOSVersionString;
 #else
-		settings.iOSTargetOSVersion = PlayerSettings.iOS.targetOSVersion.ToString();
+			settings.iOSTargetOSVersion = PlayerSettings.iOS.targetOSVersion.ToString();
 #endif
-
+#if UNITY_2021_2_OR_NEWER
 			settings.iOSSymlinkLibraries = EditorUserBuildSettings.symlinkSources;
+#else
+			settings.iOSSymlinkLibraries = EditorUserBuildSettings.symlinkLibraries;
+#endif
 			settings.iOSAppDisplayName = PlayerSettings.iOS.applicationDisplayName;
 			settings.iOSScriptCallOptimizationUsed = PlayerSettings.iOS.scriptCallOptimization.ToString();
 			settings.iOSSDKVersionUsed = PlayerSettings.iOS.sdkVersion.ToString();
 			settings.iOSTargetDevice = PlayerSettings.iOS.targetDevice.ToString();
 
 #if UNITY_5_2_AND_LESSER
-		settings.iOSTargetResolution = PlayerSettings.iOS.targetResolution.ToString();
+			settings.iOSTargetResolution = PlayerSettings.iOS.targetResolution.ToString();
 #else
 			// not sure what the equivalent is for PlayerSettings.iOS.targetResolution in Unity 5.3
 			// Unity 5.3 has a Screen.resolutions but I don't know which of those in the array would be the iOS target resolution
@@ -606,7 +637,7 @@ namespace BuildReportTool
 			settings.iOSStatusBarStyle = PlayerSettings.iOS.statusBarStyle.ToString();
 
 #if UNITY_4
-		settings.iOSExitOnSuspend = PlayerSettings.iOS.exitOnSuspend;
+			settings.iOSExitOnSuspend = PlayerSettings.iOS.exitOnSuspend;
 #else
 			settings.iOSAppInBackgroundBehavior = PlayerSettings.iOS.appInBackgroundBehavior.ToString();
 #endif
@@ -618,7 +649,7 @@ namespace BuildReportTool
 #endif
 
 #if UNITY_5_1_AND_LESSER
-		settings.iOSTargetGraphics = PlayerSettings.targetIOSGraphics.ToString();
+			settings.iOSTargetGraphics = PlayerSettings.targetIOSGraphics.ToString();
 #else
 			settings.iOSTargetGraphics = string.Join(",",
 				PlayerSettings.GetGraphicsAPIs(BuildTarget.iOS).Select(type => type.ToString()).ToArray());
@@ -641,7 +672,7 @@ namespace BuildReportTool
 
 
 #if UNITY_4
-		settings.AndroidUse24BitDepthBuffer = PlayerSettings.Android.use24BitDepthBuffer;
+			settings.AndroidUse24BitDepthBuffer = PlayerSettings.Android.use24BitDepthBuffer;
 #else
 			settings.AndroidDisableDepthAndStencilBuffers = PlayerSettings.Android.disableDepthAndStencilBuffers;
 #endif
@@ -652,7 +683,7 @@ namespace BuildReportTool
 #if UNITY_2018_AND_NEWER
 			settings.AndroidTargetDevice = PlayerSettings.Android.targetArchitectures.ToString();
 #else
-		settings.AndroidTargetDevice = PlayerSettings.Android.targetDevice.ToString();
+			settings.AndroidTargetDevice = PlayerSettings.Android.targetDevice.ToString();
 #endif
 
 			settings.AndroidSplashScreenScaleMode = PlayerSettings.Android.splashScreenScale.ToString();
@@ -670,28 +701,28 @@ namespace BuildReportTool
 
 
 #if UNITY_5_3_AND_LESSER // blackberry build option no longer in Unity 5.4
-		// BlackBerry only build settings
-		// ---------------------------------------------------------------
+			// BlackBerry only build settings
+			// ---------------------------------------------------------------
 
-		settings.BlackBerryBuildSubtarget = EditorUserBuildSettings.blackberryBuildSubtarget.ToString();
-		settings.BlackBerryBuildType = EditorUserBuildSettings.blackberryBuildType.ToString();
+			settings.BlackBerryBuildSubtarget = EditorUserBuildSettings.blackberryBuildSubtarget.ToString();
+			settings.BlackBerryBuildType = EditorUserBuildSettings.blackberryBuildType.ToString();
 
 #if !UNITY_5
-		settings.BlackBerryAuthorID = PlayerSettings.BlackBerry.authorId;
+			settings.BlackBerryAuthorID = PlayerSettings.BlackBerry.authorId;
 #endif
-		settings.BlackBerryDeviceAddress = PlayerSettings.BlackBerry.deviceAddress;
+			settings.BlackBerryDeviceAddress = PlayerSettings.BlackBerry.deviceAddress;
 
-		settings.BlackBerrySaveLogPath = PlayerSettings.BlackBerry.saveLogPath;
-		settings.BlackBerryTokenPath = PlayerSettings.BlackBerry.tokenPath;
+			settings.BlackBerrySaveLogPath = PlayerSettings.BlackBerry.saveLogPath;
+			settings.BlackBerryTokenPath = PlayerSettings.BlackBerry.tokenPath;
 
-		settings.BlackBerryTokenAuthor = PlayerSettings.BlackBerry.tokenAuthor;
-		settings.BlackBerryTokenExpiration = PlayerSettings.BlackBerry.tokenExpires;
+			settings.BlackBerryTokenAuthor = PlayerSettings.BlackBerry.tokenAuthor;
+			settings.BlackBerryTokenExpiration = PlayerSettings.BlackBerry.tokenExpires;
 
-		settings.BlackBerryHasCamPermissions = PlayerSettings.BlackBerry.HasCameraPermissions();
-		settings.BlackBerryHasMicPermissions = PlayerSettings.BlackBerry.HasMicrophonePermissions();
-		settings.BlackBerryHasGpsPermissions = PlayerSettings.BlackBerry.HasGPSPermissions();
-		settings.BlackBerryHasIdPermissions = PlayerSettings.BlackBerry.HasIdentificationPermissions();
-		settings.BlackBerryHasSharedPermissions = PlayerSettings.BlackBerry.HasSharedPermissions();
+			settings.BlackBerryHasCamPermissions = PlayerSettings.BlackBerry.HasCameraPermissions();
+			settings.BlackBerryHasMicPermissions = PlayerSettings.BlackBerry.HasMicrophonePermissions();
+			settings.BlackBerryHasGpsPermissions = PlayerSettings.BlackBerry.HasGPSPermissions();
+			settings.BlackBerryHasIdPermissions = PlayerSettings.BlackBerry.HasIdentificationPermissions();
+			settings.BlackBerryHasSharedPermissions = PlayerSettings.BlackBerry.HasSharedPermissions();
 #endif
 		}
 
@@ -701,13 +732,13 @@ namespace BuildReportTool
 			// no more Samsung TV in Unity 2017.3 or greater
 
 #if UNITY_4 || UNITY_5 || (UNITY_2017 && !UNITY_2017_3_OR_NEWER)
-		settings.SamsungTVDeviceAddress = PlayerSettings.SamsungTV.deviceAddress;
+			settings.SamsungTVDeviceAddress = PlayerSettings.SamsungTV.deviceAddress;
 #if !UNITY_4
-		settings.SamsungTVAuthor = PlayerSettings.SamsungTV.productAuthor;
-		settings.SamsungTVAuthorEmail = PlayerSettings.SamsungTV.productAuthorEmail;
-		settings.SamsungTVAuthorWebsiteUrl = PlayerSettings.SamsungTV.productLink;
-		settings.SamsungTVCategory = PlayerSettings.SamsungTV.productCategory.ToString();
-		settings.SamsungTVDescription = PlayerSettings.SamsungTV.productDescription;
+			settings.SamsungTVAuthor = PlayerSettings.SamsungTV.productAuthor;
+			settings.SamsungTVAuthorEmail = PlayerSettings.SamsungTV.productAuthorEmail;
+			settings.SamsungTVAuthorWebsiteUrl = PlayerSettings.SamsungTV.productLink;
+			settings.SamsungTVCategory = PlayerSettings.SamsungTV.productCategory.ToString();
+			settings.SamsungTVDescription = PlayerSettings.SamsungTV.productDescription;
 #endif
 #endif
 		}
@@ -722,26 +753,26 @@ namespace BuildReportTool
 			// In Unity 5.5, API for Xbox 360 is still there but build options
 			// do not allow Xbox 360 anymore, so we don't bother with it
 #else
-		settings.Xbox360BuildSubtarget = EditorUserBuildSettings.xboxBuildSubtarget.ToString();
-		settings.Xbox360RunMethod = EditorUserBuildSettings.xboxRunMethod.ToString();
+			settings.Xbox360BuildSubtarget = EditorUserBuildSettings.xboxBuildSubtarget.ToString();
+			settings.Xbox360RunMethod = EditorUserBuildSettings.xboxRunMethod.ToString();
 
-		settings.Xbox360TitleId = PlayerSettings.xboxTitleId;
-		settings.Xbox360ImageXexFilePath = PlayerSettings.xboxImageXexFilePath;
-		settings.Xbox360SpaFilePath = PlayerSettings.xboxSpaFilePath;
+			settings.Xbox360TitleId = PlayerSettings.xboxTitleId;
+			settings.Xbox360ImageXexFilePath = PlayerSettings.xboxImageXexFilePath;
+			settings.Xbox360SpaFilePath = PlayerSettings.xboxSpaFilePath;
 
-		settings.Xbox360AutoGenerateSpa = PlayerSettings.xboxGenerateSpa;
-		settings.Xbox360EnableKinect = PlayerSettings.xboxEnableKinect;
-		settings.Xbox360EnableKinectAutoTracking = PlayerSettings.xboxEnableKinectAutoTracking;
-		settings.Xbox360EnableSpeech = PlayerSettings.xboxEnableSpeech;
-		settings.Xbox360EnableAvatar = PlayerSettings.xboxEnableAvatar;
+			settings.Xbox360AutoGenerateSpa = PlayerSettings.xboxGenerateSpa;
+			settings.Xbox360EnableKinect = PlayerSettings.xboxEnableKinect;
+			settings.Xbox360EnableKinectAutoTracking = PlayerSettings.xboxEnableKinectAutoTracking;
+			settings.Xbox360EnableSpeech = PlayerSettings.xboxEnableSpeech;
+			settings.Xbox360EnableAvatar = PlayerSettings.xboxEnableAvatar;
 
-		settings.Xbox360SpeechDB = PlayerSettings.xboxSpeechDB;
+			settings.Xbox360SpeechDB = PlayerSettings.xboxSpeechDB;
 
-		settings.Xbox360AdditionalTitleMemSize = PlayerSettings.xboxAdditionalTitleMemorySize;
+			settings.Xbox360AdditionalTitleMemSize = PlayerSettings.xboxAdditionalTitleMemorySize;
 
-		settings.Xbox360DeployKinectResources = PlayerSettings.xboxDeployKinectResources;
-		settings.Xbox360DeployKinectHeadOrientation = PlayerSettings.xboxDeployKinectHeadOrientation;
-		settings.Xbox360DeployKinectHeadPosition = PlayerSettings.xboxDeployKinectHeadPosition;
+			settings.Xbox360DeployKinectResources = PlayerSettings.xboxDeployKinectResources;
+			settings.Xbox360DeployKinectHeadOrientation = PlayerSettings.xboxDeployKinectHeadOrientation;
+			settings.Xbox360DeployKinectHeadPosition = PlayerSettings.xboxDeployKinectHeadPosition;
 #endif
 
 
@@ -751,11 +782,15 @@ namespace BuildReportTool
 #if UNITY_5_5_OR_NEWER
 			// In Unity 5.5, EditorUserBuildSettings.sceBuildSubtarget is removed
 #else
-		settings.SCEBuildSubtarget = EditorUserBuildSettings.sceBuildSubtarget.ToString();
+			settings.SCEBuildSubtarget = EditorUserBuildSettings.sceBuildSubtarget.ToString();
 #endif
 
 #if !UNITY_4
+#if UNITY_2021_2_OR_NEWER
+			settings.CompressBuildWithPsArc = false;
+#else
 			settings.CompressBuildWithPsArc = EditorUserBuildSettings.compressWithPsArc;
+#endif
 			settings.NeedSubmissionMaterials = EditorUserBuildSettings.needSubmissionMaterials;
 #endif
 
@@ -767,45 +802,45 @@ namespace BuildReportTool
 			// no more PS3 support in Unity 5.5 and greater
 
 #elif !UNITY_5
-		settings.PS3TitleConfigFilePath = PlayerSettings.ps3TitleConfigPath;
-		settings.PS3DLCConfigFilePath = PlayerSettings.ps3DLCConfigPath;
-		settings.PS3ThumbnailFilePath = PlayerSettings.ps3ThumbnailPath;
-		settings.PS3BackgroundImageFilePath = PlayerSettings.ps3BackgroundPath;
-		settings.PS3BackgroundSoundFilePath = PlayerSettings.ps3SoundPath;
-		settings.PS3TrophyPackagePath = PlayerSettings.ps3TrophyPackagePath;
+			settings.PS3TitleConfigFilePath = PlayerSettings.ps3TitleConfigPath;
+			settings.PS3DLCConfigFilePath = PlayerSettings.ps3DLCConfigPath;
+			settings.PS3ThumbnailFilePath = PlayerSettings.ps3ThumbnailPath;
+			settings.PS3BackgroundImageFilePath = PlayerSettings.ps3BackgroundPath;
+			settings.PS3BackgroundSoundFilePath = PlayerSettings.ps3SoundPath;
+			settings.PS3TrophyPackagePath = PlayerSettings.ps3TrophyPackagePath;
 
-		settings.PS3InTrialMode = PlayerSettings.ps3TrialMode;
+			settings.PS3InTrialMode = PlayerSettings.ps3TrialMode;
 
-		settings.PS3BootCheckMaxSaveGameSizeKB = PlayerSettings.ps3BootCheckMaxSaveGameSizeKB;
+			settings.PS3BootCheckMaxSaveGameSizeKB = PlayerSettings.ps3BootCheckMaxSaveGameSizeKB;
 
-		settings.PS3SaveGameSlots = PlayerSettings.ps3SaveGameSlots;
+			settings.PS3SaveGameSlots = PlayerSettings.ps3SaveGameSlots;
 
-		settings.PS3NpCommsId = PlayerSettings.ps3TrophyCommId;
-		settings.PS3NpCommsSig = PlayerSettings.ps3TrophyCommSig;
-		settings.PS3VideoMemoryForVertexBuffers = PlayerSettings.PS3.videoMemoryForVertexBuffers;
+			settings.PS3NpCommsId = PlayerSettings.ps3TrophyCommId;
+			settings.PS3NpCommsSig = PlayerSettings.ps3TrophyCommSig;
+			settings.PS3VideoMemoryForVertexBuffers = PlayerSettings.PS3.videoMemoryForVertexBuffers;
 #else
-		settings.PS3TitleConfigFilePath = PlayerSettings.PS3.titleConfigPath;
-		settings.PS3DLCConfigFilePath = PlayerSettings.PS3.dlcConfigPath;
-		settings.PS3ThumbnailFilePath = PlayerSettings.PS3.thumbnailPath;
-		settings.PS3BackgroundImageFilePath = PlayerSettings.PS3.backgroundPath;
-		settings.PS3BackgroundSoundFilePath = PlayerSettings.PS3.soundPath;
-		settings.PS3TrophyPackagePath = PlayerSettings.PS3.npTrophyPackagePath;
+			settings.PS3TitleConfigFilePath = PlayerSettings.PS3.titleConfigPath;
+			settings.PS3DLCConfigFilePath = PlayerSettings.PS3.dlcConfigPath;
+			settings.PS3ThumbnailFilePath = PlayerSettings.PS3.thumbnailPath;
+			settings.PS3BackgroundImageFilePath = PlayerSettings.PS3.backgroundPath;
+			settings.PS3BackgroundSoundFilePath = PlayerSettings.PS3.soundPath;
+			settings.PS3TrophyPackagePath = PlayerSettings.PS3.npTrophyPackagePath;
 
-		settings.PS3InTrialMode = PlayerSettings.PS3.trialMode;
+			settings.PS3InTrialMode = PlayerSettings.PS3.trialMode;
 
-		settings.PS3NpCommsId = PlayerSettings.PS3.npTrophyCommId;
-		settings.PS3NpCommsSig = PlayerSettings.PS3.npTrophyCommSig;
+			settings.PS3NpCommsId = PlayerSettings.PS3.npTrophyCommId;
+			settings.PS3NpCommsSig = PlayerSettings.PS3.npTrophyCommSig;
 
-		settings.PS3DisableDolbyEncoding = PlayerSettings.PS3.DisableDolbyEncoding;
-		settings.PS3EnableMoveSupport = PlayerSettings.PS3.EnableMoveSupport;
-		settings.PS3UseSPUForUmbra = PlayerSettings.PS3.UseSPUForUmbra;
-		settings.PS3EnableVerboseMemoryStats = PlayerSettings.PS3.EnableVerboseMemoryStats;
-		settings.PS3VideoMemoryForAudio = PlayerSettings.PS3.videoMemoryForAudio;
-		settings.PS3BootCheckMaxSaveGameSizeKB = PlayerSettings.PS3.bootCheckMaxSaveGameSizeKB;
+			settings.PS3DisableDolbyEncoding = PlayerSettings.PS3.DisableDolbyEncoding;
+			settings.PS3EnableMoveSupport = PlayerSettings.PS3.EnableMoveSupport;
+			settings.PS3UseSPUForUmbra = PlayerSettings.PS3.UseSPUForUmbra;
+			settings.PS3EnableVerboseMemoryStats = PlayerSettings.PS3.EnableVerboseMemoryStats;
+			settings.PS3VideoMemoryForAudio = PlayerSettings.PS3.videoMemoryForAudio;
+			settings.PS3BootCheckMaxSaveGameSizeKB = PlayerSettings.PS3.bootCheckMaxSaveGameSizeKB;
 
-		settings.PS3SaveGameSlots = PlayerSettings.PS3.saveGameSlots;
-		settings.PS3NpAgeRating = PlayerSettings.PS3.npAgeRating;
-		settings.PS3VideoMemoryForVertexBuffers = PlayerSettings.PS3.videoMemoryForVertexBuffers;
+			settings.PS3SaveGameSlots = PlayerSettings.PS3.saveGameSlots;
+			settings.PS3NpAgeRating = PlayerSettings.PS3.npAgeRating;
+			settings.PS3VideoMemoryForVertexBuffers = PlayerSettings.PS3.videoMemoryForVertexBuffers;
 #endif
 
 
@@ -814,64 +849,64 @@ namespace BuildReportTool
 
 #if !UNITY_2018_3_OR_NEWER // PS Vita removed in 2018.3
 #if UNITY_4
-		settings.PSVTrophyPackagePath = PlayerSettings.psp2NPTrophyPackPath;
-		settings.PSVParamSfxPath = PlayerSettings.psp2ParamSfxPath;
+			settings.PSVTrophyPackagePath = PlayerSettings.psp2NPTrophyPackPath;
+			settings.PSVParamSfxPath = PlayerSettings.psp2ParamSfxPath;
 
-		settings.PSVNpCommsId = PlayerSettings.psp2NPCommsID;
-		settings.PSVNpCommsSig = PlayerSettings.psp2NPCommsSig;
+			settings.PSVNpCommsId = PlayerSettings.psp2NPCommsID;
+			settings.PSVNpCommsSig = PlayerSettings.psp2NPCommsSig;
 #else
-		settings.PSVTrophyPackagePath = PlayerSettings.PSVita.npTrophyPackPath;
-		settings.PSVParamSfxPath = PlayerSettings.PSVita.paramSfxPath;
+			settings.PSVTrophyPackagePath = PlayerSettings.PSVita.npTrophyPackPath;
+			settings.PSVParamSfxPath = PlayerSettings.PSVita.paramSfxPath;
 
-		settings.PSVNpCommsId = PlayerSettings.PSVita.npCommunicationsID;
-		settings.PSVNpCommsSig = PlayerSettings.PSVita.npCommsSig;
+			settings.PSVNpCommsId = PlayerSettings.PSVita.npCommunicationsID;
+			settings.PSVNpCommsSig = PlayerSettings.PSVita.npCommsSig;
 
 
-		settings.PSVBuildSubtarget = EditorUserBuildSettings.psp2BuildSubtarget.ToString();
+			settings.PSVBuildSubtarget = EditorUserBuildSettings.psp2BuildSubtarget.ToString();
 
-		settings.PSVShortTitle = PlayerSettings.PSVita.shortTitle;
-		settings.PSVAppVersion = PlayerSettings.PSVita.appVersion;
-		settings.PSVMasterVersion = PlayerSettings.PSVita.masterVersion;
-		settings.PSVAppCategory = PlayerSettings.PSVita.category.ToString();
-		settings.PSVContentId = PlayerSettings.PSVita.contentID;
+			settings.PSVShortTitle = PlayerSettings.PSVita.shortTitle;
+			settings.PSVAppVersion = PlayerSettings.PSVita.appVersion;
+			settings.PSVMasterVersion = PlayerSettings.PSVita.masterVersion;
+			settings.PSVAppCategory = PlayerSettings.PSVita.category.ToString();
+			settings.PSVContentId = PlayerSettings.PSVita.contentID;
 
-		settings.PSVNpAgeRating = PlayerSettings.PSVita.npAgeRating.ToString();
-		settings.PSVParentalLevel = PlayerSettings.PSVita.parentalLevel.ToString();
+			settings.PSVNpAgeRating = PlayerSettings.PSVita.npAgeRating.ToString();
+			settings.PSVParentalLevel = PlayerSettings.PSVita.parentalLevel.ToString();
 
-		settings.PSVDrmType = PlayerSettings.PSVita.drmType.ToString();
-		settings.PSVUpgradable = PlayerSettings.PSVita.upgradable;
-		settings.PSVTvBootMode = PlayerSettings.PSVita.tvBootMode.ToString();
-		settings.PSVAcquireBgm = PlayerSettings.PSVita.acquireBGM;
+			settings.PSVDrmType = PlayerSettings.PSVita.drmType.ToString();
+			settings.PSVUpgradable = PlayerSettings.PSVita.upgradable;
+			settings.PSVTvBootMode = PlayerSettings.PSVita.tvBootMode.ToString();
+			settings.PSVAcquireBgm = PlayerSettings.PSVita.acquireBGM;
 #if UNITY_5_2_AND_LESSER
-		settings.PSVAllowTwitterDialog = PlayerSettings.PSVita.AllowTwitterDialog;
+			settings.PSVAllowTwitterDialog = PlayerSettings.PSVita.AllowTwitterDialog;
 #endif
 
-		settings.PSVMediaCapacity = PlayerSettings.PSVita.mediaCapacity.ToString();
-		settings.PSVStorageType = PlayerSettings.PSVita.storageType.ToString();
-		settings.PSVTvDisableEmu = PlayerSettings.PSVita.tvDisableEmu;
-		settings.PSVNpSupportGbmOrGjp = PlayerSettings.PSVita.npSupportGBMorGJP;
-		settings.PSVPowerMode = PlayerSettings.PSVita.powerMode.ToString();
+			settings.PSVMediaCapacity = PlayerSettings.PSVita.mediaCapacity.ToString();
+			settings.PSVStorageType = PlayerSettings.PSVita.storageType.ToString();
+			settings.PSVTvDisableEmu = PlayerSettings.PSVita.tvDisableEmu;
+			settings.PSVNpSupportGbmOrGjp = PlayerSettings.PSVita.npSupportGBMorGJP;
+			settings.PSVPowerMode = PlayerSettings.PSVita.powerMode.ToString();
 #if UNITY_5_2_AND_LESSER
-		settings.PSVUseLibLocation = PlayerSettings.PSVita.useLibLocation;
+			settings.PSVUseLibLocation = PlayerSettings.PSVita.useLibLocation;
 #endif
 
-		settings.PSVHealthWarning = PlayerSettings.PSVita.healthWarning;
-		settings.PSVEnterButtonAssignment = PlayerSettings.PSVita.enterButtonAssignment.ToString();
+			settings.PSVHealthWarning = PlayerSettings.PSVita.healthWarning;
+			settings.PSVEnterButtonAssignment = PlayerSettings.PSVita.enterButtonAssignment.ToString();
 
-		settings.PSVInfoBarColor = PlayerSettings.PSVita.infoBarColor;
-		settings.PSVShowInfoBarOnStartup = PlayerSettings.PSVita.infoBarOnStartup;
-		settings.PSVSaveDataQuota = PlayerSettings.PSVita.saveDataQuota;
+			settings.PSVInfoBarColor = PlayerSettings.PSVita.infoBarColor;
+			settings.PSVShowInfoBarOnStartup = PlayerSettings.PSVita.infoBarOnStartup;
+			settings.PSVSaveDataQuota = PlayerSettings.PSVita.saveDataQuota;
 
-		// paths
-		settings.PSVPatchChangeInfoPath = PlayerSettings.PSVita.patchChangeInfoPath;
-		settings.PSVPatchOriginalPackPath = PlayerSettings.PSVita.patchOriginalPackage;
-		settings.PSVKeystoneFilePath = PlayerSettings.PSVita.keystoneFile;
-		settings.PSVLiveAreaBgImagePath = PlayerSettings.PSVita.liveAreaBackroundPath;
-		settings.PSVLiveAreaGateImagePath = PlayerSettings.PSVita.liveAreaGatePath;
-		settings.PSVCustomLiveAreaPath = PlayerSettings.PSVita.liveAreaPath;
-		settings.PSVLiveAreaTrialPath = PlayerSettings.PSVita.liveAreaTrialPath;
+			// paths
+			settings.PSVPatchChangeInfoPath = PlayerSettings.PSVita.patchChangeInfoPath;
+			settings.PSVPatchOriginalPackPath = PlayerSettings.PSVita.patchOriginalPackage;
+			settings.PSVKeystoneFilePath = PlayerSettings.PSVita.keystoneFile;
+			settings.PSVLiveAreaBgImagePath = PlayerSettings.PSVita.liveAreaBackroundPath;
+			settings.PSVLiveAreaGateImagePath = PlayerSettings.PSVita.liveAreaGatePath;
+			settings.PSVCustomLiveAreaPath = PlayerSettings.PSVita.liveAreaPath;
+			settings.PSVLiveAreaTrialPath = PlayerSettings.PSVita.liveAreaTrialPath;
 
-		settings.PSVManualPath = PlayerSettings.PSVita.manualPath;
+			settings.PSVManualPath = PlayerSettings.PSVita.manualPath;
 #endif
 #endif
 		}
@@ -887,7 +922,7 @@ namespace BuildReportTool
 			settings.XboxOneProductId = PlayerSettings.XboxOne.ProductId;
 
 #if UNITY_5_5_AND_LESSER
-		settings.XboxOneSandboxId = PlayerSettings.XboxOne.SandboxId;
+			settings.XboxOneSandboxId = PlayerSettings.XboxOne.SandboxId;
 #endif
 
 			settings.XboxOneServiceConfigId = PlayerSettings.XboxOne.SCID;
@@ -935,7 +970,7 @@ namespace BuildReportTool
 			settings.PS4VideoOutResolution = string.Format("Width: {0} ReprojectionRate: {1}",
 				PlayerSettings.PS4.videoOutInitialWidth, PlayerSettings.PS4.videoOutReprojectionRate);
 #else
-		settings.PS4VideoOutResolution = PlayerSettings.PS4.videoOutResolution.ToString();
+			settings.PS4VideoOutResolution = PlayerSettings.PS4.videoOutResolution.ToString();
 #endif
 
 			settings.PS4MonoEnvVars = PlayerSettings.PS4.monoEnv;
@@ -972,23 +1007,36 @@ namespace BuildReportTool
 			var builtInPackageList = settings.BuiltInPackageEntries;
 			builtInPackageList.Clear();
 
-			var manifestJsonPath = Application.dataPath;
-			manifestJsonPath = manifestJsonPath.Substring(0, manifestJsonPath.Length - 6);
-			manifestJsonPath = string.Format("{0}Packages/manifest.json", manifestJsonPath);
+			string projectPath = Application.dataPath;
 
+			// remove the "Assets" so that we go to the parent folder
+			projectPath = projectPath.Substring(0, projectPath.Length - 6);
+
+			string manifestJsonPath = string.Format("{0}Packages/manifest.json", projectPath);
 			if (!System.IO.File.Exists(manifestJsonPath))
 			{
 				// no manifest.json in project
 				return;
 			}
-
 			string manifestJsonText = System.IO.File.ReadAllText(manifestJsonPath);
-			PopulatePackageList(manifestJsonText, packageList, builtInPackageList);
+
+			string packagesLockJsonText;
+			string packagesLockJsonPath = string.Format("{0}Packages/packages-lock.json", projectPath);
+			if (System.IO.File.Exists(packagesLockJsonPath))
+			{
+				packagesLockJsonText = System.IO.File.ReadAllText(packagesLockJsonPath);
+			}
+			else
+			{
+				packagesLockJsonText = null;
+			}
+
+			PopulatePackageList(manifestJsonText, packagesLockJsonText, packageList, builtInPackageList);
 		}
 
 		public const string DEFAULT_REGISTRY_URL = "https://packages.unity.com";
 
-		static void PopulatePackageList(string manifestJsonText,
+		static void PopulatePackageList(string manifestJsonText, string packagesLockJsonText,
 			List<BuildReportTool.UnityBuildSettings.PackageEntry> packageList, List<BuildReportTool.UnityBuildSettings.BuiltInPackageEntry> builtInPackageList)
 		{
 			//Debug.Log($"Exists: {manifestJsonPath}");
@@ -1019,17 +1067,34 @@ namespace BuildReportTool
 				scopedRegistries = null;
 			}
 
-
-			if (manifest.ContainsKey("dependencies"))
+			Dictionary<string, object> externalLock;
+			if (!string.IsNullOrEmpty(packagesLockJsonText))
 			{
-				Dictionary<string, object> lockUsed;
-				if (manifest.ContainsKey("lock"))
+				var locks = MiniJSON.Json.Deserialize(packagesLockJsonText) as Dictionary<string, object>;
+				if (locks != null && locks.ContainsKey("dependencies"))
 				{
-					lockUsed = manifest["lock"] as Dictionary<string, object>;
+					externalLock = locks["dependencies"] as Dictionary<string, object>;
 				}
 				else
 				{
-					lockUsed = null;
+					externalLock = null;
+				}
+			}
+			else
+			{
+				externalLock = null;
+			}
+
+			if (manifest.ContainsKey("dependencies"))
+			{
+				Dictionary<string, object> embeddedLockUsed;
+				if (manifest.ContainsKey("lock"))
+				{
+					embeddedLockUsed = manifest["lock"] as Dictionary<string, object>;
+				}
+				else
+				{
+					embeddedLockUsed = null;
 				}
 
 				var dependencies = manifest["dependencies"] as Dictionary<string, object>;
@@ -1064,19 +1129,58 @@ namespace BuildReportTool
 						newEntry.LocalPath = null;
 
 						var gotValue = pair.Value as string;
-						if (lockUsed != null && lockUsed.ContainsKey(newEntry.PackageName))
+						if (embeddedLockUsed != null && embeddedLockUsed.ContainsKey(newEntry.PackageName))
 						{
 							// if this is a git package, it should have an entry in the manifest's lock
 
 							newEntry.Location = gotValue;
-							var lockEntry = lockUsed[newEntry.PackageName] as Dictionary<string, object>;
+							var lockEntry = embeddedLockUsed[newEntry.PackageName] as Dictionary<string, object>;
 							if (lockEntry != null && lockEntry.ContainsKey("hash"))
 							{
-								var rev = lockEntry["hash"] as string;
+								string rev = lockEntry["hash"] as string;
 								if (rev != null)
 								{
 									newEntry.VersionUsed = rev;
 								}
+							}
+						}
+						else if (externalLock != null && externalLock.ContainsKey(newEntry.PackageName))
+						{
+							var lockEntry = externalLock[newEntry.PackageName] as Dictionary<string, object>;
+							if (lockEntry != null && lockEntry.ContainsKey("source"))
+							{
+								string source = lockEntry["source"] as string;
+								if (source == "git" && lockEntry.ContainsKey("hash"))
+								{
+									string rev = lockEntry["hash"] as string;
+									if (rev != null)
+									{
+										newEntry.VersionUsed = rev;
+									}
+
+									// for git packages, the git url is the value in the manifest
+									newEntry.Location = gotValue;
+								}
+								else if (source == "registry" && lockEntry.ContainsKey("url"))
+								{
+									string packageUrl = lockEntry["url"] as string;
+									if (packageUrl != null)
+									{
+										newEntry.Location = packageUrl;
+									}
+									else
+									{
+										newEntry.Location = null;
+									}
+								}
+								else
+								{
+									newEntry.Location = null;
+								}
+							}
+							else
+							{
+								newEntry.Location = null;
 							}
 						}
 						else
@@ -1097,7 +1201,7 @@ namespace BuildReportTool
 							{
 								// git package, but no entry in the manifest's lock
 
-								// check if revision is specified in the url
+								// check if commit hash is specified in the url
 								var lastHash = gotValue.LastIndexOf('#');
 								if (lastHash > -1)
 								{
@@ -1107,7 +1211,7 @@ namespace BuildReportTool
 								}
 								else
 								{
-									// no revision specified
+									// no commit hash specified
 									newEntry.VersionUsed = null;
 									newEntry.Location = gotValue;
 								}
@@ -1177,6 +1281,8 @@ namespace BuildReportTool
 #endif
 		}
 
+		const int DEFAULT_SHORT_HASH_LENGTH = 10;
+
 		static string GetPackageCachePath(BuildReportTool.UnityBuildSettings.PackageEntry entry, string projectPackagesCachePath)
 		{
 			string packageCachePath = string.Format("{0}{1}@{2}/", projectPackagesCachePath, entry.PackageName, entry.VersionUsed);
@@ -1184,47 +1290,74 @@ namespace BuildReportTool
 			{
 				return packageCachePath;
 			}
+
+			if (entry.VersionUsed.Length > DEFAULT_SHORT_HASH_LENGTH)
+			{
+				// in Unity 2019+, git packages now only use the first 10 characters of the commit hash, so try that
+				// in case this is a git package
+				packageCachePath = string.Format("{0}{1}@{2}/",
+					projectPackagesCachePath, entry.PackageName,
+					entry.VersionUsed.Substring(0, DEFAULT_SHORT_HASH_LENGTH));
+
+				if (System.IO.Directory.Exists(packageCachePath))
+				{
+					return packageCachePath;
+				}
+			}
+
+			// Not found in project's packageCache. Now Try finding from user's AppData
+
+			if (string.IsNullOrEmpty(entry.Location))
+			{
+				// we need the url found in Location since that's used as the folder name
+				// if we don't have it, we can't determine the package cache path
+				return null;
+			}
+
+			// get the registry url and remove the url, that will be the folder name
+			string registryName;
+			int registrySlashIdx = entry.Location.LastIndexOf("//", StringComparison.Ordinal);
+			if (registrySlashIdx > -1)
+			{
+				registryName = entry.Location.Substring(registrySlashIdx+2);
+			}
 			else
 			{
-				// Not found in project's packageCache. Now Try finding from user's AppData
+				return null;
+			}
 
-				if (string.IsNullOrEmpty(entry.Location))
-				{
-					// we need the url found in Location since that's used as the folder name
-					// if we don't have it, we can't determine the package cache path
-					return null;
-				}
-
-				// get the registry url and remove the url, that will be the folder name
-				string registryName;
-				int registrySlashIdx = entry.Location.LastIndexOf("//", StringComparison.Ordinal);
-				if (registrySlashIdx > -1)
-				{
-					registryName = entry.Location.Substring(registrySlashIdx+2);
-				}
-				else
-				{
-					return null;
-				}
-
-				if (string.IsNullOrEmpty(registryName))
-				{
-					return null;
-				}
+			if (string.IsNullOrEmpty(registryName))
+			{
+				return null;
+			}
 
 #if UNITY_EDITOR_WIN
-				string localAppDataVar = System.Environment.GetEnvironmentVariable("LOCALAPPDATA");
-				if (string.IsNullOrEmpty(localAppDataVar))
-				{
-					return null;
-				}
+			string localAppDataVar = System.Environment.GetEnvironmentVariable("LOCALAPPDATA");
+			if (string.IsNullOrEmpty(localAppDataVar))
+			{
+				return null;
+			}
 
-				localAppDataVar = localAppDataVar.Replace("\\", "/");
+			localAppDataVar = localAppDataVar.Replace("\\", "/");
 #else
-				string localAppDataVar = "~/Users/Library";
+			string localAppDataVar = "~/Users/Library";
 #endif
 
-				packageCachePath = string.Format("{0}/Unity/cache/packages/{1}/{2}@{3}/", localAppDataVar, registryName, entry.PackageName, entry.VersionUsed);
+			packageCachePath = string.Format("{0}/Unity/cache/packages/{1}/{2}@{3}/",
+				localAppDataVar, registryName, entry.PackageName, entry.VersionUsed);
+
+			if (System.IO.Directory.Exists(packageCachePath))
+			{
+				return packageCachePath;
+			}
+
+			if (entry.VersionUsed.Length > DEFAULT_SHORT_HASH_LENGTH)
+			{
+				// in Unity 2019+, git packages now only use the first 10 characters of the commit hash, so try that
+				// in case this is a git package
+				packageCachePath = string.Format("{0}/Unity/cache/packages/{1}/{2}@{3}/",
+					localAppDataVar, registryName, entry.PackageName,
+					entry.VersionUsed.Substring(0, DEFAULT_SHORT_HASH_LENGTH));
 
 				if (System.IO.Directory.Exists(packageCachePath))
 				{
@@ -1340,7 +1473,7 @@ namespace BuildReportTool
 }";
 			var packageList = new List<BuildReportTool.UnityBuildSettings.PackageEntry>();
 			var builtInPackageList = new List<BuildReportTool.UnityBuildSettings.BuiltInPackageEntry>();
-			PopulatePackageList(TEST_SCOPED_REGISTRY_TEXT, packageList, builtInPackageList);
+			PopulatePackageList(TEST_SCOPED_REGISTRY_TEXT, null, packageList, builtInPackageList);
 		}
 
 		[MenuItem("Window/TestPopulatePackageList2")]
@@ -1399,7 +1532,395 @@ namespace BuildReportTool
 ";
 			var packageList = new List<BuildReportTool.UnityBuildSettings.PackageEntry>();
 			var builtInPackageList = new List<BuildReportTool.UnityBuildSettings.BuiltInPackageEntry>();
-			PopulatePackageList(TEST_MANIFEST_TEXT, packageList, builtInPackageList);
+			PopulatePackageList(TEST_MANIFEST_TEXT, null, packageList, builtInPackageList);
+		}
+
+		[MenuItem("Window/TestPopulatePackageList3")]
+		public static void TestPopulatePackageList3()
+		{
+			const string TEST_MANIFEST_TEXT = @"{
+  ""dependencies"": {
+    ""com.marijnzwemmer.unity-toolbar-extender"": ""https://github.com/marijnz/unity-toolbar-extender.git"",
+    ""com.unity.collab-proxy"": ""1.6.0"",
+    ""com.unity.ide.rider"": ""1.2.1"",
+    ""com.unity.ide.visualstudio"": ""2.0.9"",
+    ""com.unity.ide.vscode"": ""1.2.3"",
+    ""com.unity.test-framework"": ""1.1.27"",
+    ""com.unity.textmeshpro"": ""2.1.4"",
+    ""com.unity.timeline"": ""1.2.18"",
+    ""com.unity.ugui"": ""1.0.0"",
+    ""com.unity.modules.ai"": ""1.0.0"",
+    ""com.unity.modules.androidjni"": ""1.0.0"",
+    ""com.unity.modules.animation"": ""1.0.0"",
+    ""com.unity.modules.assetbundle"": ""1.0.0"",
+    ""com.unity.modules.audio"": ""1.0.0"",
+    ""com.unity.modules.cloth"": ""1.0.0"",
+    ""com.unity.modules.director"": ""1.0.0"",
+    ""com.unity.modules.imageconversion"": ""1.0.0"",
+    ""com.unity.modules.imgui"": ""1.0.0"",
+    ""com.unity.modules.jsonserialize"": ""1.0.0"",
+    ""com.unity.modules.particlesystem"": ""1.0.0"",
+    ""com.unity.modules.physics"": ""1.0.0"",
+    ""com.unity.modules.physics2d"": ""1.0.0"",
+    ""com.unity.modules.screencapture"": ""1.0.0"",
+    ""com.unity.modules.terrain"": ""1.0.0"",
+    ""com.unity.modules.terrainphysics"": ""1.0.0"",
+    ""com.unity.modules.tilemap"": ""1.0.0"",
+    ""com.unity.modules.ui"": ""1.0.0"",
+    ""com.unity.modules.uielements"": ""1.0.0"",
+    ""com.unity.modules.umbra"": ""1.0.0"",
+    ""com.unity.modules.unityanalytics"": ""1.0.0"",
+    ""com.unity.modules.unitywebrequest"": ""1.0.0"",
+    ""com.unity.modules.unitywebrequestassetbundle"": ""1.0.0"",
+    ""com.unity.modules.unitywebrequestaudio"": ""1.0.0"",
+    ""com.unity.modules.unitywebrequesttexture"": ""1.0.0"",
+    ""com.unity.modules.unitywebrequestwww"": ""1.0.0"",
+    ""com.unity.modules.vehicles"": ""1.0.0"",
+    ""com.unity.modules.video"": ""1.0.0"",
+    ""com.unity.modules.vr"": ""1.0.0"",
+    ""com.unity.modules.wind"": ""1.0.0"",
+    ""com.unity.modules.xr"": ""1.0.0""
+  }
+}
+";
+			const string TEST_PACKAGES_LOCK_TEXT = @"{
+  ""dependencies"": {
+    ""com.marijnzwemmer.unity-toolbar-extender"": {
+      ""version"": ""https://github.com/marijnz/unity-toolbar-extender.git"",
+      ""depth"": 0,
+      ""source"": ""git"",
+      ""dependencies"": {},
+      ""hash"": ""df8031d46275ab1e0efc1225c33f58cda2f74872""
+    },
+    ""com.unity.collab-proxy"": {
+      ""version"": ""1.6.0"",
+      ""depth"": 0,
+      ""source"": ""registry"",
+      ""dependencies"": {},
+      ""url"": ""https://packages.unity.com""
+    },
+    ""com.unity.ext.nunit"": {
+      ""version"": ""1.0.6"",
+      ""depth"": 1,
+      ""source"": ""registry"",
+      ""dependencies"": {},
+      ""url"": ""https://packages.unity.com""
+    },
+    ""com.unity.ide.rider"": {
+      ""version"": ""1.2.1"",
+      ""depth"": 0,
+      ""source"": ""registry"",
+      ""dependencies"": {
+        ""com.unity.test-framework"": ""1.1.1""
+      },
+      ""url"": ""https://packages.unity.com""
+    },
+    ""com.unity.ide.visualstudio"": {
+      ""version"": ""2.0.9"",
+      ""depth"": 0,
+      ""source"": ""registry"",
+      ""dependencies"": {
+        ""com.unity.test-framework"": ""1.1.9""
+      },
+      ""url"": ""https://packages.unity.com""
+    },
+    ""com.unity.ide.vscode"": {
+      ""version"": ""1.2.3"",
+      ""depth"": 0,
+      ""source"": ""registry"",
+      ""dependencies"": {},
+      ""url"": ""https://packages.unity.com""
+    },
+    ""com.unity.test-framework"": {
+      ""version"": ""1.1.27"",
+      ""depth"": 0,
+      ""source"": ""registry"",
+      ""dependencies"": {
+        ""com.unity.ext.nunit"": ""1.0.6"",
+        ""com.unity.modules.imgui"": ""1.0.0"",
+        ""com.unity.modules.jsonserialize"": ""1.0.0""
+      },
+      ""url"": ""https://packages.unity.com""
+    },
+    ""com.unity.textmeshpro"": {
+      ""version"": ""2.1.4"",
+      ""depth"": 0,
+      ""source"": ""registry"",
+      ""dependencies"": {
+        ""com.unity.ugui"": ""1.0.0""
+      },
+      ""url"": ""https://packages.unity.com""
+    },
+    ""com.unity.timeline"": {
+      ""version"": ""1.2.18"",
+      ""depth"": 0,
+      ""source"": ""registry"",
+      ""dependencies"": {
+        ""com.unity.modules.director"": ""1.0.0"",
+        ""com.unity.modules.animation"": ""1.0.0"",
+        ""com.unity.modules.audio"": ""1.0.0"",
+        ""com.unity.modules.particlesystem"": ""1.0.0""
+      },
+      ""url"": ""https://packages.unity.com""
+    },
+    ""com.unity.ugui"": {
+      ""version"": ""1.0.0"",
+      ""depth"": 0,
+      ""source"": ""builtin"",
+      ""dependencies"": {
+        ""com.unity.modules.ui"": ""1.0.0"",
+        ""com.unity.modules.imgui"": ""1.0.0""
+      }
+    },
+    ""com.unity.modules.ai"": {
+      ""version"": ""1.0.0"",
+      ""depth"": 0,
+      ""source"": ""builtin"",
+      ""dependencies"": {}
+    },
+    ""com.unity.modules.androidjni"": {
+      ""version"": ""1.0.0"",
+      ""depth"": 0,
+      ""source"": ""builtin"",
+      ""dependencies"": {}
+    },
+    ""com.unity.modules.animation"": {
+      ""version"": ""1.0.0"",
+      ""depth"": 0,
+      ""source"": ""builtin"",
+      ""dependencies"": {}
+    },
+    ""com.unity.modules.assetbundle"": {
+      ""version"": ""1.0.0"",
+      ""depth"": 0,
+      ""source"": ""builtin"",
+      ""dependencies"": {}
+    },
+    ""com.unity.modules.audio"": {
+      ""version"": ""1.0.0"",
+      ""depth"": 0,
+      ""source"": ""builtin"",
+      ""dependencies"": {}
+    },
+    ""com.unity.modules.cloth"": {
+      ""version"": ""1.0.0"",
+      ""depth"": 0,
+      ""source"": ""builtin"",
+      ""dependencies"": {
+        ""com.unity.modules.physics"": ""1.0.0""
+      }
+    },
+    ""com.unity.modules.director"": {
+      ""version"": ""1.0.0"",
+      ""depth"": 0,
+      ""source"": ""builtin"",
+      ""dependencies"": {
+        ""com.unity.modules.audio"": ""1.0.0"",
+        ""com.unity.modules.animation"": ""1.0.0""
+      }
+    },
+    ""com.unity.modules.imageconversion"": {
+      ""version"": ""1.0.0"",
+      ""depth"": 0,
+      ""source"": ""builtin"",
+      ""dependencies"": {}
+    },
+    ""com.unity.modules.imgui"": {
+      ""version"": ""1.0.0"",
+      ""depth"": 0,
+      ""source"": ""builtin"",
+      ""dependencies"": {}
+    },
+    ""com.unity.modules.jsonserialize"": {
+      ""version"": ""1.0.0"",
+      ""depth"": 0,
+      ""source"": ""builtin"",
+      ""dependencies"": {}
+    },
+    ""com.unity.modules.particlesystem"": {
+      ""version"": ""1.0.0"",
+      ""depth"": 0,
+      ""source"": ""builtin"",
+      ""dependencies"": {}
+    },
+    ""com.unity.modules.physics"": {
+      ""version"": ""1.0.0"",
+      ""depth"": 0,
+      ""source"": ""builtin"",
+      ""dependencies"": {}
+    },
+    ""com.unity.modules.physics2d"": {
+      ""version"": ""1.0.0"",
+      ""depth"": 0,
+      ""source"": ""builtin"",
+      ""dependencies"": {}
+    },
+    ""com.unity.modules.screencapture"": {
+      ""version"": ""1.0.0"",
+      ""depth"": 0,
+      ""source"": ""builtin"",
+      ""dependencies"": {
+        ""com.unity.modules.imageconversion"": ""1.0.0""
+      }
+    },
+    ""com.unity.modules.subsystems"": {
+      ""version"": ""1.0.0"",
+      ""depth"": 1,
+      ""source"": ""builtin"",
+      ""dependencies"": {
+        ""com.unity.modules.jsonserialize"": ""1.0.0""
+      }
+    },
+    ""com.unity.modules.terrain"": {
+      ""version"": ""1.0.0"",
+      ""depth"": 0,
+      ""source"": ""builtin"",
+      ""dependencies"": {}
+    },
+    ""com.unity.modules.terrainphysics"": {
+      ""version"": ""1.0.0"",
+      ""depth"": 0,
+      ""source"": ""builtin"",
+      ""dependencies"": {
+        ""com.unity.modules.physics"": ""1.0.0"",
+        ""com.unity.modules.terrain"": ""1.0.0""
+      }
+    },
+    ""com.unity.modules.tilemap"": {
+      ""version"": ""1.0.0"",
+      ""depth"": 0,
+      ""source"": ""builtin"",
+      ""dependencies"": {
+        ""com.unity.modules.physics2d"": ""1.0.0""
+      }
+    },
+    ""com.unity.modules.ui"": {
+      ""version"": ""1.0.0"",
+      ""depth"": 0,
+      ""source"": ""builtin"",
+      ""dependencies"": {}
+    },
+    ""com.unity.modules.uielements"": {
+      ""version"": ""1.0.0"",
+      ""depth"": 0,
+      ""source"": ""builtin"",
+      ""dependencies"": {
+        ""com.unity.modules.imgui"": ""1.0.0"",
+        ""com.unity.modules.jsonserialize"": ""1.0.0""
+      }
+    },
+    ""com.unity.modules.umbra"": {
+      ""version"": ""1.0.0"",
+      ""depth"": 0,
+      ""source"": ""builtin"",
+      ""dependencies"": {}
+    },
+    ""com.unity.modules.unityanalytics"": {
+      ""version"": ""1.0.0"",
+      ""depth"": 0,
+      ""source"": ""builtin"",
+      ""dependencies"": {
+        ""com.unity.modules.unitywebrequest"": ""1.0.0"",
+        ""com.unity.modules.jsonserialize"": ""1.0.0""
+      }
+    },
+    ""com.unity.modules.unitywebrequest"": {
+      ""version"": ""1.0.0"",
+      ""depth"": 0,
+      ""source"": ""builtin"",
+      ""dependencies"": {}
+    },
+    ""com.unity.modules.unitywebrequestassetbundle"": {
+      ""version"": ""1.0.0"",
+      ""depth"": 0,
+      ""source"": ""builtin"",
+      ""dependencies"": {
+        ""com.unity.modules.assetbundle"": ""1.0.0"",
+        ""com.unity.modules.unitywebrequest"": ""1.0.0""
+      }
+    },
+    ""com.unity.modules.unitywebrequestaudio"": {
+      ""version"": ""1.0.0"",
+      ""depth"": 0,
+      ""source"": ""builtin"",
+      ""dependencies"": {
+        ""com.unity.modules.unitywebrequest"": ""1.0.0"",
+        ""com.unity.modules.audio"": ""1.0.0""
+      }
+    },
+    ""com.unity.modules.unitywebrequesttexture"": {
+      ""version"": ""1.0.0"",
+      ""depth"": 0,
+      ""source"": ""builtin"",
+      ""dependencies"": {
+        ""com.unity.modules.unitywebrequest"": ""1.0.0"",
+        ""com.unity.modules.imageconversion"": ""1.0.0""
+      }
+    },
+    ""com.unity.modules.unitywebrequestwww"": {
+      ""version"": ""1.0.0"",
+      ""depth"": 0,
+      ""source"": ""builtin"",
+      ""dependencies"": {
+        ""com.unity.modules.unitywebrequest"": ""1.0.0"",
+        ""com.unity.modules.unitywebrequestassetbundle"": ""1.0.0"",
+        ""com.unity.modules.unitywebrequestaudio"": ""1.0.0"",
+        ""com.unity.modules.audio"": ""1.0.0"",
+        ""com.unity.modules.assetbundle"": ""1.0.0"",
+        ""com.unity.modules.imageconversion"": ""1.0.0""
+      }
+    },
+    ""com.unity.modules.vehicles"": {
+      ""version"": ""1.0.0"",
+      ""depth"": 0,
+      ""source"": ""builtin"",
+      ""dependencies"": {
+        ""com.unity.modules.physics"": ""1.0.0""
+      }
+    },
+    ""com.unity.modules.video"": {
+      ""version"": ""1.0.0"",
+      ""depth"": 0,
+      ""source"": ""builtin"",
+      ""dependencies"": {
+        ""com.unity.modules.audio"": ""1.0.0"",
+        ""com.unity.modules.ui"": ""1.0.0"",
+        ""com.unity.modules.unitywebrequest"": ""1.0.0""
+      }
+    },
+    ""com.unity.modules.vr"": {
+      ""version"": ""1.0.0"",
+      ""depth"": 0,
+      ""source"": ""builtin"",
+      ""dependencies"": {
+        ""com.unity.modules.jsonserialize"": ""1.0.0"",
+        ""com.unity.modules.physics"": ""1.0.0"",
+        ""com.unity.modules.xr"": ""1.0.0""
+      }
+    },
+    ""com.unity.modules.wind"": {
+      ""version"": ""1.0.0"",
+      ""depth"": 0,
+      ""source"": ""builtin"",
+      ""dependencies"": {}
+    },
+    ""com.unity.modules.xr"": {
+      ""version"": ""1.0.0"",
+      ""depth"": 0,
+      ""source"": ""builtin"",
+      ""dependencies"": {
+        ""com.unity.modules.physics"": ""1.0.0"",
+        ""com.unity.modules.jsonserialize"": ""1.0.0"",
+        ""com.unity.modules.subsystems"": ""1.0.0""
+      }
+    }
+  }
+}
+";
+
+			var packageList = new List<BuildReportTool.UnityBuildSettings.PackageEntry>();
+			var builtInPackageList = new List<BuildReportTool.UnityBuildSettings.BuiltInPackageEntry>();
+			PopulatePackageList(TEST_MANIFEST_TEXT, TEST_PACKAGES_LOCK_TEXT, packageList, builtInPackageList);
 		}
 #endif
 	}

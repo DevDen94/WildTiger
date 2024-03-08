@@ -17,6 +17,7 @@ namespace BuildReportTool
 		public bool EnableDevelopmentBuild; // EditorUserBuildSettings.development / Debug.isDebugBuild
 		public bool EnableDebugLog; // PlayerSettings.usePlayerLog
 		public bool EnableSourceDebugging; // EditorUserBuildSettings.allowDebugging
+		public bool WaitForManagedDebugger; // Unity 2019.3: EditorUserBuildSettings.waitForManagedDebugger
 		public bool EnableExplicitNullChecks; // EditorUserBuildSettings.explicitNullChecks
 		public bool EnableExplicitDivideByZeroChecks; // Unity 5.4: EditorUserBuildSettings.explicitDivideByZeroChecks
 
@@ -112,6 +113,7 @@ namespace BuildReportTool
 		public bool WebGLAutoCacheAssetsData; // PlayerSettings.WebGL.dataCaching
 
 		public bool WebGLCreateDebugSymbolsFile; // PlayerSettings.WebGL.debugSymbols
+		public string WebGLDebugSymbolMode; // PlayerSettings.WebGL.debugSymbolMode
 
 		public string WebGLExceptionSupportType; // PlayerSettings.WebGL.exceptionSupport
 
@@ -158,6 +160,9 @@ namespace BuildReportTool
 
 		// windows only build settings
 		// ---------------------------------------------------------------
+
+		public bool WinIncludeNativePdbFilesInBuild; // UnityEditor.WindowsStandalone.UserBuildSettings.copyPDBFiles
+		public bool WinCreateVisualStudioSolution; // UnityEditor.WindowsStandalone.UserBuildSettings.createSolution
 
 		public bool
 			WinUseDirect3D11IfAvailable; // Unity 4: PlayerSettings.useDirect3D11. Removed in Unity 5.3 in favor of PlayerSettings.GetGraphicsAPIs

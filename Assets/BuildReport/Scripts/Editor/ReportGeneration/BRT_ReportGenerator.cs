@@ -103,11 +103,19 @@ hopefully UT would provide proper script access to this
 
 namespace BuildReportTool
 {
+	public struct ExtraData
+	{
+		public string SavedPath;
+		public string Contents;
+	}
+
 	[System.Serializable]
 #if UNITY_2018_1_OR_NEWER
 	public partial class ReportGenerator : UnityEditor.Build.IPreprocessBuildWithReport, UnityEditor.Build.IPostprocessBuildWithReport
-#else
+#elif UNITY_5_6_OR_NEWER
 	public partial class ReportGenerator : UnityEditor.Build.IPreprocessBuild, UnityEditor.Build.IPostprocessBuild
+#else
+	public partial class ReportGenerator
 #endif
 	{
 		public int callbackOrder { get { return 99999; } }
@@ -115,6 +123,7 @@ namespace BuildReportTool
 		static BuildReportTool.BuildInfo _lastKnownBuildInfo;
 		static BuildReportTool.AssetDependencies _lastKnownAssetDependencies;
 		static BuildReportTool.TextureData _lastKnownTextureData;
+		static BuildReportTool.MeshData _lastKnownMeshData;
 		static BuildReportTool.UnityBuildReport _lastKnownUnityBuildReport;
 
 		public static BuildReportTool.UnityBuildReport LastKnownUnityBuildReport { get { return _lastKnownUnityBuildReport; } }
@@ -262,6 +271,7 @@ namespace BuildReportTool
 			}
 			buildInfo.IgnorePatternsForUnused = ignorePatternCopy;
 
+			buildInfo.ProcessUnusedAssetsInBatches = BuildReportTool.Options.ProcessUnusedAssetsInBatches;
 			buildInfo.UnusedAssetsEntriesPerBatch = BuildReportTool.Options.UnusedAssetsEntriesPerBatch;
 
 			// --------------------
@@ -344,8 +354,11 @@ namespace BuildReportTool
 
 #if UNITY_2018_1_OR_NEWER
 		public void OnPostprocessBuild(UnityEditor.Build.Reporting.BuildReport report)
-#else
+#elif UNITY_5_6_OR_NEWER
 		public void OnPostprocessBuild(BuildTarget target, string pathToBuiltProject)
+#else
+		[UnityEditor.Callbacks.PostProcessBuildAttribute(1)]
+		public static void OnPostprocessBuild(BuildTarget target, string pathToBuiltProject)
 #endif
 		{
 			if (!Application.isEditor || Application.isPlaying)
@@ -691,7 +704,7 @@ namespace BuildReportTool
 
 				//Debug.LogFormat("from line: {0}", line);
 
-				Match match = Regex.Match(input, @"^ [0-9].*[a-z0-9) ]$", RegexOptions.IgnoreCase);
+				Match match = Regex.Match(input, @"^ [0-9]+\.[0-9]+ (kb|mb|b|gb|tb)\s+[0-9.]+%\s+.+", RegexOptions.IgnoreCase);
 				if (match.Success)
 				{
 					// it's an asset entry. parse it
@@ -749,7 +762,7 @@ namespace BuildReportTool
 						}
 					}
 
-					match = Regex.Match(input, @"[0-9.]+ (kb|mb|b|gb)", RegexOptions.IgnoreCase);
+					match = Regex.Match(input, @"[0-9.]+ (kb|mb|b|gb|tb)", RegexOptions.IgnoreCase);
 					if (match.Success)
 					{
 						gotSize = match.Groups[0].Value.ToUpper();
@@ -781,9 +794,9 @@ namespace BuildReportTool
 					//Debug.LogFormat("got: {0} size: {1} percent: {2}", gotName, gotSize, gotPercent);
 
 					// UnityEngine dll files show up in the used assets list so don't add them in
-					var filename = Path.GetFileName(gotName);
-					if (BuildReportTool.Util.IsFileOfType(filename, ".dll") &&
-					    BuildReportTool.Util.IsAUnityEngineDLL(filename))
+					// (those will be in a separate list)
+					var filename = gotName.GetFileNameOnly();
+					if (filename.IsFileOfType(".dll") && BuildReportTool.Util.IsAUnityEngineDLL(filename))
 					{
 						//Debug.Log("Found UnityEngine dll in Used Assets: " + filename);
 					}
@@ -908,7 +921,7 @@ namespace BuildReportTool
 
 		public static void MoveUnusedAssetsBatchToPrev(BuildInfo buildInfo, FileFilterGroup filtersToUse)
 		{
-			if (buildInfo.UnusedAssetsBatchNum == 0)
+			if (buildInfo.UnusedAssetsBatchIdx == 0)
 			{
 				return;
 			}
@@ -931,11 +944,7 @@ namespace BuildReportTool
 				BuildPlatform buildPlatform = GetBuildPlatformFromString(buildInfo.BuildType, buildInfo.BuildTargetUsed);
 
 
-				allUnused = GetAllUnusedAssets(buildInfo.ScriptDLLs, buildInfo.ProjectAssetsPath,
-					buildInfo.IncludedSvnInUnused, buildInfo.IncludedGitInUnused, buildInfo.IncludedBuildReportToolAssetsInUnused,
-					buildInfo.IgnorePatternsForUnused, buildPlatform,
-					buildInfo.UnusedPrefabsIncludedInCreation, buildInfo.UnusedAssetsBatchNum,
-					buildInfo.UnusedAssetsEntriesPerBatch, allUsed);
+				allUnused = GetAllUnusedAssets(buildInfo, buildInfo.ProjectAssetsPath, buildPlatform, allUsed);
 
 				if (allUnused != null && allUnused.Length > 0)
 				{
@@ -986,15 +995,20 @@ namespace BuildReportTool
 		}
 
 		static BuildReportTool.SizePart[] GetAllUnusedAssets(
-			BuildReportTool.SizePart[] scriptDLLs,
+			BuildReportTool.BuildInfo buildInfo,
 			string projectAssetsPath,
-			bool includeSvn, bool includeGit, bool includeBrt, List<SavedOptions.IgnorePattern> ignorePatterns,
 			BuildPlatform buildPlatform,
-			bool includeUnusedPrefabs,
-			int fileCountBatchSkip, int fileCountLimit,
-			//Dictionary<string, bool> usedAssetsDict,
 			List<BuildReportTool.SizePart> inOutAllUsedAssets)
 		{
+			BuildReportTool.SizePart[] scriptDLLs = buildInfo.ScriptDLLs;
+			bool includeSvn = buildInfo.IncludedSvnInUnused;
+			bool includeGit = buildInfo.IncludedGitInUnused;
+			bool includeBrt = buildInfo.IncludedBuildReportToolAssetsInUnused;
+			List<SavedOptions.IgnorePattern> ignorePatterns = buildInfo.IgnorePatternsForUnused;
+			bool includeUnusedPrefabs = buildInfo.UnusedPrefabsIncludedInCreation;
+			bool processInBatches = buildInfo.ProcessUnusedAssetsInBatches;
+			int fileCountLimit = buildInfo.UnusedAssetsEntriesPerBatch;
+
 			List<BuildReportTool.SizePart> unusedAssets = new List<BuildReportTool.SizePart>();
 
 
@@ -1009,22 +1023,40 @@ namespace BuildReportTool
 			bool has64BitPluginsFolder = Directory.Exists(projectAssetsPath + "/Plugins/x86_64");
 
 			string currentAsset;
+			bool prevSkipped = false;
 
-			int assetIdx = 0;
+			int assetNum = 0;
 
-			int fileCountOffset = fileCountBatchSkip * fileCountLimit;
+			int fileCountOffset;
+			if (buildInfo.UnusedAssetsBatchIdx > 0 &&
+			    buildInfo.UnusedAssetsBatchIdx <= buildInfo.UnusedAssetsBatchFinalNum.Count)
+			{
+				// use the asset num of the previous batch
+				fileCountOffset = buildInfo.UnusedAssetsBatchFinalNum[buildInfo.UnusedAssetsBatchIdx-1];
+			}
+			else
+			{
+				// just guess based on the batch count
+				fileCountOffset = buildInfo.UnusedAssetsBatchIdx * fileCountLimit;
+			}
 
 			foreach (string fullAssetPath in DldUtil.TraverseDirectory.Do(projectAssetsPath))
 			{
-				++assetIdx;
+				++assetNum;
 
-				if (assetIdx < fileCountOffset)
+				if (processInBatches && assetNum <= fileCountOffset)
 				{
+					prevSkipped = true;
 					continue;
 				}
 
+				if (prevSkipped)
+				{
+					prevSkipped = false;
+				}
+
 				BRT_BuildReportWindow.GetValueMessage =
-					string.Format("Getting list of used assets {0} ...", assetIdx.ToString());
+					string.Format("Getting list of used assets {0} ...", assetNum.ToString());
 
 				//string fullAssetPath = allAssets[assetIdx];
 
@@ -1121,7 +1153,7 @@ namespace BuildReportTool
 
 				if (Util.IsFileOfType(currentAsset, ".dll"))
 				{
-					string assetFilenameOnly = System.IO.Path.GetFileName(currentAsset);
+					string assetFilenameOnly = currentAsset.GetFileNameOnly();
 					//Debug.Log(assetFilenameOnly);
 
 					bool foundMatch = false;
@@ -1444,7 +1476,7 @@ namespace BuildReportTool
 				// check prefabs only when requested to do so
 				if (Util.IsFileOfType(currentAsset, ".prefab"))
 				{
-					//Debug.Log("GetAllUnusedAssets: found prefab: " + System.IO.Path.GetFileName(currentAsset));
+					//Debug.Log("GetAllUnusedAssets: found prefab: " + currentAsset.GetFileNameOnly());
 					if (!includeUnusedPrefabs)
 					{
 						continue;
@@ -1472,11 +1504,17 @@ namespace BuildReportTool
 					unusedAssets.Add(BuildReportTool.Util.CreateSizePartFromFile(currentAsset, fullAssetPath));
 				}
 
-				if (unusedAssets.Count >= fileCountLimit)
+				if (processInBatches && unusedAssets.Count >= fileCountLimit)
 				{
 					break;
 				}
 			}
+
+			while (buildInfo.UnusedAssetsBatchFinalNum.Count <= buildInfo.UnusedAssetsBatchIdx)
+			{
+				buildInfo.UnusedAssetsBatchFinalNum.Add(0);
+			}
+			buildInfo.UnusedAssetsBatchFinalNum[buildInfo.UnusedAssetsBatchIdx] = assetNum;
 
 			return unusedAssets.ToArray();
 		}
@@ -1524,7 +1562,7 @@ namespace BuildReportTool
 			{
 				foreach (string filepath in DldUtil.TraverseDirectory.Do(buildManagedDLLsFolder))
 				{
-					var filename = Path.GetFileName(filepath);
+					var filename = filepath.GetFileNameOnly();
 
 					if (BuildReportTool.Util.IsFileOfType(filename, ".dll"))
 					{
@@ -2557,12 +2595,8 @@ namespace BuildReportTool
 					BuildReportTool.SizePart[] allUnused;
 					BuildReportTool.SizePart[][] perCategoryUnused;
 
-
-					allUnused = GetAllUnusedAssets(buildInfo.ScriptDLLs, projectAssetsPath, buildInfo.IncludedSvnInUnused,
-						buildInfo.IncludedGitInUnused, buildInfo.IncludedBuildReportToolAssetsInUnused,
-						buildInfo.IgnorePatternsForUnused, buildPlatform,
-						buildInfo.UnusedPrefabsIncludedInCreation, 0,
-						buildInfo.UnusedAssetsEntriesPerBatch, allUsed);
+					buildInfo.ResetUnusedAssetsBatchData();
+					allUnused = GetAllUnusedAssets(buildInfo, projectAssetsPath, buildPlatform, allUsed);
 
 					perCategoryUnused = SegregateAssetSizesPerCategory(allUnused, buildInfo.FileFilters);
 
@@ -2666,7 +2700,8 @@ namespace BuildReportTool
 		/// <param name="textureData"></param>
 		/// <returns></returns>
 		public static bool RefreshData(bool fromBuild, ref BuildReportTool.BuildInfo buildInfo,
-			ref BuildReportTool.AssetDependencies assetDependencies, ref BuildReportTool.TextureData textureData)
+			ref BuildReportTool.AssetDependencies assetDependencies, ref BuildReportTool.TextureData textureData,
+			ref BuildReportTool.MeshData meshData)
 		{
 			// this would have been set to true in BuildReportTool.ReportGenerator.OnPostprocessBuild
 			// which allowed BRT_BuildReportWindow.OnInspectorUpdate() to get here
@@ -2734,6 +2769,30 @@ namespace BuildReportTool
 				}
 
 				textureData.TimeGot = timeBuildStarted;
+			}
+			else
+			{
+				if (textureData != null)
+				{
+					textureData.Clear();
+				}
+			}
+
+			if (BuildReportTool.Options.CollectMeshData)
+			{
+				if (meshData == null)
+				{
+					meshData = new BuildReportTool.MeshData();
+				}
+
+				meshData.TimeGot = timeBuildStarted;
+			}
+			else
+			{
+				if (meshData != null)
+				{
+					meshData.Clear();
+				}
 			}
 
 			// --------------------
@@ -2820,7 +2879,7 @@ namespace BuildReportTool
 			// the next part of the code that gets executed is BRT_BuildReportWindow.OnFinishGeneratingBuildReport()
 		}
 
-		public static string OnFinishedGetValues(BuildReportTool.BuildInfo buildInfo, BuildReportTool.AssetDependencies assetDependencies, BuildReportTool.TextureData textureData)
+		public static string OnFinishedGetValues(BuildReportTool.BuildInfo buildInfo, BuildReportTool.AssetDependencies assetDependencies, BuildReportTool.TextureData textureData, BuildReportTool.MeshData meshData, string customSavePath = null)
 		{
 			string resultingFilePath = null;
 
@@ -2907,6 +2966,35 @@ namespace BuildReportTool
 
 			// ------------------------------
 
+			if (BuildReportTool.Options.CollectMeshData)
+			{
+				meshData.ProjectName = buildInfo.ProjectName;
+				meshData.BuildType = buildInfo.BuildType;
+
+				if (BuildReportTool.Options.CollectMeshDataOnUnusedToo)
+				{
+					BuildReportTool.MeshDataGenerator.CreateForAllAssets(meshData, buildInfo,
+#if BRT_MESH_DATA_DEBUG
+						true
+#else
+						false
+#endif
+					);
+				}
+				else
+				{
+					BuildReportTool.MeshDataGenerator.CreateForUsedAssetsOnly(meshData, buildInfo,
+#if BRT_MESH_DATA_DEBUG
+						true
+#else
+						false
+#endif
+					);
+				}
+			}
+
+			// ------------------------------
+
 			// BuildReportTool.Util.ShouldSaveGottenBuildReportNow was set to true on
 			// BuildReportTool.ReportGenerator.OnPostprocessBuild,
 			// which is called automatically after a build
@@ -2915,16 +3003,25 @@ namespace BuildReportTool
 			{
 				BuildReportTool.Util.ShouldSaveGottenBuildReportNow = false;
 
-				resultingFilePath = BuildReportTool.Util.SerializeAtFolder(buildInfo, _lastSavePath);
+				string savePathToUse = string.IsNullOrEmpty(customSavePath)
+					? _lastSavePath
+					: customSavePath;
+
+				resultingFilePath = BuildReportTool.Util.SerializeAtFolder(buildInfo, savePathToUse);
 
 				if (BuildReportTool.Options.CalculateAssetDependencies)
 				{
-					BuildReportTool.Util.SerializeAtFolder(assetDependencies, _lastSavePath);
+					BuildReportTool.Util.SerializeAtFolder(assetDependencies, savePathToUse);
 				}
 
 				if (BuildReportTool.Options.CollectTextureImportSettings)
 				{
-					BuildReportTool.Util.SerializeAtFolder(textureData, _lastSavePath);
+					BuildReportTool.Util.SerializeAtFolder(textureData, savePathToUse);
+				}
+
+				if (BuildReportTool.Options.CollectMeshData)
+				{
+					BuildReportTool.Util.SerializeAtFolder(meshData, savePathToUse);
 				}
 			}
 

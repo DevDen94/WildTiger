@@ -265,7 +265,7 @@ PlayerSettings:
   AndroidEnableTango: 0
   androidEnableBanner: 1
   androidUseLowAccuracyLocation: 0
-  androidUseCustomKeystore: 1
+  androidUseCustomKeystore: 0
   m_AndroidBanners:
   - width: 320
     height: 180
@@ -837,10 +837,10 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Android: USE_ADMOB;USE_ADMOB_PATCH;OBI_ONI_SUPPORTED;GLEY_ADMOB;GLEY_PATCH_ADMOB
+    Android: USE_ADMOB;USE_ADMOB_PATCH;OBI_ONI_SUPPORTED;GLEY_ADMOB
     Standalone: OBI_ONI_SUPPORTED
     Windows Store Apps: 
-    iPhone: USE_ADMOB_PATCH;OBI_ONI_SUPPORTED;GLEY_ADMOB;GLEY_PATCH_ADMOB
+    iPhone: USE_ADMOB_PATCH;OBI_ONI_SUPPORTED
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:

@@ -2950,6 +2950,9 @@ MonoBehaviour:
   Stun_Enemies:
   - {fileID: 4622805150919117825}
   - {fileID: 3038530724071366038}
+  SuperAttack_En:
+  - {fileID: 4622805150919117825}
+  - {fileID: 3038530724071366038}
   Stats: {fileID: 11400000, guid: 4b3011667f15dc444ade5219ac7f9f46, type: 2}
   FinishLevel: {fileID: 6339222833719550970}
   AnimalsNamesToKill:

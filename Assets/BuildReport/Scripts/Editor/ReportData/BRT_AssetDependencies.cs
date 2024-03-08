@@ -237,7 +237,7 @@ namespace BuildReportTool
 				if (usersFlattened[n].AssetPath.IsSceneFile() ||
 				    usersFlattened[n].AssetPath.IsInResourcesFolder())
 				{
-					var assetFilename = System.IO.Path.GetFileName(usersFlattened[n].AssetPath);
+					var assetFilename = usersFlattened[n].AssetPath.GetFileNameOnly();
 
 					var alreadyInList = false;
 					for (int alreadyN = 0, alreadyLen = availableExistingIdx; alreadyN < alreadyLen; ++alreadyN)
@@ -284,12 +284,12 @@ namespace BuildReportTool
 	public class DependencyEntry
 	{
 		/// <summary>
-		/// Assets that this one uses.
+		/// Assets that this one directly uses.
 		/// </summary>
 		public List<string> Uses = new List<string>();
 
 		/// <summary>
-		/// Assets that use this one.
+		/// Assets that directly use this one.
 		/// </summary>
 		public List<string> Users = new List<string>();
 

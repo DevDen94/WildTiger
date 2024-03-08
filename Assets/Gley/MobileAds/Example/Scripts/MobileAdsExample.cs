@@ -63,7 +63,15 @@ namespace Gley.MobileAds.Internal
             else if (API.IsInterstitialAvailable())
             {
                 API.ShowInterstitial();
-                CharacterSelection.Instance.UnlockAfterAddWatch(PlayerPrefs.GetInt("SelectedCharacter"));
+                if (PlayerPrefs.GetInt("Reward") == 1)
+                {
+                    LevelLoader.Instance.is_Complete = true;
+                    PlayerPrefs.SetInt("Reward", 2);
+                }
+                else
+                {
+                    CharacterSelection.Instance.UnlockAfterAddWatch(PlayerPrefs.GetInt("SelectedCharacter"));
+                }
             }
         }
         public void showAppopen()
@@ -72,8 +80,15 @@ namespace Gley.MobileAds.Internal
         }
         private void CompleteMethod(bool completed)
         {
-
-            CharacterSelection.Instance.UnlockAfterAddWatch(PlayerPrefs.GetInt("SelectedCharacter"));
+            if (PlayerPrefs.GetInt("Reward") == 1)
+            {
+                LevelLoader.Instance.is_Complete = true;
+                PlayerPrefs.SetInt("Reward", 2);
+            }
+            else
+            {
+                CharacterSelection.Instance.UnlockAfterAddWatch(PlayerPrefs.GetInt("SelectedCharacter"));
+            }
         }
     }
 }

@@ -260,6 +260,7 @@ namespace BuildReportTool
 		public bool UnusedAssetsIncludedInCreation;
 		public bool UnusedPrefabsIncludedInCreation;
 
+		public bool ProcessUnusedAssetsInBatches = true;
 		public int UnusedAssetsEntriesPerBatch;
 	}
 } // namespace BuildReportTool

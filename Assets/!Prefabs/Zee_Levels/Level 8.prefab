@@ -5641,6 +5641,8 @@ MonoBehaviour:
   SpawnPoint_Tigeress: {fileID: 6103347753656669845}
   SpawnPoint_Child: {fileID: 6103347753656669845}
   Stun_Enemies: []
+  SuperAttack_En:
+  - {fileID: 1389419313945715043}
   Stats: {fileID: 11400000, guid: ec498a5d0999ba6429aa3058dd231f60, type: 2}
   FinishLevel: {fileID: 4880294847550167266}
   AnimalsNamesToKill:

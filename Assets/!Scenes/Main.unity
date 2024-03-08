@@ -771,6 +771,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1335364053}
+        m_TargetAssemblyTypeName: CharacterSelection, Assembly-CSharp
+        m_MethodName: SelectedCharacter
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &44628606
 GameObject:
   m_ObjectHideFlags: 0
@@ -1596,7 +1608,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 277, y: 216}
+  m_AnchoredPosition: {x: 276.99997, y: 216}
   m_SizeDelta: {x: 342, y: 130}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &76336185
@@ -1715,7 +1727,6 @@ GameObject:
   m_Component:
   - component: {fileID: 80278456}
   - component: {fileID: 80278457}
-  - component: {fileID: 80278458}
   m_Layer: 0
   m_Name: AdManager
   m_TagString: Untagged
@@ -1751,18 +1762,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAppOpen: 0
---- !u!114 &80278458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 80278455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eff0f1a9e89db6c458f99ead6d1d2190, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &85251535
 GameObject:
   m_ObjectHideFlags: 0
@@ -6559,6 +6558,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1335364053}
+        m_TargetAssemblyTypeName: CharacterSelection, Assembly-CSharp
+        m_MethodName: SelectedCharacter
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &533901104
 GameObject:
   m_ObjectHideFlags: 0
@@ -6997,7 +7008,7 @@ PrefabInstance:
     - target: {fileID: 6146234233431394340, guid: 7f45237615db6d44db7ef5aa862340e9, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 27caf351cbba408449731f818cd6d24a, type: 2}
+      objectReference: {fileID: 2100000, guid: 4a05f30f7757f7a428ca26f0ca466680, type: 2}
     - target: {fileID: 7005791591767869549, guid: 7f45237615db6d44db7ef5aa862340e9, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -7431,7 +7442,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 278, y: 77}
+  m_AnchoredPosition: {x: 277.99997, y: 77}
   m_SizeDelta: {x: 342, y: 130}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &584703964
@@ -7941,7 +7952,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 562889446}
+      - m_Target: {fileID: 1966643903}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -10548,7 +10559,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 778, y: 0}
+  m_AnchoredPosition: {x: 777.99994, y: 0}
   m_SizeDelta: {x: 390, y: 173}
   m_Pivot: {x: 1, y: 0}
 --- !u!1 &825268772
@@ -13506,7 +13517,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Watch Ad
+  m_Text: TRY FOR FREE
 --- !u!222 &1093335244
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -24632,7 +24643,7 @@ MonoBehaviour:
   LocketPrice: 64000000c80000002c010000
   CapsPrice: 64000000c80000002c01000090010000f401000058020000
   skins:
-  - {fileID: 2100000, guid: 27caf351cbba408449731f818cd6d24a, type: 2}
+  - {fileID: 2100000, guid: 4a05f30f7757f7a428ca26f0ca466680, type: 2}
   - {fileID: 2100000, guid: 3e07ed2b6a20f3148ad7606d29f1322a, type: 2}
   - {fileID: 2100000, guid: abaaeaf39066b0645bbda3dce75d0b3c, type: 2}
   itemData: {fileID: 562889444}
