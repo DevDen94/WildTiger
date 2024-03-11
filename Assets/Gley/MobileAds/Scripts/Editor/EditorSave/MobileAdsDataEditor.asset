@@ -25,7 +25,7 @@ MonoBehaviour:
     showConsentPopup: 0
     platformSettings:
     - platform: 0
-      enabled: 1
+      enabled: 0
       appId:
         id: ca-app-pub-5227706387493609~3867145124
         displayName: App ID
@@ -57,7 +57,7 @@ MonoBehaviour:
       testMode: 0
       testDevice: 
     - platform: 1
-      enabled: 0
+      enabled: 1
       appId:
         id: ca-app-pub-5227706387493609~3505157788
         displayName: App ID
@@ -469,5 +469,5 @@ MonoBehaviour:
   enableATT: 0
   nativePopupText: We will use your data to provide a better and personalized ad
     experience.
-  selectedAndroidAdvertiser: 20
-  selectediOSAdvertiser: 0
+  selectedAndroidAdvertiser: 0
+  selectediOSAdvertiser: 20

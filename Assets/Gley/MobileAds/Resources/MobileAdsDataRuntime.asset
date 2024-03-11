@@ -15,42 +15,6 @@ MonoBehaviour:
   consentCanvas: {fileID: 0}
   consentPopup: {fileID: 0}
   androidAdvertiser:
-    advertiser: 20
-    platformSettings:
-      platform: 0
-      enabled: 1
-      appId:
-        id: ca-app-pub-5227706387493609~3867145124
-        displayName: App ID
-        required: 1
-      idBanner:
-        id: ca-app-pub-5227706387493609/8818991427
-        displayName: Banner ID
-        required: 1
-      idMRec:
-        id: ca-app-pub-5227706387493609/1166159279
-        displayName: MRec ID
-        required: 1
-      idInterstitial:
-        id: ca-app-pub-5227706387493609/3887063097
-        displayName: Interstitial ID
-        required: 1
-      idRewarded:
-        id: ca-app-pub-5227706387493609/6872152186
-        displayName: Rewarded Video ID
-        required: 1
-      idRewardedInterstitial:
-        id: ca-app-pub-5227706387493609/2480203347
-        displayName: Rewarded Interstitial ID
-        required: 1
-      idOpenApp:
-        id: ca-app-pub-5227706387493609/3068862915
-        displayName: App Open ID
-        required: 1
-      testMode: 0
-      testDevice: 
-    directedForChildren: 0
-  iOSAdvertiser:
     advertiser: 0
     platformSettings:
       platform: 0
@@ -83,6 +47,42 @@ MonoBehaviour:
         id: 
         displayName: 
         required: 0
+      testMode: 0
+      testDevice: 
+    directedForChildren: 0
+  iOSAdvertiser:
+    advertiser: 20
+    platformSettings:
+      platform: 1
+      enabled: 1
+      appId:
+        id: ca-app-pub-5227706387493609~3505157788
+        displayName: App ID
+        required: 1
+      idBanner:
+        id: ca-app-pub-5227706387493609/9687422754
+        displayName: Banner ID
+        required: 1
+      idMRec:
+        id: ca-app-pub-5227706387493609/8058945031
+        displayName: MRec ID
+        required: 1
+      idInterstitial:
+        id: ca-app-pub-5227706387493609/5320802337
+        displayName: Interstitial ID
+        required: 1
+      idRewarded:
+        id: ca-app-pub-5227706387493609/3537192194
+        displayName: Rewarded Video ID
+        required: 1
+      idRewardedInterstitial:
+        id: ca-app-pub-5227706387493609/3537192194
+        displayName: Rewarded Interstitial ID
+        required: 1
+      idOpenApp:
+        id: ca-app-pub-5227706387493609/4751143468
+        displayName: App Open ID
+        required: 1
       testMode: 0
       testDevice: 
     directedForChildren: 0

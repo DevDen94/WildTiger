@@ -93,7 +93,8 @@ public class AddresableScenes : MonoBehaviour
     public void LoadMenuScene()
     {
         PlayerPrefs.SetInt("Data_Download", 2);
-        Addressables.LoadSceneAsync(_scenes[0], LoadSceneMode.Single);
+        SceneManager.LoadScene(1);
+       // Addressables.LoadSceneAsync(_scenes[0], LoadSceneMode.Single);
         start = false;
        
     }
