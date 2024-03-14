@@ -139,8 +139,8 @@ public class LevelLoader : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene(1);
-            // Addressables.LoadSceneAsync(_scenes[0], LoadSceneMode.Single);
+           // SceneManager.LoadScene(1);
+             Addressables.LoadSceneAsync(_scenes[0], LoadSceneMode.Single);
             Debug.Log("All levels completed!");
         }
 
@@ -158,8 +158,8 @@ public class LevelLoader : MonoBehaviour
     public void Home()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(1);
-        //  Addressables.LoadSceneAsync(_scenes[0], LoadSceneMode.Single);
+        //SceneManager.LoadScene(1);
+          Addressables.LoadSceneAsync(_scenes[0], LoadSceneMode.Single);
         //SceneManager.LoadScene("Main");
         Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowInterstitial();
     }

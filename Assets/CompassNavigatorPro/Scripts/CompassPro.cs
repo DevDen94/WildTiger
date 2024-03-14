@@ -1240,10 +1240,10 @@ namespace CompassNavigatorPro {
             for (int k = 0; k < iconsCount; k++) {
                 if (icons[k].poi == newPOI) {
                     if (icons[k].rectTransform != null && icons[k].rectTransform.gameObject != null) {
-                        DestroyImmediate(icons[k].rectTransform.gameObject);
+                        Destroy(icons[k].rectTransform.gameObject);
                     }
                     if (icons[k].miniMapRectTransform != null && icons[k].miniMapRectTransform.gameObject != null) {
-                        DestroyImmediate(icons[k].miniMapRectTransform.gameObject);
+                        Destroy(icons[k].miniMapRectTransform.gameObject);
                     }
                     icons.RemoveAt(k);
                     break;

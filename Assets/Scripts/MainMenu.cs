@@ -41,9 +41,9 @@ public class MainMenu : MonoBehaviour
         }
         Coins.text = PlayerPrefs.GetInt("Coins").ToString();
         // GoogleAdMobController.instance.ShowSmallBannerAd();
-        PlayerPrefs.SetInt("BuyTiger" + 0, 1);//ForlockedTigers
-        PlayerPrefs.SetInt("BuyTiger" + 1, 0);//ForlockedTigers
-        PlayerPrefs.SetInt("BuyTiger" + 2, 0);//ForlockedTigers
+       // PlayerPrefs.SetInt("BuyTiger" + 0, 1);//ForlockedTigers
+       // PlayerPrefs.SetInt("BuyTiger" + 1, 0);//ForlockedTigers
+       // PlayerPrefs.SetInt("BuyTiger" + 2, 0);//ForlockedTigers
         //GoogleMobileAdsController.Instance.ShowSmallBannerAd();
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
        // Implementation.instance.ShowBanner();

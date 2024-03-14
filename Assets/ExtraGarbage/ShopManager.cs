@@ -41,22 +41,7 @@ public class ShopManager : MonoBehaviour
         notcoins.SetActive(false);
         SkinnedMeshRenderer.material = skins[index];
         PlayerPrefs.SetInt("SelectedCharacter",index);
-        Debug.LogError(PlayerPrefs.GetInt("BuyTiger" + index, 1));
-        if (PlayerPrefs.GetInt("BuyTiger" + index, 1)==1) 
-        {
-            BuyButton.SetActive(false);
-            watchadButton.SetActive(false);
-            SelectButton.SetActive(true);
-            
-        }
-        else
-        {
-            BuyButton.SetActive(true); 
-            watchadButton.SetActive(true);
-            SelectButton.SetActive(false);
-
-            // 
-        }
+        Debug.LogError(PlayerPrefs.GetInt("BuyTiger" + index));
 
         BuyButton.transform.GetChild(0).GetComponent<Text>().text = skinprices[index].ToString();
     }
@@ -70,7 +55,7 @@ public class ShopManager : MonoBehaviour
             CharacterSelection.Instance.UnlockAfterAddWatch(PlayerPrefs.GetInt("SelectedCharacter"));
             BuyButton.SetActive(false);
             watchadButton.SetActive(false);
-
+            PlayerPrefs.SetInt("BuyTiger" + PlayerPrefs.GetInt("SelectedCharacter"), 1);
         }
         else
         {

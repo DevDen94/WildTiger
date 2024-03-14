@@ -165,13 +165,13 @@ public class EnemyAIAggressive : MonoBehaviour
             if (IsAttackAnimationPlaying() || IsAttackAnimationPlaying1() || IsAttackAnimationPlaying2() || IsAttackAnimationPlaying3())
             {
 
-                Demage(other.gameObject.name);
+                Demage(gameObject.name);
             }
             else if (secondplayer !=null)
             {
                 if (IsAttackAnimationPlaying11() || IsAttackAnimationPlaying122() || IsAttackAnimationPlaying233() || IsAttackAnimationPlaying344())
                 {
-                    Demage(other.gameObject.name);
+                    Demage(gameObject.name);
                 }
             }
         }
@@ -293,20 +293,16 @@ public class EnemyAIAggressive : MonoBehaviour
                     return;
                 }
                
-              //  LevelLoader.Instance.lvl_M.KillAnimals++;
-              
-              
+                LevelLoader.Instance.lvl_M.KillAnimals++;
+                LevelLoader.Instance.lvl_M.update_stats(gameObject.name);
+
                 // GameManager.Instance.EatPopUp.SetActive(true);
 
-                
-                for (int i = 0; i < LevelLoader.Instance.lvl_M.AnimalsNamesToKill.Length; i++)
-                {
-                    if (name == LevelLoader.Instance.lvl_M.AnimalsNamesToKill[i])
+
+              
+                    if (name == LevelLoader.Instance.lvl_M.AnimalsNamesToKill[0])
                     {
-                        
-                        LevelLoader.Instance.lvl_M.KillAnimals++;
                         LevelLoader.Instance.lvl_M.Stats.killCount[0]++;
-                       
                         if (LevelLoader.Instance.lvl_M.KillAnimals >= LevelLoader.Instance.lvl_M.TotalEnemyInLevel)
                         {
 
@@ -314,12 +310,12 @@ public class EnemyAIAggressive : MonoBehaviour
                             LevelLoader.Instance.Load_Final();
                         }
                     }
-                }
+                
                 PlayerPrefs.SetInt("TigerExp", PlayerPrefs.GetInt("TigerExp") + AttackingExp);
                 LevelLoader.Instance.ExpTxt.text = PlayerPrefs.GetInt("TigerExp").ToString();
                 LevelLoader.Instance.TierUpdate();
                 Invoke("disableSelf", 3f);
-                LevelLoader.Instance.lvl_M.update_stats(gameObject.name);
+                
             }
 
         }

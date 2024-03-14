@@ -59,10 +59,22 @@ public class Level_Manager : MonoBehaviour
      
           if (Stats.killCount[0] < Stats.TotalKillCount[0])
             {
+            Debug.LogError("Up");
                 Stats.killCount[0] = Stats.killCount[0] + 1;
-                 lvl_loader.AnimalList[0].gameObject.GetComponent<Text>().text = Stats.Animals[0] + " \t" + Stats.killCount[0] + "/" + Stats.TotalKillCount[0];
+                 lvl_loader.AnimalList[0].gameObject.GetComponent<Text>().text = Stats.Animals[0] + " \t" + KillAnimals + "/" + Stats.TotalKillCount[0];
            }
        
+    }
+    public void update_stats_E(string animal_name)
+    {
+
+        if (Stats.killCount[0] < Stats.TotalKillCount[0])
+        {
+            Debug.LogError("Upy");
+            Stats.killCount[0] = Stats.killCount[0] + 1;
+            lvl_loader.AnimalList[0].gameObject.GetComponent<Text>().text = Stats.Animals[0] + " \t" + Stats.killCount[0] + "/" + Stats.TotalKillCount[0];
+        }
+
     }
     private bool is_Comp;
     public void End_Level()

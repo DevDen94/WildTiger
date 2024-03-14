@@ -21,10 +21,16 @@ public class CharacterSelection : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayerPrefs.SetInt("BuyTiger" + 0, 1);
+     
+        if (!PlayerPrefs.HasKey("BUY"))
+        {
+            PlayerPrefs.SetInt("BUY", 1);
+            PlayerPrefs.SetInt("BuyTiger0", 1);
+        }
+       
         FirstAdtxt.text = "0/1".ToString();
         Secondtxt.text = "0/1".ToString();
-        //LockingButtons();
+        LockingButtons();
         enableTigerModel.SetActive(true);
 
     }
@@ -41,30 +47,11 @@ public class CharacterSelection : MonoBehaviour
     {
         WatchAd.SetActive(false);
         CoinsButton.SetActive(false); // 
-   
-        {
-            PlayerPrefs.SetInt("BuyTiger" + index, 1);
-
-            Selectbtn.gameObject.SetActive(true);
-
-            AdPopup.SetActive(false);
+        PlayerPrefs.SetInt("BuyTiger" + index, 1);
+        Selectbtn.gameObject.SetActive(true);
+        AdPopup.SetActive(false);
             enableTigerModel.SetActive(true);
-
-            PlayerPrefs.SetInt("FirstTime", 1);
-
-            //////////CharctersButtons[SelectedTiger].transform.GetChild(0).gameObject.SetActive(false);
-            if (PlayerPrefs.GetInt("BuyTiger" + 1) == 1)
-            {
-
-                FirstAdtxt.text = "1/1".ToString();
-            }
-            if (PlayerPrefs.GetInt("BuyTiger" + 2) == 1)
-            {
-
-                Secondtxt.text = "1/1".ToString(); //
-            }
-
-        }
+            LockingButtons();        
     }
     public void BuyCharacter()
     {
@@ -78,16 +65,10 @@ public class CharacterSelection : MonoBehaviour
     
     public void LockingButtons()
     {
-        if (PlayerPrefs.GetInt("BuyTiger" + SelectedTiger) > 0)
+        if (PlayerPrefs.GetInt("BuyTiger" + SelectedTiger) == 1)
         {
-            ////if (CharctersButtons[SelectedTiger].transform.GetChild(0) != null)
-            ////{
-            ////    CharctersButtons[SelectedTiger].transform.GetChild(0).gameObject.SetActive(false);
-            ////    Selectbtn.gameObject.SetActive(true);
-            ////    AdPopup.SetActive(false);
-               
-            ////}
-            if (PlayerPrefs.GetInt("BuyTiger" + 1) == 1)
+            
+            if (PlayerPrefs.GetInt("BuyTiger"+1) == 1)
             {
 
                 FirstAdtxt.text = "1/1".ToString();
@@ -97,22 +78,16 @@ public class CharacterSelection : MonoBehaviour
 
                 Secondtxt.text = "1/1".ToString();
             }
-            
-
+            WatchAd.SetActive( false);
+            CoinsButton.SetActive(false);
+            Selectbtn.gameObject.SetActive(true);
 
         }
         else
         {
-            //if (CharctersButtons[SelectedTiger].transform.GetChild(0) != null)
-            //{
-            //    CharctersButtons[SelectedTiger].transform.GetChild(0).gameObject.SetActive(true);
-            //    Selectbtn.gameObject.SetActive(false);
-            //    AdPopup.SetActive(true);
-            //    enableTigerModel.SetActive(false);
-
-
-            //}
-
+            WatchAd.SetActive(true);
+            CoinsButton.SetActive(true);
+            Selectbtn.gameObject.SetActive(false);
 
 
         }

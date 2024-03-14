@@ -29,34 +29,38 @@ public class EnemyAI : MonoBehaviour
     public int DefenciveExp;
     void Start()
     {
- 
+        CheckForIncriment = true;
         this._Camera = Camera.main.gameObject;
         player = LevelLoader.Instance.SelectedTiger.transform;
         animator = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         HealthSlider.fillAmount = StartingHealth;
         PlayerAnimator = player.GetComponent<Animator>();
+        death = false;
         //MouthPosition = GameObject.FindGameObjectWithTag("MouthPosition");
     }
-
+    bool death;
     void Update()
     {
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-
-        if (distanceToPlayer <= detectionRange)
+        if (!death)
         {
-            // Player is in range, start chasing
-            ChasePlayer();
-        }
-        else
-        {
-            // Player is out of range, play idle or walking animation randomly
-            PlayRandomAnimation();
-        }
+            float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
+            if (distanceToPlayer <= detectionRange)
+            {
+                // Player is in range, start chasing
+                ChasePlayer();
+            }
+            else
+            {
+                // Player is out of range, play idle or walking animation randomly
+                PlayRandomAnimation();
+            }
 
+        }
 
         Healthbar.transform.LookAt(_Camera.transform);
+        
         
     }
 
@@ -135,15 +139,17 @@ public class EnemyAI : MonoBehaviour
             HealthSlider.fillAmount = StartingHealth;
         }
 
-        if (HealthSlider.fillAmount <= 0)
+        if (HealthSlider.fillAmount <= 0 && !death)
         {
-                animator.SetBool("death", true);
-                GetComponent<NavMeshAgent>().enabled = false;
+                 death = true; animator.SetBool("stun", false); animator.SetBool("isRunning", false); animator.SetBool("isWalking", false);
+            animator.SetBool("Demage", false);
+            animator.SetBool("death", true);
+            GetComponent<NavMeshAgent>().enabled = false;
                 GetComponent<EnemyAI>().enabled = false;
                 transform.GetChild(4).gameObject.SetActive(false);
                 transform.GetChild(3).gameObject.SetActive(false);
-                LevelLoader.Instance.lvl_M.update_stats(this.gameObject.name);
-                GetComponent<MapMarker>().isActive = false;
+            LevelLoader.Instance.lvl_M.update_stats_E(gameObject.name);
+            GetComponent<MapMarker>().isActive = false;
            
                // whenPickUp();
                
@@ -151,7 +157,7 @@ public class EnemyAI : MonoBehaviour
                 PlayerPrefs.SetInt("TigerExp", PlayerPrefs.GetInt("TigerExp") + DefenciveExp);
                 LevelLoader.Instance.ExpTxt.text = PlayerPrefs.GetInt("TigerExp").ToString();
                 LevelLoader.Instance.TierUpdate();
-            Invoke("checkComplete", 3f);
+                Invoke("checkComplete", 3f);
         }
 
         
@@ -168,19 +174,22 @@ public class EnemyAI : MonoBehaviour
     
     public void checkComplete()
     {
-        CheckForIncriment = true;
+        
        
-        for (int i = 0; i < LevelLoader.Instance.lvl_M.AnimalsNamesToKill.Length; i++)
-        {
-            if (name == LevelLoader.Instance.lvl_M.AnimalsNamesToKill[i])
+       // for (int i = 0; i < LevelLoader.Instance.lvl_M.AnimalsNamesToKill.Length; i++)
+       // {
+            if (gameObject.name == LevelLoader.Instance.lvl_M.AnimalsNamesToKill[0]  )
             {
                 if (CheckForIncriment == true)
                 {
-                    LevelLoader.Instance.lvl_M.KillAnimals++;
-                    CheckForIncriment = false;
+                  
+                  animator.SetBool("death", true);
+                  CheckForIncriment = false;
+                   LevelLoader.Instance.lvl_M.KillAnimals++;
+                    Debug.LogError("Death_c");
                     LevelLoader.Instance.MoveMentController.SetActive(true);
 
-                    this.gameObject.SetActive(false);
+                    gameObject.SetActive(false);
                 }
 
                 if (LevelLoader.Instance.lvl_M.KillAnimals >= LevelLoader.Instance.lvl_M.TotalEnemyInLevel)
@@ -191,7 +200,7 @@ public class EnemyAI : MonoBehaviour
             }
         
 
-        }
+       // }
     }
     void PlayerOff()
     {
@@ -268,14 +277,16 @@ public class EnemyAI : MonoBehaviour
         }
 
 
-        if (HealthSlider.fillAmount <= 0)
+        if (HealthSlider.fillAmount <= 0 && !death)
         {
+            death = true; animator.SetBool("stun", false); animator.SetBool("isRunning", false); animator.SetBool("isWalking", false);
+            animator.SetBool("Demage", false);
             animator.SetBool("death", true);
             GetComponent<NavMeshAgent>().enabled = false;
             GetComponent<EnemyAI>().enabled = false;
             transform.GetChild(4).gameObject.SetActive(false);
             transform.GetChild(3).gameObject.SetActive(false);
-            LevelLoader.Instance.lvl_M.update_stats(this.gameObject.name);
+            LevelLoader.Instance.lvl_M.update_stats_E(this.gameObject.name);
             GetComponent<MapMarker>().isActive = false;
 
 

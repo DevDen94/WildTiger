@@ -8,16 +8,22 @@ public class UpdateStick : MonoBehaviour
     {
         if (other.gameObject.tag == "Animal")
         {
-           // GetComponent<CompassProPOI>().enabled = false;
-            GetComponent<MapMarker>().isActive = false;
+           
+       
            
             
             AnimalScript.Instance.Planks.SetActive(true);
             Level_Manager.instance.FireTriggerPoint.SetActive(true); 
             Level_Manager.instance.FireTriggerPoint.gameObject.GetComponent<FirePoint>().ON();
-            gameObject.SetActive(false);
-
+          
+            Invoke("Callled", 0.3f);
+            gameObject.GetComponent<MapMarker>().isActive = false;
+           // GetComponent<CompassProPOI>().enabled = false;
         }
+        
     }
-
+    void Callled()
+    {
+        gameObject.SetActive(false);
+    }
 }
