@@ -22,6 +22,7 @@ public class LevelLoader : MonoBehaviour
     int selected_Level;
     [HideInInspector]
     public Level_Manager lvl_M;
+    public GameObject NextBtn;
    
 
     private int SneakInt; private int TierInt;
@@ -66,7 +67,7 @@ public class LevelLoader : MonoBehaviour
         else
         {
             em.enabled = true;
-            selected_Level = PlayerPrefs.GetInt("Level");
+            selected_Level = 14;// PlayerPrefs.GetInt("Level");
             lvl_M = Instantiate(Levels[selected_Level]);
             SelectedTiger.transform.SetPositionAndRotation(lvl_M.SpawnPoint.transform.position, lvl_M.SpawnPoint.transform.rotation);
             MyMaterial.SetTexture("_BaseMap", TigerSprites[PlayerPrefs.GetInt("SelectedCharacter")]);
@@ -85,6 +86,11 @@ public class LevelLoader : MonoBehaviour
             if(selected_Level==2 || selected_Level == 5)
             {
                 StunBtn.SetActive(true);
+            }
+
+            if (selected_Level >= 14)
+            {
+                NextBtn.SetActive(false);
             }
         }
         Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowBanner();

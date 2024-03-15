@@ -80,7 +80,8 @@ public class AnimalScript : MonoBehaviour
      
             foreach (GameObject enemy in SuperAttack_Enemies)
             {
-
+            if (enemy != null)
+            {
                 float distance = Vector3.Distance(transform.position, enemy.transform.position);
 
                 if (distance <= explosionRadius)
@@ -88,7 +89,7 @@ public class AnimalScript : MonoBehaviour
                     CameraShake.instance.Shake();
                     Attack_Btn.transform.GetChild(1).gameObject.SetActive(true);
                     cooldownTimer = cooldownDuration;
-                   
+
                     ENEMY = enemy.transform;
 
                     if (IsEnemyInFront())
@@ -101,7 +102,7 @@ public class AnimalScript : MonoBehaviour
                         SuperAttack_P.moveFireballToTarget(lineRenderer);
                         ENEMY = null;
                         ENEMY = enemy.transform;
-                       
+
 
                         Invoke("explosionPrefabDelay", FireBallAnimation.instance.time);
                         //Instantiate(explosionPrefab, enemy.transform.position, Quaternion.identity);
@@ -121,6 +122,7 @@ public class AnimalScript : MonoBehaviour
                         Invoke(nameof(DisableLine), 1f);
                     }
                 }
+            }
             }
             
        
