@@ -120,6 +120,7 @@
 *.pdb lfs
 *.mdb lfs
 *.bundle lfs
+*.a lfs
 
 # Packaging
 *.zip lfs
