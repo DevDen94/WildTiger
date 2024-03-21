@@ -133,7 +133,7 @@ PlayerSettings:
   vulkanEnableLateAcquireNextImage: 0
   vulkanEnableCommandBufferRecycling: 1
   loadStoreDebugModeEnabled: 0
-  bundleVersion: 0.11
+  bundleVersion: 0.12
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -163,7 +163,7 @@ PlayerSettings:
     iPhone: 3
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
-  AndroidBundleVersionCode: 11
+  AndroidBundleVersionCode: 12
   AndroidMinSdkVersion: 22
   AndroidTargetSdkVersion: 33
   AndroidPreferredInstallLocation: 1
@@ -257,7 +257,7 @@ PlayerSettings:
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: '{dedicated}: Downloads/NewStore.keystore'
+  AndroidKeystoreName: C:/Users/zeesh/Downloads/NewStore.keystore
   AndroidKeyaliasName: gamerz
   AndroidEnableArmv9SecurityFeatures: 0
   AndroidBuildApkPerCpuArchitecture: 0
@@ -281,7 +281,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 56025201662a4ce489afbbe39892b0da, type: 3}
+      m_Icon: {fileID: 2800000, guid: d0e6bb00876897946a19cdccafb531f8, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
@@ -838,10 +838,10 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Android: USE_ADMOB;USE_ADMOB_PATCH;OBI_ONI_SUPPORTED;GLEY_ADMOB;GLEY_PATCH_ADMOB
+    Android: USE_ADMOB;USE_ADMOB_PATCH;OBI_ONI_SUPPORTED
     Standalone: OBI_ONI_SUPPORTED
     Windows Store Apps: 
-    iPhone: USE_ADMOB_PATCH;OBI_ONI_SUPPORTED
+    iPhone: USE_ADMOB_PATCH;OBI_ONI_SUPPORTED;GLEY_ADMOB
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:

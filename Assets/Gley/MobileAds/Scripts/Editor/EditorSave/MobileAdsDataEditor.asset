@@ -25,7 +25,7 @@ MonoBehaviour:
     showConsentPopup: 0
     platformSettings:
     - platform: 0
-      enabled: 1
+      enabled: 0
       appId:
         id: ca-app-pub-5227706387493609~3867145124
         displayName: App ID
@@ -56,9 +56,8 @@ MonoBehaviour:
         required: 1
       testMode: 0
       testDevice: 
-      debugGeography: 0
     - platform: 1
-      enabled: 0
+      enabled: 1
       appId:
         id: ca-app-pub-5227706387493609~3505157788
         displayName: App ID
@@ -89,7 +88,6 @@ MonoBehaviour:
         required: 1
       testMode: 0
       testDevice: 
-      debugGeography: 0
   - advertiser: 10
     useSDK: 0
     preprocessorDirective: GLEY_ADCOLONY
@@ -133,7 +131,6 @@ MonoBehaviour:
         required: 0
       testMode: 0
       testDevice: 
-      debugGeography: 0
     - platform: 1
       enabled: 0
       appId:
@@ -166,7 +163,6 @@ MonoBehaviour:
         required: 0
       testMode: 0
       testDevice: 
-      debugGeography: 0
   - advertiser: 30
     useSDK: 0
     preprocessorDirective: GLEY_APPLOVIN
@@ -210,7 +206,6 @@ MonoBehaviour:
         required: 1
       testMode: 0
       testDevice: 
-      debugGeography: 0
     - platform: 1
       enabled: 0
       appId:
@@ -243,7 +238,6 @@ MonoBehaviour:
         required: 1
       testMode: 0
       testDevice: 
-      debugGeography: 0
   - advertiser: 60
     useSDK: 0
     preprocessorDirective: GLEY_VUNGLE
@@ -287,7 +281,6 @@ MonoBehaviour:
         required: 0
       testMode: 0
       testDevice: 
-      debugGeography: 0
     - platform: 1
       enabled: 0
       appId:
@@ -320,7 +313,6 @@ MonoBehaviour:
         required: 0
       testMode: 0
       testDevice: 
-      debugGeography: 0
   - advertiser: 40
     useSDK: 0
     preprocessorDirective: GLEY_LEVELPLAY
@@ -364,7 +356,6 @@ MonoBehaviour:
         required: 0
       testMode: 0
       testDevice: 
-      debugGeography: 0
     - platform: 1
       enabled: 0
       appId:
@@ -397,7 +388,6 @@ MonoBehaviour:
         required: 0
       testMode: 0
       testDevice: 
-      debugGeography: 0
   - advertiser: 50
     useSDK: 0
     preprocessorDirective: GLEY_UNITYADS
@@ -441,7 +431,6 @@ MonoBehaviour:
         required: 0
       testMode: 0
       testDevice: 
-      debugGeography: 0
     - platform: 1
       enabled: 0
       appId:
@@ -474,12 +463,11 @@ MonoBehaviour:
         required: 0
       testMode: 0
       testDevice: 
-      debugGeography: 0
   debugMode: 0
   usePlaymaker: 0
   useUnityVisualScripting: 0
   enableATT: 0
   nativePopupText: We will use your data to provide a better and personalized ad
     experience.
-  selectedAndroidAdvertiser: 20
-  selectediOSAdvertiser: 0
+  selectedAndroidAdvertiser: 0
+  selectediOSAdvertiser: 20

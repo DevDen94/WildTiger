@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "393567436284",
+    "project_id": "white-tiger-76981",
+    "storage_bucket": "white-tiger-76981.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:393567436284:android:fe9c084eedaf5975760679",
+        "android_client_info": {
+          "package_name": "com.darwingames.white.tiger.animal.simulation.games"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjYfiULT67VXxeZHAUGnQuPjl8KACELzs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      },
+      "admob_app_id": "ca-app-pub-5227706387493609~3867145124"
+    }
+  ],
+  "configuration_version": "1"
+}

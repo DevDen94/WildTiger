@@ -86,7 +86,7 @@ public class AnimalScript : MonoBehaviour
 
                 if (distance <= explosionRadius)
                 {
-                    CameraShake.instance.Shake();
+                 
                     Attack_Btn.transform.GetChild(1).gameObject.SetActive(true);
                     cooldownTimer = cooldownDuration;
 
@@ -94,6 +94,7 @@ public class AnimalScript : MonoBehaviour
 
                     if (IsEnemyInFront())
                     {
+                        CameraShake.instance.Shake();
                         EndingEffect.SetActive(true);
                         LevelLoader.Instance.StunSound.Play();
                         lineRenderer.enabled = true;
