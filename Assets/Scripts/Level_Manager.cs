@@ -26,6 +26,9 @@ public class Level_Manager : MonoBehaviour
     [Header("If you level includes female companion/ Child companion")]
     public bool Tigress;
     public bool Child;
+
+    public GameObject[] Lion;
+    public GameObject[] Tiger;
     void Start()
     {
         instance = this;
@@ -39,6 +42,33 @@ public class Level_Manager : MonoBehaviour
 
         TransferGameObjects();
         is_Comp = false;
+        Set_Character();
+       
+    }
+    void Set_Character()
+    {
+        if (PlayerPrefs.GetInt("SelectedCharacter") == 0)
+        {
+            foreach (GameObject a in Tiger)
+            {
+                a.SetActive(true);
+            }
+            foreach (GameObject b in Lion)
+            {
+                b.SetActive(false);
+            }
+        }
+        else
+        {
+            foreach (GameObject a in Tiger)
+            {
+                a.SetActive(false);
+            }
+            foreach (GameObject b in Lion)
+            {
+                b.SetActive(true);
+            }
+        }
     }
     void TransferGameObjects()
     {

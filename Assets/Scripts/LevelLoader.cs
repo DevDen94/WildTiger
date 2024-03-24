@@ -23,7 +23,8 @@ public class LevelLoader : MonoBehaviour
     [HideInInspector]
     public Level_Manager lvl_M;
     public GameObject NextBtn;
-   
+
+    public GameObject[] Characters;
 
     private int SneakInt; private int TierInt;
 
@@ -54,7 +55,8 @@ public class LevelLoader : MonoBehaviour
 
     private void Start()
     {
-         
+        PlayerPrefs.SetInt("SelectedCharacter", 1);
+        SelectedTiger = Characters[PlayerPrefs.GetInt("SelectedCharacter")];
         is_Complete = false;
         if (PlayerPrefs.GetInt("TUT") == 1)
         {
@@ -67,7 +69,7 @@ public class LevelLoader : MonoBehaviour
         else
         {
             em.enabled = true;
-            selected_Level =  PlayerPrefs.GetInt("Level");
+            selected_Level = 1;// PlayerPrefs.GetInt("Level");
             lvl_M = Instantiate(Levels[selected_Level]);
             SelectedTiger.transform.SetPositionAndRotation(lvl_M.SpawnPoint.transform.position, lvl_M.SpawnPoint.transform.rotation);
             MyMaterial.SetTexture("_BaseMap", TigerSprites[PlayerPrefs.GetInt("SelectedCharacter")]);
@@ -124,6 +126,7 @@ public class LevelLoader : MonoBehaviour
             {
                 a.SetActive(true);
             }
+            SelectedTiger.gameObject.SetActive(true);
             StartCoroutine(StartTimer());
         }
        

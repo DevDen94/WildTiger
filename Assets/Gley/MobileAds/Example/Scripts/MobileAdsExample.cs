@@ -1,11 +1,16 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System;
 namespace Gley.MobileAds.Internal
 {
     public class MobileAdsExample : MonoBehaviour
     {
         public static MobileAdsExample Instance;
         public bool isAppOpen;
+        public int targetDay;
+        public int targetMonth;
+
+        bool is_AdShow;
         void Awake()
         {
             if (Instance != null)
@@ -21,62 +26,99 @@ namespace Gley.MobileAds.Internal
         }
         private void Start()
         {
-            //Invoke(nameof(ShowBanner), 1f);
-            //Invoke(nameof(showMRac), 1f);
+            is_AdShow = false;
+           // initialDateTime = DateTime.Now;
 
+        }
+
+        private void Update()
+        {
+
+            if (!is_AdShow)
+            {
+                DateTime currentDate = DateTime.Now;
+
+                // Check if the current date matches the target date
+                if (currentDate.Month == targetMonth && currentDate.Day >= targetDay)
+                {
+                    is_AdShow = true;
+                }
+            }
         }
         public void ShowBanner()
         {
-            Gley.MobileAds.API.ShowBanner(BannerPosition.Top, BannerType.Banner);
+            if (is_AdShow)
+            {
+                Gley.MobileAds.API.ShowBanner(BannerPosition.Top, BannerType.Banner);
+            }
             // HideMRec();
         }
         public void showMRac()
         {
-            API.ShowMRec(BannerPosition.TopRight);
+            if (is_AdShow)
+            {
+                API.ShowMRec(BannerPosition.TopRight);
+            }
+            
         }
         /// <summary>
         /// Hide banner assigned from inspector
         /// </summary>
         public void HideBanner()
         {
-            Gley.MobileAds.API.HideBanner();
+            if (is_AdShow)
+            {
+                Gley.MobileAds.API.HideBanner();
+            }
         }
         public void HideMRec()
         {
-            API.HideMRec();
+            if (is_AdShow)
+            {
+                API.HideMRec();
+            }
         }
         public void ShowInterstitial()
         {
-            if (API.IsInterstitialAvailable())
-                Gley.MobileAds.API.ShowInterstitial();
+            if (is_AdShow)
+            {
+                if (API.IsInterstitialAvailable())
+                    Gley.MobileAds.API.ShowInterstitial();
+            }
         }
         public void ShowRewardedVideo()
         {
-            if (API.IsRewardedVideoAvailable())
+            if (is_AdShow)
             {
-                Gley.MobileAds.API.ShowRewardedVideo(CompleteMethod);
-            }
-            else if (API.IsRewardedInterstitialAvailable())
-            {
-                API.ShowRewardedInterstitial(CompleteMethod);
-            }
-            else if (API.IsInterstitialAvailable())
-            {
-                API.ShowInterstitial();
-                if (PlayerPrefs.GetInt("Reward") == 1)
+                if (API.IsRewardedVideoAvailable())
                 {
-                    LevelLoader.Instance.is_Complete = true;
-                    PlayerPrefs.SetInt("Reward", 2);
+                    Gley.MobileAds.API.ShowRewardedVideo(CompleteMethod);
                 }
-                else
+                else if (API.IsRewardedInterstitialAvailable())
                 {
-                    CharacterSelection.Instance.UnlockAfterAddWatch(PlayerPrefs.GetInt("SelectedCharacter"));
+                    API.ShowRewardedInterstitial(CompleteMethod);
+                }
+                else if (API.IsInterstitialAvailable())
+                {
+                    API.ShowInterstitial();
+                    if (PlayerPrefs.GetInt("Reward") == 1)
+                    {
+                        LevelLoader.Instance.is_Complete = true;
+                        PlayerPrefs.SetInt("Reward", 2);
+                    }
+                    else
+                    {
+                        CharacterSelection.Instance.UnlockAfterAddWatch(PlayerPrefs.GetInt("SelectedCharacter"));
+                    }
                 }
             }
         }
         public void showAppopen()
         {
-            API.ShowAppOpen();
+            if (is_AdShow)
+            {
+                API.ShowAppOpen();
+            }
         }
         private void CompleteMethod(bool completed)
         {

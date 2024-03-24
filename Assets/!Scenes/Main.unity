@@ -2318,6 +2318,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5913953350262005271, guid: 71df779ba955fbe43915ae5866c31120, type: 3}
+      propertyPath: targetDay
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5913953350262005271, guid: 71df779ba955fbe43915ae5866c31120, type: 3}
+      propertyPath: targetMonth
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7578884377843287055, guid: 71df779ba955fbe43915ae5866c31120, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
