@@ -29,6 +29,18 @@ MonoBehaviour:
     m_SerializedLabels:
     - scenes
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 391de92aaa99c364081d2841bcf6a6ba
+    m_Address: Assets/playbtn.anim
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d3ce7592bd0cc564db7742343b635f33
+    m_Address: Assets/google-services.json
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 907274c4c5d3c1d498cce730bdc7c9c3, type: 2}
   m_SchemaSet:

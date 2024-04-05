@@ -55,7 +55,7 @@ public class CharacterSelection : MonoBehaviour
     }
     public void BuyCharacter()
     {
-        Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowRewardedVideo();
+        Admob.Instance.ShowRewardedAd();
 
 
     }

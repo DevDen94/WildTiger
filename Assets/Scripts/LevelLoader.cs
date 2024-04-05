@@ -95,19 +95,20 @@ public class LevelLoader : MonoBehaviour
                 NextBtn.SetActive(false);
             }
         }
-        Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowBanner();
+        Admob.Instance.ShowSmallBanner();
     }
     public void Pasued_Level()
     {
         PausePanel.SetActive(true);
         Time.timeScale = 0f;
-        Gley.MobileAds.Internal.MobileAdsExample.Instance.showMRac();
+        Admob.Instance.ShowBigBanner();
     }
     public void Resume_Level()
     {
         PausePanel.SetActive(false);
         Time.timeScale = 1f;
-        Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowBanner();
+        Admob.Instance.ShowSmallBanner();
+
     }
 
     public void Level_Start()
@@ -160,9 +161,10 @@ public class LevelLoader : MonoBehaviour
     {
         Time.timeScale = 0f;
         Fail.SetActive(true);
-        Gley.MobileAds.Internal.MobileAdsExample.Instance.showMRac();
-    
-}
+        Admob.Instance.ShowBigBanner();
+
+
+    }
 
     public void Home()
     {
@@ -170,7 +172,8 @@ public class LevelLoader : MonoBehaviour
         //SceneManager.LoadScene(1);
           Addressables.LoadSceneAsync(_scenes[0], LoadSceneMode.Single);
         //SceneManager.LoadScene("Main");
-        Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowInterstitial();
+        Admob.Instance.ShowInterstitialAd();
+
     }
 
     public void Restart()
@@ -178,7 +181,8 @@ public class LevelLoader : MonoBehaviour
         Time.timeScale = 1f;
         Addressables.LoadSceneAsync(_scenes[1], LoadSceneMode.Single);
         // SceneManager.LoadScene("Gameplay");
-        Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowInterstitial();
+        Admob.Instance.ShowInterstitialAd();
+
     }
 
 
@@ -198,10 +202,11 @@ public class LevelLoader : MonoBehaviour
             }
 
         }
-        Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowInterstitial();
-        Gley.MobileAds.Internal.MobileAdsExample.Instance.showMRac();
-    
-}
+        Admob.Instance.ShowInterstitialAd();
+
+        Admob.Instance.ShowBigBanner();
+
+    }
 
 
     bool lvl_Compl = false;
@@ -265,9 +270,10 @@ public class LevelLoader : MonoBehaviour
     {
         timer = 30;
         PlayerPrefs.SetInt("Reward", 1);
-        Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowRewardedVideo();
+        Admob.Instance.ShowRewardedAd();
+
     }
-  public  bool is_Complete;
+    public  bool is_Complete;
     float timer = 30;
     public Text Timer;
     private void Update()

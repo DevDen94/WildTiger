@@ -85,12 +85,9 @@ public class MainMenu : MonoBehaviour
             // Show main menu panel
             MainMenuPanel.SetActive(true);
 
-        if (Gley.MobileAds.Internal.MobileAdsExample.Instance.isAppOpen == false)
-        {
-            Gley.MobileAds.Internal.MobileAdsExample.Instance.showAppopen();
-            Gley.MobileAds.Internal.MobileAdsExample.Instance.isAppOpen = true;
-        }
-        Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowBanner();
+
+             Admob.Instance.ShowSmallBanner();
+
     }
 
     public void UpdateLevels()
@@ -116,7 +113,8 @@ public class MainMenu : MonoBehaviour
 
     public void LevelButtonClick(int LevelNumber)
     {
-        Gley.MobileAds.Internal.MobileAdsExample.Instance.showMRac();
+        Admob.Instance.ShowInterstitialAd();
+
         LoadingPanel.SetActive(true);
         PlayerPrefs.SetInt("Level", LevelNumber);
         StartCoroutine(LoadingAfterLEvelSelectionComplete());
@@ -152,7 +150,23 @@ public class MainMenu : MonoBehaviour
 
     public void showInterstatialAD()
     {
-        Gley.MobileAds.Internal.MobileAdsExample.Instance.ShowInterstitial();
+        Admob.Instance.ShowInterstitialAd();
+    }
+    public void showBigBanner()
+    {
+        Admob.Instance.ShowBigBanner();
+
+    }
+
+    public void timeScaleSet()
+    {
+        Time.timeScale=1f;
+    }
+
+    public void showSmall()
+    {
+        Admob.Instance.ShowSmallBanner();
+
     }
     public void ExitBtn()
     {

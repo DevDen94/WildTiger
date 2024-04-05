@@ -162,7 +162,7 @@ PlayerSettings:
     VisionOS: 0
     iPhone: 3
     tvOS: 0
-  overrideDefaultApplicationIdentifier: 0
+  overrideDefaultApplicationIdentifier: 1
   AndroidBundleVersionCode: 12
   AndroidMinSdkVersion: 22
   AndroidTargetSdkVersion: 33
@@ -257,7 +257,7 @@ PlayerSettings:
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: C:/Users/zeesh/Downloads/NewStore.keystore
+  AndroidKeystoreName: '{dedicated}: Downloads/NewStore.keystore'
   AndroidKeyaliasName: gamerz
   AndroidEnableArmv9SecurityFeatures: 0
   AndroidBuildApkPerCpuArchitecture: 0
@@ -841,7 +841,7 @@ PlayerSettings:
     Android: USE_ADMOB;USE_ADMOB_PATCH;OBI_ONI_SUPPORTED
     Standalone: OBI_ONI_SUPPORTED
     Windows Store Apps: 
-    iPhone: USE_ADMOB_PATCH;OBI_ONI_SUPPORTED;GLEY_ADMOB
+    iPhone: USE_ADMOB_PATCH;OBI_ONI_SUPPORTED
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
