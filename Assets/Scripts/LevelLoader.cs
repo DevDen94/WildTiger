@@ -56,7 +56,7 @@ public class LevelLoader : MonoBehaviour
     private void Start()
     {
         PlayerPrefs.SetInt("SelectedCharacter", 1);
-        SelectedTiger = Characters[PlayerPrefs.GetInt("SelectedCharacter")];
+        SelectedTiger = Characters[0];
         is_Complete = false;
         if (PlayerPrefs.GetInt("TUT") == 1)
         {
@@ -69,7 +69,7 @@ public class LevelLoader : MonoBehaviour
         else
         {
             em.enabled = true;
-            selected_Level = 1;// PlayerPrefs.GetInt("Level");
+            selected_Level = PlayerPrefs.GetInt("Level");
             lvl_M = Instantiate(Levels[selected_Level]);
             SelectedTiger.transform.SetPositionAndRotation(lvl_M.SpawnPoint.transform.position, lvl_M.SpawnPoint.transform.rotation);
             MyMaterial.SetTexture("_BaseMap", TigerSprites[PlayerPrefs.GetInt("SelectedCharacter")]);

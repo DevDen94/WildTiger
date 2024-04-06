@@ -151,6 +151,7 @@ public class MainMenu : MonoBehaviour
     public void showInterstatialAD()
     {
         Admob.Instance.ShowInterstitialAd();
+       
     }
     public void showBigBanner()
     {
@@ -190,6 +191,7 @@ public class MainMenu : MonoBehaviour
             PlayerPrefs.SetInt("Localization", 1);
             Debug.Log("Chinese");
         }
+        Time.timeScale = 1f;
     }
 
 

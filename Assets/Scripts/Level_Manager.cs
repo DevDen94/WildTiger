@@ -47,8 +47,8 @@ public class Level_Manager : MonoBehaviour
     }
     void Set_Character()
     {
-        if (PlayerPrefs.GetInt("SelectedCharacter") == 0)
-        {
+       /* if (PlayerPrefs.GetInt("SelectedCharacter") == 0)
+        {*/
             foreach (GameObject a in Tiger)
             {
                 a.SetActive(true);
@@ -57,7 +57,7 @@ public class Level_Manager : MonoBehaviour
             {
                 b.SetActive(false);
             }
-        }
+      /*  }
         else
         {
             foreach (GameObject a in Tiger)
@@ -68,7 +68,7 @@ public class Level_Manager : MonoBehaviour
             {
                 b.SetActive(true);
             }
-        }
+        }*/
     }
     void TransferGameObjects()
     {

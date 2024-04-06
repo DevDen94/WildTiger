@@ -1,0 +1,449 @@
+<linker>
+  <assembly fullname="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="Admob" preserve="all" />
+    <type fullname="AnimalScript" preserve="all" />
+    <type fullname="AudioPlay" preserve="all" />
+    <type fullname="BoneheadSoundEffects" preserve="all" />
+    <type fullname="cameraAssigner" preserve="all" />
+    <type fullname="CameraShake" preserve="all" />
+    <type fullname="CFX_AutoDestructShuriken" preserve="all" />
+    <type fullname="CFX_AutoRotate" preserve="all" />
+    <type fullname="CharacterSelection" preserve="all" />
+    <type fullname="Companion_Ai" preserve="all" />
+    <type fullname="CompassNavigatorPro.CompassPro" preserve="all" />
+    <type fullname="CompassNavigatorPro.CompassProPOI" preserve="all" />
+    <type fullname="CompassNavigatorPro.MiniMapInteraction" preserve="all" />
+    <type fullname="CutsceneScript_lvl1" preserve="all" />
+    <type fullname="EnemyAI" preserve="all" />
+    <type fullname="EnemyAIAggressive" preserve="all" />
+    <type fullname="enemyFinderbyCompanion" preserve="all" />
+    <type fullname="fadeScreen" preserve="all" />
+    <type fullname="FinishLevel" preserve="all" />
+    <type fullname="FireBallAnimation" preserve="all" />
+    <type fullname="FirebaseSetup" preserve="all" />
+    <type fullname="FirePoint" preserve="all" />
+    <type fullname="GDPRScript" preserve="all" />
+    <type fullname="InnerMap" preserve="all" />
+    <type fullname="ItemsData" preserve="all" />
+    <type fullname="Level_Manager" preserve="all" />
+    <type fullname="LevelLoader" preserve="all" />
+    <type fullname="MainMenu" preserve="all" />
+    <type fullname="MapArrow" preserve="all" />
+    <type fullname="MapCanvasController" preserve="all" />
+    <type fullname="MapMarker" preserve="all" />
+    <type fullname="MarkerGroup" preserve="all" />
+    <type fullname="NoCodingEasyLocalization.LocalizeData" preserve="all" />
+    <type fullname="NoCodingEasyLocalization.LocalizeDropdown" preserve="all" />
+    <type fullname="NoCodingEasyLocalization.LocalizeMaster" preserve="all" />
+    <type fullname="NoCodingEasyLocalization.LocalizeUIText" preserve="all" />
+    <type fullname="ObjectDragger" preserve="all" />
+    <type fullname="ObjectLimit" preserve="all" />
+    <type fullname="Roar" preserve="all" />
+    <type fullname="ShopManager" preserve="all" />
+    <type fullname="StartingCutscenes" preserve="all" />
+    <type fullname="stats" preserve="all" />
+    <type fullname="TutorialLevel" preserve="all" />
+    <type fullname="TutorialScene" preserve="all" />
+    <type fullname="UpdateStick" preserve="all" />
+  </assembly>
+  <assembly fullname="Assembly-CSharp-firstpass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="DG.Tweening.DOTweenAnimation" preserve="all" />
+    <type fullname="PixelCrushers.DialogueSystem.Wrappers.UnityUITypewriterEffect" preserve="all" />
+    <type fullname="PixelCrushers.DialogueSystem.UnityUITypewriterEffect/AutoScrollSettings" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="Cinemachine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="Cinemachine.CinemachineBrain" preserve="all" />
+    <type fullname="Cinemachine.CinemachineCollider" preserve="all" />
+    <type fullname="Cinemachine.CinemachineComposer" preserve="all" />
+    <type fullname="Cinemachine.CinemachineFreeLook" preserve="all" />
+    <type fullname="Cinemachine.CinemachineImpulseSource" preserve="all" />
+    <type fullname="Cinemachine.CinemachineIndependentImpulseListener" preserve="all" />
+    <type fullname="Cinemachine.CinemachineOrbitalTransposer" preserve="all" />
+    <type fullname="Cinemachine.CinemachinePipeline" preserve="all" />
+    <type fullname="Cinemachine.CinemachineVirtualCamera" preserve="all" />
+    <type fullname="Cinemachine.AxisState" preserve="nothing" serialized="true" />
+    <type fullname="Cinemachine.AxisState/Recentering" preserve="nothing" serialized="true" />
+    <type fullname="Cinemachine.CinemachineBlendDefinition" preserve="nothing" serialized="true" />
+    <type fullname="Cinemachine.CinemachineBrain/BrainEvent" preserve="nothing" serialized="true" />
+    <type fullname="Cinemachine.CinemachineBrain/VcamActivatedEvent" preserve="nothing" serialized="true" />
+    <type fullname="Cinemachine.CinemachineFreeLook/Orbit" preserve="nothing" serialized="true" />
+    <type fullname="Cinemachine.CinemachineImpulseDefinition" preserve="nothing" serialized="true" />
+    <type fullname="Cinemachine.CinemachineImpulseListener/ImpulseReaction" preserve="nothing" serialized="true" />
+    <type fullname="Cinemachine.CinemachineImpulseManager/EnvelopeDefinition" preserve="nothing" serialized="true" />
+    <type fullname="Cinemachine.CinemachineOrbitalTransposer/Heading" preserve="nothing" serialized="true" />
+    <type fullname="Cinemachine.CinemachineVirtualCameraBase/TransitionParams" preserve="nothing" serialized="true" />
+    <type fullname="Cinemachine.LensSettings" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="DOTweenPro, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="DG.Tweening.DOTweenVisualManager" preserve="all" />
+  </assembly>
+  <assembly fullname="MalbersAnimations, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="MalbersAnimations.AITarget" preserve="all" />
+    <type fullname="MalbersAnimations.BoolVarListener" preserve="all" />
+    <type fullname="MalbersAnimations.ComponentSelector" preserve="all" />
+    <type fullname="MalbersAnimations.Conditions.C_Transform" preserve="all" />
+    <type fullname="MalbersAnimations.Conditions.MConditions" preserve="all" />
+    <type fullname="MalbersAnimations.Controller.AI.ANDDecision" preserve="all" />
+    <type fullname="MalbersAnimations.Controller.AI.ArriveDecision" preserve="all" />
+    <type fullname="MalbersAnimations.Controller.AI.CheckModeDecision" preserve="all" />
+    <type fullname="MalbersAnimations.Controller.AI.CheckStateDecision" preserve="all" />
+    <type fullname="MalbersAnimations.Controller.AI.CheckVarListener" preserve="all" />
+    <type fullname="MalbersAnimations.Controller.AI.LookDecision" preserve="all" />
+    <type fullname="MalbersAnimations.Controller.AI.MAIState" preserve="all" />
+    <type fullname="MalbersAnimations.Controller.AI.MAnimalAIControl" preserve="all" />
+    <type fullname="MalbersAnimations.Controller.AI.MAnimalBrain" preserve="all" />
+    <type fullname="MalbersAnimations.Controller.AI.MoveStopTask" preserve="all" />
+    <type fullname="MalbersAnimations.Controller.AI.PlayAudioTask" preserve="all" />
+    <type fullname="MalbersAnimations.Controller.AI.PlayModeTask" preserve="all" />
+    <type fullname="MalbersAnimations.Controller.AI.SetDestinationTask" preserve="all" />
+    <type fullname="MalbersAnimations.Controller.AI.SetLookAtTask" preserve="all" />
+    <type fullname="MalbersAnimations.Controller.AI.SetStanceTask" preserve="all" />
+    <type fullname="MalbersAnimations.Controller.AI.SetTargetTask" preserve="all" />
+    <type fullname="MalbersAnimations.Controller.AI.SetVarListener" preserve="all" />
+    <type fullname="MalbersAnimations.Controller.AI.TaskDecision" preserve="all" />
+    <type fullname="MalbersAnimations.Controller.AI.WaitDecision" preserve="all" />
+    <type fullname="MalbersAnimations.Controller.AttackTriggerBehaviour" preserve="all" />
+    <type fullname="MalbersAnimations.Controller.ComboManager" preserve="all" />
+    <type fullname="MalbersAnimations.Controller.DamageableBehaviour" preserve="all" />
+    <type fullname="MalbersAnimations.Controller.Death" preserve="all" />
+    <type fullname="MalbersAnimations.Controller.Fall" preserve="all" />
+    <type fullname="MalbersAnimations.Controller.Idle" preserve="all" />
+    <type fullname="MalbersAnimations.Controller.Jump" preserve="all" />
+    <type fullname="MalbersAnimations.Controller.LedgeGrab" preserve="all" />
+    <type fullname="MalbersAnimations.Controller.Locomotion" preserve="all" />
+    <type fullname="MalbersAnimations.Controller.MAnimal" preserve="all" />
+    <type fullname="MalbersAnimations.Controller.MAttackTrigger" preserve="all" />
+    <type fullname="MalbersAnimations.Controller.MDirectionalDamage" preserve="all" />
+    <type fullname="MalbersAnimations.Controller.ModeBehaviour" preserve="all" />
+    <type fullname="MalbersAnimations.Controller.ModifierForce" preserve="all" />
+    <type fullname="MalbersAnimations.Controller.MPickUp" preserve="all" />
+    <type fullname="MalbersAnimations.Controller.Slide" preserve="all" />
+    <type fullname="MalbersAnimations.Controller.Swim" preserve="all" />
+    <type fullname="MalbersAnimations.Controller.WallRun" preserve="all" />
+    <type fullname="MalbersAnimations.Controller.Zone" preserve="all" />
+    <type fullname="MalbersAnimations.Events.MEvent" preserve="all" />
+    <type fullname="MalbersAnimations.Events.MEventListener" preserve="all" />
+    <type fullname="MalbersAnimations.Events.UnityEventExit" preserve="all" />
+    <type fullname="MalbersAnimations.Events.UnityEventRaiser" preserve="all" />
+    <type fullname="MalbersAnimations.FadeInOutGraphic" preserve="all" />
+    <type fullname="MalbersAnimations.GizmoVisualizer" preserve="all" />
+    <type fullname="MalbersAnimations.HolsterID" preserve="all" />
+    <type fullname="MalbersAnimations.IntComparer" preserve="all" />
+    <type fullname="MalbersAnimations.IntVarListener" preserve="all" />
+    <type fullname="MalbersAnimations.IsKinematicB" preserve="all" />
+    <type fullname="MalbersAnimations.MAction" preserve="all" />
+    <type fullname="MalbersAnimations.MalbersInput" preserve="all" />
+    <type fullname="MalbersAnimations.MDamageable" preserve="all" />
+    <type fullname="MalbersAnimations.MessagesBehavior" preserve="all" />
+    <type fullname="MalbersAnimations.MExplosion" preserve="all" />
+    <type fullname="MalbersAnimations.MInput" preserve="all" />
+    <type fullname="MalbersAnimations.MModeAlign" preserve="all" />
+    <type fullname="MalbersAnimations.MMouseScroll" preserve="all" />
+    <type fullname="MalbersAnimations.MobileJoystick" preserve="all" />
+    <type fullname="MalbersAnimations.ModeID" preserve="all" />
+    <type fullname="MalbersAnimations.MWeaponManager" preserve="all" />
+    <type fullname="MalbersAnimations.PlayTransformAnimation" preserve="all" />
+    <type fullname="MalbersAnimations.PointClick" preserve="all" />
+    <type fullname="MalbersAnimations.PointClickData" preserve="all" />
+    <type fullname="MalbersAnimations.RandomBehavior" preserve="all" />
+    <type fullname="MalbersAnimations.Reactions.MReactions" preserve="all" />
+    <type fullname="MalbersAnimations.Reactions.MReactionsVar" preserve="all" />
+    <type fullname="MalbersAnimations.Scriptables.AudioClipListVar" preserve="all" />
+    <type fullname="MalbersAnimations.Scriptables.BoolVar" preserve="all" />
+    <type fullname="MalbersAnimations.Scriptables.FloatVar" preserve="all" />
+    <type fullname="MalbersAnimations.Scriptables.IntVar" preserve="all" />
+    <type fullname="MalbersAnimations.Scriptables.LayerVar" preserve="all" />
+    <type fullname="MalbersAnimations.Scriptables.ResetScriptableVars" preserve="all" />
+    <type fullname="MalbersAnimations.Scriptables.RuntimeDamageableSet" preserve="all" />
+    <type fullname="MalbersAnimations.Scriptables.RuntimeGameObjects" preserve="all" />
+    <type fullname="MalbersAnimations.Scriptables.RuntimeStats" preserve="all" />
+    <type fullname="MalbersAnimations.Scriptables.TransformHook" preserve="all" />
+    <type fullname="MalbersAnimations.Scriptables.TransformListener" preserve="all" />
+    <type fullname="MalbersAnimations.Scriptables.TransformVar" preserve="all" />
+    <type fullname="MalbersAnimations.Scriptables.Vector3Var" preserve="all" />
+    <type fullname="MalbersAnimations.SoundBehavior" preserve="all" />
+    <type fullname="MalbersAnimations.StanceID" preserve="all" />
+    <type fullname="MalbersAnimations.StateID" preserve="all" />
+    <type fullname="MalbersAnimations.StatElement" preserve="all" />
+    <type fullname="MalbersAnimations.StatID" preserve="all" />
+    <type fullname="MalbersAnimations.Stats" preserve="all" />
+    <type fullname="MalbersAnimations.StepsManager" preserve="all" />
+    <type fullname="MalbersAnimations.StepTrigger" preserve="all" />
+    <type fullname="MalbersAnimations.Tag" preserve="all" />
+    <type fullname="MalbersAnimations.Tags" preserve="all" />
+    <type fullname="MalbersAnimations.TransformAnimation" preserve="all" />
+    <type fullname="MalbersAnimations.UI.UIFollowTransform" preserve="all" />
+    <type fullname="MalbersAnimations.UnityUtils" preserve="all" />
+    <type fullname="MalbersAnimations.Utilities.Aim" preserve="all" />
+    <type fullname="MalbersAnimations.Utilities.AimTarget" preserve="all" />
+    <type fullname="MalbersAnimations.Utilities.Aligner" preserve="all" />
+    <type fullname="MalbersAnimations.Utilities.Comment" preserve="all" />
+    <type fullname="MalbersAnimations.Utilities.CommentB" preserve="all" />
+    <type fullname="MalbersAnimations.Utilities.EffectBehaviour" preserve="all" />
+    <type fullname="MalbersAnimations.Utilities.EffectManager" preserve="all" />
+    <type fullname="MalbersAnimations.Utilities.LockOnTarget" preserve="all" />
+    <type fullname="MalbersAnimations.Utilities.LookAt" preserve="all" />
+    <type fullname="MalbersAnimations.Utilities.LookAtBehaviour" preserve="all" />
+    <type fullname="MalbersAnimations.Utilities.MaterialChanger" preserve="all" />
+    <type fullname="MalbersAnimations.Utilities.MaterialPropertyLerpSO" preserve="all" />
+    <type fullname="MalbersAnimations.Utilities.TriggerProxy" preserve="all" />
+    <type fullname="MalbersAnimations.Utilities.ValueToString" preserve="all" />
+    <type fullname="MalbersAnimations.WeaponID" preserve="all" />
+    <type fullname="MalbersAnimations.Weapons.MDisplayTrajectory" preserve="all" />
+    <type fullname="MalbersAnimations.Weapons.MProjectile" preserve="all" />
+    <type fullname="MalbersAnimations.Weapons.MProjectileThrower" preserve="all" />
+    <type fullname="MalbersAnimations.Weapons.MWeaponBehavior" preserve="all" />
+    <type fullname="MalbersAnimations.AdvancedIntegerEvent" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.ComponentSet" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Controller.AI.MAITransition" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Controller.Ability" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Controller.AnimalEvent" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Controller.AnimalModifier" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Controller.Combo" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Controller.ComboSequence" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Controller.DamageableProfile" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Controller.DamagerProfile" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Controller.JumpProfile" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Controller.LedgeProfiles" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Controller.MPivots" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Controller.MSpeed" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Controller.MSpeedSet" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Controller.Mode" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Controller.ModeProperties" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Controller.OnEnterExitState" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Controller.SpeedModifierEvent" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Controller.Stance" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Controller.TagModifier" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Events.BoolEvent" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Events.ColliderEvent" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Events.ComponentEvent" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Events.FloatEvent" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Events.GameObjectEvent" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Events.Int2Event" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Events.IntEvent" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Events.MEventItemListener" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Events.SpriteEvent" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Events.StringEvent" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Events.TransformEvent" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Events.Vector2Event" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Events.Vector3Event" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Holster" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.InputAxis" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.InputRow" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.MDamageable/damagerEvents" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.MInputMap" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.RangedFloat" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Reactions.ModeReaction" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Reactions.StatReaction" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Scriptables.AudioClipReference" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Scriptables.BoolReference" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Scriptables.ColorReference" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Scriptables.DamageableEvent" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Scriptables.FloatReference" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Scriptables.GameObjectReference" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Scriptables.IntReference" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Scriptables.LayerReference" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Scriptables.ScriptableVarReseter" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Scriptables.StatsEvent" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Scriptables.StringReference" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Scriptables.TransformReference" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Scriptables.Vector2Reference" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Scriptables.Vector3Reference" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Stat" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.StatModifier" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.TransformOffset" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Utilities.Effect" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Utilities.EffectItem" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Utilities.LookAt/BoneRotation" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Utilities.MaterialItem" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Utilities.MesssageItem" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Weapons.WeaponEvent" preserve="nothing" serialized="true" />
+    <type fullname="MalbersAnimations.Weapons.WeaponMessages" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="MalbersAnimations.Cinemachine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="MalbersAnimations.CameraInputMapper" preserve="all" />
+  </assembly>
+  <assembly fullname="Obi, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="Obi.ObiCollider" preserve="all" />
+    <type fullname="Obi.ObiFixedUpdater" preserve="all" />
+    <type fullname="Obi.ObiParticleAttachment" preserve="all" />
+    <type fullname="Obi.ObiParticleGroup" preserve="all" />
+    <type fullname="Obi.ObiPathSmoother" preserve="all" />
+    <type fullname="Obi.ObiRope" preserve="all" />
+    <type fullname="Obi.ObiRopeBlueprint" preserve="all" />
+    <type fullname="Obi.ObiRopeExtrudedRenderer" preserve="all" />
+    <type fullname="Obi.ObiRopePrefabPlugger" preserve="all" />
+    <type fullname="Obi.ObiRopeSection" preserve="all" />
+    <type fullname="Obi.ObiSolver" preserve="all" />
+    <type fullname="Obi.OniColliderWorld" preserve="all" />
+    <type fullname="Obi.ObiAerodynamicConstraintsData" preserve="nothing" serialized="true" />
+    <type fullname="Obi.ObiBendConstraintsBatch" preserve="nothing" serialized="true" />
+    <type fullname="Obi.ObiBendConstraintsData" preserve="nothing" serialized="true" />
+    <type fullname="Obi.ObiBendTwistConstraintsData" preserve="nothing" serialized="true" />
+    <type fullname="Obi.ObiChainConstraintsData" preserve="nothing" serialized="true" />
+    <type fullname="Obi.ObiColorDataChannel" preserve="nothing" serialized="true" />
+    <type fullname="Obi.ObiDistanceConstraintsBatch" preserve="nothing" serialized="true" />
+    <type fullname="Obi.ObiDistanceConstraintsData" preserve="nothing" serialized="true" />
+    <type fullname="Obi.ObiMassDataChannel" preserve="nothing" serialized="true" />
+    <type fullname="Obi.ObiNativeFloatList" preserve="nothing" serialized="true" />
+    <type fullname="Obi.ObiNativeIntList" preserve="nothing" serialized="true" />
+    <type fullname="Obi.ObiNativeVector2List" preserve="nothing" serialized="true" />
+    <type fullname="Obi.ObiNormalDataChannel" preserve="nothing" serialized="true" />
+    <type fullname="Obi.ObiPath" preserve="nothing" serialized="true" />
+    <type fullname="Obi.ObiPhaseDataChannel" preserve="nothing" serialized="true" />
+    <type fullname="Obi.ObiPointsDataChannel" preserve="nothing" serialized="true" />
+    <type fullname="Obi.ObiRotationalMassDataChannel" preserve="nothing" serialized="true" />
+    <type fullname="Obi.ObiShapeMatchingConstraintsData" preserve="nothing" serialized="true" />
+    <type fullname="Obi.ObiSkinConstraintsData" preserve="nothing" serialized="true" />
+    <type fullname="Obi.ObiStretchShearConstraintsData" preserve="nothing" serialized="true" />
+    <type fullname="Obi.ObiStructuralElement" preserve="nothing" serialized="true" />
+    <type fullname="Obi.ObiTetherConstraintsData" preserve="nothing" serialized="true" />
+    <type fullname="Obi.ObiThicknessDataChannel" preserve="nothing" serialized="true" />
+    <type fullname="Obi.ObiVolumeConstraintsData" preserve="nothing" serialized="true" />
+    <type fullname="Obi.ObiWingedPoint" preserve="nothing" serialized="true" />
+    <type fullname="Obi.PathControlPointEvent" preserve="nothing" serialized="true" />
+    <type fullname="Oni/ConstraintParameters" preserve="nothing" serialized="true" />
+    <type fullname="Oni/SolverParameters" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="Unity.Addressables, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" preserve="all">
+    <type fullname="UnityEngine.AddressableAssets.Addressables" preserve="all" />
+    <type fullname="UnityEngine.AddressableAssets.AssetReference" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="Unity.AI.Navigation, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="Unity.AI.Navigation.NavMeshSurface" preserve="all" />
+  </assembly>
+  <assembly fullname="Unity.RenderPipelines.Universal.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.Rendering.Universal.UniversalAdditionalCameraData" preserve="all" />
+    <type fullname="UnityEngine.Rendering.Universal.UniversalAdditionalLightData" preserve="all" />
+    <type fullname="UnityEngine.Rendering.Universal.TemporalAA/Settings" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" preserve="all">
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.AssetBundleProvider" preserve="all" />
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.BundledAssetProvider" preserve="all" />
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.InstanceProvider" preserve="all" />
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.LegacyResourcesProvider" preserve="all" />
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.SceneProvider" preserve="all" />
+  </assembly>
+  <assembly fullname="Unity.TextMeshPro, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="TMPro.TextMeshPro" preserve="all" />
+    <type fullname="TMPro.TextMeshProUGUI" preserve="all" />
+    <type fullname="TMPro.TMP_FontAsset" preserve="all" />
+    <type fullname="TMPro.FaceInfo_Legacy" preserve="nothing" serialized="true" />
+    <type fullname="TMPro.FontAssetCreationSettings" preserve="nothing" serialized="true" />
+    <type fullname="TMPro.KerningTable" preserve="nothing" serialized="true" />
+    <type fullname="TMPro.TMP_Character" preserve="nothing" serialized="true" />
+    <type fullname="TMPro.TMP_FontFeatureTable" preserve="nothing" serialized="true" />
+    <type fullname="TMPro.TMP_FontWeightPair" preserve="nothing" serialized="true" />
+    <type fullname="TMPro.TMP_GlyphAdjustmentRecord" preserve="nothing" serialized="true" />
+    <type fullname="TMPro.TMP_GlyphPairAdjustmentRecord" preserve="nothing" serialized="true" />
+    <type fullname="TMPro.TMP_GlyphValueRecord" preserve="nothing" serialized="true" />
+    <type fullname="TMPro.VertexGradient" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="UnityEngine.AIModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.AI.NavMeshAgent" preserve="all" />
+    <type fullname="UnityEngine.AI.NavMeshData" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.AnimationModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.Animation" preserve="all" />
+    <type fullname="UnityEngine.AnimationClip" preserve="all" />
+    <type fullname="UnityEngine.Animator" preserve="all" />
+    <type fullname="UnityEngine.Avatar" preserve="all" />
+    <type fullname="UnityEngine.RuntimeAnimatorController" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.AudioModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.AudioClip" preserve="all" />
+    <type fullname="UnityEngine.AudioListener" preserve="all" />
+    <type fullname="UnityEngine.AudioSource" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.Camera" preserve="all" />
+    <type fullname="UnityEngine.Cubemap" preserve="all" />
+    <type fullname="UnityEngine.GameObject" preserve="all" />
+    <type fullname="UnityEngine.Light" preserve="all" />
+    <type fullname="UnityEngine.LightmapSettings" preserve="all" />
+    <type fullname="UnityEngine.LineRenderer" preserve="all" />
+    <type fullname="UnityEngine.Material" preserve="all" />
+    <type fullname="UnityEngine.Mesh" preserve="all" />
+    <type fullname="UnityEngine.MeshFilter" preserve="all" />
+    <type fullname="UnityEngine.MeshRenderer" preserve="all" />
+    <type fullname="UnityEngine.Object" preserve="all" />
+    <type fullname="UnityEngine.RectTransform" preserve="all" />
+    <type fullname="UnityEngine.RenderSettings" preserve="all" />
+    <type fullname="UnityEngine.Shader" preserve="all" />
+    <type fullname="UnityEngine.SkinnedMeshRenderer" preserve="all" />
+    <type fullname="UnityEngine.Sprite" preserve="all" />
+    <type fullname="UnityEngine.SpriteRenderer" preserve="all" />
+    <type fullname="UnityEngine.Texture2D" preserve="all" />
+    <type fullname="UnityEngine.Transform" preserve="all" />
+    <type fullname="UnityEngine.Events.ArgumentCache" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Events.PersistentCallGroup" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Events.PersistentListenerMode" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Events.UnityEvent" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.RectOffset" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="UnityEngine.ParticleSystemModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.ParticleSystem" preserve="all" />
+    <type fullname="UnityEngine.ParticleSystemRenderer" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.PhysicsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.BoxCollider" preserve="all" />
+    <type fullname="UnityEngine.CapsuleCollider" preserve="all" />
+    <type fullname="UnityEngine.MeshCollider" preserve="all" />
+    <type fullname="UnityEngine.PhysicMaterial" preserve="all" />
+    <type fullname="UnityEngine.Rigidbody" preserve="all" />
+    <type fullname="UnityEngine.SphereCollider" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.TextRenderingModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.Font" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.EventSystems.EventSystem" preserve="all" />
+    <type fullname="UnityEngine.EventSystems.EventTrigger" preserve="all" />
+    <type fullname="UnityEngine.EventSystems.StandaloneInputModule" preserve="all" />
+    <type fullname="UnityEngine.UI.Button" preserve="all" />
+    <type fullname="UnityEngine.UI.CanvasScaler" preserve="all" />
+    <type fullname="UnityEngine.UI.Dropdown" preserve="all" />
+    <type fullname="UnityEngine.UI.GraphicRaycaster" preserve="all" />
+    <type fullname="UnityEngine.UI.GridLayoutGroup" preserve="all" />
+    <type fullname="UnityEngine.UI.HorizontalLayoutGroup" preserve="all" />
+    <type fullname="UnityEngine.UI.Image" preserve="all" />
+    <type fullname="UnityEngine.UI.LayoutElement" preserve="all" />
+    <type fullname="UnityEngine.UI.Mask" preserve="all" />
+    <type fullname="UnityEngine.UI.Outline" preserve="all" />
+    <type fullname="UnityEngine.UI.RawImage" preserve="all" />
+    <type fullname="UnityEngine.UI.Scrollbar" preserve="all" />
+    <type fullname="UnityEngine.UI.ScrollRect" preserve="all" />
+    <type fullname="UnityEngine.UI.Shadow" preserve="all" />
+    <type fullname="UnityEngine.UI.Slider" preserve="all" />
+    <type fullname="UnityEngine.UI.Text" preserve="all" />
+    <type fullname="UnityEngine.UI.Toggle" preserve="all" />
+    <type fullname="UnityEngine.UI.VerticalLayoutGroup" preserve="all" />
+    <type fullname="UnityEngine.EventSystems.EventTrigger/Entry" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.EventSystems.EventTrigger/TriggerEvent" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.UI.AnimationTriggers" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.UI.Button/ButtonClickedEvent" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.UI.ColorBlock" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.UI.FontData" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.UI.MaskableGraphic/CullStateChangedEvent" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.UI.Navigation" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.UI.Slider/SliderEvent" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.UI.SpriteState" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.UI.Dropdown/DropdownEvent" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.UI.Dropdown/OptionData" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.UI.Dropdown/OptionDataList" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.UI.ScrollRect/ScrollRectEvent" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.UI.Scrollbar/ScrollEvent" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.UI.Toggle/ToggleEvent" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="UnityEngine.UIModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.Canvas" preserve="all" />
+    <type fullname="UnityEngine.CanvasGroup" preserve="all" />
+    <type fullname="UnityEngine.CanvasRenderer" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.TextCoreFontEngineModule">
+    <type fullname="UnityEngine.TextCore.FaceInfo" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.TextCore.Glyph" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.TextCore.GlyphMetrics" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.TextCore.GlyphRect" preserve="nothing" serialized="true" />
+  </assembly>
+</linker>
