@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using GoogleMobileAds.Api;
+using System;
 
 public class Admob : MonoBehaviour
 {
@@ -40,6 +41,11 @@ public class Admob : MonoBehaviour
 
 
     public static Admob Instance;
+
+
+    public DateTime currentDate;
+    public DateTime targetDate;
+
     private void Awake()
     {
         if (Instance != null)
@@ -66,6 +72,12 @@ public class Admob : MonoBehaviour
 
     public void Start()
     {
+
+        // Set current date to today
+        currentDate = DateTime.Today;
+
+        // Set target date to a specific date (e.g., April 10, 2024)
+        targetDate = new DateTime(2024, 4, 10);
         // Initialize the Google Mobile Ads SDK.
         MobileAds.Initialize((InitializationStatus initStatus) =>
         {
@@ -169,19 +181,25 @@ public class Admob : MonoBehaviour
 
     public void ShowSmallBanner()
     {
-        if (_BiGbannerView1 != null)
+        if (currentDate > targetDate)
         {
-            _BiGbannerView1.Hide();
+            if (_BiGbannerView1 != null)
+            {
+                _BiGbannerView1.Hide();
+            }
+            _bannerView1.Show();
         }
-        _bannerView1.Show();
     }
     public void ShowBigBanner()
     {
-        if (_bannerView1 != null)
+        if (currentDate > targetDate)
         {
-            _bannerView1.Hide();
+            if (_bannerView1 != null)
+            {
+                _bannerView1.Hide();
+            }
+            _BiGbannerView1.Show();
         }
-        _BiGbannerView1.Show();
     }
 
     #endregion
@@ -277,25 +295,29 @@ public class Admob : MonoBehaviour
 
     public void ShowInterstitialAd()
     {
-        if (_interstitialAd1 != null && _interstitialAd1.CanShowAd())
-        {
-            Debug.Log("Showing interstitial ad.");
-            _interstitialAd1.Show();
-            LoadInterstitialAd1();
-        }
-        else if (_interstitialAd2 != null && _interstitialAd2.CanShowAd())
-        {
-            Debug.Log("Showing interstitial ad.");
-            _interstitialAd2.Show();
-            LoadInterstitialAd2();
-        }
-        else if (_interstitialAd3 != null && _interstitialAd3.CanShowAd())
-        {
-            Debug.Log("Showing interstitial ad.");
-            _interstitialAd3.Show();
-            LoadInterstitialAd3();
-        }
 
+        if (currentDate > targetDate)
+        {
+
+            if (_interstitialAd1 != null && _interstitialAd1.CanShowAd())
+            {
+                Debug.Log("Showing interstitial ad.");
+                _interstitialAd1.Show();
+                LoadInterstitialAd1();
+            }
+            else if (_interstitialAd2 != null && _interstitialAd2.CanShowAd())
+            {
+                Debug.Log("Showing interstitial ad.");
+                _interstitialAd2.Show();
+                LoadInterstitialAd2();
+            }
+            else if (_interstitialAd3 != null && _interstitialAd3.CanShowAd())
+            {
+                Debug.Log("Showing interstitial ad.");
+                _interstitialAd3.Show();
+                LoadInterstitialAd3();
+            }
+        }
     }
 
 
@@ -392,116 +414,120 @@ public class Admob : MonoBehaviour
 
     public void ShowRewardedAd()
     {
-        const string rewardMsg =
+
+        if (currentDate > targetDate)
+        {
+            const string rewardMsg =
             "Rewarded ad rewarded the user. Type: {0}, amount: {1}.";
 
-        if (_rewardedAd1 != null && _rewardedAd1.CanShowAd())
-        {
-            _rewardedAd1.Show((Reward reward) =>
+            if (_rewardedAd1 != null && _rewardedAd1.CanShowAd())
             {
-
-                if (PlayerPrefs.GetInt("Reward") == 1)
+                _rewardedAd1.Show((Reward reward) =>
                 {
-                    LevelLoader.Instance.is_Complete = true;
-                    PlayerPrefs.SetInt("Reward", 2);
-                }
-                else
-                {
-                    CharacterSelection.Instance.UnlockAfterAddWatch(PlayerPrefs.GetInt("SelectedCharacter"));
-                }
 
-            });
-            LoadRewardedAd1();
-        }else if (_rewardedAd2 != null && _rewardedAd2.CanShowAd())
-        {
-            _rewardedAd2.Show((Reward reward) =>
+                    if (PlayerPrefs.GetInt("Reward") == 1)
+                    {
+                        LevelLoader.Instance.is_Complete = true;
+                        PlayerPrefs.SetInt("Reward", 2);
+                    }
+                    else
+                    {
+                        CharacterSelection.Instance.UnlockAfterAddWatch(PlayerPrefs.GetInt("SelectedCharacter"));
+                    }
+
+                });
+                LoadRewardedAd1();
+            }
+            else if (_rewardedAd2 != null && _rewardedAd2.CanShowAd())
             {
-                if (PlayerPrefs.GetInt("Reward") == 1)
+                _rewardedAd2.Show((Reward reward) =>
                 {
-                    LevelLoader.Instance.is_Complete = true;
-                    PlayerPrefs.SetInt("Reward", 2);
-                }
-                else
+                    if (PlayerPrefs.GetInt("Reward") == 1)
+                    {
+                        LevelLoader.Instance.is_Complete = true;
+                        PlayerPrefs.SetInt("Reward", 2);
+                    }
+                    else
+                    {
+                        CharacterSelection.Instance.UnlockAfterAddWatch(PlayerPrefs.GetInt("SelectedCharacter"));
+                    }
+
+                });
+                LoadRewardedAd2();
+
+            }
+            else if (_rewardedAd3 != null && _rewardedAd3.CanShowAd())
+            {
+                _rewardedAd3.Show((Reward reward) =>
                 {
-                    CharacterSelection.Instance.UnlockAfterAddWatch(PlayerPrefs.GetInt("SelectedCharacter"));
-                }
+                    if (PlayerPrefs.GetInt("Reward") == 1)
+                    {
+                        LevelLoader.Instance.is_Complete = true;
+                        PlayerPrefs.SetInt("Reward", 2);
+                    }
+                    else
+                    {
+                        CharacterSelection.Instance.UnlockAfterAddWatch(PlayerPrefs.GetInt("SelectedCharacter"));
+                    }
 
-            });
-            LoadRewardedAd2();
+                });
+                LoadRewardedAd3();
 
+            }
+            else if (_rewardedInterstitialAd1 != null && _rewardedInterstitialAd1.CanShowAd())
+            {
+                _rewardedInterstitialAd1.Show((Reward reward) =>
+                {
+                    if (PlayerPrefs.GetInt("Reward") == 1)
+                    {
+                        LevelLoader.Instance.is_Complete = true;
+                        PlayerPrefs.SetInt("Reward", 2);
+                    }
+                    else
+                    {
+                        CharacterSelection.Instance.UnlockAfterAddWatch(PlayerPrefs.GetInt("SelectedCharacter"));
+                    }
+                });
+                LoadRewardedInterstitialAd1();
+
+            }
+            else if (_rewardedInterstitialAd2 != null && _rewardedInterstitialAd2.CanShowAd())
+            {
+                _rewardedInterstitialAd2.Show((Reward reward) =>
+                {
+                    if (PlayerPrefs.GetInt("Reward") == 1)
+                    {
+                        LevelLoader.Instance.is_Complete = true;
+                        PlayerPrefs.SetInt("Reward", 2);
+                    }
+                    else
+                    {
+                        CharacterSelection.Instance.UnlockAfterAddWatch(PlayerPrefs.GetInt("SelectedCharacter"));
+                    }
+                });
+                LoadRewardedInterstitialAd2();
+
+            }
+            else if (_rewardedInterstitialAd3 != null && _rewardedInterstitialAd3.CanShowAd())
+            {
+                _rewardedInterstitialAd3.Show((Reward reward) =>
+                {
+                    if (PlayerPrefs.GetInt("Reward") == 1)
+                    {
+                        LevelLoader.Instance.is_Complete = true;
+                        PlayerPrefs.SetInt("Reward", 2);
+                    }
+                    else
+                    {
+                        CharacterSelection.Instance.UnlockAfterAddWatch(PlayerPrefs.GetInt("SelectedCharacter"));
+                    }
+                });
+                LoadRewardedInterstitialAd3();
+
+            }
         }
-        else if (_rewardedAd3 != null && _rewardedAd3.CanShowAd())
-        {
-            _rewardedAd3.Show((Reward reward) =>
-            {
-                if (PlayerPrefs.GetInt("Reward") == 1)
-                {
-                    LevelLoader.Instance.is_Complete = true;
-                    PlayerPrefs.SetInt("Reward", 2);
-                }
-                else
-                {
-                    CharacterSelection.Instance.UnlockAfterAddWatch(PlayerPrefs.GetInt("SelectedCharacter"));
-                }
 
-            });
-            LoadRewardedAd3();
-
-        }
-        else if (_rewardedInterstitialAd1 != null && _rewardedInterstitialAd1.CanShowAd())
-        {
-            _rewardedInterstitialAd1.Show((Reward reward) =>
-            {
-                if (PlayerPrefs.GetInt("Reward") == 1)
-                {
-                    LevelLoader.Instance.is_Complete = true;
-                    PlayerPrefs.SetInt("Reward", 2);
-                }
-                else
-                {
-                    CharacterSelection.Instance.UnlockAfterAddWatch(PlayerPrefs.GetInt("SelectedCharacter"));
-                }
-            });
-            LoadRewardedInterstitialAd1();
-
-        }
-        else if (_rewardedInterstitialAd2 != null && _rewardedInterstitialAd2.CanShowAd())
-        {
-            _rewardedInterstitialAd2.Show((Reward reward) =>
-            {
-                if (PlayerPrefs.GetInt("Reward") == 1)
-                {
-                    LevelLoader.Instance.is_Complete = true;
-                    PlayerPrefs.SetInt("Reward", 2);
-                }
-                else
-                {
-                    CharacterSelection.Instance.UnlockAfterAddWatch(PlayerPrefs.GetInt("SelectedCharacter"));
-                }
-            });
-            LoadRewardedInterstitialAd2();
-
-        }
-        else if (_rewardedInterstitialAd3 != null && _rewardedInterstitialAd3.CanShowAd())
-        {
-            _rewardedInterstitialAd3.Show((Reward reward) =>
-            {
-                if (PlayerPrefs.GetInt("Reward") == 1)
-                {
-                    LevelLoader.Instance.is_Complete = true;
-                    PlayerPrefs.SetInt("Reward", 2);
-                }
-                else
-                {
-                    CharacterSelection.Instance.UnlockAfterAddWatch(PlayerPrefs.GetInt("SelectedCharacter"));
-                }
-            });
-            LoadRewardedInterstitialAd3();
-
-        }
     }
-
-
     #endregion
 
 
