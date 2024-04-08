@@ -55,7 +55,7 @@ public class LevelLoader : MonoBehaviour
 
     private void Start()
     {
-        PlayerPrefs.SetInt("SelectedCharacter", 1);
+       // PlayerPrefs.SetInt("SelectedCharacter", 1);
         SelectedTiger = Characters[0];
         is_Complete = false;
         if (PlayerPrefs.GetInt("TUT") == 1)
@@ -96,6 +96,7 @@ public class LevelLoader : MonoBehaviour
             }
         }
         Admob.Instance.ShowSmallBanner();
+        Firebase.Analytics.FirebaseAnalytics.LogEvent(selected_Level.ToString(), "levelstart", 1);
     }
     public void Pasued_Level()
     {
@@ -162,6 +163,7 @@ public class LevelLoader : MonoBehaviour
         Time.timeScale = 0f;
         Fail.SetActive(true);
         Admob.Instance.ShowBigBanner();
+        Firebase.Analytics.FirebaseAnalytics.LogEvent(selected_Level.ToString(), "faillevel", 1);
 
 
     }
@@ -205,6 +207,7 @@ public class LevelLoader : MonoBehaviour
         Admob.Instance.ShowInterstitialAd();
 
         Admob.Instance.ShowBigBanner();
+        Firebase.Analytics.FirebaseAnalytics.LogEvent(selected_Level.ToString(), "completelevel", 1);
 
     }
 

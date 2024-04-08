@@ -118,6 +118,8 @@ public class MainMenu : MonoBehaviour
         LoadingPanel.SetActive(true);
         PlayerPrefs.SetInt("Level", LevelNumber);
         StartCoroutine(LoadingAfterLEvelSelectionComplete());
+       
+        Firebase.Analytics.FirebaseAnalytics.LogEvent(LevelNumber.ToString(), "mainmenulevel",1);
     }
     IEnumerator LoadingAfterLEvelSelectionComplete()
     {

@@ -8,11 +8,8 @@ public class Admob : MonoBehaviour
     [Header("Banner Ads")]
     public string Banner1 = "";
     
-
     [Header("Big Banner Ads")]
     public string BigBanner1 = "";
-    
-
 
     [Header("Interstatial Ads")]
     public string Interstitial1 = "";
@@ -72,8 +69,6 @@ public class Admob : MonoBehaviour
 
             LoadSmallBannerAd();
             LoadBiGBannerAd();
-
-            // This callback is called once the MobileAds SDK is initialized.
             LoadInterstitialAd1();
             LoadInterstitialAd2();
             LoadInterstitialAd3();
@@ -108,7 +103,7 @@ public class Admob : MonoBehaviour
         }
 
         // Create a 320x50 banner at top of the screen
-        _bannerView1 = new BannerView(Banner1, AdSize.GetLandscapeAnchoredAdaptiveBannerAdSizeWithWidth(1920), SmallBannerPosition);
+        _bannerView1 = new BannerView(Banner1, AdSize.Banner, SmallBannerPosition);
     }
     public void LoadSmallBannerAd()
     {
@@ -504,7 +499,6 @@ public class Admob : MonoBehaviour
 
     #endregion
 
-
     #region Rewarded interstitial
 
     private RewardedInterstitialAd _rewardedInterstitialAd1, _rewardedInterstitialAd2, _rewardedInterstitialAd3;
@@ -602,9 +596,5 @@ public class Admob : MonoBehaviour
 
 
     #endregion
-
-
-    
-
 
 }
